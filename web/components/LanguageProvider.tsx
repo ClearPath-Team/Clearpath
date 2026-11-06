@@ -13,6 +13,7 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     try {
@@ -21,16 +22,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     } catch {
       // Storage can be unavailable in private browsing.
     }
+    setInitialized(true);
   }, []);
 
   useEffect(() => {
+    if (!initialized) return;
     document.documentElement.lang = language;
     try {
       window.localStorage.setItem(STORAGE_KEY, language);
     } catch {
       // Language switching still works without persistence.
     }
-  }, [language]);
+  }, [language, initialized]);
 
   const value = useMemo<LanguageContextValue>(
     () => ({ language, setLanguage, t: (key) => dictionary(language)[key] }),
