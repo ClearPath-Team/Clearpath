@@ -305,7 +305,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
                 page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 for i, event in enumerate(items):
                     _draw_overlay(page, node_by_id.get(event.get("node_id")),
-                                  str(event["text"]))
+                                  timeline[i]["text"])
                     page.wait_for_timeout(80)
                     frame = temp / f"frame_{i:04d}.png"
                     page.screenshot(path=str(frame))
