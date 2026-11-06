@@ -84,7 +84,7 @@ def run_pipeline(analysis_id: str, url: str, lang: str = "ro") -> None:
         else:
             from worker.media.render import render_clip
             timeline = (render_clip(url, nodes, events, out_dir) if lang == "ro" else
-                        render_clip(url, nodes, events, out_dir, lang=lang)
+                        render_clip(url, nodes, events, out_dir, lang=lang))
         write_json(out_dir / "timeline.json", timeline)
 
         # Stage 4: Report (Assembly + Scoring)
