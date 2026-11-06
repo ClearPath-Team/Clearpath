@@ -6,7 +6,7 @@
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
 - **Status:** `Ready`
-- **Assignee:** *Unassigned*
+- **Assignee:** `@Sergiu1809`
 - **Branch:** `m1-cdp-ax-tree`
 - **Created Date:** 2026-11-06
 

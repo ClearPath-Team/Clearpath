@@ -6,7 +6,7 @@
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
 - **Status:** `Ready`
-- **Assignee:** *Unassigned*
+- **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `m3-tts-render`
 - **Created Date:** 2026-11-06
 

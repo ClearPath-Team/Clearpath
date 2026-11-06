@@ -6,7 +6,7 @@
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
 - **Status:** `Ready`
-- **Assignee:** *Unassigned*
+- **Assignee:** `@AndreiBcs`
 - **Branch:** `m2-speech-audit`
 - **Created Date:** 2026-11-06
 

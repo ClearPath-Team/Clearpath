@@ -144,6 +144,21 @@ def cmd_claim(args):
     update_task_header(t["path"], new_status="In progress", new_assignee=assignee, log_note=f"Claimed by @{assignee} (Status -> In progress)")
     print(f"[OK] Task {t['id']} claimed by @{assignee}. Status set to 'In progress'.")
     
+    # Sync with GitHub if gh CLI is available and task is linked to an issue
+    m_num = re.search(r"#?(\d+)", t.get("issue", ""))
+    if m_num:
+        clean_user = assignee.lstrip("@")
+        try:
+            subprocess.run([
+                "gh", "issue", "edit", m_num.group(1),
+                "--add-assignee", clean_user,
+                "--add-label", "status:in-progress",
+                "--remove-label", "status:ready"
+            ], capture_output=True, text=True, check=False)
+            print(f"[OK] GitHub Issue #{m_num.group(1)} assigned to @{clean_user} on GitHub.")
+        except Exception:
+            pass
+
     # Switch/Create git branch
     branch = t.get("branch")
     if branch:
@@ -161,8 +176,22 @@ def cmd_claim(args):
 
 def cmd_release(args):
     t = find_task(args.task_id)
+    current_ass = t.get("assignee", "").lstrip("@")
     update_task_header(t["path"], new_status="Ready", new_assignee="Unassigned", log_note="Released back to pool")
     print(f"[OK] Task {t['id']} released. Status set to 'Ready', Assignee cleared.")
+
+    m_num = re.search(r"#?(\d+)", t.get("issue", ""))
+    if m_num and current_ass and current_ass != "Unassigned":
+        try:
+            subprocess.run([
+                "gh", "issue", "edit", m_num.group(1),
+                "--remove-assignee", current_ass,
+                "--add-label", "status:ready",
+                "--remove-label", "status:in-progress"
+            ], capture_output=True, text=True, check=False)
+            print(f"[OK] GitHub Issue #{m_num.group(1)} unassigned on GitHub.")
+        except Exception:
+            pass
 
 
 def cmd_done(args):
@@ -170,6 +199,19 @@ def cmd_done(args):
     pr = args.pr.strip()
     update_task_header(t["path"], new_status="In review", new_assignee=t["assignee"], log_note=f"PR opened: {pr} (Status -> In review)")
     print(f"[OK] Task {t['id']} moved to 'In review'. PR logged: {pr}")
+
+    m_num = re.search(r"#?(\d+)", t.get("issue", ""))
+    if m_num:
+        try:
+            subprocess.run([
+                "gh", "issue", "edit", m_num.group(1),
+                "--add-label", "status:in-review",
+                "--remove-label", "status:in-progress"
+            ], capture_output=True, text=True, check=False)
+            print(f"[OK] GitHub Issue #{m_num.group(1)} marked 'status:in-review' on GitHub.")
+        except Exception:
+            pass
+
     print("Waiting for human review to merge into main and transition to 'Done'.")
 
 

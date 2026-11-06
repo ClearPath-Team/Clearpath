@@ -5,8 +5,8 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `Ready`
-- **Assignee:** *Unassigned*
+- **Status:** `In progress`
+- **Assignee:** `@alexcontz`
 - **Branch:** `m4-frontend-init`
 - **Created Date:** 2026-11-06
 
@@ -95,3 +95,5 @@ npm run dev
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
 - **Claimed by:** *None*
 - **PR:** *None*
+
+- **2026-11-06 13:03 UTC:** Claimed by @@alexcontz (Status -> In progress)
