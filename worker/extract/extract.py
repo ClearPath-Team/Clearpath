@@ -86,18 +86,26 @@ def _dismiss_cookie_banner(page) -> bool:
     deadline = time.monotonic() + COOKIE_DISMISS_BUDGET_MS / 1000
     try:
         candidates = page.get_by_role("button", name=COOKIE_BUTTON_PATTERN)
-        for i in range(min(candidates.count(), 5)):
-            remaining_ms = int((deadline - time.monotonic()) * 1000)
-            if remaining_ms <= 0:
-                return False
+        count = min(candidates.count(), 5)
+    except Exception:
+        return False
+    for i in range(count):
+        remaining_ms = int((deadline - time.monotonic()) * 1000)
+        if remaining_ms <= 0:
+            return False
+        try:
             btn = candidates.nth(i)
             if not btn.is_visible() or not btn.evaluate(CONSENT_CONTEXT_JS):
                 continue
             btn.click(timeout=remaining_ms)
+        except Exception:
+            # A candidate can detach or be covered mid-check; try the next one.
+            continue
+        try:
             page.wait_for_timeout(300)
-            return True
-    except Exception:
-        pass
+        except Exception:
+            pass
+        return True
     return False
 
 

@@ -1,7 +1,8 @@
 """Regression tests for M1 live-web resilience (M1-02).
 
 Browser tests use Playwright Chromium on local file:// pages and a local HTTP
-server, and are skipped when Chromium is not installed. Tab-walk error
+server, and are skipped (via scripts.check_env.chromium_skip_reason) when
+Chromium or its host libraries are missing. Tab-walk error
 handling is also covered without a browser using a fake page.
 """
 import shutil
@@ -15,6 +16,7 @@ from unittest import mock
 
 from playwright.sync_api import Error as PlaywrightError
 
+from scripts.check_env import chromium_skip_reason
 from worker.extract import extract as extract_mod
 from worker.extract.tab_walk import MAX_TAB_PRESSES, tab_walk
 
@@ -32,18 +34,7 @@ BANNER_PAGE = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
                "<title>Banner</title></head><body>" + BANNER_BODY + "</body></html>")
 
 
-def _chromium_unavailable_reason():
-    try:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as playwright:
-            if not Path(playwright.chromium.executable_path).exists():
-                return "Playwright Chromium not installed"
-    except Exception as exc:
-        return f"Playwright unavailable: {exc}"
-    return None
-
-
-_SKIP_BROWSER = _chromium_unavailable_reason()
+_SKIP_BROWSER = chromium_skip_reason()
 
 
 class _FakeKeyboard:
@@ -106,6 +97,58 @@ class TabWalkGuardTests(unittest.TestCase):
         order, _ = tab_walk(page, {})
         self.assertEqual([o["selector"] for o in order], ["#a", "#c"])
 
+    def test_detached_focus_resets_trap_counter(self):
+        page = _FakePage(["#a", "#a", "", "#a", None])
+        order, trap = tab_walk(page, {})
+        self.assertEqual([o["selector"] for o in order], ["#a"])
+        self.assertIsNone(trap)
+
+
+class _FakeButton:
+    def __init__(self, fail=False):
+        self.fail = fail
+        self.clicked = False
+
+    def is_visible(self):
+        return True
+
+    def evaluate(self, script):
+        if self.fail:
+            raise PlaywrightError("Element is not attached to the DOM")
+        return True
+
+    def click(self, timeout):
+        self.clicked = True
+
+
+class _FakeButtons:
+    def __init__(self, buttons):
+        self.buttons = buttons
+
+    def count(self):
+        return len(self.buttons)
+
+    def nth(self, i):
+        return self.buttons[i]
+
+
+class _FakeBannerPage:
+    def __init__(self, buttons):
+        self.buttons = _FakeButtons(buttons)
+
+    def get_by_role(self, role, name):
+        return self.buttons
+
+    def wait_for_timeout(self, ms):
+        pass
+
+
+class DismissCandidateTests(unittest.TestCase):
+    def test_detached_candidate_does_not_stop_later_candidates(self):
+        detached, real = _FakeButton(fail=True), _FakeButton()
+        self.assertTrue(extract_mod._dismiss_cookie_banner(_FakeBannerPage([detached, real])))
+        self.assertTrue(real.clicked)
+
 
 @unittest.skipIf(_SKIP_BROWSER, _SKIP_BROWSER or "")
 class BrowserTests(unittest.TestCase):
@@ -113,7 +156,12 @@ class BrowserTests(unittest.TestCase):
     def setUpClass(cls):
         from playwright.sync_api import sync_playwright
         cls._pw = sync_playwright().start()
-        cls.browser = cls._pw.chromium.launch(headless=True)
+        try:
+            cls.browser = cls._pw.chromium.launch(headless=True)
+        except Exception:
+            # Stop the driver so later classes can still start sync Playwright.
+            cls._pw.stop()
+            raise
         cls.tmp = Path(tempfile.mkdtemp(prefix="cp-test-extract-"))
 
     @classmethod

@@ -35,6 +35,7 @@ def tab_walk(page, by_selector: dict) -> tuple[list, dict | None]:
             if sel is None:
                 break
             if sel == "":
+                repeats = 0
                 continue
             if order and order[-1]["selector"] == sel:
                 repeats += 1

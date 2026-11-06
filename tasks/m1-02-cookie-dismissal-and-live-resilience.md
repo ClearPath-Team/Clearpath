@@ -5,7 +5,7 @@
 - **Track:** `M1` (Agent & Tree Extraction)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `In progress`
+- **Status:** `In review`
 - **Assignee:** `@Sergiu1809`
 - **Branch:** `m1-cookie-dismissal-resilience`
 - **Created Date:** 2026-11-06
@@ -82,3 +82,4 @@ rm -f data/test-nodes.json
 - **2026-11-06:** Task created as Ready for the Live Web Resilience phase.
 
 - **2026-11-06 15:51 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
+- **2026-11-06:** PR #25 opened; review feedback from @alexcontz addressed (Status -> In review)
