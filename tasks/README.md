@@ -17,11 +17,14 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M2-02`** | M2 | P1 | `Done` | `@AndreiBcs` | [`m2-02-reconcile-scoring-weights.md`](m2-02-reconcile-scoring-weights.md) |
 | **`SHARED-02`** | Shared | P1 | `Done` | `@AndreiBcs` | [`shared-02-playwright-environment-deps.md`](shared-02-playwright-environment-deps.md) |
 | **`M4-02`** | M4 | P0 | `Done` | `@alexcontz` | [`m4-02-frontend-dashboard-fixes.md`](m4-02-frontend-dashboard-fixes.md) |
-<<<<<<< HEAD
-| **`INTEG-01`** | Shared | P0 | `In review` | `@andreiBirsanIoan` | [`integ-01-pipeline-end-to-end-verification.md`](integ-01-pipeline-end-to-end-verification.md) |
-| **`DEMO-01`** | M4 | P0 | `In progress` | `@AndreiBcs` | [`demo-01-offline-precaching-and-presentation.md`](demo-01-offline-precaching-and-presentation.md) |
+| **`INTEG-01`** | Shared | P0 | `Done` | `@andreiBirsanIoan` | [`integ-01-pipeline-end-to-end-verification.md`](integ-01-pipeline-end-to-end-verification.md) |
+| **`DEMO-01`** | M4 | P0 | `Done` | `@AndreiBcs` | [`demo-01-offline-precaching-and-presentation.md`](demo-01-offline-precaching-and-presentation.md) |
 | **`M1-02`** | M1 | P1 | `In review` | `@Sergiu1809` | [`m1-02-cookie-dismissal-and-live-resilience.md`](m1-02-cookie-dismissal-and-live-resilience.md) |
 | **`M3-03`** | M3 | P1 | `In progress` | `@andreiBirsanIoan` | [`m3-03-romanian-tts-quality-and-subtitles.md`](m3-03-romanian-tts-quality-and-subtitles.md) |
+| **`M2-03`** | M2 | P1 | `Ready` | *(Unassigned)* | [`m2-03-english-speech-and-recommendations.md`](m2-03-english-speech-and-recommendations.md) |
+| **`M4-03`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-03-analysis-language-toggle.md`](m4-03-analysis-language-toggle.md) |
+| **`M4-04`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-04-website-language-selector-and-analysis-default.md`](m4-04-website-language-selector-and-analysis-default.md) |
+| **`DEMO-02`** | Demo | P1 | `Ready` | *(Unassigned)* | [`demo-02-revamp-bad-checkout-ux.md`](demo-02-revamp-bad-checkout-ux.md) |
 
 ---
 
