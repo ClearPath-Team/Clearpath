@@ -1,24 +1,195 @@
 {
   "lang": "ro",
   "events": [
-    { "seq": 0, "node_id": null, "text": "Pagina Finalizează comanda" },
-    { "seq": 1, "node_id": "n0", "text": "Reper antet" },
-    { "seq": 2, "node_id": "n1", "text": "PasUșor" },
-    { "seq": 3, "node_id": "n2", "text": "Reper navigare" },
-    { "seq": 4, "node_id": "n3", "text": "Link, Bărbați" },
-    { "seq": 5, "node_id": "n4", "text": "Link, Femei" },
-    { "seq": 6, "node_id": "n5", "text": "Link" },
-    { "seq": 7, "node_id": "n6", "text": "Buton" },
-    { "seq": 8, "node_id": "n7", "text": "Reper conținut principal" },
-    { "seq": 9, "node_id": "n8", "text": "Titlu nivel 1, Finalizează comanda" },
-    { "seq": 10, "node_id": "n9", "text": "Imagine fără descriere" },
-    { "seq": 11, "node_id": "n10", "text": "Titlu nivel 4, Produsul tău" },
-    { "seq": 12, "node_id": "n11", "text": "Adidași de alergare, mărimea 42, 349 lei" },
-    { "seq": 13, "node_id": "n13", "text": "Titlu nivel 2, Date de livrare" },
-    { "seq": 14, "node_id": "n14", "text": "Nume complet, câmp de editare, obligatoriu" },
-    { "seq": 15, "node_id": "n15", "text": "Câmp de editare" },
-    { "seq": 16, "node_id": "n16", "text": "Cod promoțional, câmp de editare" },
-    { "seq": 17, "node_id": "n17", "text": "Telefon, câmp de editare" },
-    { "seq": 18, "node_id": "n18", "text": "Plasează comanda" }
+    {
+      "seq": 0,
+      "node_id": null,
+      "text": "Pagina Finalizează comanda · PasUșor Sport"
+    },
+    {
+      "seq": 1,
+      "node_id": "n0",
+      "text": "reper antet"
+    },
+    {
+      "seq": 2,
+      "node_id": "n1",
+      "text": "PasUșor. Încălțăminte Sportivă & Lifestyle, link"
+    },
+    {
+      "seq": 3,
+      "node_id": "n2",
+      "text": "Categorii produse, reper navigare"
+    },
+    {
+      "seq": 4,
+      "node_id": "n3",
+      "text": "Bărbați, link"
+    },
+    {
+      "seq": 5,
+      "node_id": "n4",
+      "text": "Femei, link"
+    },
+    {
+      "seq": 6,
+      "node_id": "n5",
+      "text": "Copii, link"
+    },
+    {
+      "seq": 7,
+      "node_id": "n6",
+      "text": "Reduceri, link"
+    },
+    {
+      "seq": 8,
+      "node_id": "n7",
+      "text": "link"
+    },
+    {
+      "seq": 9,
+      "node_id": "n8",
+      "text": "buton"
+    },
+    {
+      "seq": 10,
+      "node_id": "n9",
+      "text": "reper conținut principal"
+    },
+    {
+      "seq": 11,
+      "node_id": "n10",
+      "text": "Acasă Coș de cumpărături Finalizare comandă"
+    },
+    {
+      "seq": 12,
+      "node_id": "n13",
+      "text": "Finalizează comanda, titlu nivel 1"
+    },
+    {
+      "seq": 13,
+      "node_id": "n14",
+      "text": "Încă un pas și ești gata de mișcare. Comandă în siguranță"
+    },
+    {
+      "seq": 14,
+      "node_id": "n16",
+      "text": "Progres comandă, listă cu 3 elemente"
+    },
+    {
+      "seq": 15,
+      "node_id": "n17",
+      "text": "Coș de cumpărături Date livrare & plată Confirmare comandă"
+    },
+    {
+      "seq": 16,
+      "node_id": "n20",
+      "text": "reper complementar"
+    },
+    {
+      "seq": 17,
+      "node_id": "n21",
+      "text": "Comanda ta 1 produs, titlu nivel 4"
+    },
+    {
+      "seq": 18,
+      "node_id": "n22",
+      "text": "imagine fără descriere"
+    },
+    {
+      "seq": 19,
+      "node_id": "n23",
+      "text": "ALERGARE · COLECȚIA NOUĂ PasUșor Pro Runner X Mărime: 42 · Negru..."
+    },
+    {
+      "seq": 20,
+      "node_id": "n42",
+      "text": "Date pentru comandă, reper formular"
+    },
+    {
+      "seq": 21,
+      "node_id": "n43",
+      "text": "Date de contact și livrare, titlu nivel 2"
+    },
+    {
+      "seq": 22,
+      "node_id": "n44",
+      "text": "Nume complet *, casetă de editare, necompletat, obligatoriu"
+    },
+    {
+      "seq": 23,
+      "node_id": "n45",
+      "text": "casetă de editare, necompletat"
+    },
+    {
+      "seq": 24,
+      "node_id": "n46",
+      "text": "Telefon, casetă de editare, necompletat"
+    },
+    {
+      "seq": 25,
+      "node_id": "n47",
+      "text": "Adresă completă, casetă de editare, necompletat"
+    },
+    {
+      "seq": 26,
+      "node_id": "n48",
+      "text": "Oraș, casetă de editare, necompletat"
+    },
+    {
+      "seq": 27,
+      "node_id": "n49",
+      "text": "Județ, casetă combinată, Selectează județul, restrâns"
+    },
+    {
+      "seq": 28,
+      "node_id": "n50",
+      "text": "Metodă de livrare"
+    },
+    {
+      "seq": 29,
+      "node_id": "n51",
+      "text": "Curier rapid Fan Courier · 15,00 Lei, buton radio, neselectat"
+    },
+    {
+      "seq": 30,
+      "node_id": "n52",
+      "text": "Ridicare din easybox Sameday · Gratuit, buton radio, selectat"
+    },
+    {
+      "seq": 31,
+      "node_id": "n53",
+      "text": "Metodă de plată"
+    },
+    {
+      "seq": 32,
+      "node_id": "n54",
+      "text": "Card bancar online Plată rapidă și securizată, buton radio, selectat"
+    },
+    {
+      "seq": 33,
+      "node_id": "n55",
+      "text": "Plată la livrare Ramburs la primirea coletului, buton radio, neselectat"
+    },
+    {
+      "seq": 34,
+      "node_id": "n56",
+      "text": "Cod promoțional, casetă de editare, necompletat"
+    },
+    {
+      "seq": 35,
+      "node_id": "n57",
+      "text": "Livrare gratuită activată Livrare gratuită pentru comenzi de peste 200 de lei...."
+    },
+    {
+      "seq": 36,
+      "node_id": "n59",
+      "text": "reper subsol"
+    },
+    {
+      "seq": 37,
+      "node_id": "n60",
+      "text": "© 2026 PasUșor Sport Conceput pentru mișcare. Ai nevoie de ajutor? 0800..."
+    }
   ]
 }
