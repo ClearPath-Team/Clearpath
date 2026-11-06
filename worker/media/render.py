@@ -136,15 +136,16 @@ def normalize_romanian_text(text: str) -> str:
     return unicodedata.normalize("NFC", text)
 
 
-def _speakable_announcement(text: str) -> str:
+def _speakable_announcement(text: str, lang: str = "ro") -> str:
     """Replace announcements with no letters/digits so TTS produces audio."""
     normalized = normalize_romanian_text(str(text).strip())
-    return normalized if any(char.isalnum() for char in normalized) else "Element fără conținut textual"
+    fallback = "No textual content" if lang == "en" else "Element fără conținut textual"
+    return normalized if any(char.isalnum() for char in normalized) else fallback
 
 
-def _synthesize(text, output):
+def _synthesize(text, output, lang: str = "ro"):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
-    normalized = _speakable_announcement(text)
+    normalized = _speakable_announcement(text, lang=lang)
 
     if engine == "piper":
         model = _voice_path(lang)
@@ -265,7 +266,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path, lang: str = 
         audio_files, frame_files, durations = [], [], []
         current = 0.0
         for index, event in enumerate(items):
-            spoken = _speakable_announcement(event.get("text", ""))
+            spoken = _speakable_announcement(event.get("text", ""), lang=lang)
             wav = temp / f"voice_{index:04d}.wav"
             duration = _synthesize(spoken, wav) if lang == "ro" else _synthesize(spoken, wav, lang=lang)
             audio_files.append(wav)

@@ -4,12 +4,14 @@ and streams video files with HTTP Range 206 support.
 """
 import ipaddress
 import os
+import re
 import socket
 import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
 from uuid import uuid4
+from typing import Literal
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request, Response, status
@@ -35,9 +37,20 @@ app.add_middleware(
 
 ALLOWED_HOSTS = [h.strip().lower() for h in os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testsite").split(",")]
 
+# Generated ids are uuid4 hex; pre-baked demo runs use names like "bad-checkout".
+ANALYSIS_ID_PATTERN = re.compile(r"[A-Za-z0-9_-]{1,64}")
+
+
+def analysis_dir(analysis_id: str) -> Path:
+    """Resolves data/{id}, rejecting ids that could escape DATA_DIR (e.g. '..')."""
+    if not ANALYSIS_ID_PATTERN.fullmatch(analysis_id):
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analysis not found.")
+    return DATA_DIR / analysis_id
+
 
 class AnalysisRequest(BaseModel):
     url: str
+    lang: Literal["ro", "en"] = "ro"
 
 
 def validate_target_url(url: str) -> None:
@@ -110,6 +123,7 @@ def create_analysis(req: AnalysisRequest):
         "id": analysis_id,
         "url": target_url,
         "status": "queued",
+        "lang": req.lang,
         "error": None,
         "updated_at": now_iso(),
     }
@@ -118,18 +132,18 @@ def create_analysis(req: AnalysisRequest):
     # Launch pipeline as an independent background subprocess
     log_file = open(job_dir / "pipeline.log", "w", encoding="utf-8")
     subprocess.Popen(
-        [sys.executable, "-m", "worker.pipeline", analysis_id, target_url],
+        [sys.executable, "-m", "worker.pipeline", analysis_id, target_url, "--lang", req.lang],
         cwd=ROOT,
         stdout=log_file,
         stderr=subprocess.STDOUT,
     )
 
-    return {"id": analysis_id}
+    return {"id": analysis_id, "lang": req.lang}
 
 
 @app.get("/api/analyses/{analysis_id}")
 def get_analysis(analysis_id: str):
-    job_dir = DATA_DIR / analysis_id
+    job_dir = analysis_dir(analysis_id)
     status_path = job_dir / "status.json"
     if not status_path.exists():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analiza nu a fost găsită.")
@@ -145,15 +159,31 @@ def get_analysis(analysis_id: str):
         "id": status_data.get("id", analysis_id),
         "url": status_data.get("url"),
         "status": status_data.get("status"),
+        "lang": status_data.get("lang", "ro"),
         "error": status_data.get("error"),
         "report": report_data,
     }
 
 
+@app.get("/api/analyses/{analysis_id}/timeline")
+def get_timeline(analysis_id: str):
+    """Returns the finished analysis's timeline.json (narration entries with timestamps)."""
+    job_dir = analysis_dir(analysis_id)
+    status_path = job_dir / "status.json"
+    if not status_path.exists():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analysis not found.")
+    if read_json(status_path).get("status") != "done":
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Analysis is not finished yet.")
+    timeline_path = job_dir / "timeline.json"
+    if not timeline_path.exists():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Timeline not found for this analysis.")
+    return read_json(timeline_path)
+
+
 @app.get("/media/{analysis_id}/clip.mp4")
 def stream_clip(analysis_id: str, request: Request):
     """Streams the analysis video with explicit HTTP Range 206 Partial Content support."""
-    video_path = DATA_DIR / analysis_id / "clip.mp4"
+    video_path = analysis_dir(analysis_id) / "clip.mp4"
     if not video_path.exists():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Clipul video nu există.")
 

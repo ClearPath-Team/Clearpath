@@ -1,90 +1,39 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import {
-  AlertTriangle,
-  CheckCircle2,
-  Clock,
-  Copy,
-  ExternalLink,
-  Play,
-  RotateCcw,
-  ShieldAlert,
-  ChevronDown,
-  ChevronUp,
-  Volume2,
-  Check,
-  Loader2,
-  Sparkles,
-} from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
+import { Loader2 } from "lucide-react";
+import AnalysisFailed from "@/components/analysis/AnalysisFailed";
+import AnalysisProgress from "@/components/analysis/AnalysisProgress";
+import CopyLinkButton from "@/components/CopyLinkButton";
+import IssueList from "@/components/report/IssueList";
+import ReportSummary from "@/components/report/ReportSummary";
+import Transcript from "@/components/report/Transcript";
+import TrapBanner from "@/components/report/TrapBanner";
+import VideoPlayer from "@/components/report/VideoPlayer";
+import { formatSeconds } from "@/lib/format";
+import { useStrings } from "@/lib/useStrings";
+import { SEVERITIES, type AnalysisStatusResponse, type Issue, type Severity, type Timeline } from "@/lib/types";
 
-interface Issue {
-  id: string;
-  rule?: string;
-  rule_id?: string;
-  severity?: "critical" | "serious" | "moderate" | "minor";
-  impact?: "critical" | "serious" | "moderate" | "minor";
-  title?: string;
-  description?: string;
-  help?: string;
-  help_url?: string;
-  selector?: string;
-  recommendation?: string;
-  timestamp?: number | null;
-  node_id?: string;
-}
-
-interface IssueCounts {
-  critical: number;
-  serious: number;
-  moderate: number;
-  minor: number;
-  total?: number;
-}
-
-interface AnalysisReport {
-  id: string;
-  url: string;
-  title?: string;
-  score?: number;
-  counts?: IssueCounts;
-  focus_trap?: boolean;
-  duration?: number;
-  clip_url?: string;
-  issues: Issue[];
-}
-
-interface AnalysisStatusResponse {
-  id: string;
-  url: string;
-  status: "queued" | "extracting" | "analyzing" | "rendering" | "done" | "failed";
-  error: string | null;
-  report: AnalysisReport | null;
-}
-
-const STEPS = [
-  { key: "queued", label: "Inițializare sesiune", desc: "Pregătire mediu de testare" },
-  { key: "extracting", label: "Arbore de accesibilitate", desc: "Extragere CDP & parcurgere Tab" },
-  { key: "analyzing", label: "Screen reader & audit WCAG", desc: "Sinteză vocală & reguli axe-core" },
-  { key: "rendering", label: "Randare video sincronizat", desc: "Evidențiere vizuală & muxing audio" },
-];
 
 export default function AnalysisPage() {
+  const strings = useStrings();
+  const t = strings.report;
+  const { language } = useLanguage();
   const params = useParams();
   const router = useRouter();
   const id = params?.id as string;
 
   const [data, setData] = useState<AnalysisStatusResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [filterSeverity, setFilterSeverity] = useState<string>("all");
-  const [expandedIssue, setExpandedIssue] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [videoError, setVideoError] = useState(false);
+  const [retrying, setRetrying] = useState(false);
+  const [timeline, setTimeline] = useState<Timeline | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [selectedIssueId, setSelectedIssueId] = useState<string | null>(null);
+  const [announcement, setAnnouncement] = useState("");
 
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
+  const videoRef = useRef<HTMLVideoElement>(null);
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
   // Polling loop
@@ -98,7 +47,7 @@ export default function AnalysisPage() {
         const res = await fetch(`${apiUrl}/api/analyses/${id}`);
         if (!res.ok) {
           if (res.status === 404) {
-            setError(`Analiza cu id-ul '${id}' nu a fost găsită.`);
+            setError(strings.analysis.failed.notFound(id));
             return;
           }
           throw new Error(`HTTP ${res.status}`);
@@ -110,489 +59,167 @@ export default function AnalysisPage() {
           timer = setTimeout(fetchStatus, 1500);
         }
       } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : "Eroare necunoscută";
-        setError(`Eroare de conexiune la API: ${message}`);
+        const message = err instanceof Error ? err.message : String(err);
+        setError(strings.analysis.failed.apiUnreachable(message));
       }
     };
 
     fetchStatus();
 
     return () => clearTimeout(timer);
-  }, [id, apiUrl]);
+  }, [id, apiUrl, strings]);
 
-  // Video timeupdate handler
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      setCurrentTime(videoRef.current.currentTime);
-    }
-  };
+  // The transcript is fetched once the analysis is done (M4-09 endpoint).
+  const isDone = data?.status === "done";
+  useEffect(() => {
+    if (!isDone || !id) return;
+    let cancelled = false;
+    fetch(`${apiUrl}/api/analyses/${id}/timeline`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json: Timeline | null) => {
+        if (!cancelled) setTimeline(json);
+      })
+      .catch(() => {
+        if (!cancelled) setTimeline(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isDone, id, apiUrl]);
 
-  const seekTo = (seconds: number) => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = seconds;
-      videoRef.current.play().catch(() => {});
-    }
-  };
+  const report = data?.report ?? null;
 
-  const handleCopyLink = () => {
-    if (typeof window !== "undefined") {
-      navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const formatSeconds = (sec: number | null | undefined) => {
-    if (sec === null || sec === undefined) return "—";
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
-    return `${m}:${s.toString().padStart(2, "0")}`;
-  };
-
-  const report = data?.report;
-
-  // Closest issue currently active based on video playback
-  const activeIssueId = useMemo(() => {
-    if (!report?.issues || currentTime <= 0) return null;
-    let closest: Issue | null = null;
-    for (const item of report.issues) {
-      if (item.timestamp !== null && item.timestamp !== undefined && item.timestamp <= currentTime + 1.5) {
-        if (!closest || (item.timestamp > (closest.timestamp ?? 0))) {
-          closest = item;
-        }
+  const issueSeverityByNode = useMemo(() => {
+    const map = new Map<string, Severity>();
+    for (const issue of report?.issues ?? []) {
+      if (!issue.node_id) continue;
+      const existing = map.get(issue.node_id);
+      if (!existing || SEVERITIES.indexOf(issue.severity) < SEVERITIES.indexOf(existing)) {
+        map.set(issue.node_id, issue.severity);
       }
     }
-    return closest?.id ?? null;
-  }, [report?.issues, currentTime]);
+    return map;
+  }, [report]);
 
-  const filteredIssues = useMemo(() => {
-    if (!report?.issues) return [];
-    if (filterSeverity === "all") return report.issues;
-    return report.issues.filter((i) => (i.severity || i.impact) === filterSeverity);
-  }, [report?.issues, filterSeverity]);
+  const seekTo = (seconds: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = seconds;
+    setCurrentTime(seconds);
+    video.play().catch(() => {});
+    video.scrollIntoView({ block: "nearest" });
+  };
 
-  // 1. Loading / Polling in Progress view
+  const playIssue = (issue: Issue) => {
+    if (issue.timestamp == null) return;
+    setSelectedIssueId(issue.id);
+    setAnnouncement(t.video.nowPlaying(formatSeconds(issue.timestamp), issue.title));
+    seekTo(issue.timestamp);
+  };
+
+  // Re-runs the same URL for a failed analysis; without one (unknown id, API down) it reloads this page.
+  const retry = async () => {
+    if (!data?.url) {
+      window.location.reload();
+      return;
+    }
+    setRetrying(true);
+    try {
+      const res = await fetch(`${apiUrl}/api/analyses`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: data.url, lang: data.lang ?? data.report?.lang ?? language }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      router.push(`/a/${json.id}`);
+    } catch {
+      setRetrying(false);
+      window.location.reload();
+    }
+  };
+
   if (data && data.status !== "done" && data.status !== "failed") {
-    const activeIndex = STEPS.findIndex((s) => s.key === data.status);
-    const currentStepIndex = activeIndex === -1 ? 0 : activeIndex;
-
-    return (
-      <div className="max-w-3xl mx-auto px-4 py-20">
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-8">
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950 text-indigo-300 text-xs font-semibold uppercase tracking-wider border border-indigo-800">
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-400" />
-              Analiză în desfășurare
-            </div>
-            <h1 className="text-2xl font-bold text-white">Analizăm experiența de accesibilitate</h1>
-            <p className="text-sm text-slate-400 font-mono break-all">{data.url}</p>
-          </div>
-
-          <div className="space-y-4 pt-4">
-            {STEPS.map((step, idx) => {
-              const isPast = idx < currentStepIndex;
-              const isCurrent = idx === currentStepIndex;
-              const isFuture = idx > currentStepIndex;
-
-              return (
-                <div
-                  key={step.key}
-                  className={`flex items-start gap-4 p-4 rounded-xl border transition-all ${
-                    isCurrent
-                      ? "bg-indigo-950/40 border-indigo-700/80 shadow-lg shadow-indigo-950/50"
-                      : isPast
-                      ? "bg-slate-900/60 border-slate-800 opacity-80"
-                      : "bg-slate-950/30 border-slate-900 opacity-40"
-                  }`}
-                >
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
-                      isPast
-                        ? "bg-emerald-600 text-white"
-                        : isCurrent
-                        ? "bg-indigo-600 text-white animate-pulse"
-                        : "bg-slate-800 text-slate-400"
-                    }`}
-                  >
-                    {isPast ? <Check className="w-4 h-4" /> : idx + 1}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-semibold text-white">{step.label}</div>
-                      {isCurrent && (
-                        <span className="text-xs font-medium text-indigo-400 animate-pulse">Se procesează...</span>
-                      )}
-                      {isPast && <span className="text-xs text-emerald-400">Finalizat</span>}
-                    </div>
-                    <div className="text-xs text-slate-400 mt-0.5">{step.desc}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="text-center text-xs text-slate-500">
-            Procesarea completă durează de obicei între 15 și 30 de secunde.
-          </div>
-        </div>
-      </div>
-    );
+    return <AnalysisProgress url={data.url} status={data.status} />;
   }
 
-  // 2. Failed View
   if (data?.status === "failed" || error) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20">
-        <div className="bg-red-950/30 border border-red-800/80 rounded-2xl p-8 text-center space-y-6">
-          <div className="w-12 h-12 rounded-2xl bg-red-950 border border-red-800 flex items-center justify-center mx-auto text-red-400">
-            <AlertTriangle className="w-6 h-6" />
-          </div>
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold text-white">Analiza nu a putut fi finalizată</h1>
-            <p className="text-sm text-red-200">
-              {error || data?.error || "A intervenit o eroare neașteptată în timpul execuției pipeline-ului."}
-            </p>
-          </div>
-          <button
-            onClick={() => router.push("/")}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-all"
-          >
-            <RotateCcw className="w-4 h-4" />
-            Încearcă din nou
-          </button>
-        </div>
-      </div>
+      <AnalysisFailed
+        message={error || data?.error || strings.analysis.failed.unknownError}
+        onRetry={retry}
+        retrying={retrying}
+      />
     );
   }
 
-  // 3. Completed (Done) Results Dashboard
   if (!report) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-500 mx-auto" />
+      <div className="mx-auto flex max-w-2xl items-center justify-center gap-3 px-6 py-24 text-ink-secondary" role="status">
+        <Loader2 className="h-5 w-5 motion-safe:animate-spin" aria-hidden="true" />
+        {strings.analysis.loading}
       </div>
     );
   }
 
-  const score = report.score ?? 0;
-  const hasTrap = report.focus_trap ?? false;
-  const duration = report.duration ?? 20;
-  const rawCounts = report.counts || {
-    critical: 0,
-    serious: 0,
-    moderate: 0,
-    minor: 0,
-  };
-  const totalCount =
-    rawCounts.total ??
-    (rawCounts.critical + rawCounts.serious + rawCounts.moderate + rawCounts.minor);
-
-  const counts = {
-    ...rawCounts,
-    total: totalCount || report.issues.length,
-  };
-
-  const scoreColor =
-    score >= 80
-      ? "text-emerald-400 border-emerald-500/40 bg-emerald-950/30"
-      : score >= 50
-      ? "text-amber-400 border-amber-500/40 bg-amber-950/30"
-      : "text-red-400 border-red-500/40 bg-red-950/30";
-
+  // Backend content (titles, recommendations, announcements) is in the analysis language.
+  const contentLang = report.lang ?? data?.lang ?? "ro";
   const videoUrl = report.clip_url
     ? `${apiUrl}${report.clip_url.startsWith("/") ? "" : "/"}${report.clip_url}`
     : `${apiUrl}/media/${id}/clip.mp4`;
+  const trapIssue = report.issues.find((issue) => issue.rule === "keyboard-trap");
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-      {/* Top Banner / Summary Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-              <span>Raport de accesibilitate</span>
-              <span>•</span>
-              <span className="font-mono">{report.id}</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight break-all">
-              {report.url}
-            </h1>
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              {hasTrap && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-red-950 border border-red-800 text-red-300 text-xs font-bold">
-                  <ShieldAlert className="w-4 h-4 text-red-400" />
-                  Capcană de tastatură detectată
-                </span>
-              )}
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">
-                <Volume2 className="w-3.5 h-3.5 text-indigo-400" />
-                {report.issues.length} probleme identificate
-              </span>
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">
-                <Clock className="w-3.5 h-3.5 text-slate-400" />
-                Durată clip: {formatSeconds(duration)}
-              </span>
-            </div>
-          </div>
+    <div className="mx-auto flex max-w-[1240px] flex-col gap-10 px-6 pb-24 pt-14">
+      <p className="sr-only" aria-live="polite">
+        {announcement}
+      </p>
 
-          {/* Score & Actions */}
-          <div className="flex items-center gap-6">
-            <div className="flex flex-col items-center">
-              <div
-                className={`w-24 h-24 rounded-2xl border-2 flex flex-col items-center justify-center font-black ${scoreColor}`}
-              >
-                <span className="text-3xl tracking-tight leading-none">{score}</span>
-                <span className="text-[11px] uppercase tracking-wider font-bold opacity-80 mt-1">/ 100</span>
-              </div>
-              <span className="text-xs text-slate-400 font-semibold mt-1.5">Scor Accesibilitate</span>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <button
-                onClick={handleCopyLink}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all border border-slate-700"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                {copied ? "Link copiat!" : "Copiază linkul"}
-              </button>
-              <button
-                onClick={() => router.push("/")}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-all"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                Analiză nouă
-              </button>
-            </div>
-          </div>
+      <div className="flex flex-wrap items-end justify-between gap-5">
+        <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-1.5">
+          <p className="text-[15px] font-semibold text-ink-secondary">{t.eyebrow}</p>
+          <h1 lang={contentLang} className="text-[36px] font-bold leading-[1.08] tracking-[-0.035em] sm:text-[48px]">
+            {report.title || report.url}
+          </h1>
+          <p className="break-all text-base text-ink-secondary">{report.url}</p>
         </div>
+        <CopyLinkButton />
       </div>
 
-      {/* Main Grid: Video Player on Left, Filterable Violations on Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Synchronized Video Player */}
-        <div className="lg:col-span-7 space-y-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl sticky top-24">
-            <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/80">
-              <div className="flex items-center gap-2 text-sm font-bold text-white">
-                <Play className="w-4 h-4 text-indigo-400 fill-indigo-400" />
-                Demonstrație Narată & Sincronizată
-              </div>
-              <span className="text-xs text-slate-400 font-mono">
-                {formatSeconds(currentTime)} / {formatSeconds(videoRef.current?.duration || 20)}
-              </span>
-            </div>
+      <ReportSummary score={report.score} counts={report.counts} />
 
-            <div className="aspect-video bg-black relative flex items-center justify-center">
-              <video
-                key={videoUrl}
-                ref={videoRef}
-                controls
-                playsInline
-                preload="metadata"
-                onTimeUpdate={handleTimeUpdate}
-                onError={() => setVideoError(true)}
-                className="w-full h-full object-contain"
-              >
-                <source src={videoUrl} type="video/mp4" />
-                Browserul tău nu suportă redarea video HTML5.
-              </video>
+      {report.focus_trap && <TrapBanner trapIssue={trapIssue} onPlay={playIssue} />}
 
-              {videoError && (
-                <div className="absolute inset-0 bg-slate-950/90 flex flex-col items-center justify-center p-6 text-center space-y-3 z-10">
-                  <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                    <AlertTriangle className="w-5 h-5" />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-semibold text-white">Clipul video nu a putut fi redat</p>
-                    <p className="text-xs text-slate-400 max-w-sm">
-                      Fișierul video nu este încă generat sau conține date mock nefinalizate.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
+      <div className="flex flex-wrap items-start gap-8">
+        <section aria-labelledby="clip-title" className="flex min-w-0 flex-[999_1_560px] flex-col gap-4">
+          <h2 id="clip-title" className="text-2xl font-bold tracking-[-0.02em]">
+            {t.video.title}
+          </h2>
+          <VideoPlayer
+            src={videoUrl}
+            duration={report.duration}
+            currentTime={currentTime}
+            issues={report.issues}
+            videoRef={videoRef}
+            onTimeUpdate={setCurrentTime}
+            onPlayIssue={playIssue}
+          />
+          <Transcript
+            entries={timeline?.entries ?? null}
+            currentTime={currentTime}
+            issueSeverityByNode={issueSeverityByNode}
+            lang={contentLang}
+            onSeek={seekTo}
+          />
+        </section>
 
-            <div className="p-4 text-xs text-slate-400 bg-slate-950/40 border-t border-slate-800/80 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              Fă click pe orice buton de timestamp din lista din dreapta pentru a sări direct la incident.
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Interactive Accessibility Violations */}
-        <div className="lg:col-span-5 space-y-4">
-          {/* Severity Filter Tabs */}
-          <div className="flex items-center gap-1.5 p-1.5 bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto text-xs font-semibold">
-            {[
-              { key: "all", label: "Toate", count: counts.total },
-              { key: "critical", label: "Critice", count: counts.critical },
-              { key: "serious", label: "Grave", count: counts.serious },
-              { key: "moderate", label: "Medii", count: counts.moderate },
-              { key: "minor", label: "Minore", count: counts.minor },
-            ].map((f) => (
-              <button
-                key={f.key}
-                onClick={() => setFilterSeverity(f.key)}
-                className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
-                  filterSeverity === f.key
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/60"
-                }`}
-              >
-                <span>{f.label}</span>
-                <span
-                  className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-                    filterSeverity === f.key ? "bg-indigo-900/80 text-indigo-200" : "bg-slate-800 text-slate-400"
-                  }`}
-                >
-                  {f.count}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Issues List */}
-          <div className="space-y-3">
-            {filteredIssues.length === 0 ? (
-              <div className="p-8 rounded-2xl bg-slate-900 border border-slate-800 text-center text-slate-400 text-sm">
-                Nu există probleme pentru filtrul selectat.
-              </div>
-            ) : (
-              filteredIssues.map((issue) => {
-                const isExpanded = expandedIssue === issue.id;
-                const isActive = activeIssueId === issue.id;
-
-                const severity = issue.severity || issue.impact || "minor";
-                const ruleName = issue.rule || issue.rule_id || "";
-                const title = issue.title || issue.description || ruleName;
-
-                const impactBadge =
-                  severity === "critical"
-                    ? "bg-red-950 text-red-300 border-red-800"
-                    : severity === "serious"
-                    ? "bg-amber-950 text-amber-300 border-amber-800"
-                    : severity === "moderate"
-                    ? "bg-yellow-950 text-yellow-300 border-yellow-800"
-                    : "bg-slate-800 text-slate-300 border-slate-700";
-
-                const impactRo =
-                  severity === "critical"
-                    ? "Critic"
-                    : severity === "serious"
-                    ? "Grav"
-                    : severity === "moderate"
-                    ? "Mediu"
-                    : "Minor";
-
-                return (
-                  <div
-                    key={issue.id}
-                    className={`rounded-xl border transition-all ${
-                      isActive
-                        ? "bg-slate-800 border-indigo-500 ring-2 ring-indigo-500/30 shadow-lg"
-                        : "bg-slate-900/90 border-slate-800 hover:border-slate-700"
-                    }`}
-                  >
-                    <div className="p-4 space-y-2">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${impactBadge}`}
-                          >
-                            {impactRo}
-                          </span>
-                          <span className="text-xs font-mono font-bold text-slate-300">{ruleName}</span>
-                        </div>
-
-                        {issue.timestamp !== null && issue.timestamp !== undefined ? (
-                          <button
-                            type="button"
-                            onClick={() => seekTo(issue.timestamp!)}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-950 hover:bg-indigo-900 border border-indigo-800 text-indigo-300 text-xs font-mono font-bold transition-colors"
-                            title="Sari la acest timestamp în video"
-                          >
-                            <Play className="w-3 h-3 fill-indigo-300" />
-                            {formatSeconds(issue.timestamp)}
-                          </button>
-                        ) : (
-                          <span className="text-[11px] text-slate-500 font-medium">Nu apare în clip</span>
-                        )}
-                      </div>
-
-                      <div
-                        className="text-sm text-slate-200 cursor-pointer select-none font-medium leading-snug pt-1"
-                        onClick={() => setExpandedIssue(isExpanded ? null : issue.id)}
-                      >
-                        <div>{title}</div>
-                        {issue.description && (
-                          <div className="text-xs text-slate-400 mt-1 font-normal">
-                            {issue.description}
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex items-center justify-between pt-1">
-                        <button
-                          type="button"
-                          onClick={() => setExpandedIssue(isExpanded ? null : issue.id)}
-                          className="inline-flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 font-medium"
-                        >
-                          {isExpanded ? (
-                            <>
-                              Ascunde detalii <ChevronUp className="w-3.5 h-3.5" />
-                            </>
-                          ) : (
-                            <>
-                              Vezi recomandare <ChevronDown className="w-3.5 h-3.5" />
-                            </>
-                          )}
-                        </button>
-
-                        {issue.help_url && (
-                          <a
-                            href={issue.help_url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-slate-200"
-                          >
-                            Ghid WCAG <ExternalLink className="w-3 h-3" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Expanded Details */}
-                    {isExpanded && (
-                      <div className="px-4 pb-4 pt-2 border-t border-slate-800/80 bg-slate-950/40 rounded-b-xl space-y-3 text-xs">
-                        {issue.recommendation && (
-                          <div className="space-y-1">
-                            <span className="font-semibold text-slate-300 uppercase text-[10px] tracking-wider">
-                              Recomandare de remediere:
-                            </span>
-                            <div className="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/40 text-indigo-200 leading-relaxed">
-                              {issue.recommendation}
-                            </div>
-                          </div>
-                        )}
-
-                        {issue.selector && (
-                          <div className="space-y-1">
-                            <span className="font-semibold text-slate-400 uppercase text-[10px] tracking-wider">
-                              Selector CSS:
-                            </span>
-                            <pre className="p-2 rounded bg-black/60 font-mono text-[11px] text-slate-300 overflow-x-auto border border-slate-800">
-                              <code>{issue.selector}</code>
-                            </pre>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            )}
-          </div>
-        </div>
+        <IssueList
+          issues={report.issues}
+          counts={report.counts}
+          selectedId={selectedIssueId}
+          lang={contentLang}
+          onPlay={playIssue}
+        />
       </div>
     </div>
   );

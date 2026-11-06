@@ -45,14 +45,19 @@ class RenderClipTests(unittest.TestCase):
         self.out_dir = Path(tempfile.mkdtemp(prefix="cp-test-render-"))
         self.addCleanup(shutil.rmtree, self.out_dir, ignore_errors=True)
 
-    def _render(self, probed_duration, lang="ro"):
+    def _render(self, probed_duration, lang="ro", synth_calls=None):
         probe_stdout = json.dumps({"format": {"duration": str(probed_duration)}})
 
         def fake_run(args, *, input_text=None):
             return SimpleNamespace(stdout=probe_stdout if args[0] == "ffprobe" else "")
 
+        def fake_synthesize(*args, **kwargs):
+            if synth_calls is not None:
+                synth_calls.append((args, kwargs))
+            return SPOKEN_SECONDS
+
         with mock.patch.object(render.shutil, "which", return_value="/usr/bin/tool"), \
-                mock.patch.object(render, "_synthesize", return_value=SPOKEN_SECONDS), \
+                mock.patch.object(render, "_synthesize", side_effect=fake_synthesize), \
                 mock.patch.object(render, "_run", side_effect=fake_run), \
                 mock.patch("playwright.sync_api.sync_playwright"):
             return (render_clip(URL, self.nodes, self.events, self.out_dir) if lang == "ro"
@@ -103,13 +108,14 @@ class RenderClipTests(unittest.TestCase):
 
     def test_english_render_uses_english_fallback_and_language(self):
         self.events = {"events": [{"seq": 0, "node_id": None, "text": ","}]}
+        synth_calls = []
         with mock.patch.object(render, "_draw_overlay") as overlay:
-            with mock.patch.object(render, "_synthesize", return_value=SPOKEN_SECONDS) as synth:
-                result = self._render(1.05, lang="en")
+            result = self._render(1.05, lang="en", synth_calls=synth_calls)
         self.assertEqual(result["entries"][0]["text"], "No textual content")
         self.assertEqual(overlay.call_args.args[2], "No textual content")
-        self.assertEqual(synth.call_args.args[0], "No textual content")
-        self.assertEqual(synth.call_args.kwargs["lang"], "en")
+        self.assertEqual(len(synth_calls), 1)
+        self.assertEqual(synth_calls[0][0][0], "No textual content")
+        self.assertEqual(synth_calls[0][1]["lang"], "en")
 
     def test_truncated_clip_fails_without_writing_timeline(self):
         with self.assertRaises(RuntimeError):

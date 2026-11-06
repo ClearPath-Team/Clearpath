@@ -13,6 +13,7 @@ Outputs a comprehensive JSON summary and markdown report.
 import argparse
 import json
 import os
+import math
 import sys
 import time
 import traceback
@@ -77,11 +78,15 @@ def verify_artifacts(out_dir: Path, *, full_render: bool) -> list[str]:
             errors.append("Timeline/event cardinality mismatch")
         if len(issues) != len(report.get("issues", [])):
             errors.append("Issue/report cardinality mismatch")
-        if full_render and not isinstance(timeline.get("duration"), (float, int)):
-            errors.append("Missing clip duration")
+        duration = timeline.get("duration")
+        if full_render and (isinstance(duration, bool) or not isinstance(duration, (float, int))
+                            or not math.isfinite(duration) or duration <= 0):
+            errors.append("Invalid clip duration")
         if full_render and report.get("clip_url") is None:
             errors.append("Missing report video URL")
-        if report.get("score") is None or not 0 <= report["score"] <= 100:
+        score = report.get("score")
+        if (isinstance(score, bool) or not isinstance(score, (float, int))
+                or not math.isfinite(score) or not 0 <= score <= 100):
             errors.append("Invalid accessibility score")
     except (ValueError, KeyError, TypeError, OSError) as exc:
         errors.append(f"Invalid artifact: {exc}")
@@ -107,16 +112,17 @@ def write_markdown_report(results: list[dict], output: Path, *, full_render: boo
         counts = item["issues_count"]
         severity = "/".join(str(counts.get(key, 0)) for key in ("critical", "serious", "moderate", "minor"))
         score = str(item["score"]) if item["score"] is not None else "—"
-        artifact_path = f"data/{item['analysis_id']}/report.json"
-        artifact = f"[report]({artifact_path})" if item["status"] == "success" else "—"
+        directory = Path(item["artifact_dir"])
+        artifact_path = Path(os.path.relpath(directory / "report.json", output.parent)).as_posix()
+        artifact = f"[report](<{artifact_path}>)" if item["status"] == "success" else "—"
         blocker = (item.get("error_message") or "—").replace("|", "/").replace("\n", " ")
         lines.append(f"| {item['name']} | {item['status']} | {score} | {severity} | {artifact} | {blocker} |")
     lines.extend(["", "## Artifact locations", ""])
     for item in results:
-        lines.append(f"- **{item['name']}**: `data/{item['analysis_id']}/` — {item['status']}; "
-                     f"video: `data/{item['analysis_id']}/clip.mp4`"
+        lines.append(f"- **{item['name']}**: `{item['artifact_dir']}/` — {item['status']}; "
+                     f"video: `{item['artifact_dir']}/clip.mp4`"
                      if item["clip_rendered"] else
-                     f"- **{item['name']}**: `data/{item['analysis_id']}/` — {item['status']}; video unavailable")
+                     f"- **{item['name']}**: `{item['artifact_dir']}/` — {item['status']}; video unavailable")
     lines += ["", "## Limitations", "",
               "- No anti-bot or CAPTCHA bypass is attempted.",
               "- No checkout, invoice payment or account login is performed.",
@@ -171,8 +177,7 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
         else:
             os.environ["CP_STUBS"] = ""
             
-        # The current main pipeline defaults to Romanian; lang forwarding is a separate M4 task.
-        run_pipeline(analysis_id, url)
+        run_pipeline(analysis_id, url, lang="ro")
         
         # Verify generated artifacts
         rep_path = out_dir / "report.json"
@@ -228,6 +233,7 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
             try:
                 st = read_json(status_file)
                 result["error_stage"] = st.get("status")
+                result["error_message"] = st.get("error") or str(exc)
             except Exception:
                 pass
         print(f"FAILED on {name}: {exc}")
