@@ -5,7 +5,7 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Bug`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `In progress`
+- **Status:** `In review`
 - **Assignee:** `@alexcontz`
 - **Branch:** `m4-fix-frontend-dashboard`
 - **Created Date:** 2026-11-06
@@ -86,4 +86,6 @@ cd ..
 ## 8. Execution Log (Updated by Assignee)
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
 - **Claimed by:** `@alexcontz` (Status -> `In progress`)
-- **PR:** *Pending*
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/19
+
+- **2026-11-06 14:53 UTC:** PR opened: https://github.com/ClearPath-Team/Clearpath/pull/19 (Status -> In review)
