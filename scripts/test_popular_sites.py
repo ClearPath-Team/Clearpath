@@ -171,7 +171,8 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
         else:
             os.environ["CP_STUBS"] = ""
             
-        run_pipeline(analysis_id, url, lang="ro") if romanian else run_pipeline(analysis_id, url)
+        # The current main pipeline defaults to Romanian; lang forwarding is a separate M4 task.
+        run_pipeline(analysis_id, url)
         
         # Verify generated artifacts
         rep_path = out_dir / "report.json"
