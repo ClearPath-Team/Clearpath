@@ -26,7 +26,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M4-04`** | M4 | P1 | `In review` | `@andreiBirsanIoan` | [`m4-04-website-language-selector-and-analysis-default.md`](m4-04-website-language-selector-and-analysis-default.md) |
 | **`DEMO-02`** | Demo | P1 | `In review` | AndreiBcs | [`demo-02-revamp-bad-checkout-ux.md`](demo-02-revamp-bad-checkout-ux.md) |
 | **`INTEG-02`** | Shared | P1 | `Done` | `@agent` | [`integ-02-live-popular-websites-e2e.md`](integ-02-live-popular-websites-e2e.md) |
-| **`INTEG-03`** | Shared | P1 | `Ready` | *(Unassigned)* | [`integ-03-romanian-popular-platforms-audit.md`](integ-03-romanian-popular-platforms-audit.md) |
+| **`INTEG-03`** | Shared | P1 | `In progress` | `@andreiBirsanIoan` | [`integ-03-romanian-popular-platforms-audit.md`](integ-03-romanian-popular-platforms-audit.md) |
 | **`M4-08`** | M4 | P1 | `Done` | `@Sergiu1809` | [`m4-08-frontend-visual-redesign.md`](m4-08-frontend-visual-redesign.md) |
 | **`M4-09`** | M4 | P1 | `Done` | `@Sergiu1809` | [`m4-09-api-timeline-endpoint.md`](m4-09-api-timeline-endpoint.md) |
 | **`M4-05`** | M4 | P1 | `Done` | `@Sergiu1809` | [`m4-05-ui-foundation-and-home.md`](m4-05-ui-foundation-and-home.md) |
