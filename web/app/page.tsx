@@ -1,11 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Language } from "@/lib/i18n";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Sparkles, Volume2, ShieldAlert, Video, AlertCircle, Loader2 } from "lucide-react";
 
 export default function HomePage() {
   const router = useRouter();
+  const { language, t } = useLanguage();
+  const [manualAnalysisLang, setManualAnalysisLang] = useState<Language | null>(null);
+  const selectedAnalysisLang = manualAnalysisLang ?? language;
   const [url, setUrl] = useState("http://localhost:8080/bad-checkout.html");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +21,7 @@ export default function HomePage() {
 
     const trimmed = url.trim();
     if (!trimmed) {
-      setError("Te rugăm să introduci o adresă URL validă.");
+      setError(t("requiredUrl"));
       return;
     }
 
@@ -28,11 +33,11 @@ export default function HomePage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url: trimmed }),
+        body: JSON.stringify({ url: trimmed, lang: selectedAnalysisLang }),
       });
 
       if (!res.ok) {
-        let msg = "A apărut o eroare la inițierea analizei.";
+        let msg = t("submitError");
         try {
           const data = await res.json();
           if (data.detail) msg = data.detail;
@@ -47,8 +52,8 @@ export default function HomePage() {
       const data = await res.json();
       router.push(`/a/${data.id}`);
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Nu s-a putut conecta la serverul API";
-      setError(`Nu s-a putut conecta la serverul API (FastAPI :8000). Asigură-te că rulează api/main.py. (${message})`);
+      const message = err instanceof Error ? err.message : t("connectionError");
+      setError(`${t("connectionError")} (${message})`);
       setLoading(false);
     }
   };
@@ -59,22 +64,19 @@ export default function HomePage() {
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/80 border border-indigo-800/80 text-indigo-300 text-xs font-semibold uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-          Simulare & Audit de Accesibilitate Web
+          {t("heroBadge")}
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-          Fă experiența utilizatorilor nevăzători{" "}
+          {t("heroLead")}{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">
-            vizibilă și auzită
+            {t("heroAccent")}
           </span>
-          .
+          {t("heroEnd")}
         </h1>
 
         <p className="text-lg text-slate-300 leading-relaxed">
-          Pornind de la o simplă adresă web, ClearPath simulează un screen reader în limba română (NVDA),
-          detectează capcanele de tastatură, rulează un audit WCAG și generează un{" "}
-          <strong className="text-white font-semibold">clip video narat și sincronizat</strong> pentru a demonstra
-          impactul real al barierelor de accesibilitate.
+          {t("heroDescriptionStart")}{" "}<strong className="text-white font-semibold">{t("heroDescriptionStrong")}</strong>{" "}{t("heroDescriptionEnd")}
         </p>
       </div>
 
@@ -86,9 +88,9 @@ export default function HomePage() {
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://exemplu.ro sau http://localhost:8080/..."
+              placeholder={t("urlPlaceholder")}
               disabled={loading}
-              aria-label="Adresa web de analizat"
+              aria-label={t("urlLabel")}
               className="flex-1 bg-transparent px-4 py-3 text-white placeholder-slate-500 focus:outline-none text-base disabled:opacity-50"
             />
             <button
@@ -99,16 +101,31 @@ export default function HomePage() {
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  Se inițiază...
+                  {t("starting")}
                 </>
               ) : (
                 <>
-                  Analizează pagina
+                  {t("analyze")}
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
           </div>
+
+          <fieldset className="mt-4 rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+            <legend className="px-2 text-sm font-semibold text-slate-200">{t("analysisLanguage")}</legend>
+            <div className="flex flex-wrap gap-4">
+              {(["en", "ro"] as const).map((option) => (
+                <label key={option} className="inline-flex cursor-pointer items-center gap-2 text-sm text-slate-200">
+                  <input type="radio" name="analysis-language" value={option} checked={selectedAnalysisLang === option}
+                    onChange={() => setManualAnalysisLang(option)}
+                    className="accent-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-400" />
+                  {option === "en" ? t("english") : t("romanian")}
+                </label>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-slate-400">{t("analysisLanguageHelp")}</p>
+          </fieldset>
 
           {error && (
             <div
@@ -123,7 +140,7 @@ export default function HomePage() {
 
         <div className="mt-3 text-center">
           <span className="text-xs text-slate-400">
-            Pagina demo recomandată:{" "}
+            {t("demoRecommended")}{" "}
             <button
               type="button"
               onClick={() => setUrl("http://localhost:8080/bad-checkout.html")}
@@ -141,10 +158,9 @@ export default function HomePage() {
           <div className="w-10 h-10 rounded-xl bg-indigo-950 border border-indigo-800 flex items-center justify-center text-indigo-400 mb-4">
             <Volume2 className="w-5 h-5" />
           </div>
-          <h2 className="text-lg font-bold text-white mb-2">Simulare Vocală NVDA</h2>
+          <h2 className="text-lg font-bold text-white mb-2">{t("voiceTitle")}</h2>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Sintetizează anunțurile narate în limba română (vocea Mihai, Piper TTS) exact așa cum le percepe un
-            utilizator cu dizabilități vizuale navigând secvențial cu tasta Tab.
+            {t("voiceDescription")}
           </p>
         </div>
 
@@ -152,10 +168,9 @@ export default function HomePage() {
           <div className="w-10 h-10 rounded-xl bg-amber-950 border border-amber-800 flex items-center justify-center text-amber-400 mb-4">
             <ShieldAlert className="w-5 h-5" />
           </div>
-          <h2 className="text-lg font-bold text-white mb-2">Detecție Capcane Tastatură</h2>
+          <h2 className="text-lg font-bold text-white mb-2">{t("trapTitle")}</h2>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Identifică automat buclele de focalizare în care utilizatorul rămâne blocat, semnalând problema critică
-            și scăzând corespunzător scorul de accesibilitate.
+            {t("trapDescription")}
           </p>
         </div>
 
@@ -163,10 +178,9 @@ export default function HomePage() {
           <div className="w-10 h-10 rounded-xl bg-pink-950 border border-pink-800 flex items-center justify-center text-pink-400 mb-4">
             <Video className="w-5 h-5" />
           </div>
-          <h2 className="text-lg font-bold text-white mb-2">Video Sincronizat</h2>
+          <h2 className="text-lg font-bold text-white mb-2">{t("videoTitle")}</h2>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Fiecare problemă descoperită este marcată cu timestamp exact în clipul video. Un simplu click pe
-            orice eroare derulează automat videoul la momentul incidentului.
+            {t("videoDescription")}
           </p>
         </div>
       </div>
