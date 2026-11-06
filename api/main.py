@@ -4,6 +4,7 @@ and streams video files with HTTP Range 206 support.
 """
 import ipaddress
 import os
+import re
 import socket
 import subprocess
 import sys
@@ -34,6 +35,16 @@ app.add_middleware(
 )
 
 ALLOWED_HOSTS = [h.strip().lower() for h in os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testsite").split(",")]
+
+# Generated ids are uuid4 hex; pre-baked demo runs use names like "bad-checkout".
+ANALYSIS_ID_PATTERN = re.compile(r"[A-Za-z0-9_-]{1,64}")
+
+
+def analysis_dir(analysis_id: str) -> Path:
+    """Resolves data/{id}, rejecting ids that could escape DATA_DIR (e.g. '..')."""
+    if not ANALYSIS_ID_PATTERN.fullmatch(analysis_id):
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analysis not found.")
+    return DATA_DIR / analysis_id
 
 
 class AnalysisRequest(BaseModel):
@@ -129,7 +140,7 @@ def create_analysis(req: AnalysisRequest):
 
 @app.get("/api/analyses/{analysis_id}")
 def get_analysis(analysis_id: str):
-    job_dir = DATA_DIR / analysis_id
+    job_dir = analysis_dir(analysis_id)
     status_path = job_dir / "status.json"
     if not status_path.exists():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analiza nu a fost găsită.")
@@ -150,10 +161,25 @@ def get_analysis(analysis_id: str):
     }
 
 
+@app.get("/api/analyses/{analysis_id}/timeline")
+def get_timeline(analysis_id: str):
+    """Returns the finished analysis's timeline.json (narration entries with timestamps)."""
+    job_dir = analysis_dir(analysis_id)
+    status_path = job_dir / "status.json"
+    if not status_path.exists():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Analysis not found.")
+    if read_json(status_path).get("status") != "done":
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Analysis is not finished yet.")
+    timeline_path = job_dir / "timeline.json"
+    if not timeline_path.exists():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Timeline not found for this analysis.")
+    return read_json(timeline_path)
+
+
 @app.get("/media/{analysis_id}/clip.mp4")
 def stream_clip(analysis_id: str, request: Request):
     """Streams the analysis video with explicit HTTP Range 206 Partial Content support."""
-    video_path = DATA_DIR / analysis_id / "clip.mp4"
+    video_path = analysis_dir(analysis_id) / "clip.mp4"
     if not video_path.exists():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Clipul video nu există.")
 
