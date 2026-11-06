@@ -43,8 +43,40 @@ def _duration(path):
         return wav.getnframes() / wav.getframerate()
 
 
+def _resolve_clip_duration(probe_stdout: str, narration_total: float, tolerance: float = 2.0) -> float:
+    """Parses `ffprobe -show_entries format=duration` JSON output and validates
+    it against the cumulative narration timeline. Falls back to the narration
+    total when ffprobe's output is missing, non-positive, or diverges from the
+    expected duration by more than `tolerance` seconds (a sign the clip didn't
+    render correctly rather than a sane rounding difference)."""
+    fallback = round(narration_total, 3)
+    try:
+        probed = float(json.loads(probe_stdout)["format"]["duration"])
+    except (KeyError, ValueError, TypeError, json.JSONDecodeError):
+        return fallback
+    if probed <= 0:
+        return fallback
+    if abs(probed - narration_total) > tolerance:
+        return fallback
+    return round(probed, 3)
+
+
 def _voice_path():
     return Path(os.environ.get("PIPER_MODEL", str(ROOT / "assets/voices/ro_RO-mihai-medium.onnx")))
+
+
+def _piper_bin() -> str:
+    """Resolves the piper executable, falling back to the current venv's bin
+    directory when it isn't on PATH (e.g. background subprocesses spawned
+    without .venv/bin set). Cross-platform: tries the .exe suffix on Windows."""
+    found = shutil.which("piper")
+    if found:
+        return found
+    exe_name = "piper.exe" if os.name == "nt" else "piper"
+    candidate = Path(sys.executable).parent / exe_name
+    if candidate.is_file():
+        return str(candidate)
+    raise RuntimeError(f"Missing executable: piper (checked PATH and {candidate})")
 
 
 def _synthesize(text, output):
@@ -54,8 +86,7 @@ def _synthesize(text, output):
     model = _voice_path()
     if not model.is_file():
         raise RuntimeError(f"Piper model not found: {model}")
-    piper_bin = shutil.which("piper") or str(Path(sys.executable).parent / "piper")
-    _run([piper_bin, "--model", str(model), "--output_file", str(output)],
+    _run([_piper_bin(), "--model", str(model), "--output_file", str(output)],
          input_text=text)
     if not output.is_file() or output.stat().st_size == 0:
         raise RuntimeError("Piper did not generate audio")
@@ -214,10 +245,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
               "-movflags", "+faststart", "-shortest", str(clip)])
         probe = _run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size",
               "-of", "json", str(clip)])
-        try:
-            clip_duration = round(float(json.loads(probe.stdout)["format"]["duration"]), 3)
-        except (KeyError, ValueError, TypeError):
-            clip_duration = round(current, 3)
+        clip_duration = _resolve_clip_duration(probe.stdout, current)
     result = {"duration": clip_duration, "clip": "clip.mp4", "entries": timeline}
     (out_dir / "timeline.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
