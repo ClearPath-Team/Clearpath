@@ -5,8 +5,8 @@
 - **Track:** `M2` (Engine, Rules, and Data Contracts)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In review`
+- **Assignee:** @andreiBirsanIoan
 - **Branch:** `m2-canonical-categorization`
 - **Created Date:** 2026-11-06
 
@@ -144,4 +144,4 @@ cd web && npm run build && cd ..
 ---
 
 ## 10. Execution Log
-- **2026-11-06:** Task `M2-04` created as Ready in backlog.
+- **2026-11-06:** Implemented taxonomy module, audit and report enrichment, bilingual labels, fixtures, deterministic unknown-rule fallback, unit tests and dashboard category filters. Review and full Python/Next.js validation pending.
