@@ -54,7 +54,8 @@ def _synthesize(text, output):
     model = _voice_path()
     if not model.is_file():
         raise RuntimeError(f"Piper model not found: {model}")
-    _run(["piper", "--model", str(model), "--output_file", str(output)],
+    piper_bin = shutil.which("piper") or str(Path(sys.executable).parent / "piper")
+    _run([piper_bin, "--model", str(model), "--output_file", str(output)],
          input_text=text)
     if not output.is_file() or output.stat().st_size == 0:
         raise RuntimeError("Piper did not generate audio")
@@ -143,12 +144,13 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
             wav = temp / f"voice_{index:04d}.wav"
             duration = _synthesize(spoken, wav)
             audio_files.append(wav)
-            event_id = event.get("event_id", event.get("id", event.get("seq", index)))
+            seq = event.get("seq", index)
             timeline.append({
+                "seq": seq,
                 "node_id": event.get("node_id"),
-                "event_id": event_id,
-                "start_sec": round(current, 3),
-                "end_sec": round(current + duration, 3),
+                "text": spoken,
+                "start": round(current, 3),
+                "end": round(current + duration, 3),
             })
             durations.append(duration + (PAUSE_SECONDS if index < len(items)-1 else 0))
             current += durations[-1]
@@ -210,9 +212,13 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
               "-fps_mode", "vfr", "-c:v", "libx264",
               "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
               "-movflags", "+faststart", "-shortest", str(clip)])
-        _run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size",
+        probe = _run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size",
               "-of", "json", str(clip)])
-    result = {"timeline": timeline}
+        try:
+            clip_duration = round(float(json.loads(probe.stdout)["format"]["duration"]), 3)
+        except (KeyError, ValueError, TypeError):
+            clip_duration = round(current, 3)
+    result = {"duration": clip_duration, "clip": "clip.mp4", "entries": timeline}
     (out_dir / "timeline.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     return result
