@@ -167,6 +167,12 @@ class ValidateClipDurationTests(unittest.TestCase):
 
 
 class BinaryResolutionTests(unittest.TestCase):
+    def test_subprocess_timeout_is_bounded_and_explained(self):
+        with mock.patch.object(render.subprocess, "run", side_effect=subprocess.TimeoutExpired("piper", 300)) as run:
+            with self.assertRaisesRegex(RuntimeError, "timed out after 300 seconds: piper"):
+                render._run(["piper"], input_text="Continue, button")
+        self.assertEqual(run.call_args.kwargs["timeout"], 300)
+
     def test_resolves_from_path(self):
         with mock.patch("shutil.which", return_value="/usr/local/bin/edge-tts"):
             self.assertEqual(_resolve_binary("edge-tts"), "/usr/local/bin/edge-tts")
@@ -329,7 +335,15 @@ class RealRenderEndToEndTests(unittest.TestCase):
                         or (n["role"] == "link" and not n["name"])}
         events = {"events": [e for e in sample_events if e["node_id"] in selected_ids]}
         self.assertEqual(len(events["events"]), 3)
-        site = (Path(__file__).resolve().parents[2] / "test-site" / "bad-checkout.html").as_uri()
+        from functools import partial
+        from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+        from threading import Thread
+        server = ThreadingHTTPServer(("127.0.0.1", 0), partial(
+            SimpleHTTPRequestHandler, directory=str(ROOT / "test-site")))
+        Thread(target=server.serve_forever, daemon=True).start()
+        self.addCleanup(server.server_close)
+        self.addCleanup(server.shutdown)
+        site = f"http://127.0.0.1:{server.server_port}/bad-checkout.html"
         out_dir = Path(tempfile.mkdtemp(prefix="cp-test-real-render-"))
         self.addCleanup(shutil.rmtree, out_dir, ignore_errors=True)
 

@@ -26,14 +26,12 @@ FPS = 12
 
 def _run(args, *, input_text=None):
     try:
-       return subprocess.run(
-    args,
-    input=input_text,
-    text=True,
-    encoding="utf-8",
-    capture_output=True,
-    check=True
-)
+        return subprocess.run(
+            args, input=input_text, text=True, encoding="utf-8",
+            capture_output=True, check=True, timeout=300,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError(f"Command timed out after 300 seconds: {args[0]}") from exc
     except FileNotFoundError as exc:
         raise RuntimeError(f"Missing executable: {args[0]}") from exc
     except subprocess.CalledProcessError as exc:

@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+from zoneinfo import ZoneInfoNotFoundError
 
 from fastapi.testclient import TestClient
 from api import main
@@ -43,6 +44,12 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.json(), self.report)
         self.assertIn('sample.json"', result.headers["content-disposition"])
+
+    def test_missing_timezone_database_does_not_break_portable_export(self):
+        with patch("api.export.ZoneInfo", side_effect=ZoneInfoNotFoundError("Europe/Bucharest")):
+            result = self.client.get("/api/analyses/sample/export")
+        self.assertEqual(result.status_code, 200)
+        self.assertIn("2026-11-06T18:00:00Z", result.text)
 
     def test_missing_and_unfinished(self):
         self.assertEqual(self.client.get("/api/analyses/missing/export").status_code, 404)

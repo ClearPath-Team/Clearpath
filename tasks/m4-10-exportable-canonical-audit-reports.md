@@ -5,9 +5,10 @@
 - **Track:** `M4` (API, Web Dashboard, and Formal Reporting)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `In progress`
+- **Status:** `In review`
 - **Assignee:** `andreiBirsanIoan`
 - **Branch:** `m4-exportable-audit-reports`
+- **Pull Request:** https://github.com/ClearPath-Team/Clearpath/pull/62
 - **Created Date:** 2026-11-06
 
 ---
@@ -129,5 +130,9 @@ cd web && npm run build && cd ..
 
 
 - **2026-11-06:** Claimed by @andreiBirsanIoan. Implemented standalone printable HTML, canonical JSON download, categorized findings, escaped untrusted page content, transcript/bounding-box evidence, completion timestamps and bilingual export controls. HTML is PDF-ready through browser Print/Save as PDF; no server PDF engine added.
-- **Validation:** 18 export/existing API tests passed; Next.js production build passed. Canonical source JSON is preserved. Missing historical engine metadata is labelled not recorded; no engine versions or certification claims are invented. No automated findings is used instead of a claim of compliance.
+- **Validation:** 19 export/existing API tests passed; Next.js production build passed. Canonical source JSON is preserved. Missing historical engine metadata is labelled not recorded; no engine versions or certification claims are invented. No automated findings is used instead of a claim of compliance.
 - **Limitations:** Legacy runs may lack transcript, bounding boxes, timestamp or engine provenance. Available evidence is exported and missing values are explicitly marked.
+
+
+## 8. Execution Log
+- **2026-11-06 20:29 UTC:** PR opened: https://github.com/ClearPath-Team/Clearpath/pull/62 (Status -> In review)

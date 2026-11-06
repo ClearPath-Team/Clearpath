@@ -3,7 +3,7 @@ from html import escape
 from datetime import datetime
 import math
 from urllib.parse import urlsplit
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from worker.engine.categories import CATEGORY_LABELS, enrich_issue
 
@@ -50,7 +50,7 @@ def generate_html_report(report_data, *, timeline=None, nodes=None, metadata=Non
         parsed = datetime.fromisoformat(completed.replace("Z", "+00:00"))
         if parsed.tzinfo is not None:
             local_completed = parsed.astimezone(ZoneInfo("Europe/Bucharest")).isoformat()
-    except (AttributeError, TypeError, ValueError):
+    except (AttributeError, TypeError, ValueError, ZoneInfoNotFoundError):
         pass
     groups = {key: [] for key in CATEGORY_LABELS}
     for issue in report.get("issues", []):

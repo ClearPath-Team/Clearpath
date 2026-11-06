@@ -1,6 +1,6 @@
 """Regression tests for M1 live-web resilience (M1-02).
 
-Browser tests use Playwright Chromium on local file:// pages and a local HTTP
+Browser tests use Playwright Chromium on hermetic local HTTP pages and a local HTTP
 server, and are skipped (via scripts.check_env.chromium_skip_reason) when
 Chromium or its host libraries are missing. Tab-walk error
 handling is also covered without a browser using a fake page.
@@ -13,6 +13,7 @@ import unittest
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from unittest import mock
+from uuid import uuid4
 
 from playwright.sync_api import Error as PlaywrightError
 
@@ -21,7 +22,43 @@ from worker.extract import extract as extract_mod
 from worker.extract.tab_walk import MAX_TAB_PRESSES, tab_walk
 
 ROOT = Path(__file__).resolve().parents[2]
-TEST_SITE = (ROOT / "test-site" / "bad-checkout.html").as_uri()
+TEST_SITE = ""
+_FIXTURES = {}
+
+
+def fixture_url(path):
+    """Serve only registered fixture bytes, without exposing arbitrary local files."""
+    key = f"/{uuid4().hex}.html"
+    _FIXTURES[key] = Path(path).read_bytes()
+    return f"http://127.0.0.1:{_FIXTURE_SERVER.server_port}{key}"
+
+
+def setUpModule():
+    global _FIXTURE_SERVER, _FIXTURE_THREAD, TEST_SITE
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            body = _FIXTURES.get(self.path)
+            if body is None:
+                self.send_error(404)
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(body)
+
+        def log_message(self, *args):
+            pass
+    _FIXTURE_SERVER = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+    _FIXTURE_THREAD = threading.Thread(target=_FIXTURE_SERVER.serve_forever, daemon=True)
+    _FIXTURE_THREAD.start()
+    TEST_SITE = fixture_url(ROOT / "test-site/bad-checkout.html")
+
+
+def tearDownModule():
+    _FIXTURE_SERVER.shutdown()
+    _FIXTURE_SERVER.server_close()
+    _FIXTURE_THREAD.join(timeout=5)
+    _FIXTURES.clear()
 
 
 BANNER_BODY = """
@@ -175,7 +212,7 @@ class BrowserTests(unittest.TestCase):
         path.write_text(f'<!doctype html><html lang="ro"><head><meta charset="utf-8">'
                         f"<title>{title}</title></head><body>{body}</body></html>",
                         encoding="utf-8")
-        return path.as_uri()
+        return fixture_url(path)
 
 
 @unittest.skipIf(_SKIP_BROWSER, _SKIP_BROWSER or "")
@@ -212,7 +249,7 @@ class ExtractRegressionTests(unittest.TestCase):
         path = self.tmp / "banner.html"
         path.write_text(BANNER_PAGE, encoding="utf-8")
 
-        result = extract_mod.extract(path.as_uri())
+        result = extract_mod.extract(fixture_url(path))
 
         names = [n["name"] for n in result["nodes"]]
         self.assertNotIn("Acceptă", names)
@@ -229,8 +266,10 @@ class CheckoutInteractionTests(BrowserTests):
         page.set_default_timeout(15_000)
         external_requests = []
         page.on("request", lambda request: external_requests.append(request.url)
-                if request.url.startswith(("http://", "https://")) else None)
-        # A file URL plus offline mode proves the page needs no server or CDN assets.
+                if request.url.startswith(("http://", "https://")) and request.url != TEST_SITE else None)
+        # Fulfill the document from fixture bytes while offline: no network or CDN required.
+        page.route(TEST_SITE, lambda route: route.fulfill(
+            content_type="text/html; charset=utf-8", body=(ROOT / "test-site/bad-checkout.html").read_bytes()))
         page.context.set_offline(True)
         page.goto(TEST_SITE, timeout=15_000)
         self.assertEqual(page.locator('input[type="radio"]').count(), 4)

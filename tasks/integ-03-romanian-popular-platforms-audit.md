@@ -6,8 +6,9 @@
 - **Type:** `Test`
 - **Priority:** `P1 - current milestone`
 - **Status:** `In progress`
-- **Assignee:** @andreiBirsanIoan
+- **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `integ-romanian-tech-audit`
+- **Pull Request:** https://github.com/ClearPath-Team/Clearpath/pull/62
 - **Created Date:** 2026-11-06
 
 ---
@@ -143,3 +144,9 @@ All nine specified targets were attempted with `CP_STUBS=` and `TTS_ENGINE=piper
 | https://kinderpedia.co | Blocked at extraction | Chromium certificate authority error; no complete report/video |
 
 Local run manifests and logs: `.local/romanian-audit.json`, `.local/romanian-audit.md`, `.local/romanian-run.log`, and `.local/ro-{0,1,2}.{json,md,log}`. Per-run failure states are in gitignored `data/e2e-ro-*/status.json`. This task remains In progress until the full nine-site audit succeeds in a browser with valid managed proxy trust. Do not mark it Done based on the preset implementation alone.
+
+
+## 8. Execution Log
+- **2026-11-06 20:29 UTC:** Linked PR: https://github.com/ClearPath-Team/Clearpath/pull/62
+
+- **Trust-store diagnosis:** The NSS write mapping must be present in the same permission-scoped invocation as browser execution. With that mapping and the managed proxy CA imported, Flip.ro returned verified HTTPS 200. Certificate verification remains enabled. All nine targets are being rerun; verified manifests supersede the initial blocked-at-extraction table above.
