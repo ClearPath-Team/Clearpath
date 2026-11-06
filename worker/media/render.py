@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import unicodedata
 import wave
 from pathlib import Path
 
@@ -93,31 +94,85 @@ def _voice_path():
     return Path(os.environ.get("PIPER_MODEL", str(ROOT / "assets/voices/ro_RO-mihai-medium.onnx")))
 
 
-def _piper_bin() -> str:
-    """Resolves the piper executable, falling back to the current venv's bin
-    directory when it isn't on PATH (e.g. background subprocesses spawned
-    without .venv/bin set). Cross-platform: tries the .exe suffix on Windows."""
-    found = shutil.which("piper")
+def _resolve_binary(name: str) -> str:
+    """Resolves an executable by name, falling back to the current venv's bin
+    or Scripts directory when it isn't on PATH. Cross-platform: tries the
+    .exe suffix on Windows."""
+    found = shutil.which(name)
     if found:
         return found
-    exe_name = "piper.exe" if os.name == "nt" else "piper"
+    exe_name = f"{name}.exe" if os.name == "nt" else name
     candidate = Path(sys.executable).parent / exe_name
     if candidate.is_file():
         return str(candidate)
-    raise RuntimeError(f"Missing executable: piper (checked PATH and {candidate})")
+    raise RuntimeError(f"Missing executable: {name} (checked PATH and {candidate})")
+
+
+def _piper_bin() -> str:
+    return _resolve_binary("piper")
+
+
+def _edge_tts_bin() -> str:
+    return _resolve_binary("edge-tts")
+
+
+def normalize_romanian_text(text: str) -> str:
+    """Normalizes Romanian diacritics to canonical comma-below forms (ș, ț, Ș, Ț)
+    and ensures composed UTF-8 NFC representation for clean speech and subtitles."""
+    if not text:
+        return ""
+    replacements = {
+        "\u015f": "\u0219",  # ş -> ș
+        "\u015e": "\u0218",  # Ş -> Ș
+        "\u0163": "\u021b",  # ţ -> ț
+        "\u0162": "\u021a",  # Ţ -> Ț
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return unicodedata.normalize("NFC", text)
 
 
 def _synthesize(text, output):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
-    if engine != "piper":
-        raise RuntimeError(f"Unsupported TTS_ENGINE={engine!r}; configure piper")
-    model = _voice_path()
-    if not model.is_file():
-        raise RuntimeError(f"Piper model not found: {model}")
-    _run([_piper_bin(), "--model", str(model), "--output_file", str(output)],
-         input_text=text)
+    normalized = normalize_romanian_text(text)
+
+    if engine == "piper":
+        model = _voice_path()
+        if not model.is_file():
+            raise RuntimeError(f"Piper model not found: {model}")
+        _run([_piper_bin(), "--model", str(model), "--output_file", str(output)],
+             input_text=normalized)
+    elif engine == "edge-tts":
+        edge_bin = _edge_tts_bin()
+        mp3 = output.with_suffix(".mp3")
+        voice = os.environ.get("EDGE_TTS_VOICE", "ro-RO-EmilNeural")
+        try:
+            _run([
+                edge_bin,
+                "--voice", voice,
+                "--text", normalized,
+                "--write-media", str(mp3),
+            ])
+            _run([
+                "ffmpeg", "-y", "-v", "error",
+                "-i", str(mp3),
+                "-ar", "48000",
+                "-ac", "1",
+                "-c:a", "pcm_s16le",
+                str(output),
+            ])
+        except RuntimeError as exc:
+            raise RuntimeError(
+                f"Edge TTS synthesis failed (ensure internet connection is available): {exc}"
+            ) from exc
+        finally:
+            if mp3.is_file():
+                mp3.unlink(missing_ok=True)
+    else:
+        raise RuntimeError(f"Unsupported TTS_ENGINE={engine!r}; configure piper or edge-tts")
+
     if not output.is_file() or output.stat().st_size == 0:
-        raise RuntimeError("Piper did not generate audio")
+        raise RuntimeError(f"{engine} did not generate audio")
     return _duration(output)
 
 
@@ -197,7 +252,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
         audio_files, frame_files, durations = [], [], []
         current = 0.0
         for index, event in enumerate(items):
-            spoken = str(event.get("text", "")).strip()
+            spoken = normalize_romanian_text(str(event.get("text", "")).strip())
             if not spoken:
                 raise ValueError(f"Empty announcement at index {index}")
             wav = temp / f"voice_{index:04d}.wav"
