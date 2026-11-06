@@ -44,10 +44,10 @@ The assignee is permitted to modify or create:
 ---
 
 ## 4. Acceptance Criteria
-- [ ] Piper remains the default TTS engine (`TTS_ENGINE=piper` or unset) and synthesizes Romanian speech using `assets/ro_RO-mihai-medium.onnx` without requiring internet connectivity.
-- [ ] When `TTS_ENGINE=edge-tts` is configured, speech synthesis invokes `edge-tts` with voice `ro-RO-EmilNeural` and transcodes to standard PCM WAV audio compatible with FFmpeg concatenation.
-- [ ] Subtitles and spoken text preserve Romanian diacritics (ă, â, î, ș, ț) in UTF-8 without question marks or replacement characters.
-- [ ] Generated `clip.mp4` and `timeline.json` conform strictly to the canonical contract and pass `worker/media/test_render.py`.
+- [x] Piper remains the default TTS engine (`TTS_ENGINE=piper` or unset) and synthesizes Romanian speech using `assets/ro_RO-mihai-medium.onnx` without requiring internet connectivity.
+- [x] When `TTS_ENGINE=edge-tts` is configured, speech synthesis invokes `edge-tts` with voice `ro-RO-EmilNeural` and transcodes to standard PCM WAV audio compatible with FFmpeg concatenation.
+- [x] Subtitles and spoken text preserve Romanian diacritics (ă, â, î, ș, ț) in UTF-8 without question marks or replacement characters.
+- [x] Generated `clip.mp4` and `timeline.json` conform strictly to the canonical contract and pass `worker/media/test_render.py`.
 - [ ] PR #15 is approved and merged into `main`, closing Issue #9.
 
 ---
@@ -90,3 +90,4 @@ out.unlink(missing_ok=True)
 - **2026-11-06:** Issue #9 opened on GitHub.
 - **2026-11-06 14:31 UTC:** PR #15 opened from `feature/m3-romanian-tts` (Status -> In progress).
 - **2026-11-06 15:13 UTC:** Updated PR #15 with commit 43036f1 adding optional Edge-TTS and removing test MP3 (Status -> In review).
+- **2026-11-06 16:00 UTC:** Finalized PR #15 changes: unified virtualenv binary resolver for Piper and Edge-TTS, added Romanian diacritic normalization (NFC and comma-below), added intermediate MP3 cleanup and offline error handling, and added 10 new unit tests. Rebased onto main canonical timeline schema.

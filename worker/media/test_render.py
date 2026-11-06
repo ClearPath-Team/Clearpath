@@ -5,8 +5,10 @@ Playwright mocked. RealRenderEndToEndTests generate an actual MP4 and are
 skipped when those tools or the voice model are not installed.
 """
 import json
+import os
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -16,7 +18,16 @@ from unittest import mock
 from worker.common import SAMPLES, read_json
 from worker.engine.report import build_report
 from worker.media import render
-from worker.media.render import PAUSE_SECONDS, _validate_clip_duration, render_clip
+from worker.media.render import (
+    PAUSE_SECONDS,
+    _edge_tts_bin,
+    _piper_bin,
+    _resolve_binary,
+    _synthesize,
+    _validate_clip_duration,
+    normalize_romanian_text,
+    render_clip,
+)
 
 SPOKEN_SECONDS = 1.0
 URL = "http://localhost:8080/bad-checkout.html"
@@ -125,6 +136,101 @@ class ValidateClipDurationTests(unittest.TestCase):
                 _validate_clip_duration(stdout, 30.0)
 
 
+class BinaryResolutionTests(unittest.TestCase):
+    def test_resolves_from_path(self):
+        with mock.patch("shutil.which", return_value="/usr/local/bin/edge-tts"):
+            self.assertEqual(_resolve_binary("edge-tts"), "/usr/local/bin/edge-tts")
+
+    def test_resolves_from_venv_when_path_is_none(self):
+        exe_name = "edge-tts.exe" if os.name == "nt" else "edge-tts"
+        expected = str(Path(sys.executable).parent / exe_name)
+        with mock.patch("shutil.which", return_value=None), \
+             mock.patch.object(Path, "is_file", return_value=True):
+            self.assertEqual(_resolve_binary("edge-tts"), expected)
+
+    def test_raises_when_missing_from_path_and_venv(self):
+        with mock.patch("shutil.which", return_value=None), \
+             mock.patch.object(Path, "is_file", return_value=False):
+            with self.assertRaisesRegex(RuntimeError, "Missing executable: edge-tts"):
+                _resolve_binary("edge-tts")
+
+    def test_piper_bin_uses_resolve_binary(self):
+        with mock.patch("worker.media.render._resolve_binary", return_value="/custom/piper") as mocked:
+            self.assertEqual(_piper_bin(), "/custom/piper")
+            mocked.assert_called_once_with("piper")
+
+    def test_edge_tts_bin_uses_resolve_binary(self):
+        with mock.patch("worker.media.render._resolve_binary", return_value="/custom/edge-tts") as mocked:
+            self.assertEqual(_edge_tts_bin(), "/custom/edge-tts")
+            mocked.assert_called_once_with("edge-tts")
+
+
+class RomanianDiacriticNormalizationTests(unittest.TestCase):
+    def test_converts_legacy_cedilla_to_comma_below(self):
+        # ş -> ș, ţ -> ț, Ş -> Ș, Ţ -> Ț
+        raw = "Aşa şi nu altfel; preţ şi Ţară, Ştefan"
+        expected = "Așa și nu altfel; preț și Țară, Ștefan"
+        self.assertEqual(normalize_romanian_text(raw), expected)
+
+    def test_preserves_standard_diacritics(self):
+        text = "Testăm diacriticele românești: ă, â, î, ș, ț."
+        self.assertEqual(normalize_romanian_text(text), text)
+
+    def test_empty_string_handling(self):
+        self.assertEqual(normalize_romanian_text(""), "")
+        self.assertEqual(normalize_romanian_text(None), "")
+
+
+class EdgeTTSSynthesizeTests(unittest.TestCase):
+    def test_unlinks_mp3_on_success(self):
+        output = Path("test_output.wav")
+        mp3 = output.with_suffix(".mp3")
+        runs = []
+
+        def fake_run(args, **kwargs):
+            runs.append(args)
+            if "--write-media" in args:
+                mp3.write_bytes(b"fake_mp3_data")
+            if args[0] == "ffmpeg":
+                output.write_bytes(b"fake_wav_data")
+
+        with mock.patch.dict(os.environ, {"TTS_ENGINE": "edge-tts"}), \
+             mock.patch("worker.media.render._edge_tts_bin", return_value="/bin/edge-tts"), \
+             mock.patch("worker.media.render._run", side_effect=fake_run), \
+             mock.patch("worker.media.render._duration", return_value=1.5):
+            try:
+                duration = _synthesize("Salut lume", output)
+                self.assertEqual(duration, 1.5)
+                self.assertFalse(mp3.exists(), "Temporary mp3 should be unlinked")
+            finally:
+                if output.exists():
+                    output.unlink()
+                if mp3.exists():
+                    mp3.unlink()
+
+    def test_unlinks_mp3_on_failure(self):
+        output = Path("test_fail.wav")
+        mp3 = output.with_suffix(".mp3")
+
+        def fake_run(args, **kwargs):
+            if "--write-media" in args:
+                mp3.write_bytes(b"fake_mp3_data")
+                raise RuntimeError("Network disconnected")
+
+        with mock.patch.dict(os.environ, {"TTS_ENGINE": "edge-tts"}), \
+             mock.patch("worker.media.render._edge_tts_bin", return_value="/bin/edge-tts"), \
+             mock.patch("worker.media.render._run", side_effect=fake_run):
+            try:
+                with self.assertRaisesRegex(RuntimeError, "Edge TTS synthesis failed"):
+                    _synthesize("Salut lume", output)
+                self.assertFalse(mp3.exists(), "Temporary mp3 should be unlinked even on failure")
+            finally:
+                if output.exists():
+                    output.unlink()
+                if mp3.exists():
+                    mp3.unlink()
+
+
 def _real_render_unavailable_reason():
     if not (shutil.which("ffmpeg") and shutil.which("ffprobe")):
         return "ffmpeg/ffprobe not installed"
@@ -135,10 +241,10 @@ def _real_render_unavailable_reason():
     if not render._voice_path().is_file():
         return "Piper voice model not downloaded (scripts/fetch_assets.py)"
     try:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as playwright:
-            if not Path(playwright.chromium.executable_path).exists():
-                return "Playwright Chromium not installed"
+        from scripts.check_env import chromium_skip_reason
+        reason = chromium_skip_reason()
+        if reason:
+            return reason
     except Exception as exc:
         return f"Playwright unavailable: {exc}"
     return None
