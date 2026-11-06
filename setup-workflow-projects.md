@@ -20,7 +20,7 @@ ClearPath uses a **provider-neutral agentic workflow** where GitHub Projects act
 ```
 
 ### Core Configuration Files in [`.github/`](.github/)
-- **[`.github/agentic-workflow.yml`](.github/agentic-workflow.yml):** Workflow contract specifying project fields, lifecycle states (`Backlog`, `Todo`, `Doing`, `Testing`, `Done`), required adapter operations, completion gates, and human approval rules.
+- **[`.github/agentic-workflow.yml`](.github/agentic-workflow.yml):** Workflow contract specifying project fields, lifecycle states (`Backlog`, `Ready`, `In progress`, `In review`, `Done`), required adapter operations, completion gates, and human approval rules.
 - **[`.github/labels.yml`](.github/labels.yml):** Declarative label manifest (`status:*`, `track:*`, `priority:*`, `type:*`, `workflow:*`).
 - **[`.github/ISSUE_TEMPLATE/agent-task.yml`](.github/ISSUE_TEMPLATE/agent-task.yml):** Structured issue template enforcing Goal, Context, Scope, Acceptance Criteria, Validation commands, and Out-of-Scope boundaries.
 
@@ -40,9 +40,9 @@ Before connecting an AI agent, complete this initial setup in the GitHub web int
 Ensure the following fields exist in your project settings:
 * **`Status`** (Single select options):
   * `Backlog`
-  * `Todo`
-  * `Doing`
-  * `Testing`
+  * `Ready`
+  * `In progress`
+  * `In review`
   * `Done`
 * **`Track`** (Single select options):
   * `M1` (Extraction and keyboard traversal)
@@ -62,9 +62,9 @@ Using the GitHub CLI (`gh`), create the required labels:
 ```bash
 # Status mirror labels
 gh label create "status:backlog" --color "6b7280" --description "Captured work that is not ready to start" --force
-gh label create "status:todo" --color "2563eb" --description "Ready, scoped, assigned work" --force
-gh label create "status:doing" --color "f59e0b" --description "Work currently being implemented" --force
-gh label create "status:testing" --color "8b5cf6" --description "Implementation is under validation or review" --force
+gh label create "status:ready" --color "2563eb" --description "Ready, scoped, assigned work" --force
+gh label create "status:in-progress" --color "f59e0b" --description "Work currently being implemented" --force
+gh label create "status:in-review" --color "8b5cf6" --description "Implementation is under validation or review" --force
 gh label create "status:done" --color "16a34a" --description "Merged and acceptance criteria verified" --force
 
 # Workflow labels
@@ -145,13 +145,13 @@ If you use terminal-based AI agents (such as Antigravity CLI, Claude Code, or Ai
 
 | Operation in `agentic-workflow.yml` | Command |
 |---|---|
-| `list_ready_work` | `gh issue list --label "status:todo" --label "workflow:ready"` |
+| `list_ready_work` | `gh issue list --label "status:ready" --label "workflow:ready"` |
 | `assign_issue` | `gh issue edit <id> --add-assignee "@me"` |
-| `set_project_status` (Doing) | `gh issue edit <id> --add-label "status:doing" --remove-label "status:todo"` |
+| `set_project_status` (In progress) | `gh issue edit <id> --add-label "status:in-progress" --remove-label "status:ready"` |
 | `add_issue_comment` | `gh issue comment <id> --body "Starting implementation on branch mX-..."` |
 | `create_branch` | `git checkout -b m1-task-<id>` |
 | `create_pull_request` | `gh pr create --title "[M1] <Title>" --body "Closes #<id>" --base main` |
-| `set_project_status` (Testing) | `gh issue edit <id> --add-label "status:testing" --remove-label "status:doing"` |
+| `set_project_status` (In review) | `gh issue edit <id> --add-label "status:in-review" --remove-label "status:in-progress"` |
 
 ---
 
@@ -199,7 +199,7 @@ jobs:
 AI agents and human developers must follow the sequential lifecycle defined in `agentic-workflow.yml`:
 
 ```
- 1. BACKLOG             2. TODO                 3. DOING               4. TESTING              5. DONE
+ 1. BACKLOG             2. READY                3. IN PROGRESS          4. IN REVIEW            5. DONE
 ┌──────────────┐       ┌──────────────┐        ┌─────────────┐        ┌─────────────┐         ┌───────────┐
 │ Issue filled │ ────► │ AC, scope &  │ ─────► │ Agent claims│ ─────► │ PR opened   │ ──────► │ Human     │
 │ with template│       │ validation ok│        │ branch cut  │        │ tests run   │         │ merges PR │
@@ -209,15 +209,15 @@ AI agents and human developers must follow the sequential lifecycle defined in `
 1. **Backlog:**
    * An issue is created using [`.github/ISSUE_TEMPLATE/agent-task.yml`](.github/ISSUE_TEMPLATE/agent-task.yml).
    * Must define: Track, Priority, Goal, Context, Scope, Acceptance Criteria, Validation commands, and Out-of-Scope boundaries.
-2. **Todo:**
+2. **Ready:**
    * Human or lead verifies that Acceptance Criteria and Validation commands are unambiguous.
-   * Add label `workflow:ready` and set status to `Todo`.
-3. **Doing:**
-   * The agent claims the issue, sets status to `Doing` (`status:doing`), and cuts a track branch (e.g., `m2-audit-fixes`).
+   * Add label `workflow:ready` and set status to `Ready` (`status:ready`).
+3. **In progress:**
+   * The agent claims the issue, sets status to `In progress` (`status:in-progress`), and cuts a track branch (e.g., `m2-audit-fixes`).
    * **Strict Boundary Rule:** The agent modifies **only** files listed in the issue's Scope section.
-4. **Testing:**
+4. **In review:**
    * The agent runs the exact test commands specified in the issue's Validation section (e.g. `python -m worker.engine.audit http://localhost:8080/bad-checkout.html contracts/samples/nodes.json`).
-   * The agent pushes the branch, opens a Pull Request (`Closes #<id>`), comments test results as evidence, and sets status to `Testing` (`status:testing`).
+   * The agent pushes the branch, opens a Pull Request (`Closes #<id>`), comments test results as evidence, and sets status to `In review` (`status:in-review`).
 5. **Done:**
    * Human reviews the Pull Request and runs completion checks.
    * Pull Request is merged into `main`. The issue transitions to `Done` (`status:done`).

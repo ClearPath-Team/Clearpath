@@ -4,13 +4,13 @@ labels:
   - name: status:backlog
     color: "6b7280"
     description: Captured work that is not ready to start
-  - name: status:todo
+  - name: status:ready
     color: "2563eb"
     description: Ready, scoped, assigned work
-  - name: status:doing
+  - name: status:in-progress
     color: "f59e0b"
     description: Work currently being implemented
-  - name: status:testing
+  - name: status:in-review
     color: "8b5cf6"
     description: Implementation is under validation or review
   - name: status:done

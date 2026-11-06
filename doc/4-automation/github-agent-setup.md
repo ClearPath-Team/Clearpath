@@ -28,21 +28,21 @@ to it. Configure these fields:
 
 | Field | Type | Values |
 |---|---|---|
-| Status | Single select | Backlog, Todo, Doing, Testing, Done |
+| Status | Single select | Backlog, Ready, In progress, In review, Done |
 | Track | Single select | M1, M2, M3, M4, Shared |
 | Priority | Single select | P0, P1, P2, P3 |
 | Assignee | People | The responsible human or agent identity |
 | Iteration | Iteration | Your delivery cadence |
 | Pull Request | Text or URL | The implementing PR |
 
-Use **Status** as the source of truth. Labels such as `status:doing` are
+Use **Status** as the source of truth. Labels such as `status:in-progress` are
 searchable mirrors, not a second workflow database.
 
 Recommended views:
 
 1. **Backlog:** Status is Backlog, grouped by Priority.
-2. **Ready:** Status is Todo, grouped by Track.
-3. **Active:** Status is Doing or Testing, grouped by Assignee.
+2. **Ready:** Status is Ready, grouped by Track.
+3. **Active:** Status is In progress or In review, grouped by Assignee.
 4. **Delivery:** Status is Done, sorted by Iteration.
 
 ## 3. Install labels
@@ -87,7 +87,7 @@ different tools, but the result must be identical:
 
 | Operation | Required result |
 |---|---|
-| `list_ready_work` | Return assigned issues whose Project Status is Todo |
+| `list_ready_work` | Return assigned issues whose Project Status is Ready |
 | `create_issue` | Create a fully populated issue from the template |
 | `apply_labels` | Keep type, track, priority, and mirrored status labels accurate |
 | `assign_issue` | Record the actual working owner |
@@ -104,30 +104,30 @@ models, GitHub Copilot, or custom orchestration: only the adapter changes.
 
 ## 6. Agent lifecycle
 
-### Backlog → Todo
+### Backlog → Ready
 
-An intake agent may create or enrich an issue. Move it to **Todo** only when
+An intake agent may create or enrich an issue. Move it to **Ready** only when
 the acceptance criteria, validation commands, ownership, track, priority,
 dependencies, and scope are complete.
 
-### Todo → Doing
+### Ready → In progress
 
 The implementation agent claims only assigned or explicitly delegated issues.
-It moves the Project item to **Doing**, changes the mirrored label from
-`status:todo` to `status:doing`, and comments with its branch and plan.
+It moves the Project item to **In progress**, changes the mirrored label from
+`status:ready` to `status:in-progress`, and comments with its branch and plan.
 
-### Doing → Testing
+### In progress → In review
 
 The agent implements only the issue scope, follows the relevant track
 ownership, and runs the smallest appropriate checks. It then moves the item to
-**Testing**, applies `status:testing`, and comments with:
+**In review**, applies `status:in-review`, and comments with:
 
 - files changed;
 - exact commands executed;
 - pass/fail results;
 - remaining risks or blocked items.
 
-### Testing → Done
+### In review → Done
 
 Do not use **Done** when a branch or PR merely exists. The item becomes **Done**
 only after the PR is merged and every acceptance criterion is verified. Then
@@ -147,12 +147,12 @@ You are a ClearPath repository agent.
 1. Read CLAUDE.md, the issue, and the relevant official documentation.
 2. Work only on issues assigned to you or explicitly delegated to you.
 3. Verify Project fields: Status, Track, Priority, Assignee, Iteration.
-4. Before coding, move the issue to Doing and comment with the branch and plan.
+4. Before coding, move the issue to In progress and comment with the branch and plan.
 5. Respect track ownership, contract immutability, explicit timeouts, and the
    no-unprompted-commit rule.
 6. Implement only the stated scope.
 7. Run the exact validation commands from the issue and record their results.
-8. Move to Testing only with evidence, then open a linked pull request.
+8. Move to In review only with evidence, then open a linked pull request.
 9. Never mark Done or close the issue until the PR is merged and all acceptance
    criteria are verified.
 10. If blocked, apply workflow:blocked, explain the missing dependency or

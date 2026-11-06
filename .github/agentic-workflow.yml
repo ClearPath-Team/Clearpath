@@ -8,9 +8,9 @@ project:
   status_field: Status
   statuses:
     - Backlog
-    - Todo
-    - Doing
-    - Testing
+    - Ready
+    - In progress
+    - In review
     - Done
   source_of_truth: project_status
   status_labels_are_mirrors: true
@@ -25,9 +25,9 @@ project:
 labels:
   status:
     backlog: status:backlog
-    todo: status:todo
-    doing: status:doing
-    testing: status:testing
+    ready: status:ready
+    in_progress: status:in-progress
+    in_review: status:in-review
     done: status:done
   type:
     feature: type:feature
@@ -90,13 +90,13 @@ lifecycle:
   - status: Backlog
     entry: Issue is captured but not sufficiently prepared for execution.
     agent_action: Enrich the issue or leave it untouched.
-  - status: Todo
+  - status: Ready
     entry: Acceptance criteria, ownership, scope, and validation are complete.
     agent_action: Claim only issues assigned to the agent or explicitly delegated.
-  - status: Doing
+  - status: In progress
     entry: Agent has started implementation.
     agent_action: Work only within the issue scope and repository ownership rules.
-  - status: Testing
+  - status: In review
     entry: Implementation is complete and validation is running or awaiting review.
     agent_action: Report exact commands and results; do not claim completion on intent.
   - status: Done
