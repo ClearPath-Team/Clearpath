@@ -74,10 +74,13 @@ Run the exact commands documented under the task's `Validation` section.
    git commit -m "[<track>] <short description of changes>"
    git push origin <branch-name>
    ```
-2. Mark the task as moved to `In review`:
+2. Open a Pull Request referencing `Closes #<issue_num>` in the description.
+   *(CRITICAL: Do NOT add the PR as a standalone card to the GitHub Project board. The board only contains Issues).*
+3. Register the PR on the issue and mark task as moved to `In review`:
    ```bash
-   python scripts/task.py done <TASK_ID> --pr "<PR_URL_OR_BRANCH>"
+   python scripts/task.py done <TASK_ID> --pr "<PR_URL_OR_NUMBER>"
    ```
-3. Output a concise summary of the implementation, list of files modified, test results evidence, and link to open the Pull Request against `main`.
-4. Wait for human review. Do NOT merge into `main`.
+   *(This registers the PR comment on the issue, sets status:in-review, and ensures no standalone PR card appears on the board)*.
+4. Output a concise summary of the implementation, list of files modified, test results evidence, and link to open the Pull Request against `main`.
+5. Wait for human review. Do NOT merge into `main`.
 ```

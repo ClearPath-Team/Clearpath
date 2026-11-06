@@ -250,8 +250,9 @@ $$\textbf{Backlog} \longrightarrow \textbf{Ready} \longrightarrow \textbf{In pro
 - **Strongly Recommended:** Use **GitHub CLI (`gh`)** (`gh auth login`) and the built-in [`scripts/task.py`](scripts/task.py) CLI. It provides zero-overhead, shell-native execution, and powers GitHub Actions CI.
 - **Discouraged:** The **MCP server approach** (`@modelcontextprotocol/server-github`) is discouraged for ClearPath because it requires managing local background Node daemons, risks token exposure in plaintext configs, and lacks atomic local file locks.
 
-### Anti-Collision Protocol
-Before modifying any code, the AI agent **must**:
+### Anti-Collision Protocol & Board Rules
+- **Board Rule:** Only **GitHub Issues** are items on the GitHub Project board. **Pull Requests must NEVER appear standalone on the board.** Every PR must reference `Closes #<id>` and be registered to its parent issue.
+- **Before modifying any code, the AI agent must:**
 1. Check task status: `python scripts/task.py check <TASK_ID>`
 2. If claimed by another user: **STOP immediately**. Never take or edit an assigned task.
 3. If unassigned: Atomically claim it:
@@ -261,11 +262,12 @@ Before modifying any code, the AI agent **must**:
    *(Sets Status to `In progress` on the project board and cuts the dedicated track branch)*.
 4. Modify **only** files declared in the task's `Scope`.
 5. Execute the exact test commands under `Validation`.
-6. Open a PR referencing `Closes #<id>` and update status to `In review`:
+6. Open a PR referencing `Closes #<id>` and register it to the issue:
    ```bash
    python scripts/task.py done <TASK_ID> --pr <PR_URL>
    ```
-7. A peer reviews and merges the PR into `main`. The issue closes and card moves to `Done` automatically.
+   *(Registers PR comment on the issue, marks issue as `In review`, and ensures no standalone PR cards exist on the board)*.
+7. A peer reviews and merges the PR into `main`. The issue closes and card moves to `Done` automatically. Standalone PRs can be cleaned with `python scripts/task.py clean-prs`.
 
 ### Task Generation for Coworkers
 Coworkers can generate new tasks without manual script execution:

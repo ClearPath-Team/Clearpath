@@ -38,6 +38,9 @@ to it. Configure these fields:
 Use **Status** as the source of truth. Labels such as `status:in-progress` are
 searchable mirrors, not a second workflow database.
 
+**Board Item Policy:**
+Only **Issues** are added as items to the project board. **Pull Requests must NEVER appear standalone on the board.** PRs are delivery artifacts belonging to a parent issue. In Project Workflows (Auto-add to project), configure the filter query to `is:issue` (excluding PRs). PRs are registered to their parent issue via `Closes #<id>` and issue comments.
+
 Recommended views:
 
 1. **Backlog:** Status is Backlog, grouped by Priority.

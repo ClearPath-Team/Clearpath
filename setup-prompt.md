@@ -89,6 +89,9 @@ Verify developer GitHub access and task tooling:
 2. **Task Manager Verification:**
    - Run `python scripts/task.py list` to verify local task parsing.
    - Ensure the developer can see the active backlog and track statuses (`Ready`, `In progress`, `In review`, `Done`).
+3. **Board & PR Linking Rules:**
+   - GitHub Issues are the authoritative items on the project board.
+   - Pull Requests must NEVER appear standalone on the board. All PRs must reference `Closes #<id>` and be registered via `python scripts/task.py done <TASK_ID> --pr <PR_URL>`. Use `python scripts/task.py clean-prs` if standalone PR cards appear.
 
 ---
 

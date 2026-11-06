@@ -53,7 +53,27 @@ def sync_task(file_path: Path, repo: str, token: str) -> None:
             break
     m_issue = re.search(r"-\s*\*\*GitHub Issue:\*\*\s*#?(\d+)", content)
     if m_issue and "pending" not in issue_line.lower():
-        print(f"Skipping {file_path.name}: already linked to issue #{m_issue.group(1)}")
+        issue_num = m_issue.group(1)
+        # Check if PR is recorded in task and ensure it is registered on the issue
+        m_pr = re.search(r"-\s*\*\*(?:Pull Request|PR):\*\*\s*(https://github\.com/\S+/pull/\d+|#\d+)", content)
+        if not m_pr:
+            m_pr = re.search(r"(?:PR opened:|PR:)\s*(https://github\.com/\S+/pull/\d+|#\d+)", content)
+        if m_pr:
+            pr_val = m_pr.group(1).strip()
+            try:
+                comments_view = subprocess.run(
+                    ["gh", "issue", "view", issue_num, "--repo", repo, "--json", "comments", "-q", ".comments.[].body"],
+                    capture_output=True, text=True
+                )
+                if comments_view.returncode == 0 and pr_val not in (comments_view.stdout or ""):
+                    subprocess.run(
+                        ["gh", "issue", "comment", issue_num, "--repo", repo, "--body", f"Linked Pull Request: {pr_val}"],
+                        capture_output=True, text=True, check=False
+                    )
+                    print(f"-> Registered PR {pr_val} on Issue #{issue_num}")
+            except Exception:
+                pass
+        print(f"Skipping {file_path.name}: already linked to issue #{issue_num}")
         return
 
     # Extract Title and Track

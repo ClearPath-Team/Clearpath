@@ -50,6 +50,11 @@ To prevent two AI agents or team members from working on the same task simultane
    ```bash
    python scripts/task.py done <TASK_ID> --pr <PR_URL>
    ```
+   *Registers the PR on the GitHub Issue, updates issue status to `In review`, and ensures no standalone PR cards exist on the project board.*
+5. **Clean Standalone PRs from Board (if needed):**
+   ```bash
+   python scripts/task.py clean-prs
+   ```
 
 ---
 

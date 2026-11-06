@@ -57,6 +57,17 @@ Ensure the following fields exist in your project settings:
   * `P3` (Nice to have)
 * **`Pull Request`** (Linked Pull Request field)
 
+### Step 2.4: Configure Project Workflows (No Standalone PRs on Board)
+> [!IMPORTANT]
+> **Issue-Centric Board Policy:**
+> - Only **GitHub Issues** exist as cards on the GitHub Project board.
+> - **Pull Requests must NEVER appear standalone on the board.** PRs are delivery artifacts belonging to a parent issue.
+> - In Project settings ➔ **Workflows** ➔ **Auto-add to project**:
+>   - Set the filter query to: `is:issue` (strictly exclude Pull Requests).
+> - When an agent or developer opens a PR, they reference `Closes #<id>` and register the PR using `python scripts/task.py done <TASK_ID> --pr <PR_URL>`.
+> - The issue card on the board displays the linked PR via the **Linked pull requests** field and transitions to `In review`.
+> - If any PR accidentally appears on the board, remove it with `python scripts/task.py clean-prs` or click `...` ➔ **Remove from project** in the GitHub web UI.
+
 ### Step 2.3: Import Labels from [`.github/labels.yml`](.github/labels.yml)
 Using the GitHub CLI (`gh`), create the required labels:
 ```bash
@@ -161,7 +172,9 @@ This is the standard approach for ClearPath developers and all AI agents (Antigr
 | `add_issue_comment` | `gh issue comment <id> --body "Starting implementation on branch mX-..."` |
 | `create_branch` | `git checkout -b m1-task-<id>` |
 | `create_pull_request` | `gh pr create --title "[M1] <Title>" --body "Closes #<id>" --base main` |
+| `register_pr_on_issue` | `python scripts/task.py done <TASK_ID> --pr <PR_URL>` |
 | `set_project_status` (In review) | `gh issue edit <id> --add-label "status:in-review" --remove-label "status:in-progress"` |
+| `clean_standalone_prs` | `python scripts/task.py clean-prs` |
 
 ---
 
@@ -228,9 +241,10 @@ AI agents and human developers must follow the sequential lifecycle defined in `
 4. **In review:**
    * The agent runs the exact test commands specified in the issue's Validation section (e.g. `python -m worker.engine.audit http://localhost:8080/bad-checkout.html contracts/samples/nodes.json`).
    * The agent pushes the branch, opens a Pull Request (`Closes #<id>`), comments test results as evidence, and sets status to `In review` (`status:in-review`).
+   * **Board rule:** The PR is registered to the issue via `python scripts/task.py done <TASK_ID> --pr <PR_URL>`. The PR must NOT be added as a standalone card to the board; the issue card tracks review and displays the linked PR.
 5. **Done:**
    * Human reviews the Pull Request and runs completion checks.
-   * Pull Request is merged into `main`. The issue transitions to `Done` (`status:done`).
+   * Pull Request is merged into `main`. The issue transitions to `Done` (`status:done`). Standalone PRs never appear on the board.
 
 ---
 

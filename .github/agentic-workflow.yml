@@ -14,6 +14,10 @@ project:
     - Done
   source_of_truth: project_status
   status_labels_are_mirrors: true
+  board_policy:
+    allowed_items: issues_only
+    disallow_standalone_prs: true
+    pr_relationship: registered_to_parent_issue
   required_fields:
     - Status
     - Track
@@ -80,6 +84,7 @@ provider_adapter:
     - add_issue_comment
     - create_branch
     - create_pull_request
+    - register_pull_request_on_issue
     - read_checks
   optional_operations:
     - request_review
@@ -97,8 +102,8 @@ lifecycle:
     entry: Agent has started implementation.
     agent_action: Work only within the issue scope and repository ownership rules.
   - status: In review
-    entry: Implementation is complete and validation is running or awaiting review.
-    agent_action: Report exact commands and results; do not claim completion on intent.
+    entry: Implementation is complete, PR is opened with Closes #<issue>, registered to the issue, and not standalone on board.
+    agent_action: Report exact commands and results; ensure PR is linked to issue; do not add PR to board.
   - status: Done
     entry: Pull request is merged and all acceptance criteria are verified.
     agent_action: Close the issue and record the final evidence.
@@ -109,6 +114,8 @@ completion_gates:
   - issue_has_assignee
   - issue_has_track_and_priority
   - pull_request_links_issue
+  - pull_request_registered_on_issue
+  - pull_request_not_standalone_on_board
   - required_checks_pass
   - pull_request_merged
   - acceptance_criteria_verified

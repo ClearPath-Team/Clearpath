@@ -1,0 +1,99 @@
+name: PR & Issue Registration Guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  guard-pr-registration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR Link and Register on GitHub Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const body = pr.body || "";
+            
+            // Check for closing or linking keywords: Closes #123, Fixes #123, Resolves #123
+            const match = body.match(/(?:closes|fixes|resolves)\s*#(\d+)/i) || body.match(/#(\d+)/);
+            
+            if (!match) {
+              console.log(`PR #${pr.number} does not reference an issue in its description.`);
+              if (context.payload.action === 'opened') {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: "⚠️ **Workflow Notice:** ClearPath enforces that PRs must be registered to an issue and must NOT appear standalone on the Project board.\n\nPlease update this PR's description to include `Closes #<issue_number>`."
+                });
+              }
+              return;
+            }
+            
+            const issueNumber = parseInt(match[1], 10);
+            console.log(`PR #${pr.number} is linked to Issue #${issueNumber}`);
+            
+            if (context.payload.action === 'closed' && pr.merged) {
+              console.log(`PR #${pr.number} merged. Updating Issue #${issueNumber} to status:done.`);
+              // Update labels on the issue
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['status:done']
+              });
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  name: 'status:in-review'
+                });
+              } catch (e) {
+                // Ignore if label not present
+              }
+            } else if (!pr.merged && context.payload.action !== 'closed') {
+              console.log(`PR #${pr.number} is open/updated. Ensuring registration on Issue #${issueNumber}.`);
+              
+              // 1. Post registration comment on Issue if not present
+              const issueComments = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber
+              });
+              const alreadyRegistered = issueComments.data.some(c => c.body.includes(pr.html_url) || c.body.includes(`pull/${pr.number}`));
+              
+              if (!alreadyRegistered) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: `Linked Pull Request: ${pr.html_url}\nStatus: In review`
+                });
+                console.log(`Posted registration comment on Issue #${issueNumber}.`);
+              }
+              
+              // 2. Set issue status:in-review
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['status:in-review']
+              });
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  name: 'status:in-progress'
+                });
+              } catch (e) {
+                // Ignore if label not present
+              }
+            }
