@@ -77,6 +77,9 @@ All entities are linked via `node_id`. The association with the real DOM is esta
     "id": "i1",
     "rule": "button-name",
     "severity": "critical",
+    "category": "screen_reader",
+    "category_label": {"en": "Screen Reader & Semantics", "ro": "Cititoare de ecran și ARIA"},
+    "wcag_principle": "robust",
     "node_id": "n12",
     "selector": "#cart",
     "title": "Butonul nu are nume accesibil",
@@ -87,6 +90,10 @@ All entities are linked via `node_id`. The association with the real DOM is esta
 ```
 
 - `severity` takes values `critical`, `serious`, `moderate`, or `minor` (matching axe `impact` levels).
+- `category` is exactly one of `visual_contrast`, `screen_reader`, `motor_keyboard`, `structure_navigation`. Values are assigned from `rule`, not severity.
+- `category_label` contains the English (`en`) and Romanian (`ro`) display names for that category.
+- `wcag_principle` is exactly one of `perceivable`, `operable`, `understandable`, `robust`, representing the primary principle used for grouping (not a conformance determination).
+- Unknown rule IDs default deterministically to `structure_navigation`; the original rule ID remains unchanged.
 - `rule` is the axe rule identifier. The only custom rule is `keyboard-trap` (which has `help_url: null`).
 - `node_id` is `null` if the violation could not be mapped to an accessibility tree node.
 
@@ -114,6 +121,7 @@ All entities are linked via `node_id`. The association with the real DOM is esta
   "title": "Finalizează comanda",
   "score": 38,
   "counts": { "critical": 4, "serious": 3, "moderate": 1, "minor": 0 },
+  "categories": { "visual_contrast": 2, "screen_reader": 4, "motor_keyboard": 1, "structure_navigation": 2 },
   "clip_url": "/media/a7f3c2d1/clip.mp4",
   "duration": 84.2,
   "focus_trap": true,
@@ -121,6 +129,7 @@ All entities are linked via `node_id`. The association with the real DOM is esta
 }
 ```
 
+- `categories` counts every issue once using its canonical category, including `keyboard-trap`. It does not alter score weights.
 - `timestamp` is the `start` second of the first timeline entry with matching `node_id`. It is `null` if the element is not featured in the video.
 - Issues are ordered by severity (`critical`, `serious`, `moderate`, `minor`), then by `timestamp` (placing `null` entries last).
 

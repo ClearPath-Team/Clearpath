@@ -10,6 +10,7 @@ from playwright.sync_api import TimeoutError as PlaywrightTimeoutError, sync_pla
 
 from worker.common import AXE_PATH, SELECTOR_JS, SAMPLES, VIEWPORT, read_json, write_json
 from worker.engine.recommendations import RECOMMENDATIONS, EN_RECOMMENDATIONS
+from worker.engine.categories import enrich_issue
 
 SEVERITY_ORDER = {"critical": 0, "serious": 1, "moderate": 2, "minor": 3}
 
@@ -77,7 +78,7 @@ def run_audit(url: str, nodes: dict, lang: str = "ro") -> list[dict]:
                 page.wait_for_timeout(800)
                 page.add_script_tag(path=AXE_PATH)
                 results = page.evaluate("async () => await axe.run(document, {resultTypes: ['violations']})")
-                return _map_violations(page, results["violations"], nodes, lang=lang)
+                return [enrich_issue(issue) for issue in _map_violations(page, results["violations"], nodes, lang=lang)]
             finally:
                 context.close()
         finally:
