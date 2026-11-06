@@ -5,8 +5,8 @@
 - **Track:** `M2` (Announcement engine, audit, and reporting)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** `Unassigned`
+- **Status:** `In review`
+- **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `m2-english-speech-rules`
 - **Created Date:** 2026-11-06
 
@@ -105,5 +105,6 @@ python -m worker.engine.events contracts/samples/nodes.json
 ---
 
 ## 8. Execution Log (Updated by Assignee)
-- **Status Change:** `Backlog` -> `Ready` on 2026-11-06
-- **Claimed by:** Unassigned
+- **2026-11-06:** Added bilingual announcement roles, English axe-core remediation support, language-dependent Piper/edge TTS voices, optional English model asset download, and focused regression tests.
+- **Validation pending:** Full worker test suite and real English Piper render must be run on a machine with installed voice/model and Playwright. Do not mark Done before acceptance.
+- **Claimed by:** @andreiBirsanIoan
