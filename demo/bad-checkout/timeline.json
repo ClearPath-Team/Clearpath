@@ -1,0 +1,139 @@
+{
+  "duration": 52.595,
+  "clip": "clip.mp4",
+  "entries": [
+    {
+      "seq": 0,
+      "node_id": null,
+      "text": "Pagina Finalizează comanda",
+      "start": 0.0,
+      "end": 2.009
+    },
+    {
+      "seq": 1,
+      "node_id": "n0",
+      "text": "reper antet",
+      "start": 2.309,
+      "end": 3.179
+    },
+    {
+      "seq": 2,
+      "node_id": "n1",
+      "text": "PasUșor",
+      "start": 3.479,
+      "end": 5.766
+    },
+    {
+      "seq": 3,
+      "node_id": "n2",
+      "text": "reper navigare",
+      "start": 6.066,
+      "end": 7.285
+    },
+    {
+      "seq": 4,
+      "node_id": "n3",
+      "text": "Bărbați, link",
+      "start": 7.585,
+      "end": 9.513
+    },
+    {
+      "seq": 5,
+      "node_id": "n4",
+      "text": "Femei, link",
+      "start": 9.813,
+      "end": 10.66
+    },
+    {
+      "seq": 6,
+      "node_id": "n5",
+      "text": "link",
+      "start": 10.96,
+      "end": 11.332
+    },
+    {
+      "seq": 7,
+      "node_id": "n6",
+      "text": "buton",
+      "start": 11.632,
+      "end": 12.131
+    },
+    {
+      "seq": 8,
+      "node_id": "n7",
+      "text": "reper conținut principal",
+      "start": 12.431,
+      "end": 14.556
+    },
+    {
+      "seq": 9,
+      "node_id": "n8",
+      "text": "Finalizează comanda, titlu nivel 1",
+      "start": 14.856,
+      "end": 17.456
+    },
+    {
+      "seq": 10,
+      "node_id": "n9",
+      "text": "imagine fără descriere",
+      "start": 17.756,
+      "end": 20.078
+    },
+    {
+      "seq": 11,
+      "node_id": "n10",
+      "text": "Produsul tău, titlu nivel 4",
+      "start": 20.378,
+      "end": 22.921
+    },
+    {
+      "seq": 12,
+      "node_id": "n11",
+      "text": "Adidași de alergare, mărimea 42, 349 lei Livrare gratuită pentru comenzi de...",
+      "start": 23.221,
+      "end": 32.811
+    },
+    {
+      "seq": 13,
+      "node_id": "n13",
+      "text": "Date de livrare, titlu nivel 2",
+      "start": 33.111,
+      "end": 35.351
+    },
+    {
+      "seq": 14,
+      "node_id": "n14",
+      "text": "Nume complet, casetă de editare, necompletat, obligatoriu",
+      "start": 35.651,
+      "end": 40.249
+    },
+    {
+      "seq": 15,
+      "node_id": "n15",
+      "text": "casetă de editare, necompletat",
+      "start": 40.549,
+      "end": 42.941
+    },
+    {
+      "seq": 16,
+      "node_id": "n16",
+      "text": "Cod promoțional, casetă de editare, necompletat",
+      "start": 43.241,
+      "end": 47.42
+    },
+    {
+      "seq": 17,
+      "node_id": "n17",
+      "text": "Telefon, casetă de editare, necompletat",
+      "start": 47.72,
+      "end": 50.89
+    },
+    {
+      "seq": 18,
+      "node_id": "n18",
+      "text": "Plasează comanda",
+      "start": 51.19,
+      "end": 52.595
+    }
+  ]
+}

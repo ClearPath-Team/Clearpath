@@ -1,0 +1,115 @@
+{
+  "lang": "ro",
+  "events": [
+    {
+      "seq": 0,
+      "node_id": null,
+      "text": "Pagina Accessible University Demo Site - Inaccessible Version"
+    },
+    {
+      "seq": 1,
+      "node_id": "n0",
+      "text": "au123456789.gif, imagine"
+    },
+    {
+      "seq": 2,
+      "node_id": "n1",
+      "text": "Demo site menu, reper navigare"
+    },
+    {
+      "seq": 3,
+      "node_id": "n2",
+      "text": "listă cu 4 elemente"
+    },
+    {
+      "seq": 4,
+      "node_id": "n3",
+      "text": "Home, link"
+    },
+    {
+      "seq": 5,
+      "node_id": "n4",
+      "text": "Before, link"
+    },
+    {
+      "seq": 6,
+      "node_id": "n5",
+      "text": "After, link"
+    },
+    {
+      "seq": 7,
+      "node_id": "n6",
+      "text": "Info, link"
+    },
+    {
+      "seq": 8,
+      "node_id": "n7",
+      "text": "listă cu 4 elemente"
+    },
+    {
+      "seq": 9,
+      "node_id": "n8",
+      "text": "About, link"
+    },
+    {
+      "seq": 10,
+      "node_id": "n9",
+      "text": "Academics, link"
+    },
+    {
+      "seq": 11,
+      "node_id": "n10",
+      "text": "Admissions, link"
+    },
+    {
+      "seq": 12,
+      "node_id": "n11",
+      "text": "Visitors, link"
+    },
+    {
+      "seq": 13,
+      "node_id": "n12",
+      "text": "imagine fără descriere"
+    },
+    {
+      "seq": 14,
+      "node_id": "n13",
+      "text": "A modern shool"
+    },
+    {
+      "seq": 15,
+      "node_id": "n14",
+      "text": "listă cu 4 elemente"
+    },
+    {
+      "seq": 16,
+      "node_id": "n17",
+      "text": "horizontal line graphic, imagine"
+    },
+    {
+      "seq": 17,
+      "node_id": "n20",
+      "text": "horizontal line graphic, imagine"
+    },
+    {
+      "seq": 18,
+      "node_id": "n23",
+      "text": "click here, link"
+    },
+    {
+      "seq": 19,
+      "node_id": "n74",
+      "text": "casetă de editare, necompletat"
+    },
+    {
+      "seq": 20,
+      "node_id": "n76",
+      "text": "casetă de editare, necompletat"
+    },
+    {
+      "seq": 21,
+      "node_id": "n78",
+      "text": "casetă de editare, necompletat"
+    }
+  ]
+}
