@@ -252,7 +252,7 @@ export default function AnalysisPage() {
           <div className="space-y-2">
             <h1 className="text-2xl font-bold text-white">{t("failed")}</h1>
             <p className="text-sm text-red-200">
-              {error || data?.error || "{t("unexpectedError")}"}
+              {error || data?.error || t("unexpectedError")}
             </p>
           </div>
           <button
@@ -355,7 +355,7 @@ export default function AnalysisPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all border border-slate-700"
               >
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                {copied ? "{t("linkCopied")}" : "{t("copyLink")}"}
+                {copied ? t("linkCopied") : t("copyLink")}
               </button>
               <button
                 onClick={() => router.push("/")}
