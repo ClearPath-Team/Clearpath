@@ -70,7 +70,21 @@ From the repository root:
    `pip install -r requirements.txt`
 4. Install Playwright & Chromium browser:
    `python -m playwright install chromium`
-   *(On Linux/WSL, inform the user to run `sudo playwright install-deps` once if host shared libraries are missing).*
+   On Ubuntu/Debian/WSL, install the host libraries **before verification**, even
+   when the Chromium download succeeded:
+   `sudo .venv/bin/python -m playwright install-deps chromium`
+   With the virtual environment activated, `sudo playwright install-deps chromium`
+   is the equivalent CLI command if sudo preserves that executable on PATH;
+   prefer the explicit `.venv` interpreter above.
+   For first-time setup or CI, the combined command is:
+   `.venv/bin/python -m playwright install --with-deps chromium`.
+   This installs OS packages through apt and requires root/sudo privileges.
+   If the current runner lacks sudo, request installation from the host/container
+   maintainer. Do not report the live environment as ready just because unit tests
+   pass: browser-dependent M2 tests skip with installation instructions when
+   Chromium or its shared libraries are absent. `scripts/check_env.py` still fails
+   until Chromium actually launches. macOS and Windows use
+   `python -m playwright install chromium`; Linux apt dependencies do not apply.
 5. Download required offline assets (axe-core & Piper Romanian voice):
    `python scripts/fetch_assets.py`
 6. Create `.env` from template if it does not already exist:
