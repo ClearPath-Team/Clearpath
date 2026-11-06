@@ -7,6 +7,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from worker.common import SAMPLES, read_json, write_json
+from worker.engine.categories import category_counts, enrich_issue
 
 SEVERITIES = ("critical", "serious", "moderate", "minor")
 
@@ -31,7 +32,7 @@ def build_report(analysis_id: str, url: str, nodes: dict, issues: list, timeline
         start = entry.get("start")
         if node_id is not None and start is not None:
             starts[node_id] = min(starts.get(node_id, start), start)
-    enriched = [{**issue, "timestamp": starts.get(issue.get("node_id"))} for issue in issues]
+    enriched = [{**enrich_issue(issue), "timestamp": starts.get(issue.get("node_id"))} for issue in issues]
     enriched.sort(key=lambda issue: (
         SEVERITIES.index(issue["severity"]), issue["timestamp"] is None,
         issue["timestamp"] if issue["timestamp"] is not None else 0))
@@ -40,6 +41,7 @@ def build_report(analysis_id: str, url: str, nodes: dict, issues: list, timeline
         "id": analysis_id, "url": url, "title": nodes.get("title") or "",
         "score": calculate_score(issues, has_focus_trap=has_trap),
         "counts": {severity: sum(issue["severity"] == severity for issue in issues) for severity in SEVERITIES},
+        "categories": category_counts(issues),
         "clip_url": f"/media/{analysis_id}/clip.mp4", "duration": timeline["duration"],
         "focus_trap": has_trap, "issues": enriched,
     }
