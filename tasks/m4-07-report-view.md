@@ -5,7 +5,7 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `In progress`
+- **Status:** `Done`
 - **Assignee:** `Sergiu1809`
 - **Branch:** `m4-report-view`
 - **Created Date:** 2026-11-06
@@ -73,3 +73,4 @@ CP_STUBS= python scripts/dev.py
 - **2026-11-06:** Task created as Ready (split from M4-08).
 
 - **2026-11-06 17:45 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
+- **2026-11-06 18:17 UTC:** PR #55 merged into main (Status -> Done): https://github.com/ClearPath-Team/Clearpath/pull/55

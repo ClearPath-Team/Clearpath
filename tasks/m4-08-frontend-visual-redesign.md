@@ -5,7 +5,7 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `In progress`
+- **Status:** `Done`
 - **Assignee:** `@Sergiu1809`
 - **Branch:** `m4-frontend-redesign`
 - **Created Date:** 2026-11-06
@@ -57,7 +57,7 @@ The assignee is permitted to modify or create:
 
 ## 4. Acceptance Criteria
 - [x] A Claude Design artifact with the start page and results page (empty, loading/progress, error, done states) is linked in this issue and approved.
-- [ ] Sub-tasks `M4-09`, `M4-05`, `M4-06` and `M4-07` are merged.
+- [x] Sub-tasks `M4-09`, `M4-05`, `M4-06` and `M4-07` are merged.
 - [ ] `/` and `/a/[id]` match the approved design at desktop (1280px) and phone (~400px) widths, with no horizontal page scroll.
 - [ ] All existing behavior is preserved: URL submission and API error messages, 4-stage progress polling, video playback, clicking an issue timestamp seeks the video, severity filters use `issue.severity`, score, counts and `focus_trap` display.
 - [ ] Data shapes still follow `doc/1-foundation/data-contracts.md` (`report.json`, `status.json`, `timeline.json`); the only new API call is the timeline endpoint from `M4-09`.
@@ -105,3 +105,4 @@ CP_STUBS= python scripts/dev.py
 - **2026-11-06 16:51 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
 - **2026-11-06:** Design approved; implementation split into M4-09, M4-05, M4-06, M4-07.
 - **2026-11-06:** Renumbered M4-03 -> M4-08 and M4-04 -> M4-09 (ID collision with #36/#38).
+- **2026-11-06 18:17 UTC:** All sub-tasks merged (#51, #52, #53, #54, #55) (Status -> Done).
