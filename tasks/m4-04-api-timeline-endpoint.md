@@ -1,7 +1,7 @@
 # Task: [M4-04] API Endpoint for Analysis Timeline (transcript data)
 
 - **Task ID:** `M4-04`
-- **GitHub Issue:** pending
+- **GitHub Issue:** #33
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

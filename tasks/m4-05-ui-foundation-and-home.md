@@ -1,7 +1,7 @@
 # Task: [M4-05] UI Foundation and Home Page (approved redesign)
 
 - **Task ID:** `M4-05`
-- **GitHub Issue:** pending
+- **GitHub Issue:** #34
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

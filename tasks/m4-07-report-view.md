@@ -1,7 +1,7 @@
 # Task: [M4-07] Report View with Synced Video, Transcript and Issues (approved redesign)
 
 - **Task ID:** `M4-07`
-- **GitHub Issue:** pending
+- **GitHub Issue:** #37
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

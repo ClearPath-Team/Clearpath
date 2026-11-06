@@ -1,7 +1,7 @@
 # Task: [M4-06] Analysis Progress and Error States (approved redesign)
 
 - **Task ID:** `M4-06`
-- **GitHub Issue:** pending
+- **GitHub Issue:** #35
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
