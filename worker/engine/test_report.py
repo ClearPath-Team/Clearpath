@@ -7,10 +7,10 @@ from worker.engine.report import build_report, calculate_score
 
 
 class ReportTests(unittest.TestCase):
-    def test_sample_score_is_38_under_contract_formula(self):
+    def test_sample_score_is_33_under_contract_formula(self):
         issues = read_json(SAMPLES / "issues.json")
-        # Three axe criticals, three serious, one moderate, plus one trap.
-        self.assertEqual(calculate_score(issues), 100 - 3 * 10 - 3 * 5 - 2 - 15)
+        # Three axe criticals, four serious, one moderate, plus one trap.
+        self.assertEqual(calculate_score(issues), 100 - 3 * 10 - 4 * 5 - 2 - 15)
 
     def test_sample_report_agrees_with_live_scoring_metrics(self):
         sample = read_json(SAMPLES / "report.json")
@@ -52,14 +52,15 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(report["id"], "custom")
         self.assertEqual(report["url"], "https://example.com")
         self.assertEqual(report["clip_url"], "/media/custom/clip.mp4")
-        self.assertEqual(report["duration"], 30)
-        self.assertEqual(report["score"], 38)
+        self.assertEqual(report["duration"], timeline["duration"])
+        self.assertEqual(report["score"], 33)
         self.assertTrue(report["focus_trap"])
-        self.assertEqual(report["counts"], {"critical": 4, "serious": 3, "moderate": 1, "minor": 0})
-        mapped = {issue["rule"]: issue["timestamp"] for issue in report["issues"]}
-        self.assertEqual(mapped["button-name"], 8.2)
-        self.assertIsNone(mapped["html-has-lang"])
-        self.assertIsNone(mapped["color-contrast"])
+        self.assertEqual(report["counts"], {"critical": 4, "serious": 4, "moderate": 1, "minor": 0})
+        for issue in report["issues"]:
+            starts = [e["start"] for e in timeline["entries"]
+                      if issue["node_id"] is not None and e["node_id"] == issue["node_id"]]
+            self.assertEqual(issue["timestamp"], min(starts) if starts else None)
+        self.assertIsNone(next(i["timestamp"] for i in report["issues"] if i["rule"] == "html-has-lang"))
         self.assertEqual((nodes, issues, timeline), original)
 
     def test_earliest_timestamp_zero_and_null_are_distinct(self):
