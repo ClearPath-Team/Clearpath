@@ -5,7 +5,7 @@
 - **Track:** `M1` (Extraction and keyboard traversal)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
+- **Status:** `In progress`
 - **Assignee:** `@Sergiu1809`
 - **Branch:** `m1-cdp-ax-tree`
 - **Created Date:** 2026-11-06
@@ -82,3 +82,5 @@ console.log('M1-01 validation PASSED. Extracted ' + d.nodes.length + ' nodes.');
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
 - **Claimed by:** *None*
 - **PR:** *None*
+
+- **2026-11-06 13:03 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
