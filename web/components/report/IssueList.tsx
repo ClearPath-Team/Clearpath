@@ -7,6 +7,35 @@ import { SEVERITIES, type Issue, type Severity } from "@/lib/types";
 import { SeverityBadge } from "./Severity";
 
 const t = strings.report;
+type Category = "visual_contrast" | "screen_reader" | "motor_keyboard" | "structure_navigation";
+const CATEGORY_LABELS: Record<Category, { en: string; ro: string }> = {
+  visual_contrast: { en: "Contrast", ro: "Contrast" },
+  screen_reader: { en: "Screen Reader", ro: "Cititor de ecran" },
+  motor_keyboard: { en: "Keyboard", ro: "Tastatură" },
+  structure_navigation: { en: "Structure", ro: "Structură" },
+};
+const CATEGORIES = Object.keys(CATEGORY_LABELS) as Category[];
+const KNOWN_RULE_CATEGORIES: Record<string, Category> = {
+  "color-contrast": "visual_contrast",
+  "link-in-text-block": "visual_contrast",
+  "keyboard-trap": "motor_keyboard",
+  "nested-interactive": "motor_keyboard",
+  "aria-hidden-focus": "motor_keyboard",
+  "button-name": "screen_reader",
+  "image-alt": "screen_reader",
+  "link-name": "screen_reader",
+  "label": "screen_reader",
+  "select-name": "screen_reader",
+  "input-image-alt": "screen_reader",
+  "frame-title": "screen_reader",
+  "duplicate-id-aria": "screen_reader",
+};
+function issueCategory(issue: Issue): Category {
+  if (issue.category) return issue.category;
+  return KNOWN_RULE_CATEGORIES[issue.rule] ??
+    (issue.rule.startsWith("aria-") ? "screen_reader" : "structure_navigation");
+}
+
 
 type Props = {
   issues: Issue[];
@@ -18,7 +47,10 @@ type Props = {
 
 export default function IssueList({ issues, counts, selectedId, lang, onPlay }: Props) {
   const [filter, setFilter] = useState<"all" | Severity>("all");
-  const visible = filter === "all" ? issues : issues.filter((issue) => issue.severity === filter);
+  const [category, setCategory] = useState<"all" | Category>("all");
+  const visible = issues.filter((issue) =>
+    (filter === "all" || issue.severity === filter) &&
+    (category === "all" || issueCategory(issue) === category));
   const tabs: { key: "all" | Severity; label: string; count: number }[] = [
     { key: "all", label: t.issues.all, count: issues.length },
     ...SEVERITIES.map((severity) => ({
@@ -47,6 +79,23 @@ export default function IssueList({ issues, counts, selectedId, lang, onPlay }: 
               }`}
             >
               {tab.label} <span className="tabular-nums opacity-80">{tab.count}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div role="group" aria-label={lang === "en" ? "Filter issues by category" : "Filtrează problemele după categorie"} className="flex flex-wrap gap-2">
+        {(["all", ...CATEGORIES] as const).map((key) => {
+          const selected = category === key;
+          const label = key === "all" ? (lang === "en" ? "All categories" : "Toate categoriile")
+            : CATEGORY_LABELS[key][lang === "en" ? "en" : "ro"];
+          const count = key === "all" ? issues.length
+            : issues.filter((issue) => issueCategory(issue) === key).length;
+          return (
+            <button key={key} type="button" aria-pressed={selected}
+              onClick={() => setCategory(key)}
+              className={`rounded border px-3 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${selected ? "border-accent bg-accent text-white" : "border-[#D3D3D9] bg-white text-ink hover:border-accent"}`}>
+              {label} <span className="tabular-nums">({count})</span>
             </button>
           );
         })}
