@@ -107,4 +107,4 @@ python -m worker.engine.events contracts/samples/nodes.json
 ## 8. Execution Log (Updated by Assignee)
 - **2026-11-06:** Added bilingual announcement roles, English axe-core remediation support, language-dependent Piper/edge TTS voices, optional English model asset download, and focused regression tests.
 - **Validation pending:** Full worker test suite and real English Piper render must be run on a machine with installed voice/model and Playwright. Do not mark Done before acceptance.
-- **Claimed by:** Unassigned
+- **Claimed by:** @andreiBirsanIoan
