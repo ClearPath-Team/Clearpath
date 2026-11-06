@@ -90,8 +90,12 @@ def _validate_clip_duration(probe_stdout: str, last_event_end: float) -> float:
     return round(probed, 3)
 
 
-def _voice_path():
-    return Path(os.environ.get("PIPER_MODEL", str(ROOT / "assets/voices/ro_RO-mihai-medium.onnx")))
+def _voice_path(lang: str = "ro"):
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported voice language: {lang}")
+    env = "PIPER_MODEL_EN" if lang == "en" else "PIPER_MODEL"
+    default_voice = "en_US-lessac-medium.onnx" if lang == "en" else "ro_RO-mihai-medium.onnx"
+    return Path(os.environ.get(env, str(ROOT / "assets/voices" / default_voice)))
 
 
 def _resolve_binary(name: str) -> str:
@@ -132,18 +136,19 @@ def normalize_romanian_text(text: str) -> str:
     return unicodedata.normalize("NFC", text)
 
 
-def _speakable_announcement(text: str) -> str:
+def _speakable_announcement(text: str, lang: str = "ro") -> str:
     """Replace announcements with no letters/digits so TTS produces audio."""
     normalized = normalize_romanian_text(str(text).strip())
-    return normalized if any(char.isalnum() for char in normalized) else "Element fără conținut textual"
+    fallback = "No textual content" if lang == "en" else "Element fără conținut textual"
+    return normalized if any(char.isalnum() for char in normalized) else fallback
 
 
-def _synthesize(text, output):
+def _synthesize(text, output, lang: str = "ro"):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
-    normalized = _speakable_announcement(text)
+    normalized = _speakable_announcement(text, lang=lang)
 
     if engine == "piper":
-        model = _voice_path()
+        model = _voice_path(lang)
         if not model.is_file():
             raise RuntimeError(f"Piper model not found: {model}")
         _run([_piper_bin(), "--model", str(model), "--output_file", str(output)],
@@ -151,7 +156,8 @@ def _synthesize(text, output):
     elif engine == "edge-tts":
         edge_bin = _edge_tts_bin()
         mp3 = output.with_suffix(".mp3")
-        voice = os.environ.get("EDGE_TTS_VOICE", "ro-RO-EmilNeural")
+        voice = os.environ.get("EDGE_TTS_VOICE_EN" if lang == "en" else "EDGE_TTS_VOICE",
+                               "en-US-ChristopherNeural" if lang == "en" else "ro-RO-EmilNeural")
         try:
             _run([
                 edge_bin,
@@ -239,10 +245,12 @@ def _concat_file(paths, output):
             file.write("file '" + escaped + "'\n")
 
 
-def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
+def render_clip(url: str, nodes: dict, events: dict, out_dir: Path, lang: str = "ro") -> dict:
     """Produce clip.mp4 and timeline.json; raise on missing dependencies."""
     from playwright.sync_api import sync_playwright
 
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported render language: {lang}")
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
@@ -258,9 +266,9 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
         audio_files, frame_files, durations = [], [], []
         current = 0.0
         for index, event in enumerate(items):
-            spoken = _speakable_announcement(event.get("text", ""))
+            spoken = _speakable_announcement(event.get("text", ""), lang=lang)
             wav = temp / f"voice_{index:04d}.wav"
-            duration = _synthesize(spoken, wav)
+            duration = _synthesize(spoken, wav) if lang == "ro" else _synthesize(spoken, wav, lang=lang)
             audio_files.append(wav)
             seq = event.get("seq", index)
             timeline.append({
@@ -298,10 +306,15 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch(headless=True)
             try:
-                page = browser.new_page(viewport={
-                    "width": int(viewport.get("width", 1280)),
-                    "height": int(viewport.get("height", 720)),
-                }, device_scale_factor=1)
+                context = browser.new_context(
+                    viewport={
+                        "width": int(viewport.get("width", 1280)),
+                        "height": int(viewport.get("height", 720)),
+                    },
+                    device_scale_factor=1,
+                    bypass_csp=True,
+                )
+                page = context.new_page()
                 page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 for i, event in enumerate(items):
                     _draw_overlay(page, node_by_id.get(event.get("node_id")),
@@ -344,6 +357,7 @@ if __name__ == "__main__":
     nodes_path = sys.argv[2] if len(sys.argv) > 2 else str(SAMPLES / "nodes.json")
     events_path = sys.argv[3] if len(sys.argv) > 3 else str(SAMPLES / "events.json")
     out = Path(sys.argv[4]) if len(sys.argv) > 4 else Path("data/dev")
+    lang = sys.argv[sys.argv.index("--lang") + 1] if "--lang" in sys.argv else "ro"
     print(json.dumps(render_clip(url, read_json(nodes_path),
-                                 read_json(events_path), out),
+                                 read_json(events_path), out, lang=lang),
                      indent=2, ensure_ascii=False))

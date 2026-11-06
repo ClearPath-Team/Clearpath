@@ -9,7 +9,7 @@ from worker.media import render
 
 class PiperAnnouncementTests(unittest.TestCase):
     def test_punctuation_only_uses_spoken_fallback(self):
-        for value in ("...", "---", "!!!", "  ", ""):
+        for value in ("...", "---", "!!!", "  ", "", "|", "."):
             with self.subTest(value=value):
                 self.assertEqual(render._speakable_announcement(value), "Element fără conținut textual")
 

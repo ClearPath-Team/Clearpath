@@ -86,3 +86,19 @@ RECOMMENDATIONS = {
         "Asigură-te că fiecare element de titlu conține text descriptiv."
     ),
 }
+
+
+# English recommendations used for native English axe-core reports.
+# Rules absent from this table use axe-core's original English help/description.
+EN_RECOMMENDATIONS = {
+    "keyboard-trap": (
+        "Keyboard trap: users cannot move focus with Tab",
+        "Allow users to move focus away using the keyboard without needing a mouse.",
+    ),
+    "button-name": ("Button has no accessible name", "Add visible text or an aria-label describing the button action."),
+    "link-name": ("Link has no discernible text", "Provide visible link text or an aria-label describing its destination."),
+    "image-alt": ("Image is missing alternative text", "Add an alt attribute describing the image purpose or content."),
+    "label": ("Form control is missing a label", "Associate a label with the form input or provide an aria-label."),
+    "html-has-lang": ("Document language is missing", "Set a valid lang attribute on the html element."),
+    "color-contrast": ("Insufficient text contrast", "Increase contrast to meet WCAG minimum requirements."),
+}
