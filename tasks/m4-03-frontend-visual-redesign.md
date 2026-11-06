@@ -5,8 +5,8 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In progress`
+- **Assignee:** `@Sergiu1809`
 - **Branch:** `m4-frontend-redesign`
 - **Created Date:** 2026-11-06
 
@@ -29,6 +29,15 @@ ClearPath demonstrates accessibility problems, so its own UI is part of the pitc
 2. Share the artifact link in this issue; the team reviews and comments on it.
 3. Implement the approved design in `web/`, splitting the results page into components under `web/components/`.
 
+### Approved design and implementation split
+Design (approved 2026-11-06): https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk
+
+The transcript panel needs `timeline.json`, which the API does not serve yet, so implementation is split into sub-tasks. This task stays open as the umbrella and closes when all of them are merged:
+- `M4-04` API endpoint for the analysis timeline (`api/`).
+- `M4-05` UI foundation (tokens, layout, header) and home page.
+- `M4-06` Analysis progress and error states.
+- `M4-07` Report view: synced video, transcript and issues.
+
 ---
 
 ## 3. Scope (Strict Boundary)
@@ -45,12 +54,13 @@ The assignee is permitted to modify or create:
 ---
 
 ## 4. Acceptance Criteria
-- [ ] A Claude Design artifact with the start page and results page (empty, loading/progress, error, done states) is linked in this issue and approved by at least one teammate.
+- [x] A Claude Design artifact with the start page and results page (empty, loading/progress, error, done states) is linked in this issue and approved.
+- [ ] Sub-tasks `M4-04`, `M4-05`, `M4-06` and `M4-07` are merged.
 - [ ] `/` and `/a/[id]` match the approved design at desktop (1280px) and phone (~400px) widths, with no horizontal page scroll.
 - [ ] All existing behavior is preserved: URL submission and API error messages, 4-stage progress polling, video playback, clicking an issue timestamp seeks the video, severity filters use `issue.severity`, score, counts and `focus_trap` display.
-- [ ] Data shapes still follow `doc/1-foundation/data-contracts.md` (`report.json`, `status.json`); no new API calls.
+- [ ] Data shapes still follow `doc/1-foundation/data-contracts.md` (`report.json`, `status.json`, `timeline.json`); the only new API call is the timeline endpoint from `M4-04`.
 - [ ] The UI meets WCAG 2.1 AA: text contrast >= 4.5:1, every control is reachable and operable by keyboard with a visible focus indicator, the video player and issue list are usable without a mouse, and animations respect `prefers-reduced-motion`.
-- [ ] User-facing copy stays in Romanian (consistent with the current UI and the Romanian demo); code, comments and commit messages are in English.
+- [ ] Interface copy is in English. Content produced by the backend in Romanian (screen-reader announcements, video captions, issue titles and recommendations, API error messages, the audited page's title) is shown as-is and marked `lang="ro"` so screen readers pronounce it correctly. Code, comments and commit messages are in English.
 - [ ] `cd web && npm run build` completes with zero errors and zero type errors.
 
 ---
@@ -89,3 +99,6 @@ CP_STUBS= python scripts/dev.py
 
 ## 8. Execution Log (Updated by Assignee)
 - **2026-11-06:** Task created as Ready.
+
+- **2026-11-06 16:51 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
+- **2026-11-06:** Design approved; implementation split into M4-04, M4-05, M4-06, M4-07.

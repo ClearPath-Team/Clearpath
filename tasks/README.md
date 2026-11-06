@@ -21,7 +21,11 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`DEMO-01`** | M4 | P0 | `Ready` | *(Unassigned)* | [`demo-01-offline-precaching-and-presentation.md`](demo-01-offline-precaching-and-presentation.md) |
 | **`M1-02`** | M1 | P1 | `In review` | `@Sergiu1809` | [`m1-02-cookie-dismissal-and-live-resilience.md`](m1-02-cookie-dismissal-and-live-resilience.md) |
 | **`M3-03`** | M3 | P1 | `In progress` | `@andreiBirsanIoan` | [`m3-03-romanian-tts-quality-and-subtitles.md`](m3-03-romanian-tts-quality-and-subtitles.md) |
-| **`M4-03`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-03-frontend-visual-redesign.md`](m4-03-frontend-visual-redesign.md) |
+| **`M4-03`** | M4 | P1 | `In progress` | `@Sergiu1809` | [`m4-03-frontend-visual-redesign.md`](m4-03-frontend-visual-redesign.md) |
+| **`M4-04`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-04-api-timeline-endpoint.md`](m4-04-api-timeline-endpoint.md) |
+| **`M4-05`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-05-ui-foundation-and-home.md`](m4-05-ui-foundation-and-home.md) |
+| **`M4-06`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-06-analysis-progress-and-error-states.md`](m4-06-analysis-progress-and-error-states.md) |
+| **`M4-07`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-07-report-view.md`](m4-07-report-view.md) |
 
 ---
 
