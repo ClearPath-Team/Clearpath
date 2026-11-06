@@ -1,7 +1,7 @@
 # Task: [INTEG-03] Romanian Tech & E-Commerce Ecosystem End-to-End Audit
 
 - **Task ID:** `INTEG-03`
-- **GitHub Issue:** Pending
+- **GitHub Issue:** #46
 - **Track:** `Shared` (Integration, Localization & Live Audit)
 - **Type:** `Test`
 - **Priority:** `P1 - current milestone`
