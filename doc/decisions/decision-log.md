@@ -19,4 +19,13 @@ Every decision that alters a technology choice, data contract, or core product b
 
 | Date | Issue | Owner | Status |
 |---|---|---|---|
-| | | | |
+| 2026-11-06 | M2-02 / #11: reconcile implemented scoring, contract documentation and sample report | M2 | Option B implemented for PR review; details below |
+
+### M2-02: One scoring policy for live and sample reports
+
+- **Decision:** Adopt Option B from [issue #11](https://github.com/ClearPath-Team/Clearpath/issues/11), retaining the policy explicitly selected during M2-01: deduct **10/5/2/1** for each critical/serious/moderate/minor axe finding, with **no per-rule cap**. Deduct **15 once** when a keyboard trap is present in issues or flagged in nodes. Exclude keyboard-trap issues from severity deductions and clamp the result at zero.
+- **Rationale:** Keep the selected and tested live behavior while eliminating conflicting formulas and stale mock scores. The prior 10/6/3/1 weights with a per-rule cap and the illustrative score of 28 are superseded in the editable contract and PRD. This entry records the selected policy; shared documentation changes remain subject to PR review.
+- **Sample arithmetic:** Three axe critical findings, three serious findings, one moderate finding and one trap yield `100 - 30 - 15 - 2 - 15 = 38`. Counts still include the synthetic critical trap: critical 4, serious 3, moderate 1, minor 0.
+- **Live distinction:** The current axe-core 4.10.2 demo audit has an extra serious contrast finding: nine findings score **33**. Scores depend on actual findings, not a fixed target of 28 or 38 for a URL.
+- **Affected artifacts:** `worker/engine/report.py`, its regression tests, `contracts/samples/report.json`, `doc/1-foundation/data-contracts.md`, `doc/PRD.md`, Track M2 acceptance criteria and the end-to-end integration checklist. Existing archived PDF material is superseded for scoring by this decision and the editable scoring contract.
+- **Regression protection:** Tests compare calculated and generated report scores with the sample, verify each severity weight, apply a trap penalty only once, and ensure repeated violations have no per-rule cap. No schema fields, detection rules, announcements or TTS behavior change.

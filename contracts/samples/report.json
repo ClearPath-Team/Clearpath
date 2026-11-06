@@ -2,7 +2,7 @@
   "id": "dev1",
   "url": "http://localhost:8080/bad-checkout.html",
   "title": "Finalizează comanda",
-  "score": 28,
+  "score": 38,
   "counts": {
     "critical": 4,
     "serious": 3,

@@ -94,5 +94,5 @@ python -m worker.engine.report issues.json timeline.json nodes.json
 ## Acceptance Criteria
 - [ ] On `samples/nodes.json`: Unnamed button yields `Buton`, unnamed image yields `Imagine fără descriere`, unlabeled input yields `Câmp de editare`.
 - [ ] On `bad-checkout.html`: The audit returns the expected WCAG rules + `keyboard-trap`, with at least 5 linked to valid `node_id`s.
-- [ ] A dedicated test (`worker/engine/test_report.py`) verifies the scoring formula against test data. Expected score for `bad-checkout.html` is approximately 28.
+- [ ] A dedicated test (`worker/engine/test_report.py`) verifies the scoring formula and agreement with `contracts/samples/report.json`: eight sample findings score 38. The live `bad-checkout.html` audit currently returns nine findings and scores 33; see the scoring contract for the exact deductions.
 - [ ] All user-facing issue titles and recommendations are clearly phrased.
