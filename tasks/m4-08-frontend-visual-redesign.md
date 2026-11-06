@@ -1,6 +1,6 @@
-# Task: [M4-03] Frontend Visual Redesign (Claude Design mockups -> Next.js)
+# Task: [M4-08] Frontend Visual Redesign (Claude Design mockups -> Next.js)
 
-- **Task ID:** `M4-03`
+- **Task ID:** `M4-08`
 - **GitHub Issue:** #28
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
@@ -33,10 +33,12 @@ ClearPath demonstrates accessibility problems, so its own UI is part of the pitc
 Design (approved 2026-11-06): https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk
 
 The transcript panel needs `timeline.json`, which the API does not serve yet, so implementation is split into sub-tasks. This task stays open as the umbrella and closes when all of them are merged:
-- `M4-04` API endpoint for the analysis timeline (`api/`).
+- `M4-09` API endpoint for the analysis timeline (`api/`).
 - `M4-05` UI foundation (tokens, layout, header) and home page.
 - `M4-06` Analysis progress and error states.
 - `M4-07` Report view: synced video, transcript and issues.
+
+Renumbered from M4-03/M4-04 to M4-08/M4-09 to avoid colliding with the language tasks added on `main` (M4-03 #36 analysis language toggle, M4-04 #38 website language selector, M2-03 #32 English speech). Those build on the redesigned components after this work lands.
 
 ---
 
@@ -46,7 +48,7 @@ The assignee is permitted to modify or create:
 - `web/components/**` (new presentational components)
 - `web/tailwind.config.ts`
 - `web/package.json` / `web/package-lock.json` (only if a new dependency is justified in the PR; pin exact versions)
-- `tasks/m4-03-frontend-visual-redesign.md`
+- `tasks/m4-08-frontend-visual-redesign.md`
 - `tasks/README.md`
 
 **Forbidden:** Modifying `api/`, `worker/`, `contracts/`, `doc/1-foundation/data-contracts.md`, or the API request/response shapes the UI relies on.
@@ -55,10 +57,10 @@ The assignee is permitted to modify or create:
 
 ## 4. Acceptance Criteria
 - [x] A Claude Design artifact with the start page and results page (empty, loading/progress, error, done states) is linked in this issue and approved.
-- [ ] Sub-tasks `M4-04`, `M4-05`, `M4-06` and `M4-07` are merged.
+- [ ] Sub-tasks `M4-09`, `M4-05`, `M4-06` and `M4-07` are merged.
 - [ ] `/` and `/a/[id]` match the approved design at desktop (1280px) and phone (~400px) widths, with no horizontal page scroll.
 - [ ] All existing behavior is preserved: URL submission and API error messages, 4-stage progress polling, video playback, clicking an issue timestamp seeks the video, severity filters use `issue.severity`, score, counts and `focus_trap` display.
-- [ ] Data shapes still follow `doc/1-foundation/data-contracts.md` (`report.json`, `status.json`, `timeline.json`); the only new API call is the timeline endpoint from `M4-04`.
+- [ ] Data shapes still follow `doc/1-foundation/data-contracts.md` (`report.json`, `status.json`, `timeline.json`); the only new API call is the timeline endpoint from `M4-09`.
 - [ ] The UI meets WCAG 2.1 AA: text contrast >= 4.5:1, every control is reachable and operable by keyboard with a visible focus indicator, the video player and issue list are usable without a mouse, and animations respect `prefers-reduced-motion`.
 - [ ] Interface copy is in English. Content produced by the backend in Romanian (screen-reader announcements, video captions, issue titles and recommendations, API error messages, the audited page's title) is shown as-is and marked `lang="ro"` so screen readers pronounce it correctly. Code, comments and commit messages are in English.
 - [ ] `cd web && npm run build` completes with zero errors and zero type errors.
@@ -101,4 +103,5 @@ CP_STUBS= python scripts/dev.py
 - **2026-11-06:** Task created as Ready.
 
 - **2026-11-06 16:51 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
-- **2026-11-06:** Design approved; implementation split into M4-04, M4-05, M4-06, M4-07.
+- **2026-11-06:** Design approved; implementation split into M4-09, M4-05, M4-06, M4-07.
+- **2026-11-06:** Renumbered M4-03 -> M4-08 and M4-04 -> M4-09 (ID collision with #36/#38).

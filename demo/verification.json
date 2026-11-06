@@ -1,0 +1,37 @@
+{
+  "browser": "Microsoft Edge",
+  "host_network_disconnected": false,
+  "stack_started_while_disconnected": false,
+  "runs": {
+    "bad-checkout": {
+      "score": 33,
+      "range_status": 206,
+      "critical_issue_id": "i1",
+      "seek_seconds": 11.632,
+      "observed_seek_seconds": 11.64,
+      "video_played": true,
+      "active_card_highlight": true
+    },
+    "site1": {
+      "score": 0,
+      "range_status": 206,
+      "critical_issue_id": "i2",
+      "seek_seconds": 28.85,
+      "observed_seek_seconds": 28.85,
+      "video_played": true,
+      "active_card_highlight": true
+    },
+    "site2": {
+      "score": 0,
+      "range_status": 206,
+      "critical_issue_id": "i1",
+      "seek_seconds": 13.971,
+      "observed_seek_seconds": 13.971,
+      "video_played": true,
+      "active_card_highlight": true
+    }
+  },
+  "browser_version": "156.0.4314.58",
+  "external_requests": [],
+  "browser_errors": []
+}

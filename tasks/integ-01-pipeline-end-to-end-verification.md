@@ -5,8 +5,8 @@
 - **Track:** `Shared` (Integration and pipeline orchestration)
 - **Type:** `Feature`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In review`
+- **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `integ-e2e-verification`
 - **Created Date:** 2026-11-06
 
@@ -42,7 +42,7 @@ The assignee is permitted to modify or create:
 
 ## 4. Acceptance Criteria
 - [ ] Running `CP_STUBS="" python -m worker.pipeline ck-live http://localhost:8080/bad-checkout.html` completes cleanly without exceptions and exits with code 0.
-- [ ] `data/ck-live/` contains all 6 files: `status.json` (`status: "done"`), `nodes.json`, `events.json`, `issues.json`, `clip.mp4`, `timeline.json`, and `report.json`.
+- [ ] `data/ck-live/` contains all 7 files: `status.json` (`status: "done"`), `nodes.json`, `events.json`, `issues.json`, `clip.mp4`, `timeline.json`, and `report.json`.
 - [ ] `report.json` score matches the ADR M2-02 specification: exactly **33** (9 axe-core issues + 1 keyboard trap).
 - [ ] Cart button is announced with role "buton" and has a valid timestamp in `timeline.json` and `report.json`.
 - [ ] An automated test suite in `worker/test_pipeline.py` validates pipeline stage handoffs with both mocked and live runners (skipping live browser launch gracefully if host browser dependencies are absent, per SHARED-02).
@@ -50,27 +50,15 @@ The assignee is permitted to modify or create:
 ---
 
 ## 5. Validation & Test Commands
+
 ```bash
-# 1. Run local test HTTP server for bad-checkout.html
-python -m http.server 8080 --directory test-site &
-SERVER_PID=$!
-
-# 2. Run live pipeline with zero stubs
-CP_STUBS="" .venv/bin/python -m worker.pipeline ck-integ http://localhost:8080/bad-checkout.html
-
-# 3. Verify output score and files
-.venv/bin/python -c "
-from worker.common import read_json, DATA_DIR
-rep = read_json(DATA_DIR / 'ck-integ' / 'report.json')
-assert rep['score'] == 33, f'Expected score 33, got {rep[\"score\"]}'
-assert rep['issues_count']['critical'] >= 4
-assert rep['trap'] is not None
-print('INTEGRATION TEST PASSED: Score and report validated!')
-"
-
-# 4. Clean up background server
-kill $SERVER_PID
+python -m unittest worker.test_pipeline.MockedPipelineTests -v
+CP_RUN_LIVE_E2E=1 python -m unittest worker.test_pipeline.LivePipelineTests -v
 ```
+
+PowerShell: `$env:CP_RUN_LIVE_E2E="1"; python -m unittest worker.test_pipeline.LivePipelineTests -v`.
+
+The live runner starts the demo HTTP server and uses an isolated temporary output directory. It validates the current report fields `counts` and `focus_trap` (not obsolete `issues_count` / `trap`). Browser and media prerequisites must be installed; a skip is not a passing acceptance result. The live test has **not** been executed by this PR author in the connected environment.
 
 ---
 
@@ -89,3 +77,5 @@ kill $SERVER_PID
 
 ## 8. Execution Log
 - **2026-11-06:** Task created as Ready for the Integration phase.
+
+- **2026-11-06:** Added mocked handoff regression tests and opt-in live acceptance runner. Live verification pending; acceptance checkboxes intentionally remain unchecked.

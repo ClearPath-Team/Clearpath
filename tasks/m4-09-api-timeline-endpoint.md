@@ -1,6 +1,6 @@
-# Task: [M4-04] API Endpoint for Analysis Timeline (transcript data)
+# Task: [M4-09] API Endpoint for Analysis Timeline (transcript data)
 
-- **Task ID:** `M4-04`
+- **Task ID:** `M4-09`
 - **GitHub Issue:** #33
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
@@ -18,7 +18,7 @@ Serve a finished analysis's `timeline.json` through the API so the redesigned re
 ---
 
 ## 2. Context
-The approved redesign (M4-03, #28, design: https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk) shows every screen-reader announcement with its timestamp and marks the ones linked to an issue. That data already exists in `data/{id}/timeline.json` (schema in `doc/1-foundation/data-contracts.md`, produced by M3's `render_clip`), but `api/main.py` only exposes `/api/health`, `POST /api/analyses`, `GET /api/analyses/{id}` (status + `report.json`) and `/media/{id}/clip.mp4`. `report.json` does not contain the transcript entries.
+The approved redesign (M4-08, #28, design: https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk) shows every screen-reader announcement with its timestamp and marks the ones linked to an issue. That data already exists in `data/{id}/timeline.json` (schema in `doc/1-foundation/data-contracts.md`, produced by M3's `render_clip`), but `api/main.py` only exposes `/api/health`, `POST /api/analyses`, `GET /api/analyses/{id}` (status + `report.json`) and `/media/{id}/clip.mp4`. `report.json` does not contain the transcript entries.
 
 ---
 
@@ -27,7 +27,7 @@ The assignee is permitted to modify or create:
 - `api/main.py`
 - `api/test_main.py` (new or updated tests)
 - `doc/2-tracks/m4-app.md` (document the endpoint)
-- `tasks/m4-04-api-timeline-endpoint.md`
+- `tasks/m4-09-api-timeline-endpoint.md`
 - `tasks/README.md`
 
 **Forbidden:** Changing the `timeline.json` schema, `doc/1-foundation/data-contracts.md`, `worker/`, or `web/`.
@@ -68,4 +68,4 @@ sleep 5 && curl -s localhost:8000/api/analyses/$ID/timeline | python3 -m json.to
 ---
 
 ## 8. Execution Log (Updated by Assignee)
-- **2026-11-06:** Task created as Ready (split from M4-03).
+- **2026-11-06:** Task created as Ready (split from M4-08).

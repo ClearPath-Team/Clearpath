@@ -15,7 +15,7 @@
 ## 1. Goal
 Set up the shared visual foundation of the approved redesign in `web/` and implement the home page (`/`) to match the "1 · Home" artboard.
 
-Design (approved, M4-03 / #28): https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk
+Design (approved, M4-08 / #28): https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk
 
 ---
 
@@ -47,6 +47,7 @@ The redesign is minimal and Apple-like: white surfaces, near-black text, one blu
 - `web/tailwind.config.ts`, `web/app/globals.css`, `web/app/layout.tsx`
 - `web/app/page.tsx`
 - `web/components/**` (new shared components: header, buttons, severity badge)
+- `web/lib/strings.ts` (interface copy)
 - `tasks/m4-05-ui-foundation-and-home.md`, `tasks/README.md`
 
 **Forbidden:** `api/`, `worker/`, `contracts/`, and changing the request/response shapes the UI uses.
@@ -55,6 +56,7 @@ The redesign is minimal and Apple-like: white surfaces, near-black text, one blu
 
 ## 4. Acceptance Criteria
 - [ ] Tokens above are defined once in Tailwind config and used by components; the old indigo/slate palette is removed.
+- [ ] Interface strings live in one module (e.g. `web/lib/strings.ts`, English only) so M4-04 (#38, website language selector) can add Romanian without touching components.
 - [ ] `layout.tsx` sets `<html lang="en">`, the font stack, white background, and a shared header ("ClearPath" wordmark, "How it works", "Sample report" links).
 - [ ] `/` matches the Home artboard: centered hero, URL form (labelled input + "Analyze"), report preview block, "Three steps. One link." section, limits note.
 - [ ] Existing behavior is unchanged: POST to `/api/analyses`, redirect to `/a/{id}`, API `detail` errors shown under the input with `aria-invalid` and `aria-describedby`.
@@ -74,14 +76,15 @@ CP_STUBS=all python scripts/dev.py
 ---
 
 ## 6. Dependencies
-- Approved design in M4-03 (#28). Blocks `M4-06` and `M4-07` (shared foundation).
+- Approved design in M4-08 (#28). Blocks `M4-06` and `M4-07` (shared foundation).
 
 ---
 
 ## 7. Out of Scope
 - `/a/[id]` pages (`M4-06`, `M4-07`).
+- The analysis language toggle (M4-03, #36) and website language selector (M4-04, #38); they build on these components afterwards.
 
 ---
 
 ## 8. Execution Log (Updated by Assignee)
-- **2026-11-06:** Task created as Ready (split from M4-03).
+- **2026-11-06:** Task created as Ready (split from M4-08).

@@ -15,7 +15,7 @@
 ## 1. Goal
 Implement the in-progress and failure states of `/a/[id]` to match the "2 · Analysis in progress" and "4 · Error and empty states" artboards.
 
-Design (approved, M4-03 / #28): https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk
+Design (approved, M4-08 / #28): https://claude.ai/artifact/FSpXpauSM4zuds3Zs2VHGk
 
 ---
 
@@ -66,4 +66,4 @@ CP_STUBS= python scripts/dev.py
 ---
 
 ## 8. Execution Log (Updated by Assignee)
-- **2026-11-06:** Task created as Ready (split from M4-03).
+- **2026-11-06:** Task created as Ready (split from M4-08).

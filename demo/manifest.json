@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "generated_at": "2026-11-06T16:27:15.038006+00:00",
+  "runs": {
+    "bad-checkout": {
+      "url": "http://localhost:8080/bad-checkout.html",
+      "score": 33,
+      "issues": 9,
+      "duration": 52.595,
+      "event_count": 19,
+      "timestamped_critical_issues": 4,
+      "files": {
+        "status.json": {
+          "bytes": 161,
+          "sha256": "c68030da761b1058f93eb8c618632d620344c865133b3f981dd45efb68f64a84"
+        },
+        "nodes.json": {
+          "bytes": 11795,
+          "sha256": "ee6ee89ebd507eef1e3e8bb0ff8b9c00530eaba32a4065a38d599ed7acf2bc3d"
+        },
+        "events.json": {
+          "bytes": 1976,
+          "sha256": "df11415874209af0af7bd798bd10e0bc26b33ff673bfe99f257aaf549eafebb1"
+        },
+        "issues.json": {
+          "bytes": 3783,
+          "sha256": "29d85321d39eced87c07210b6f591b6f480b863d2cb73d51240bcdfd1e65e36a"
+        },
+        "clip.mp4": {
+          "bytes": 903005,
+          "sha256": "6d85e254150d70ad6099665d5945a1e816df6fb60d53e6e8038bc6a2829d4c08"
+        },
+        "timeline.json": {
+          "bytes": 2861,
+          "sha256": "3bbe1117d4b6db69843254a5358615c621de11ac4d8ab075ffcf8fd4830405d6"
+        },
+        "report.json": {
+          "bytes": 4548,
+          "sha256": "72c5991c62173ac7d9c0309958d5d5299f359d6b62d781f2287b59a3b49d3e3f"
+        }
+      }
+    },
+    "site1": {
+      "url": "https://projects.accesscomputing.uw.edu/au/before.html",
+      "score": 0,
+      "issues": 50,
+      "duration": 49.385,
+      "event_count": 22,
+      "timestamped_critical_issues": 4,
+      "files": {
+        "status.json": {
+          "bytes": 169,
+          "sha256": "ede3dced159db21e0472e85343152852e3fda8481f4cf07473b1cbd7483dd395"
+        },
+        "nodes.json": {
+          "bytes": 67999,
+          "sha256": "940a0af4fd21ccdf4b81f3cffbdb44377a3b75d9ee91200e379d8aef616b89ba"
+        },
+        "events.json": {
+          "bytes": 2176,
+          "sha256": "fa97eaa841ff2d07915dbdedecf19efd9108a6a6e735e808fdc18c2ef7a16a9a"
+        },
+        "issues.json": {
+          "bytes": 20902,
+          "sha256": "65f9940e5237c1008768c187b88783e220efab1ed21454118cea432e09e6e50c"
+        },
+        "clip.mp4": {
+          "bytes": 1298525,
+          "sha256": "7693316634c598d03d72dd94c16d46f5041162ff297a6b9779dbb40a2e6f1b0b"
+        },
+        "timeline.json": {
+          "bytes": 3207,
+          "sha256": "51960f40b804c7002a876acdb58c01f2ac9d6113398aaecac6241887c22e9133"
+        },
+        "report.json": {
+          "bytes": 23606,
+          "sha256": "5e44a9f2bbf26872f58417e77f0f26fbe6c6bcd487c9493c0ecbfac1b4ac0a34"
+        }
+      }
+    },
+    "site2": {
+      "url": "https://www.drudgereport.com/",
+      "score": 0,
+      "issues": 64,
+      "duration": 53.978,
+      "event_count": 18,
+      "timestamped_critical_issues": 4,
+      "files": {
+        "status.json": {
+          "bytes": 144,
+          "sha256": "1b7d13460979b36e9cbd6ddbb71e6c6a8964c72a62bed88c8f65ce2428b49dac"
+        },
+        "nodes.json": {
+          "bytes": 141345,
+          "sha256": "602f2bfc3225dc6d2e60e4035ca0ec25b4ab4f9876883fb766d5acfb4fd4be7c"
+        },
+        "events.json": {
+          "bytes": 2045,
+          "sha256": "b355254bd8e28d8fdf96aec6defb5a120d1806af36bfce9e3712b9fc34f93b16"
+        },
+        "issues.json": {
+          "bytes": 27567,
+          "sha256": "9ad63dac77319cbc7f665b4e903a335888e1932a366c5e4acbae110ab79fd961"
+        },
+        "clip.mp4": {
+          "bytes": 1448972,
+          "sha256": "6f9a69cba35aac7ba9fa2e3b55dfcbe8d9d80bc6b75402ae4ae80c5278308259"
+        },
+        "timeline.json": {
+          "bytes": 2894,
+          "sha256": "32220b476cb92e2763f5e862a654ab9ad201bb78b8b6667253f520fc0035fbac"
+        },
+        "report.json": {
+          "bytes": 30867,
+          "sha256": "8195b45f49fcb535d7f6a3230239dfc681efe6306e17b1d02f8b815fa0c85c9a"
+        }
+      }
+    }
+  }
+}

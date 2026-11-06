@@ -43,3 +43,23 @@ Disable stubs **progressively** following the pipeline sequence:
 | Video jumping/seeking fails | Server not returning `206` | Refer to `doc/2-tracks/m4-app.md`, section B |
 | Job stays in `queued` | Pipeline crashed during import | Inspect `data/{id}/pipeline.log` |
 | Cookie banner hides content | Overlay blocking DOM | Implement step 9 in Track M1 or pick another demo site |
+
+## 5. INTEG-01 automated acceptance runner
+
+Run mocked stage handoff tests (no browser or media dependencies):
+
+```bash
+python -m unittest worker.test_pipeline.MockedPipelineTests -v
+```
+
+Run the **real**, zero-stub pipeline acceptance test (opt-in; starts a local HTTP server, uses a temporary DATA_DIR and cleans up afterward):
+
+```bash
+CP_RUN_LIVE_E2E=1 python -m unittest worker.test_pipeline.LivePipelineTests -v
+```
+
+Windows PowerShell: `$env:CP_RUN_LIVE_E2E="1"; python -m unittest worker.test_pipeline.LivePipelineTests -v`.
+
+The live test requires Chromium, axe-core, ffmpeg/ffprobe, Piper CLI and a Romanian Piper voice model. Missing browser host dependencies are skipped using SHARED-02 diagnostics. Missing media dependencies are also skipped; other pipeline errors **fail**, never silently pass. A skipped test is **not** live acceptance evidence. On success the test checks seven output artifacts (including `status.json`), the canonical timeline, the score 33, the `#promo` trap and the cart-button speech/timestamps. The mocked test uses a placeholder clip and does **not** validate MP4 playback or visual timestamp seeking. The live test checks artifact presence and timestamps, not subjective narration quality or UI seeking.
+
+**Acceptance remains pending until the live test has been run and its result recorded.**

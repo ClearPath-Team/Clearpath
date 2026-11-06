@@ -1,0 +1,502 @@
+[
+  {
+    "id": "i1",
+    "rule": "image-alt",
+    "severity": "critical",
+    "node_id": "n95",
+    "selector": "#captcha > img:nth-of-type(1)",
+    "title": "Imaginea nu are atribut alt",
+    "recommendation": "Adaugă un atribut alt care descrie scopul sau conținutul imaginii.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI"
+  },
+  {
+    "id": "i2",
+    "rule": "image-alt",
+    "severity": "critical",
+    "node_id": "n12",
+    "selector": "#slides > div:nth-of-type(1) > img:nth-of-type(1)",
+    "title": "Imaginea nu are atribut alt",
+    "recommendation": "Adaugă un atribut alt care descrie scopul sau conținutul imaginii.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI"
+  },
+  {
+    "id": "i3",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n74",
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i4",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n76",
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(3) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i5",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n78",
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(4) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i6",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n94",
+    "selector": "#captcha > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i7",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n81",
+    "selector": "#majors > div:nth-of-type(1) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i8",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n83",
+    "selector": "#majors > div:nth-of-type(2) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i9",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n85",
+    "selector": "#majors > div:nth-of-type(3) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i10",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n87",
+    "selector": "#majors > div:nth-of-type(4) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i11",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n89",
+    "selector": "#majors > div:nth-of-type(5) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i12",
+    "rule": "label",
+    "severity": "critical",
+    "node_id": "n91",
+    "selector": "#majors > div:nth-of-type(6) > input:nth-of-type(1)",
+    "title": "Câmpul de formular nu are etichetă",
+    "recommendation": "Asociază un element <label for=\"id\"> sau un atribut aria-label câmpului.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI"
+  },
+  {
+    "id": "i13",
+    "rule": "color-contrast",
+    "severity": "serious",
+    "node_id": "n8",
+    "selector": "#menu > li:nth-of-type(1) > a:nth-of-type(1)",
+    "title": "Contrast insuficient între text și fundal",
+    "recommendation": "Mărește contrastul textului pentru a atinge raportul minim WCAG de 4.5:1.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI"
+  },
+  {
+    "id": "i14",
+    "rule": "color-contrast",
+    "severity": "serious",
+    "node_id": "n9",
+    "selector": "#menu > li:nth-of-type(2) > a:nth-of-type(1)",
+    "title": "Contrast insuficient între text și fundal",
+    "recommendation": "Mărește contrastul textului pentru a atinge raportul minim WCAG de 4.5:1.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI"
+  },
+  {
+    "id": "i15",
+    "rule": "color-contrast",
+    "severity": "serious",
+    "node_id": "n10",
+    "selector": "#menu > li:nth-of-type(3) > a:nth-of-type(1)",
+    "title": "Contrast insuficient între text și fundal",
+    "recommendation": "Mărește contrastul textului pentru a atinge raportul minim WCAG de 4.5:1.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI"
+  },
+  {
+    "id": "i16",
+    "rule": "color-contrast",
+    "severity": "serious",
+    "node_id": "n11",
+    "selector": "#menu > li:nth-of-type(4) > a:nth-of-type(1)",
+    "title": "Contrast insuficient între text și fundal",
+    "recommendation": "Mărește contrastul textului pentru a atinge raportul minim WCAG de 4.5:1.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI"
+  },
+  {
+    "id": "i17",
+    "rule": "html-has-lang",
+    "severity": "serious",
+    "node_id": null,
+    "selector": "html",
+    "title": "Elementul html nu are atribut lang",
+    "recommendation": "Adaugă atributul lang pe tag-ul <html> (de exemplu <html lang=\"ro\">).",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/html-has-lang?application=axeAPI"
+  },
+  {
+    "id": "i18",
+    "rule": "link-in-text-block",
+    "severity": "serious",
+    "node_id": "n23",
+    "selector": "#main > p:nth-of-type(3) > a:nth-of-type(1)",
+    "title": "Links must be distinguishable without relying on color",
+    "recommendation": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/link-in-text-block?application=axeAPI"
+  },
+  {
+    "id": "i19",
+    "rule": "link-in-text-block",
+    "severity": "serious",
+    "node_id": "n25",
+    "selector": "#main > p:nth-of-type(3) > a:nth-of-type(2)",
+    "title": "Links must be distinguishable without relying on color",
+    "recommendation": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/link-in-text-block?application=axeAPI"
+  },
+  {
+    "id": "i20",
+    "rule": "link-in-text-block",
+    "severity": "serious",
+    "node_id": "n27",
+    "selector": "#main > p:nth-of-type(3) > a:nth-of-type(3)",
+    "title": "Links must be distinguishable without relying on color",
+    "recommendation": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/link-in-text-block?application=axeAPI"
+  },
+  {
+    "id": "i21",
+    "rule": "landmark-one-main",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html",
+    "title": "Pagina nu are un reper pentru conținutul principal",
+    "recommendation": "Încadrează conținutul principal într-un element <main>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/landmark-one-main?application=axeAPI"
+  },
+  {
+    "id": "i22",
+    "rule": "page-has-heading-one",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html",
+    "title": "Pagina nu are un titlu principal",
+    "recommendation": "Adaugă un element <h1> care descrie subiectul principal al paginii.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI"
+  },
+  {
+    "id": "i23",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n71",
+    "selector": "#appForm > div:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i24",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n73",
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(2)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i25",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n75",
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(3)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i26",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n77",
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(4)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i27",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(5)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i28",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n72",
+    "selector": "#appForm > p:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i29",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "#captcha",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i30",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "#enrollment",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i31",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n0",
+    "selector": "#logo",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i32",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n15",
+    "selector": "#main > div:nth-of-type(2)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i33",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n18",
+    "selector": "#main > div:nth-of-type(3)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i34",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n21",
+    "selector": "#main > div:nth-of-type(4)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i35",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n30",
+    "selector": "#main > div:nth-of-type(5)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i36",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n66",
+    "selector": "#main > div:nth-of-type(6)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i37",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n17",
+    "selector": "#main > img:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i38",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n20",
+    "selector": "#main > img:nth-of-type(2)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i39",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n29",
+    "selector": "#main > img:nth-of-type(3)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i40",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n65",
+    "selector": "#main > img:nth-of-type(4)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i41",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n16",
+    "selector": "#main > p:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i42",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n19",
+    "selector": "#main > p:nth-of-type(2)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i43",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n22",
+    "selector": "#main > p:nth-of-type(3)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i44",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "#main > video:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i45",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "#majors",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i46",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n8",
+    "selector": "#menu > li:nth-of-type(1) > a:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i47",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n9",
+    "selector": "#menu > li:nth-of-type(2) > a:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i48",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n10",
+    "selector": "#menu > li:nth-of-type(3) > a:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i49",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": "n11",
+    "selector": "#menu > li:nth-of-type(4) > a:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i50",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "#slides > div:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  }
+]
