@@ -3,13 +3,11 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
-  AlertTriangle,
   CheckCircle2,
   Clock,
   Copy,
   ExternalLink,
   Play,
-  RotateCcw,
   ShieldAlert,
   ChevronDown,
   ChevronUp,
@@ -18,6 +16,10 @@ import {
   Loader2,
   Sparkles,
 } from "lucide-react";
+import AnalysisFailed from "@/components/analysis/AnalysisFailed";
+import AnalysisProgress from "@/components/analysis/AnalysisProgress";
+import VideoErrorPanel from "@/components/analysis/VideoErrorPanel";
+import { strings } from "@/lib/strings";
 
 interface Issue {
   id: string;
@@ -63,13 +65,6 @@ interface AnalysisStatusResponse {
   report: AnalysisReport | null;
 }
 
-const STEPS = [
-  { key: "queued", label: "Inițializare sesiune", desc: "Pregătire mediu de testare" },
-  { key: "extracting", label: "Arbore de accesibilitate", desc: "Extragere CDP & parcurgere Tab" },
-  { key: "analyzing", label: "Screen reader & audit WCAG", desc: "Sinteză vocală & reguli axe-core" },
-  { key: "rendering", label: "Randare video sincronizat", desc: "Evidențiere vizuală & muxing audio" },
-];
-
 export default function AnalysisPage() {
   const params = useParams();
   const router = useRouter();
@@ -82,6 +77,7 @@ export default function AnalysisPage() {
   const [copied, setCopied] = useState(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [videoError, setVideoError] = useState(false);
+  const [retrying, setRetrying] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -98,7 +94,7 @@ export default function AnalysisPage() {
         const res = await fetch(`${apiUrl}/api/analyses/${id}`);
         if (!res.ok) {
           if (res.status === 404) {
-            setError(`Analiza cu id-ul '${id}' nu a fost găsită.`);
+            setError(strings.analysis.failed.notFound(id));
             return;
           }
           throw new Error(`HTTP ${res.status}`);
@@ -110,8 +106,8 @@ export default function AnalysisPage() {
           timer = setTimeout(fetchStatus, 1500);
         }
       } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : "Eroare necunoscută";
-        setError(`Eroare de conexiune la API: ${message}`);
+        const message = err instanceof Error ? err.message : String(err);
+        setError(strings.analysis.failed.apiUnreachable(message));
       }
     };
 
@@ -171,105 +167,50 @@ export default function AnalysisPage() {
     return report.issues.filter((i) => (i.severity || i.impact) === filterSeverity);
   }, [report?.issues, filterSeverity]);
 
+  // Re-runs the same URL for a failed analysis; without one (unknown id, API down) it reloads this page.
+  const retry = async () => {
+    if (!data?.url) {
+      window.location.reload();
+      return;
+    }
+    setRetrying(true);
+    try {
+      const res = await fetch(`${apiUrl}/api/analyses`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: data.url }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      router.push(`/a/${json.id}`);
+    } catch {
+      setRetrying(false);
+      window.location.reload();
+    }
+  };
+
   // 1. Loading / Polling in Progress view
   if (data && data.status !== "done" && data.status !== "failed") {
-    const activeIndex = STEPS.findIndex((s) => s.key === data.status);
-    const currentStepIndex = activeIndex === -1 ? 0 : activeIndex;
-
-    return (
-      <div className="max-w-3xl mx-auto px-4 py-20">
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-8">
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950 text-indigo-300 text-xs font-semibold uppercase tracking-wider border border-indigo-800">
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-400" />
-              Analiză în desfășurare
-            </div>
-            <h1 className="text-2xl font-bold text-white">Analizăm experiența de accesibilitate</h1>
-            <p className="text-sm text-slate-400 font-mono break-all">{data.url}</p>
-          </div>
-
-          <div className="space-y-4 pt-4">
-            {STEPS.map((step, idx) => {
-              const isPast = idx < currentStepIndex;
-              const isCurrent = idx === currentStepIndex;
-              const isFuture = idx > currentStepIndex;
-
-              return (
-                <div
-                  key={step.key}
-                  className={`flex items-start gap-4 p-4 rounded-xl border transition-all ${
-                    isCurrent
-                      ? "bg-indigo-950/40 border-indigo-700/80 shadow-lg shadow-indigo-950/50"
-                      : isPast
-                      ? "bg-slate-900/60 border-slate-800 opacity-80"
-                      : "bg-slate-950/30 border-slate-900 opacity-40"
-                  }`}
-                >
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
-                      isPast
-                        ? "bg-emerald-600 text-white"
-                        : isCurrent
-                        ? "bg-indigo-600 text-white animate-pulse"
-                        : "bg-slate-800 text-slate-400"
-                    }`}
-                  >
-                    {isPast ? <Check className="w-4 h-4" /> : idx + 1}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-semibold text-white">{step.label}</div>
-                      {isCurrent && (
-                        <span className="text-xs font-medium text-indigo-400 animate-pulse">Se procesează...</span>
-                      )}
-                      {isPast && <span className="text-xs text-emerald-400">Finalizat</span>}
-                    </div>
-                    <div className="text-xs text-slate-400 mt-0.5">{step.desc}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="text-center text-xs text-slate-500">
-            Procesarea completă durează de obicei între 15 și 30 de secunde.
-          </div>
-        </div>
-      </div>
-    );
+    return <AnalysisProgress url={data.url} status={data.status} />;
   }
 
   // 2. Failed View
   if (data?.status === "failed" || error) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20">
-        <div className="bg-red-950/30 border border-red-800/80 rounded-2xl p-8 text-center space-y-6">
-          <div className="w-12 h-12 rounded-2xl bg-red-950 border border-red-800 flex items-center justify-center mx-auto text-red-400">
-            <AlertTriangle className="w-6 h-6" />
-          </div>
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold text-white">Analiza nu a putut fi finalizată</h1>
-            <p className="text-sm text-red-200">
-              {error || data?.error || "A intervenit o eroare neașteptată în timpul execuției pipeline-ului."}
-            </p>
-          </div>
-          <button
-            onClick={() => router.push("/")}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-all"
-          >
-            <RotateCcw className="w-4 h-4" />
-            Încearcă din nou
-          </button>
-        </div>
-      </div>
+      <AnalysisFailed
+        message={error || data?.error || strings.analysis.failed.unknownError}
+        onRetry={retry}
+        retrying={retrying}
+      />
     );
   }
 
   // 3. Completed (Done) Results Dashboard
   if (!report) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-500 mx-auto" />
+      <div className="mx-auto flex max-w-2xl items-center justify-center gap-3 px-6 py-24 text-ink-secondary" role="status">
+        <Loader2 className="h-5 w-5 motion-safe:animate-spin" aria-hidden="true" />
+        {strings.analysis.loading}
       </div>
     );
   }
@@ -397,19 +338,7 @@ export default function AnalysisPage() {
                 Browserul tău nu suportă redarea video HTML5.
               </video>
 
-              {videoError && (
-                <div className="absolute inset-0 bg-slate-950/90 flex flex-col items-center justify-center p-6 text-center space-y-3 z-10">
-                  <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                    <AlertTriangle className="w-5 h-5" />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-semibold text-white">Clipul video nu a putut fi redat</p>
-                    <p className="text-xs text-slate-400 max-w-sm">
-                      Fișierul video nu este încă generat sau conține date mock nefinalizate.
-                    </p>
-                  </div>
-                </div>
-              )}
+              {videoError && <VideoErrorPanel />}
             </div>
 
             <div className="p-4 text-xs text-slate-400 bg-slate-950/40 border-t border-slate-800/80 flex items-center gap-2">
