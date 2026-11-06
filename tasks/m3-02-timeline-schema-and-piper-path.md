@@ -5,8 +5,8 @@
 - **Track:** `M3` (TTS, recording, and media rendering)
 - **Type:** `Bug`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In review`
+- **Assignee:** `@Sergiu1809`
 - **Branch:** `m3-fix-timeline-schema`
 - **Created Date:** 2026-11-06
 
@@ -138,3 +138,5 @@ CP_STUBS=extract,audit .venv/bin/python -m worker.pipeline test-m3-pipe http://l
 
 ## 8. Execution Log
 - **2026-11-06:** Task created as Ready based on midpoint integration findings.
+- **2026-11-06 14:39 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
+- **2026-11-06:** PR #16 opened; review feedback addressed (Status -> In review)
