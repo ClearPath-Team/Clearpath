@@ -89,4 +89,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 3:
         write_json(Path(sys.argv[3]), result)
     else:
+        sys.stdout.reconfigure(encoding="utf-8")
         print(json.dumps(result, indent=2, ensure_ascii=False))
