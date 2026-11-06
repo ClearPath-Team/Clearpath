@@ -145,3 +145,4 @@ cd web && npm run build && cd ..
 
 ## 10. Execution Log
 - **2026-11-06:** Implemented taxonomy module, audit and report enrichment, bilingual labels, fixtures, deterministic unknown-rule fallback, unit tests and dashboard category filters. Review and full Python/Next.js validation pending.
+- **2026-11-06:** Reconciled with the merged redesigned EN/RO dashboard. Category controls follow the website language independently of backend content. Updated live axe contract assertions for taxonomy fields and added legacy-report enrichment coverage. Full Python discovery: 95 passed, one opt-in E2E skipped; production build passes. Scoring weights and score 33 remain unchanged.

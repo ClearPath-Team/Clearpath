@@ -7,7 +7,6 @@ import { useStrings } from "@/lib/useStrings";
 import { SEVERITIES, type Issue, type Severity } from "@/lib/types";
 import { SeverityBadge } from "./Severity";
 
-const t = strings.report;
 type Category = "visual_contrast" | "screen_reader" | "motor_keyboard" | "structure_navigation";
 const CATEGORY_LABELS: Record<Category, { en: string; ro: string }> = {
   visual_contrast: { en: "Contrast", ro: "Contrast" },
@@ -88,7 +87,7 @@ export default function IssueList({ issues, counts, selectedId, lang, onPlay }: 
         })}
       </div>
 
-      <div role="group" aria-label={lang === "en" ? "Filter issues by category" : "Filtrează problemele după categorie"} className="flex flex-wrap gap-2">
+      <div role="group" aria-label={language === "en" ? "Filter issues by category" : "Filtrează problemele după categorie"} className="flex flex-wrap gap-2">
         {(["all", ...CATEGORIES] as const).map((key) => {
           const selected = category === key;
           const label = key === "all" ? (language === "en" ? "All categories" : "Toate categoriile")
