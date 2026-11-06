@@ -21,6 +21,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`DEMO-01`** | M4 | P0 | `Ready` | *(Unassigned)* | [`demo-01-offline-precaching-and-presentation.md`](demo-01-offline-precaching-and-presentation.md) |
 | **`M1-02`** | M1 | P1 | `In review` | `@Sergiu1809` | [`m1-02-cookie-dismissal-and-live-resilience.md`](m1-02-cookie-dismissal-and-live-resilience.md) |
 | **`M3-03`** | M3 | P1 | `In progress` | `@andreiBirsanIoan` | [`m3-03-romanian-tts-quality-and-subtitles.md`](m3-03-romanian-tts-quality-and-subtitles.md) |
+| **`M4-03`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-03-frontend-visual-redesign.md`](m4-03-frontend-visual-redesign.md) |
 
 ---
 
