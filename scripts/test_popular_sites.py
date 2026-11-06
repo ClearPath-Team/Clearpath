@@ -16,6 +16,8 @@ import os
 import sys
 import time
 import traceback
+import re
+from uuid import uuid4
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -37,14 +39,103 @@ DEFAULT_SITES = [
     {"name": "BBC News", "url": "https://www.bbc.com", "category": "Media / News"},
 ]
 
+ROMANIAN_SITES = [
+    {"name": "Flip.ro", "url": "https://flip.ro", "category": "Refurbished electronics"},
+    {"name": "Vivre", "url": "https://vivre.ro", "category": "Home and furniture"},
+    {"name": "Tazz", "url": "https://tazz.ro", "category": "Food delivery"},
+    {"name": "Pago", "url": "https://pago.ro", "category": "Fintech and bills"},
+    {"name": "Salt Bank", "url": "https://salt.bank", "category": "Digital banking"},
+    {"name": "Sameday", "url": "https://sameday.ro", "category": "Parcel tracking"},
+    {"name": "eJobs", "url": "https://ejobs.ro", "category": "Recruitment"},
+    {"name": "Elefant.ro", "url": "https://elefant.ro", "category": "Online retail"},
+    {"name": "Kinderpedia", "url": "https://kinderpedia.co", "category": "Education"},
+]
+REQUIRED_ARTIFACTS = ("status.json", "nodes.json", "events.json", "issues.json",
+                      "timeline.json", "report.json", "clip.mp4")
 
-def test_site(site_info: dict, run_render: bool = True) -> dict:
+
+def verify_artifacts(out_dir: Path, *, full_render: bool) -> list[str]:
+    """Errors are reported rather than silently labeling partial runs successful."""
+    errors = []
+    required = REQUIRED_ARTIFACTS if full_render else REQUIRED_ARTIFACTS[:-1]
+    for name in required:
+        file = out_dir / name
+        if not file.is_file() or not file.stat().st_size:
+            errors.append(f"Missing or empty {name}")
+    if errors:
+        return errors
+    try:
+        status = read_json(out_dir / "status.json")
+        events = read_json(out_dir / "events.json")
+        issues = read_json(out_dir / "issues.json")
+        timeline = read_json(out_dir / "timeline.json")
+        report = read_json(out_dir / "report.json")
+        if status.get("status") != "done":
+            errors.append("Pipeline did not finish with done status")
+        if events.get("lang") != "ro" or report.get("lang", "ro") != "ro":
+            errors.append("Narration language is not Romanian")
+        if len(events.get("events", [])) != len(timeline.get("entries", [])):
+            errors.append("Timeline/event cardinality mismatch")
+        if len(issues) != len(report.get("issues", [])):
+            errors.append("Issue/report cardinality mismatch")
+        if full_render and not isinstance(timeline.get("duration"), (float, int)):
+            errors.append("Missing clip duration")
+        if full_render and report.get("clip_url") is None:
+            errors.append("Missing report video URL")
+        if report.get("score") is None or not 0 <= report["score"] <= 100:
+            errors.append("Invalid accessibility score")
+    except (ValueError, KeyError, TypeError, OSError) as exc:
+        errors.append(f"Invalid artifact: {exc}")
+    return errors
+
+
+def write_markdown_report(results: list[dict], output: Path, *, full_render: bool) -> None:
+    """Write a reviewable evidence manifest, without inventing unrun scores."""
+    lines = [
+        "# Romanian platform end-to-end audit",
+        "",
+        f"Generated (UTC): {datetime.now(timezone.utc).isoformat()}",
+        "",
+        f"Execution mode: {'Full five-stage pipeline (no stubs)' if full_render else 'Development-only partial render stub (not E2E)'}",
+        "",
+        "Scores describe the evaluated page at the capture time, not the full service or WCAG certification.",
+        "Authentication walls, anti-bot interstitials, network and consent overlays require manual review.",
+        "",
+        "| Platform | Status | Score | Findings (C/S/M/m) | Artifacts | Blocker |",
+        "| --- | --- | ---: | --- | --- | --- |",
+    ]
+    for item in results:
+        counts = item["issues_count"]
+        severity = "/".join(str(counts.get(key, 0)) for key in ("critical", "serious", "moderate", "minor"))
+        score = str(item["score"]) if item["score"] is not None else "—"
+        artifact_path = f"data/{item['analysis_id']}/report.json"
+        artifact = f"[report]({artifact_path})" if item["status"] == "success" else "—"
+        blocker = (item.get("error_message") or "—").replace("|", "/").replace("\n", " ")
+        lines.append(f"| {item['name']} | {item['status']} | {score} | {severity} | {artifact} | {blocker} |")
+    lines.extend(["", "## Artifact locations", ""])
+    for item in results:
+        lines.append(f"- **{item['name']}**: `data/{item['analysis_id']}/` — {item['status']}; "
+                     f"video: `data/{item['analysis_id']}/clip.mp4`"
+                     if item["clip_rendered"] else
+                     f"- **{item['name']}**: `data/{item['analysis_id']}/` — {item['status']}; video unavailable")
+    lines += ["", "## Limitations", "",
+              "- No anti-bot or CAPTCHA bypass is attempted.",
+              "- No checkout, invoice payment or account login is performed.",
+              "- A consent banner may still obscure content; review page screenshots before claiming accessibility.",
+              "- Only runs labelled 'success' have complete, validated artifacts.", ""]
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(lines), encoding="utf-8")
+
+
+
+def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) -> dict:
     name = site_info["name"]
     url = site_info["url"]
     category = site_info.get("category", "General")
     
     slug = "".join(c if c.isalnum() else "-" for c in name.lower()).strip("-")
-    analysis_id = f"e2e-{slug}"
+    # Unique per-run ID avoids mistaking stale reports from previous attempts for success.
+    analysis_id = f"e2e-{"ro-" if romanian else ""}{slug}-{uuid4().hex[:8]}"
     out_dir = DATA_DIR / analysis_id
     
     print(f"\n========================================================")
@@ -69,6 +160,7 @@ def test_site(site_info: dict, run_render: bool = True) -> dict:
         "trap_detected": False,
         "clip_rendered": False,
         "clip_duration": None,
+        "artifact_dir": str(out_dir),
     }
     
     try:
@@ -78,7 +170,7 @@ def test_site(site_info: dict, run_render: bool = True) -> dict:
         else:
             os.environ["CP_STUBS"] = ""
             
-        run_pipeline(analysis_id, url)
+        run_pipeline(analysis_id, url, lang="ro") if romanian else run_pipeline(analysis_id, url)
         
         # Verify generated artifacts
         rep_path = out_dir / "report.json"
@@ -116,12 +208,15 @@ def test_site(site_info: dict, run_render: bool = True) -> dict:
         if rep_path.exists():
             report_data = read_json(rep_path)
             result["score"] = report_data.get("score")
-            result["status"] = "success"
+            failures = verify_artifacts(out_dir, full_render=run_render)
+            result["status"] = "success" if not failures else "partial"
+            if failures:
+                result["error_message"] = "; ".join(failures)
         else:
             result["status"] = "partial"
             result["error_message"] = "report.json was not generated"
             
-    except Exception as exc:
+    except (Exception, SystemExit) as exc:
         result["status"] = "failed"
         result["error_message"] = str(exc)
         
@@ -136,6 +231,7 @@ def test_site(site_info: dict, run_render: bool = True) -> dict:
         print(f"FAILED on {name}: {exc}")
         traceback.print_exc()
         
+    os.environ.pop("CP_STUBS", None)
     result["duration_seconds"] = round(time.monotonic() - start_time, 2)
     print(f"Finished {name} in {result['duration_seconds']}s — Status: {result['status']}")
     return result
@@ -143,17 +239,19 @@ def test_site(site_info: dict, run_render: bool = True) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Test ClearPath against popular websites.")
-    parser.add_argument("--skip-render", action="store_true", help="Skip video rendering for fast audits")
+    parser.add_argument("--skip-render", action="store_true", help="Skip video rendering for fast audits (not full E2E)")
+    parser.add_argument("--preset", choices=("global", "romanian"), default="global", help="Platform preset")
+    parser.add_argument("--markdown", help="Write evidence-based Markdown audit report")
     parser.add_argument("--sites", nargs="*", help="Specific site names or URLs to test")
     parser.add_argument("--output", default="popular_sites_test_report.json", help="Path to save results JSON")
     args = parser.parse_args()
     
-    sites_to_test = DEFAULT_SITES
+    sites_to_test = ROMANIAN_SITES if args.preset == "romanian" else DEFAULT_SITES
     if args.sites:
         filtered = []
         for s in args.sites:
             norm_s = "".join(c for c in s.lower() if c.isalnum())
-            match = next((item for item in DEFAULT_SITES if "".join(c for c in item["name"].lower() if c.isalnum()) == norm_s), None)
+            match = next((item for item in sites_to_test if "".join(c for c in item["name"].lower() if c.isalnum()) == norm_s), None)
             if match:
                 filtered.append(match)
             else:
@@ -162,7 +260,7 @@ def main():
 
     results = []
     for site in sites_to_test:
-        res = test_site(site, run_render=not args.skip_render)
+        res = test_site(site, run_render=not args.skip_render, romanian=args.preset == "romanian")
         results.append(res)
         
     # Write JSON results
@@ -172,6 +270,10 @@ def main():
         "total_sites": len(results),
         "results": results
     })
+    if args.markdown or args.preset == "romanian":
+        md = Path(args.markdown) if args.markdown else out_file.with_suffix(".md")
+        write_markdown_report(results, md, full_render=not args.skip_render)
+        print(f"Markdown audit: {md}")
     print(f"\nAll tests completed. Summary written to {out_file}")
 
 
