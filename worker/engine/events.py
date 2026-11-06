@@ -1,5 +1,6 @@
 """Track M2: Announcement engine converting nodes into spoken Romanian screen-reader announcements."""
 from pathlib import Path
+import argparse
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -172,11 +173,14 @@ def build_events(nodes: dict, lang: str = "ro") -> dict:
 
 if __name__ == "__main__":
     import json
-    path = sys.argv[1] if len(sys.argv) > 1 else str(SAMPLES / "nodes.json")
-    lang = "en" if "--lang" in sys.argv and sys.argv.index("--lang") + 1 < len(sys.argv) and sys.argv[sys.argv.index("--lang") + 1] == "en" else "ro"
-    result = build_events(read_json(path), lang=lang)
-    if len(sys.argv) > 2 and sys.argv[2] != "--lang":
-        write_json(Path(sys.argv[2]), result)
+    parser = argparse.ArgumentParser(description="Generate screen-reader announcements")
+    parser.add_argument("nodes_path", nargs="?", default=str(SAMPLES / "nodes.json"))
+    parser.add_argument("output_path", nargs="?")
+    parser.add_argument("--lang", choices=("ro", "en"), default="ro")
+    args = parser.parse_args()
+    result = build_events(read_json(args.nodes_path), lang=args.lang)
+    if args.output_path:
+        write_json(Path(args.output_path), result)
     else:
         sys.stdout.reconfigure(encoding="utf-8")
         print(json.dumps(result, indent=2, ensure_ascii=False))
