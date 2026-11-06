@@ -288,5 +288,27 @@ class RealRenderEndToEndTests(unittest.TestCase):
         self.assertLess(stamps["button-name"], report["duration"])
 
 
+
+class EnglishVoiceTests(unittest.TestCase):
+    def test_english_model_selection(self):
+        with mock.patch.dict(os.environ, {"PIPER_MODEL_EN": "/tmp/custom-en.onnx"}):
+            self.assertEqual(render._voice_path("en"), Path("/tmp/custom-en.onnx"))
+
+    def test_english_edge_voice_selection(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "voice.wav"
+            def produce(args, **kwargs):
+                if "--write-media" in args:
+                    output.with_suffix(".mp3").write_bytes(b"mp3")
+                if args[0] == "ffmpeg":
+                    output.write_bytes(b"wav")
+            with mock.patch.dict(os.environ, {"TTS_ENGINE": "edge-tts"}, clear=True):
+                with mock.patch.object(render, "_edge_tts_bin", return_value="edge-tts"):
+                    with mock.patch.object(render, "_run", side_effect=produce) as runner:
+                        with mock.patch.object(render, "_duration", return_value=1.0):
+                            self.assertEqual(render._synthesize("Hello", output, lang="en"), 1.0)
+                            self.assertIn("en-US-ChristopherNeural", runner.call_args_list[0].args[0])
+
+
 if __name__ == "__main__":
     unittest.main()
