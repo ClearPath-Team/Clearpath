@@ -19,7 +19,7 @@ Every decision that alters a technology choice, data contract, or core product b
 
 | Date | Issue | Owner | Status |
 |---|---|---|---|
-| 2026-11-06 | M2-02 / #11: reconcile implemented scoring, contract documentation and sample report | M2 | Option B implemented for PR review; details below |
+| 2026-11-06 | M2-02 / #11: reconcile implemented scoring, contract documentation and sample report | M2 | Adopted (via PR #14); details below |
 
 ### M2-02: One scoring policy for live and sample reports
 

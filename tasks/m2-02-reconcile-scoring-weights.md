@@ -5,8 +5,8 @@
 - **Track:** `M2` (Announcement engine, audit, and reporting)
 - **Type:** `Bug`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `Done`
+- **Assignee:** `@AndreiBcs`
 - **Branch:** `m2-fix-scoring-weights`
 - **Created Date:** 2026-11-06
 
@@ -52,10 +52,10 @@ Depending on team consensus:
 ---
 
 ## 4. Acceptance Criteria
-- [ ] Scoring weights and formulas across code, unit tests, contract documentation, and sample JSON are in 100% agreement.
-- [ ] `worker/engine/test_report.py` passes all unit tests without failing assertions.
-- [ ] An ADR entry is added to `doc/decisions/decision-log.md` under "Integration Issues" formally recording the agreed scoring weights and rationale.
-- [ ] End-to-end integration checklist in `doc/3-integration/integration.md` specifies the agreed expected score.
+- [x] Scoring weights and formulas across code, unit tests, contract documentation, and sample JSON are in 100% agreement.
+- [x] `worker/engine/test_report.py` passes all unit tests without failing assertions.
+- [x] An ADR entry is added to `doc/decisions/decision-log.md` under "Integration Issues" formally recording the agreed scoring weights and rationale.
+- [x] End-to-end integration checklist in `doc/3-integration/integration.md` specifies the agreed expected score.
 
 ---
 
@@ -92,5 +92,11 @@ print(f'Calculated Score: {score}, Report Score: {rep[\"score\"]}')
 
 ---
 
-## 8. Execution Log
-- **2026-11-06:** Task created as Ready based on midpoint integration findings.
+## 8. Execution Log (Updated by Assignee)
+- **Status Change:** `Backlog` -> `Ready` on 2026-11-06
+- **Claimed by:** `@AndreiBcs`
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/14
+
+- **2026-11-06 14:15 UTC:** Claimed by @AndreiBcs (Status -> In progress)
+- **2026-11-06 14:35 UTC:** PR #14 opened (Status -> In review)
+- **2026-11-06 14:42 UTC:** PR #14 merged into main, Issue #11 closed (Status -> Done)
