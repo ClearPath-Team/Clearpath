@@ -1,7 +1,7 @@
 # Task: [M1-01] Playwright CDP AX-Tree & Keyboard Tab Traversal
 
 - **Task ID:** `M1-01`
-- **GitHub Issue:** #2 (pending creation/link)
+- **GitHub Issue:** #1
 - **Track:** `M1` (Extraction and keyboard traversal)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

@@ -1,7 +1,7 @@
 # Task: [M2-01] Screen Reader Speech Rules, axe-core Runner & Report Generation
 
 - **Task ID:** `M2-01`
-- **GitHub Issue:** #3 (pending creation/link)
+- **GitHub Issue:** #2
 - **Track:** `M2` (Announcement engine, audit, and reporting)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

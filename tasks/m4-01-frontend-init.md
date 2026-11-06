@@ -1,7 +1,7 @@
 # Task: [M4-01] Frontend Dashboard Initialization
 
 - **Task ID:** `M4-01`
-- **GitHub Issue:** #1 (pending creation/link)
+- **GitHub Issue:** #4
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P0 - blocks delivery`

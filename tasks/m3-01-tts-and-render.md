@@ -1,7 +1,7 @@
 # Task: [M3-01] Piper Voice Synthesis, Video Recording & Timeline Generation
 
 - **Task ID:** `M3-01`
-- **GitHub Issue:** #4 (pending creation/link)
+- **GitHub Issue:** #3
 - **Track:** `M3` (TTS, recording, and media rendering)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

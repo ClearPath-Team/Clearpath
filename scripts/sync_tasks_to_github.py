@@ -26,6 +26,12 @@ def get_repo_slug() -> str:
     if env_repo:
         return env_repo
     try:
+        slug = subprocess.check_output(["gh", "repo", "view", "--json", "nameWithOwner", "-q", ".nameWithOwner"], text=True).strip()
+        if slug:
+            return slug
+    except Exception:
+        pass
+    try:
         url = subprocess.check_output(["git", "config", "--get", "remote.origin.url"], text=True).strip()
         # Handles git@github.com:owner/repo.git or https://github.com/owner/repo.git
         m = re.search(r"github\.com[:/]([^/]+/[^/.]+)", url)
@@ -33,15 +39,20 @@ def get_repo_slug() -> str:
             return m.group(1)
     except Exception:
         pass
-    return "Sergiu1809/Clearpath"
+    return "ClearPath-Team/Clearpath"
 
 
 def sync_task(file_path: Path, repo: str, token: str) -> None:
     content = file_path.read_text(encoding="utf-8")
     
     # Check if already linked to GitHub Issue
+    issue_line = ""
+    for line in content.splitlines():
+        if "**GitHub Issue:**" in line:
+            issue_line = line
+            break
     m_issue = re.search(r"-\s*\*\*GitHub Issue:\*\*\s*#?(\d+)", content)
-    if m_issue:
+    if m_issue and "pending" not in issue_line.lower():
         print(f"Skipping {file_path.name}: already linked to issue #{m_issue.group(1)}")
         return
 
