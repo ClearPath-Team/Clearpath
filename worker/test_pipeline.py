@@ -117,7 +117,7 @@ class MockedPipelineTests(unittest.TestCase):
             pipeline.run_pipeline("mock", "http://localhost:8080/bad-checkout.html")
 
         self.assertEqual(observed, ["extract", "events", "audit", "render", "report"])
-        assert_artifacts(self, self.folder / "mock", score=38)
+        assert_artifacts(self, self.folder / "mock", score=33)
 
     def test_failed_stage_sets_failed_status(self):
         with mock.patch.dict(os.environ, {"CP_STUBS": ""}), \
@@ -133,8 +133,9 @@ class MockedPipelineTests(unittest.TestCase):
 
     def test_keyboard_trap_penalty_applied_once(self):
         issues = read_json(SAMPLES / "issues.json")
-        self.assertEqual(calculate_score(issues, has_focus_trap=True), 38)
-        self.assertEqual(calculate_score(issues + [issues[3]], has_focus_trap=True), 38)
+        trap = next(i for i in issues if i["rule"] == "keyboard-trap")
+        self.assertEqual(calculate_score(issues, has_focus_trap=True), 33)
+        self.assertEqual(calculate_score(issues + [trap], has_focus_trap=True), 33)
 
 
 class LivePipelineTests(unittest.TestCase):

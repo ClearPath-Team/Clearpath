@@ -64,7 +64,7 @@ def run_audit(url: str, nodes: dict) -> list[dict]:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         try:
-            context = browser.new_context(viewport=VIEWPORT)
+            context = browser.new_context(viewport=VIEWPORT, bypass_csp=True)
             try:
                 page = context.new_page()
                 try:

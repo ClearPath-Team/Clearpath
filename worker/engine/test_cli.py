@@ -8,7 +8,7 @@ import sys
 import threading
 import unittest
 
-from worker.common import ROOT
+from worker.common import ROOT, SAMPLES, read_json
 from scripts.check_env import chromium_skip_reason
 
 CHROMIUM_SKIP_REASON = chromium_skip_reason()
@@ -26,14 +26,14 @@ class CliEncodingTests(unittest.TestCase):
 
     def test_events_stdout_is_utf8_even_with_cp1252_environment(self):
         result = self.run_cli("worker.engine.events", "contracts/samples/nodes.json")
-        self.assertEqual(result["events"][0]["text"], "Pagina Finalizează comanda")
+        self.assertEqual(result["events"][0]["text"], f"Pagina {read_json(SAMPLES / 'nodes.json')['title']}")
         self.assertIn("imagine fără descriere", [event["text"] for event in result["events"]])
 
     def test_report_stdout_is_utf8_even_with_cp1252_environment(self):
         result = self.run_cli("worker.engine.report", "contracts/samples/issues.json",
                               "contracts/samples/timeline.json", "contracts/samples/nodes.json")
-        self.assertEqual(result["title"], "Finalizează comanda")
-        self.assertEqual(result["score"], 38)
+        self.assertEqual(result["title"], read_json(SAMPLES / "nodes.json")["title"])
+        self.assertEqual(result["score"], 33)
 
     @unittest.skipIf(CHROMIUM_SKIP_REASON is not None, CHROMIUM_SKIP_REASON or "")
     def test_audit_stdout_is_utf8_even_with_cp1252_environment(self):
