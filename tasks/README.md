@@ -16,6 +16,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M3-02`** | M3 | P0 | `Ready` | *(Unassigned)* | [`m3-02-timeline-schema-and-piper-path.md`](m3-02-timeline-schema-and-piper-path.md) |
 | **`M2-02`** | M2 | P1 | `Done` | `@AndreiBcs` | [`m2-02-reconcile-scoring-weights.md`](m2-02-reconcile-scoring-weights.md) |
 | **`SHARED-02`** | Shared | P1 | `Ready` | *(Unassigned)* | [`shared-02-playwright-environment-deps.md`](shared-02-playwright-environment-deps.md) |
+| **`M4-02`** | M4 | P0 | `In review` | `@alexcontz` | [`m4-02-frontend-dashboard-fixes.md`](m4-02-frontend-dashboard-fixes.md) |
 
 ---
 

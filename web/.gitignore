@@ -1,0 +1,13 @@
+# local env files
+.env*.local
+
+# dependencies
+/node_modules
+
+# next.js build output
+/.next/
+/out/
+
+# TypeScript cache
+*.tsbuildinfo
+next-env.d.ts
