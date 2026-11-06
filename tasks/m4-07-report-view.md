@@ -5,8 +5,8 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In progress`
+- **Assignee:** `Sergiu1809`
 - **Branch:** `m4-report-view`
 - **Created Date:** 2026-11-06
 
@@ -71,3 +71,5 @@ CP_STUBS= python scripts/dev.py
 
 ## 8. Execution Log (Updated by Assignee)
 - **2026-11-06:** Task created as Ready (split from M4-08).
+
+- **2026-11-06 17:45 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
