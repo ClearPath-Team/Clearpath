@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 from uuid import uuid4
+from typing import Literal
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request, Response, status
@@ -49,6 +50,7 @@ def analysis_dir(analysis_id: str) -> Path:
 
 class AnalysisRequest(BaseModel):
     url: str
+    lang: Literal["ro", "en"] = "ro"
 
 
 def validate_target_url(url: str) -> None:
@@ -121,6 +123,7 @@ def create_analysis(req: AnalysisRequest):
         "id": analysis_id,
         "url": target_url,
         "status": "queued",
+        "lang": req.lang,
         "error": None,
         "updated_at": now_iso(),
     }
@@ -129,13 +132,13 @@ def create_analysis(req: AnalysisRequest):
     # Launch pipeline as an independent background subprocess
     log_file = open(job_dir / "pipeline.log", "w", encoding="utf-8")
     subprocess.Popen(
-        [sys.executable, "-m", "worker.pipeline", analysis_id, target_url],
+        [sys.executable, "-m", "worker.pipeline", analysis_id, target_url, "--lang", req.lang],
         cwd=ROOT,
         stdout=log_file,
         stderr=subprocess.STDOUT,
     )
 
-    return {"id": analysis_id}
+    return {"id": analysis_id, "lang": req.lang}
 
 
 @app.get("/api/analyses/{analysis_id}")
@@ -156,6 +159,7 @@ def get_analysis(analysis_id: str):
         "id": status_data.get("id", analysis_id),
         "url": status_data.get("url"),
         "status": status_data.get("status"),
+        "lang": status_data.get("lang", "ro"),
         "error": status_data.get("error"),
         "report": report_data,
     }

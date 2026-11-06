@@ -46,6 +46,7 @@ export interface Timeline {
 export interface AnalysisStatusResponse {
   id: string;
   url: string;
+  lang?: "ro" | "en";
   status: "queued" | "extracting" | "analyzing" | "rendering" | "done" | "failed";
   error: string | null;
   report: Report | null;

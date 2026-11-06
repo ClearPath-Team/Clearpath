@@ -1,4 +1,4 @@
-// Interface copy, kept in one place so a Romanian version can be added (M4-04, #38).
+// Interface copy; backend-generated announcements and findings keep their own language.
 export const strings = {
   layout: {
     title: "ClearPath — Hear your site the way a blind user does",
@@ -14,12 +14,16 @@ export const strings = {
   home: {
     eyebrow: "Accessibility, heard.",
     title: "Hear your site the way a blind user does.",
-    lead: "ClearPath navigates your page with the keyboard only, reads it aloud like a Romanian screen reader, and shows every issue in a narrated video.",
+    lead: "ClearPath navigates your page with the keyboard only, reads it aloud in your chosen language, and shows every issue in a narrated video.",
     urlLabel: "Web address to analyze",
     submit: "Analyze",
     submitting: "Starting…",
     hint: "Usually under 3 minutes. One page, no sign-in.",
     tryDemo: "Try the demo page:",
+    analysisLanguage: "Analysis narration language",
+    analysisLanguageHelp: "Choose the narration language independently of the website language.",
+    english: "English",
+    romanian: "Romanian",
     errors: {
       empty: "Please enter a web address.",
       startFailed: "The analysis couldn’t be started.",
@@ -43,7 +47,7 @@ export const strings = {
           body: "We read the accessibility tree and focus order exactly as someone without a mouse would. Keyboard traps surface here.",
         },
         {
-          title: "We read it aloud in Romanian",
+          title: "We read it aloud",
           body: "Every element is announced following NVDA conventions, and an axe-core audit checks the WCAG rules.",
         },
         {
@@ -134,3 +138,66 @@ export const strings = {
     },
   },
 } as const;
+
+type Localized<T> = T extends string ? string
+  : T extends (...args: never[]) => unknown ? T
+  : T extends readonly (infer Item)[] ? readonly Localized<Item>[]
+  : { [K in keyof T]: Localized<T[K]> };
+
+export const romanianStrings: Localized<typeof strings> = {
+  layout: {
+    ...strings.layout,
+    title: "ClearPath — Ascultă-ți site-ul altfel",
+    description: "Navigare asistată, audit WCAG și video narat, într-un singur raport.",
+    skipToContent: "Sari la conținutul principal", navLabel: "Navigare principală",
+    howItWorks: "Cum funcționează", sampleReport: "Raport exemplu",
+    footer: "ClearPath · Creat de echipa Four The Win pentru Astra Hack · Noiembrie 2026",
+  },
+  home: {
+    eyebrow: "Accesibilitatea se aude.", title: "Ascultă-ți site-ul așa cum îl aude un utilizator nevăzător.",
+    lead: "ClearPath navighează pagina folosind doar tastatura, o citește în limba aleasă și arată fiecare problemă într-un clip narat.",
+    urlLabel: "Adresa web de analizat", submit: "Analizează", submitting: "Se inițiază…",
+    hint: "De obicei sub 3 minute. O pagină, fără autentificare.", tryDemo: "Încearcă pagina demo:",
+    analysisLanguage: "Limba narării analizei", analysisLanguageHelp: "Poți alege limba narării independent de limba interfeței.",
+    english: "Engleză", romanian: "Română",
+    errors: { empty: "Introdu o adresă web.", startFailed: "Analiza nu a putut fi inițiată.",
+      apiUnreachable: "Nu se poate conecta la API-ul ClearPath (FastAPI pe portul 8000). Verifică dacă api/main.py rulează." },
+    preview: { label: "Previzualizare raport", frameLabel: "Cadru video: coșul este evidențiat cu galben, iar cititorul de ecran spune „Buton”.",
+      caption: "Clipul narat evidențiază elementul anunțat de cititorul de ecran.", transcriptTitle: "Ce aude utilizatorul",
+      explanationBefore: "Butonul coșului nu are nume. Un utilizator nevăzător aude doar", explanationAfter: "și nu știe ce face." },
+    steps: { title: "Trei pași. Un singur link.", items: [
+      { title: "Navigăm cu Tab", body: "Citim arborele de accesibilitate și ordinea focalizării așa cum le întâlnește cineva fără mouse. Detectăm capcanele de tastatură." },
+      { title: "Citim pagina cu voce tare", body: "Anunțăm fiecare element după convențiile NVDA și verificăm regulile WCAG folosind axe-core." },
+      { title: "Primești clipul și raportul", body: "Un clip narat, un scor de la 0 la 100 și fiecare problemă legată de secunda ei din înregistrare." },
+    ], limits: "O pagină per analiză, fără autentificare, până la 40 de anunțuri (aproximativ 90 de secunde)." },
+  },
+  analysis: {
+    newAnalysis: "Analiză nouă", copyLink: "Copiază linkul", linkCopied: "Link copiat", copyFailed: "Copiază adresa din bara browserului", loading: "Se încarcă analiza…",
+    progress: { title: "Ascultăm pagina ta.", barLabel: "Progresul analizei", stepOf: (step, total) => `Pasul ${step} din ${total}`,
+      stepsLabel: "Pașii analizei", done: "Finalizat", inProgress: "În desfășurare", upNext: "Urmează",
+      liveStatus: (label) => `În desfășurare: ${label}`, note: "De obicei sub 3 minute. Poți închide pagina; linkul rămâne valid.",
+      steps: [ { key: "queued", label: "Pregătirea sesiunii", desc: "Browser Chromium, rezoluție 1280 × 720." },
+        { key: "extracting", label: "Arborele de accesibilitate", desc: "Structura paginii și ordinea Tab." },
+        { key: "analyzing", label: "Cititor de ecran și audit WCAG", desc: "Anunțuri și reguli axe-core." },
+        { key: "rendering", label: "Clipul narat", desc: "Înregistrare, evidențiere și sincronizare vocală." } ] },
+    failed: { title: "Analiza nu a putut fi finalizată", body: "Verifică adresa sau încearcă din nou peste câteva minute.",
+      unknownError: "Procesarea s-a oprit neașteptat.", notFound: (id) => `Nu există o analiză cu identificatorul „${id}”.`,
+      apiUnreachable: (message) => `Nu se poate conecta la API-ul ClearPath: ${message}`, tryAgain: "Încearcă din nou", retrying: "Se inițiază…" },
+    video: { errorTitle: "Clipul video nu a putut fi redat", errorBody: "Raportul și problemele găsite sunt în continuare disponibile." },
+  },
+  report: {
+    eyebrow: "Raport de accesibilitate", summaryLabel: "Rezumat", score: "Scor de accesibilitate", outOf: "/ 100",
+    severity: { critical: { label: "Critic", plural: "Critice" }, serious: { label: "Grav", plural: "Grave" },
+      moderate: { label: "Mediu", plural: "Medii" }, minor: { label: "Minor", plural: "Minore" } },
+    trap: { title: "Capcană de tastatură", bodyWithTime: (time, selector) => `La ${time}, focalizarea se blochează pe ${selector}. Cineva care folosește doar tastatura nu poate continua.`,
+      body: (selector) => `Focalizarea se blochează pe ${selector}. Cineva care folosește doar tastatura nu poate continua.` },
+    playFrom: (time) => `Redă de la ${time}`,
+    video: { title: "Clip narat", unsupported: "Browserul tău nu poate reda acest clip.", markersLabel: "Probleme în clip",
+      markerLabel: (severity, title, time) => `Problemă de severitate ${severity} la ${time}: ${title}`,
+      nowPlaying: (time, title) => `Redare de la ${time}: ${title}` },
+    transcript: { title: "Ce aude utilizatorul", unavailable: "Transcriptul nu este disponibil pentru această analiză.",
+      seekLabel: (time, text) => `Redă de la ${time}: ${text}`, hasIssue: "are o problemă" },
+    issues: { title: "Probleme găsite", filterLabel: "Filtrează după severitate", all: "Toate", empty: "Nu există probleme de această severitate.",
+      notInVideo: "Nu apare în clip: această problemă afectează întreaga pagină.", wcagGuide: "Ghid WCAG", opensInNewTab: "(se deschide într-o filă nouă)" },
+  },
+};

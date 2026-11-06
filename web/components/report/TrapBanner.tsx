@@ -1,8 +1,9 @@
+"use client";
+
 import { formatSeconds } from "@/lib/format";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 import type { Issue } from "@/lib/types";
 
-const t = strings.report;
 
 type Props = {
   trapIssue: Issue | undefined;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export default function TrapBanner({ trapIssue, onPlay }: Props) {
+  const strings = useStrings();
+  const t = strings.report;
   const selector = trapIssue?.selector ?? "";
   const time = trapIssue?.timestamp != null ? formatSeconds(trapIssue.timestamp) : null;
   return (

@@ -3,11 +3,10 @@
 import { useState, type RefObject } from "react";
 import VideoErrorPanel from "@/components/analysis/VideoErrorPanel";
 import { formatSeconds } from "@/lib/format";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 import type { Issue } from "@/lib/types";
 import { SEVERITY_STYLE } from "./Severity";
 
-const t = strings.report;
 
 type Props = {
   src: string;
@@ -20,6 +19,8 @@ type Props = {
 };
 
 export default function VideoPlayer({ src, duration, currentTime, issues, videoRef, onTimeUpdate, onPlayIssue }: Props) {
+  const strings = useStrings();
+  const t = strings.report;
   const [error, setError] = useState(false);
   const total = duration > 0 ? duration : 1;
   const markers = issues.filter((issue) => issue.timestamp != null);

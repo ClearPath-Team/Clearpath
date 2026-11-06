@@ -2,11 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { formatSeconds } from "@/lib/format";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 import type { Severity, TimelineEntry } from "@/lib/types";
 import { SEVERITY_STYLE } from "./Severity";
 
-const t = strings.report.transcript;
 
 type Props = {
   entries: TimelineEntry[] | null;
@@ -18,6 +17,8 @@ type Props = {
 };
 
 export default function Transcript({ entries, currentTime, issueSeverityByNode, lang, onSeek }: Props) {
+  const strings = useStrings();
+  const t = strings.report.transcript;
   const listRef = useRef<HTMLOListElement>(null);
   const rowRefs = useRef<(HTMLLIElement | null)[]>([]);
 

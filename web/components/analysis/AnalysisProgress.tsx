@@ -1,7 +1,8 @@
-import CopyLinkButton from "@/components/CopyLinkButton";
-import { strings } from "@/lib/strings";
+"use client";
 
-const t = strings.analysis.progress;
+import CopyLinkButton from "@/components/CopyLinkButton";
+import { useStrings } from "@/lib/useStrings";
+
 
 type Props = {
   url: string;
@@ -35,6 +36,8 @@ function PendingIcon() {
 }
 
 export default function AnalysisProgress({ url, status }: Props) {
+  const strings = useStrings();
+  const t = strings.analysis.progress;
   const found = t.steps.findIndex((s) => s.key === status);
   const current = found === -1 ? 0 : found;
   const total = t.steps.length;

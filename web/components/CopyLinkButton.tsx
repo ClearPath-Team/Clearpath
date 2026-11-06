@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 
-const t = strings.analysis;
 
 export default function CopyLinkButton() {
+  const strings = useStrings();
+  const t = strings.analysis;
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
 
   const copy = async () => {

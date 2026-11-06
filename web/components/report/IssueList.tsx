@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { formatSeconds } from "@/lib/format";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 import { SEVERITIES, type Issue, type Severity } from "@/lib/types";
 import { SeverityBadge } from "./Severity";
 
-const t = strings.report;
 
 type Props = {
   issues: Issue[];
@@ -17,6 +16,8 @@ type Props = {
 };
 
 export default function IssueList({ issues, counts, selectedId, lang, onPlay }: Props) {
+  const strings = useStrings();
+  const t = strings.report;
   const [filter, setFilter] = useState<"all" | Severity>("all");
   const visible = filter === "all" ? issues : issues.filter((issue) => issue.severity === filter);
   const tabs: { key: "all" | Severity; label: string; count: number }[] = [
