@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { SiteShell } from "@/components/SiteShell";
-import "./globals.css";
+import { strings } from "@/lib/strings";
 
 export const metadata: Metadata = {
-  title: "ClearPath — Web Accessibility Simulator",
-  description: "Explore accessibility barriers through narrated walkthroughs and WCAG audits.",
+  title: strings.layout.title,
+  description: strings.layout.description,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased">
+    <html lang="en">
+      <body className="flex min-h-screen flex-col">
         <LanguageProvider><SiteShell>{children}</SiteShell></LanguageProvider>
       </body>
     </html>

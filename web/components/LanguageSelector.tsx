@@ -12,7 +12,7 @@ export function LanguageSelector() {
         aria-label={t("language")}
         value={language}
         onChange={(event) => setLanguage(event.target.value as "en" | "ro")}
-        className="rounded-lg border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+        className="rounded border border-hairline bg-white px-2 py-1.5 text-sm text-ink"
       >
         <option value="en">English</option>
         <option value="ro">Română</option>

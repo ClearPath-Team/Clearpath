@@ -97,6 +97,7 @@ cd ..
 
 ## 8. Execution Log (Updated by Assignee)
 - **2026-11-06:** Implementation proposed on `m4-website-language-selector`: typed EN/RO translations, persistent header selector, document language updates, localized landing/report, synchronized analysis default with manual override. Next.js build and integrated backend flow not yet verified.
-- **Dependency:** M4-03 (#36) must merge for the API to actually consume `lang`. The current `main` ignores the extra JSON property.
+- **2026-11-06:** Integration with M4-05/M4-06/M4-07 preserves the approved redesign and translates its header, home, progress/error states, report, filters, transcript controls, and video markers. The API and pipeline in this PR consume `lang`; retry preserves the original analysis language. Backend-generated text retains its own `lang` and is not translated by the UI.
+- **2026-11-06:** Production build passes. Python suite: 90 passing tests, one opt-in full-pipeline test skipped; real media rendering passed. Added API language/default/validation tests and English pipeline handoff coverage. Edge checks cover EN/RO keyboard switching, reload/navigation persistence, independent narration overrides, POST payload, report translation, video seeking/filtering/transcript, progress/failure/retry, and narrow viewports.
 - **Status Change:** `Ready` -> `In review`
-- **Claimed by:** Unassigned
+- **Claimed by:** @andreiBirsanIoan
