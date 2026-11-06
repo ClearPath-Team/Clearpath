@@ -5,7 +5,7 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `In review`
+- **Status:** `Done`
 - **Assignee:** `@alexcontz`
 - **Branch:** `m4-frontend-init`
 - **Created Date:** 2026-11-06
@@ -98,3 +98,4 @@ npm run dev
 
 - **2026-11-06 13:03 UTC:** Claimed by @alexcontz (Status -> In progress)
 - **2026-11-06 14:11 UTC:** PR #10 opened (Status -> In review)
+- **2026-11-06 14:13 UTC:** PR #10 merged into main (Status -> Done)

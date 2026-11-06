@@ -5,7 +5,7 @@
 - **Track:** `M3` (TTS, recording, and media rendering)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
+- **Status:** `Done`
 - **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `m3-tts-render`
 - **Created Date:** 2026-11-06
@@ -83,5 +83,9 @@ ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers
 
 ## 8. Execution Log (Updated by Assignee)
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
-- **Claimed by:** *None*
-- **PR:** *None*
+- **Claimed by:** `@andreiBirsanIoan`
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/6
+
+- **2026-11-06 13:03 UTC:** Claimed by @andreiBirsanIoan (Status -> In progress)
+- **2026-11-06 13:42 UTC:** PR #6 merged into main (Status -> Done)
+

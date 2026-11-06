@@ -5,7 +5,7 @@
 - **Track:** `M2` (Announcement engine, audit, and reporting)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
+- **Status:** `Done`
 - **Assignee:** `@AndreiBcs`
 - **Branch:** `m2-speech-audit`
 - **Created Date:** 2026-11-06
@@ -97,5 +97,9 @@ console.log('M2-01 validation PASSED. Score: ' + r.summary.score);
 
 ## 8. Execution Log (Updated by Assignee)
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
-- **Claimed by:** *None*
-- **PR:** *None*
+- **Claimed by:** `@AndreiBcs`
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/7
+
+- **2026-11-06 13:03 UTC:** Claimed by @AndreiBcs (Status -> In progress)
+- **2026-11-06 13:40 UTC:** PR #7 merged into main (Status -> Done)
+

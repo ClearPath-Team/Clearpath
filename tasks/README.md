@@ -9,10 +9,13 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | Task ID | Track | Priority | Status | Assignee | Task File |
 |---|---|---|---|---|---|
 | **`SHARED-01`** | Shared | P1 | `Done` | `@alexcontz` | [`shared-01-setup-workflow-projects.md`](shared-01-setup-workflow-projects.md) |
-| **`M1-01`** | M1 | P1 | `Ready` | *(Unassigned)* | [`m1-01-cdp-ax-tree.md`](m1-01-cdp-ax-tree.md) |
-| **`M2-01`** | M2 | P1 | `Ready` | *(Unassigned)* | [`m2-01-speech-and-audit.md`](m2-01-speech-and-audit.md) |
-| **`M3-01`** | M3 | P1 | `Ready` | *(Unassigned)* | [`m3-01-tts-and-render.md`](m3-01-tts-and-render.md) |
-| **`M4-01`** | M4 | P0 | `Ready` | *(Unassigned)* | [`m4-01-frontend-init.md`](m4-01-frontend-init.md) |
+| **`M1-01`** | M1 | P1 | `Done` | `@Sergiu1809` | [`m1-01-cdp-ax-tree.md`](m1-01-cdp-ax-tree.md) |
+| **`M2-01`** | M2 | P1 | `Done` | `@AndreiBcs` | [`m2-01-speech-and-audit.md`](m2-01-speech-and-audit.md) |
+| **`M3-01`** | M3 | P1 | `Done` | `@andreiBirsanIoan` | [`m3-01-tts-and-render.md`](m3-01-tts-and-render.md) |
+| **`M4-01`** | M4 | P0 | `Done` | `@alexcontz` | [`m4-01-frontend-init.md`](m4-01-frontend-init.md) |
+| **`M3-02`** | M3 | P0 | `Ready` | *(Unassigned)* | [`m3-02-timeline-schema-and-piper-path.md`](m3-02-timeline-schema-and-piper-path.md) |
+| **`M2-02`** | M2 | P1 | `Ready` | *(Unassigned)* | [`m2-02-reconcile-scoring-weights.md`](m2-02-reconcile-scoring-weights.md) |
+| **`SHARED-02`** | Shared | P1 | `Ready` | *(Unassigned)* | [`shared-02-playwright-environment-deps.md`](shared-02-playwright-environment-deps.md) |
 
 ---
 

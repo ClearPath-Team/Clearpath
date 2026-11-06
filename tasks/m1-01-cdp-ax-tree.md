@@ -5,7 +5,7 @@
 - **Track:** `M1` (Extraction and keyboard traversal)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `In progress`
+- **Status:** `Done`
 - **Assignee:** `@Sergiu1809`
 - **Branch:** `m1-cdp-ax-tree`
 - **Created Date:** 2026-11-06
@@ -80,7 +80,8 @@ console.log('M1-01 validation PASSED. Extracted ' + d.nodes.length + ' nodes.');
 
 ## 8. Execution Log (Updated by Assignee)
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
-- **Claimed by:** *None*
-- **PR:** *None*
+- **Claimed by:** `@Sergiu1809`
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/8
 
 - **2026-11-06 13:03 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
+- **2026-11-06 13:45 UTC:** PR #8 merged into main (Status -> Done)
