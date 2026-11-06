@@ -16,6 +16,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M3-02`** | M3 | P0 | `Ready` | *(Unassigned)* | [`m3-02-timeline-schema-and-piper-path.md`](m3-02-timeline-schema-and-piper-path.md) |
 | **`M2-02`** | M2 | P1 | `Done` | `@AndreiBcs` | [`m2-02-reconcile-scoring-weights.md`](m2-02-reconcile-scoring-weights.md) |
 | **`SHARED-02`** | Shared | P1 | `Ready` | *(Unassigned)* | [`shared-02-playwright-environment-deps.md`](shared-02-playwright-environment-deps.md) |
+| **`M4-02`** | M4 | P0 | `In progress` | `@alexcontz` | [`m4-02-frontend-dashboard-fixes.md`](m4-02-frontend-dashboard-fixes.md) |
 
 ---
 
@@ -49,6 +50,11 @@ To prevent two AI agents or team members from working on the same task simultane
 4. **Mark as Ready for Review (`In review`):**
    ```bash
    python scripts/task.py done <TASK_ID> --pr <PR_URL>
+   ```
+   *Registers the PR on the GitHub Issue, updates issue status to `In review`, and ensures no standalone PR cards exist on the project board.*
+5. **Clean Standalone PRs from Board (if needed):**
+   ```bash
+   python scripts/task.py clean-prs
    ```
 
 ---

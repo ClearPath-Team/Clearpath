@@ -52,13 +52,6 @@ interface AnalysisReport {
   focus_trap?: boolean;
   duration?: number;
   clip_url?: string;
-  summary?: {
-    score: number;
-    issues_count: IssueCounts;
-    has_trap: boolean;
-    announcements_count?: number;
-    duration_sec?: number;
-  };
   issues: Issue[];
 }
 
@@ -175,7 +168,7 @@ export default function AnalysisPage() {
   const filteredIssues = useMemo(() => {
     if (!report?.issues) return [];
     if (filterSeverity === "all") return report.issues;
-    return report.issues.filter((i) => i.impact === filterSeverity);
+    return report.issues.filter((i) => (i.severity || i.impact) === filterSeverity);
   }, [report?.issues, filterSeverity]);
 
   // 1. Loading / Polling in Progress view
@@ -281,10 +274,10 @@ export default function AnalysisPage() {
     );
   }
 
-  const score = report.score ?? report.summary?.score ?? 0;
-  const hasTrap = report.focus_trap ?? report.summary?.has_trap ?? false;
-  const duration = report.duration ?? report.summary?.duration_sec ?? 20;
-  const rawCounts = report.counts || report.summary?.issues_count || {
+  const score = report.score ?? 0;
+  const hasTrap = report.focus_trap ?? false;
+  const duration = report.duration ?? 20;
+  const rawCounts = report.counts || {
     critical: 0,
     serious: 0,
     moderate: 0,
@@ -496,7 +489,7 @@ export default function AnalysisPage() {
                     key={issue.id}
                     className={`rounded-xl border transition-all ${
                       isActive
-                        ? "bg-slate-850 border-indigo-500 ring-2 ring-indigo-500/30 shadow-lg"
+                        ? "bg-slate-800 border-indigo-500 ring-2 ring-indigo-500/30 shadow-lg"
                         : "bg-slate-900/90 border-slate-800 hover:border-slate-700"
                     }`}
                   >
