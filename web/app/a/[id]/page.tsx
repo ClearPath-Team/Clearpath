@@ -7,6 +7,7 @@ import { Loader2 } from "lucide-react";
 import AnalysisFailed from "@/components/analysis/AnalysisFailed";
 import AnalysisProgress from "@/components/analysis/AnalysisProgress";
 import CopyLinkButton from "@/components/CopyLinkButton";
+import ExportReportButton from "@/components/ExportReportButton";
 import IssueList from "@/components/report/IssueList";
 import ReportSummary from "@/components/report/ReportSummary";
 import Transcript from "@/components/report/Transcript";
@@ -183,7 +184,10 @@ export default function AnalysisPage() {
           </h1>
           <p className="break-all text-base text-ink-secondary">{report.url}</p>
         </div>
-        <CopyLinkButton />
+        <div className="flex flex-wrap items-start gap-3">
+          <ExportReportButton id={id} apiUrl={apiUrl} />
+          <CopyLinkButton />
+        </div>
       </div>
 
       <ReportSummary score={report.score} counts={report.counts} />

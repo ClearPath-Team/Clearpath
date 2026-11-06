@@ -8,6 +8,7 @@
 - **Status:** `In review`
 - **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `m2-english-speech-rules`
+- **Pull Request:** https://github.com/ClearPath-Team/Clearpath/pull/62
 - **Created Date:** 2026-11-06
 
 ---
@@ -45,7 +46,7 @@ The agent is permitted to modify only the following files:
 ---
 
 ## 4. Acceptance Criteria
-- [ ] `worker/engine/events.py`:
+- [x] `worker/engine/events.py`:
   - `build_events(nodes, lang="ro")` accepts an optional `lang` parameter (`"ro"` or `"en"`), defaulting to `"ro"`.
   - When `lang == "en"`:
     - `heading` with `level=N` ➔ `heading level N`
@@ -60,18 +61,18 @@ The agent is permitted to modify only the following files:
     - State flags: `required` ➔ `required`, `disabled` ➔ `unavailable`
   - When `lang == "ro"` (or omitted): Produces identical Romanian announcements matching the baseline tests.
   - Result JSON retains `"lang": "en"` or `"lang": "ro"`.
-- [ ] `worker/engine/audit.py` & `worker/engine/recommendations.py`:
+- [x] `worker/engine/audit.py` & `worker/engine/recommendations.py`:
   - `run_audit(url, nodes, lang="ro")` accepts `lang`.
   - When `lang == "en"`, uses axe-core's native English `help` and `description` strings, or curated English recommendation strings.
   - When `lang == "ro"`, continues to use the curated Romanian `RECOMMENDATIONS` table.
-- [ ] `worker/media/render.py`:
+- [x] `worker/media/render.py`:
   - Accepts `lang` parameter.
   - When `lang == "en"`:
     - If `TTS_ENGINE=edge-tts`, defaults voice to `en-US-ChristopherNeural` or `en-US-AriaNeural`.
     - If `TTS_ENGINE=piper`, resolves an English voice model (e.g. `assets/voices/en_US-lessac-medium.onnx` or path configured via `PIPER_MODEL_EN`).
-- [ ] `scripts/fetch_assets.py`:
+- [x] `scripts/fetch_assets.py`:
   - Adds optional `--lang` or downloads the English Piper voice model (`en_US-lessac-medium`) if requested.
-- [ ] **Backward Compatibility & Regression:**
+- [x] **Backward Compatibility & Regression:**
   - All 63 existing unit tests pass without errors (`python -m unittest discover -s worker`).
   - New unit tests added in `worker/engine/test_events.py` verifying English translations for all supported roles and states.
 
@@ -108,3 +109,10 @@ python -m worker.engine.events contracts/samples/nodes.json
 - **2026-11-06:** Added bilingual announcement roles, English axe-core remediation support, language-dependent Piper/edge TTS voices, optional English model asset download, and focused regression tests.
 - **Validation pending:** Full worker test suite and real English Piper render must be run on a machine with installed voice/model and Playwright. Do not mark Done before acceptance.
 - **Claimed by:** @andreiBirsanIoan
+
+- **2026-11-06 validation:** Downloaded en_US-lessac-medium and ran the real five-stage English pipeline over a local HTTP fixture with four announcements and zero stubs. MP4 duration: 10.745 seconds; ffprobe confirmed audio and video streams. Added a durable real English Piper render regression using an HTTP fixture. All 26 focused engine/voice/render tests passed. Full worker discovery was also executed: 86 tests, 1 failure, 8 errors, 1 skip. Eight errors involve file:// fixtures rejected by managed Chromium policy; the live audit test also missed expected contrast findings in this environment. Full-suite acceptance remains pending; no blanket all-tests-pass claim.
+
+- **2026-11-06 20:29 UTC:** Linked PR: https://github.com/ClearPath-Team/Clearpath/pull/62
+- **Final regression validation (2026-11-06):** Full worker discovery now runs 88 tests with no failures/errors and one skip. Local file fixtures were migrated to hermetic HTTP; the real axe test uses a temporary fixture copy with a stable Arial font so contrast assertions remain meaningful across hosts. Source demo HTML and production audit logic are unchanged. English and Romanian real render tests passed. Subprocess execution is bounded to 300 seconds and timeout reporting has a regression test. This supersedes the initial environment-related failures above.
+
+- **Explicit opt-in acceptance:** `CP_RUN_LIVE_E2E=1 python -m unittest worker.test_pipeline.LivePipelineTests -v` passed (1 test, 185.013 seconds), with zero stubs, real Romanian Piper/Chromium/ffmpeg and a 12-announcement excerpt including the cart. Page extraction and axe audit still evaluate the full fixture. The opt-in test serves the same deterministic-font temporary fixture as the live axe regression. Thus the previously skipped E2E case has also been executed successfully.

@@ -178,14 +178,23 @@ class LivePipelineTests(unittest.TestCase):
         if not _voice_path().is_file():
             self.skipTest(f"Piper model missing: {_voice_path()}")
 
-        handler = partial(SimpleHTTPRequestHandler, directory=str(ROOT / "test-site"))
+        # Keep contrast checks independent of host-specific system-ui fonts.
+        fixture_dir = tempfile.TemporaryDirectory(prefix="cp-pipeline-fixture-")
+        self.addCleanup(fixture_dir.cleanup)
+        fixture = (ROOT / "test-site/bad-checkout.html").read_text(encoding="utf-8")
+        fixture = fixture.replace('system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
+                                  'Arial,sans-serif')
+        (Path(fixture_dir.name) / "bad-checkout.html").write_text(fixture, encoding="utf-8")
+        handler = partial(SimpleHTTPRequestHandler, directory=fixture_dir.name)
         server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
         try:
             with tempfile.TemporaryDirectory(prefix="cp-integ-live-") as directory:
                 analysis_id = "ck-live"
-                env = {**os.environ, "CP_STUBS": "", "TTS_ENGINE": "piper",
+                # The full page is extracted/audited; a short narrated excerpt
+                # still includes the cart and verifies all pipeline handoffs.
+                env = {**os.environ, "CP_STUBS": "", "TTS_ENGINE": "piper", "MAX_EVENTS": "12",
                        "DATA_DIR": directory}
                 url = f"http://127.0.0.1:{server.server_port}/bad-checkout.html"
                 result = subprocess.run(

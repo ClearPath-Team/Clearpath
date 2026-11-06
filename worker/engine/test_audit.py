@@ -2,6 +2,8 @@
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import threading
+import tempfile
+from pathlib import Path
 import unittest
 from unittest.mock import Mock, patch
 
@@ -119,7 +121,16 @@ class BrowserEnvironmentTests(unittest.TestCase):
 @unittest.skipIf(CHROMIUM_SKIP_REASON is not None, CHROMIUM_SKIP_REASON or "")
 class LiveAuditTests(unittest.TestCase):
     def test_demo_uses_real_axe_and_maps_at_least_five_nodes(self):
-        handler = partial(SimpleHTTPRequestHandler, directory=str(ROOT / "test-site"))
+        # system-ui resolves to host-specific fonts. Some managed fonts make
+        # axe's glyph detection skip contrast checks; use a stable test font.
+        # Only the served test copy changes, never the audited demo source.
+        temp = tempfile.TemporaryDirectory(prefix="cp-audit-fixture-")
+        self.addCleanup(temp.cleanup)
+        fixture = (ROOT / "test-site/bad-checkout.html").read_text(encoding="utf-8")
+        fixture = fixture.replace('system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
+                                  'Arial,sans-serif')
+        (Path(temp.name) / "bad-checkout.html").write_text(fixture, encoding="utf-8")
+        handler = partial(SimpleHTTPRequestHandler, directory=temp.name)
         server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()

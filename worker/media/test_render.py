@@ -15,7 +15,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest import mock
 
-from worker.common import SAMPLES, read_json
+from worker.common import ROOT, SAMPLES, read_json
 from worker.engine.report import build_report
 from worker.media import render
 from worker.media.render import (
@@ -167,6 +167,12 @@ class ValidateClipDurationTests(unittest.TestCase):
 
 
 class BinaryResolutionTests(unittest.TestCase):
+    def test_subprocess_timeout_is_bounded_and_explained(self):
+        with mock.patch.object(render.subprocess, "run", side_effect=subprocess.TimeoutExpired("piper", 300)) as run:
+            with self.assertRaisesRegex(RuntimeError, "timed out after 300 seconds: piper"):
+                render._run(["piper"], input_text="Continue, button")
+        self.assertEqual(run.call_args.kwargs["timeout"], 300)
+
     def test_resolves_from_path(self):
         with mock.patch("shutil.which", return_value="/usr/local/bin/edge-tts"):
             self.assertEqual(_resolve_binary("edge-tts"), "/usr/local/bin/edge-tts")
@@ -287,6 +293,39 @@ _SKIP_REAL_RENDER = _real_render_unavailable_reason()
 class RealRenderEndToEndTests(unittest.TestCase):
     """Runs Piper, Chromium and ffmpeg for real on the offline test site."""
 
+    def test_english_piper_renders_audio_and_video_over_http(self):
+        from functools import partial
+        from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+        from threading import Thread
+        model = Path(os.getenv("PIPER_MODEL_EN", str(ROOT / "assets/voices/en_US-lessac-medium.onnx")))
+        if not model.is_file():
+            self.skipTest("Download English voice with scripts/fetch_assets.py --lang en")
+        server = ThreadingHTTPServer(("127.0.0.1", 0), partial(
+            SimpleHTTPRequestHandler, directory=str(ROOT / "test-site")))
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        self.addCleanup(server.server_close)
+        self.addCleanup(server.shutdown)
+        out = Path(tempfile.mkdtemp(prefix="cp-test-english-render-"))
+        self.addCleanup(shutil.rmtree, out, ignore_errors=True)
+        events = {"lang": "en", "events": [
+            {"seq": 0, "node_id": None, "text": "Checkout, heading level 1"},
+            {"seq": 1, "node_id": None, "text": "Continue, button"},
+        ]}
+        with mock.patch.dict(os.environ, {"TTS_ENGINE": "piper"}):
+            timeline = render_clip(f"http://127.0.0.1:{server.server_port}/bad-checkout.html",
+                                   {"nodes": []}, events, out, lang="en")
+        self.assertEqual([entry["text"] for entry in timeline["entries"]],
+                         [event["text"] for event in events["events"]])
+        probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
+                                "stream=codec_type:format=duration", "-of", "json", str(out / "clip.mp4")],
+                               capture_output=True, text=True, check=True, timeout=30)
+        metadata = json.loads(probe.stdout)
+        self.assertEqual(sorted(s["codec_type"] for s in metadata["streams"]), ["audio", "video"])
+        self.assertGreater(float(metadata["format"]["duration"]), 0)
+        self.assertLessEqual(timeline["entries"][-1]["end"],
+                             timeline["duration"] + render.CLIP_END_SLACK_SECONDS)
+
     def test_generated_mp4_is_synchronized_with_timeline(self):
         nodes = read_json(SAMPLES / "nodes.json")
         sample_events = read_json(SAMPLES / "events.json")["events"]
@@ -296,7 +335,15 @@ class RealRenderEndToEndTests(unittest.TestCase):
                         or (n["role"] == "link" and not n["name"])}
         events = {"events": [e for e in sample_events if e["node_id"] in selected_ids]}
         self.assertEqual(len(events["events"]), 3)
-        site = (Path(__file__).resolve().parents[2] / "test-site" / "bad-checkout.html").as_uri()
+        from functools import partial
+        from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+        from threading import Thread
+        server = ThreadingHTTPServer(("127.0.0.1", 0), partial(
+            SimpleHTTPRequestHandler, directory=str(ROOT / "test-site")))
+        Thread(target=server.serve_forever, daemon=True).start()
+        self.addCleanup(server.server_close)
+        self.addCleanup(server.shutdown)
+        site = f"http://127.0.0.1:{server.server_port}/bad-checkout.html"
         out_dir = Path(tempfile.mkdtemp(prefix="cp-test-real-render-"))
         self.addCleanup(shutil.rmtree, out_dir, ignore_errors=True)
 
