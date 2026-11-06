@@ -65,7 +65,7 @@ def fetch_voice(lang: str = "ro"):
     voice_location = "en/en_US/lessac/medium" if lang == "en" else "ro/ro_RO/mihai/medium"
     base_url = f"https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/{voice_location}/{voice}"
     headers = {"User-Agent": "ClearPath-AssetFetcher/1.0"}
-    for filename, dest in [(f"{VOICE}.onnx", onnx_dest), (f"{VOICE}.onnx.json", json_dest)]:
+    for filename, dest in [(f"{voice}.onnx", onnx_dest), (f"{voice}.onnx.json", json_dest)]:
         if dest.exists():
             continue
         url = f"{base_url}.onnx" if filename.endswith(".onnx") else f"{base_url}.onnx.json"
