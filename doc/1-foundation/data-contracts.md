@@ -112,8 +112,8 @@ All entities are linked via `node_id`. The association with the real DOM is esta
   "id": "a7f3c2d1",
   "url": "http://localhost:8080/bad-checkout.html",
   "title": "Finalizează comanda",
-  "score": 28,
-  "counts": { "critical": 4, "serious": 4, "moderate": 1, "minor": 0 },
+  "score": 38,
+  "counts": { "critical": 4, "serious": 3, "moderate": 1, "minor": 0 },
   "clip_url": "/media/a7f3c2d1/clip.mp4",
   "duration": 84.2,
   "focus_trap": true,
@@ -137,12 +137,25 @@ All entities are linked via `node_id`. The association with the real DOM is esta
 
 ```
 score = 100
-for each axe rule: penalty = min(20, sum of weights of its violations)
-    weights: critical = 10, serious = 6, moderate = 3, minor = 1
-score -= sum of penalties
-if keyboard-trap exists: score -= 15    (applied independently)
+for each issue except keyboard-trap:
+    score -= weight[issue.severity]
+    weights: critical = 10, serious = 5, moderate = 2, minor = 1
+if keyboard-trap exists in issues or nodes.focus_trap is flagged:
+    score -= 15    (once, independently of trap severity or count)
 score = max(0, round(score))
 ```
+
+There is no per-rule cap. A keyboard trap is excluded from severity deductions,
+so its penalty is never counted twice. The `counts` still include every issue,
+including the synthetic critical `keyboard-trap` finding.
+
+The eight findings in `contracts/samples/issues.json` produce score **38**:
+`100 - (3 * 10) - (3 * 5) - (1 * 2) - 15 = 38`. The live demo has an additional
+serious `color-contrast` finding and scores **33** with nine findings. Live scores
+are calculated from detected findings, not fixed to a page URL.
+
+This policy supersedes the previous 10/6/3/1 weights and per-rule cap; see
+[M2-02 in the decision log](../decisions/decision-log.md#integration-issues).
 
 ## Shared Files
 

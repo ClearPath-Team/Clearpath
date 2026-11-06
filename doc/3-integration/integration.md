@@ -24,7 +24,9 @@ Disable stubs **progressively** following the pipeline sequence:
 | 5 | (empty) | Complete live pipeline; verify Web results dashboard |
 
 ## 3. End-to-End Acceptance Test
-- [ ] `bad-checkout.html`: Score is ~28, detects 8 issues, `keyboard-trap` is flagged. The cart button is announced as "Buton" and has an accurate timestamp.
+- [ ] Sample report: the eight findings in `contracts/samples/issues.json` score **38**, matching `contracts/samples/report.json`. Deductions are `3 * 10 + 3 * 5 + 2 + 15 = 62`.
+- [ ] Live `bad-checkout.html`: the current axe-core 4.10.2 audit detects **9 issues** and scores **33** (one additional serious contrast finding). `keyboard-trap` is flagged. Verify scores from actual findings using weights **10/5/2/1 per occurrence**, without per-rule caps, plus **15 once** for a keyboard trap. See [M2-02](../decisions/decision-log.md#integration-issues).
+- [ ] The cart button is announced as "buton" and has an accurate timestamp.
 - [ ] Clicking each timestamp seeks to the correct element in the video.
 - [ ] Real Site 1: Analysis completes in under 3 minutes.
 - [ ] Real Site 2: Analysis completes in under 3 minutes.

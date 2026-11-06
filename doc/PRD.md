@@ -176,8 +176,8 @@ Rules:
   "id": "a7f3c2d1",
   "url": "http://localhost:8080/bad-checkout.html",
   "title": "Finalizează comanda",
-  "score": 28,
-  "counts": { "critical": 4, "serious": 4, "moderate": 1, "minor": 0 },
+  "score": 38,
+  "counts": { "critical": 4, "serious": 3, "moderate": 1, "minor": 0 },
   "clip_url": "/media/a7f3c2d1/clip.mp4",
   "duration": 84.2,
   "focus_trap": true,
@@ -188,12 +188,18 @@ Rules:
 ### Scoring Formula
 ```
 score = 100
-for each axe rule: penalty = min(20, sum of weights of violations)
-    weights: critical = 10, serious = 6, moderate = 3, minor = 1
-score -= sum of penalties
-if keyboard-trap exists: score -= 15
+for each issue except keyboard-trap:
+    score -= weight[issue.severity]
+    weights: critical = 10, serious = 5, moderate = 2, minor = 1
+if keyboard-trap exists in issues or nodes.focus_trap is flagged:
+    score -= 15    (once, independently of trap severity or count)
 score = max(0, round(score))
 ```
+
+No per-rule cap applies. The eight sample findings score 38; the live demo's nine
+findings score 33. See the [scoring contract](1-foundation/data-contracts.md#scoring-formula)
+and the [M2-02 decision](decisions/decision-log.md#integration-issues), which
+supersede the original scoring policy and its illustrative score of 28.
 
 ---
 

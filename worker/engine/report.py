@@ -12,10 +12,10 @@ SEVERITIES = ("critical", "serious", "moderate", "minor")
 
 
 def calculate_score(issues: list, has_focus_trap: bool = False) -> int:
-    """Apply issue #2 weights (10/5/2/1), plus a single independent trap penalty.
+    """Apply contract weights per occurrence (10/5/2/1), without per-rule caps.
 
-    This issue-specific scoring policy was explicitly selected over the older
-    contract formula (10/6/3/1 with per-rule caps). The supplied issues score 38.
+    A keyboard trap deducts 15 once, independently of its severity or count.
+    See the M2-02 decision in doc/decisions/decision-log.md. Samples score 38.
     """
     weights = {"critical": 10, "serious": 5, "moderate": 2, "minor": 1}
     penalties = sum(weights[issue["severity"]] for issue in issues if issue["rule"] != "keyboard-trap")

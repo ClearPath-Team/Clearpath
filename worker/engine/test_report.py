@@ -1,4 +1,4 @@
-"""Scoring and timestamp regression tests for the approved issue #2 policy."""
+"""Scoring and timestamp regression tests for the M2-02 scoring contract."""
 import copy
 import unittest
 
@@ -7,10 +7,27 @@ from worker.engine.report import build_report, calculate_score
 
 
 class ReportTests(unittest.TestCase):
-    def test_sample_score_is_38_under_selected_issue_formula(self):
+    def test_sample_score_is_38_under_contract_formula(self):
         issues = read_json(SAMPLES / "issues.json")
         # Three axe criticals, three serious, one moderate, plus one trap.
         self.assertEqual(calculate_score(issues), 100 - 3 * 10 - 3 * 5 - 2 - 15)
+
+    def test_sample_report_agrees_with_live_scoring_metrics(self):
+        sample = read_json(SAMPLES / "report.json")
+        issues = read_json(SAMPLES / "issues.json")
+        generated = build_report(sample["id"], sample["url"],
+                                 read_json(SAMPLES / "nodes.json"), issues,
+                                 read_json(SAMPLES / "timeline.json"))
+        self.assertEqual(sample["score"], calculate_score(issues))
+        for field in ("score", "counts", "focus_trap"):
+            with self.subTest(field=field):
+                self.assertEqual(sample[field], generated[field])
+
+    def test_severity_weights_match_the_contract(self):
+        for severity, expected_score in (("critical", 90), ("serious", 95),
+                                         ("moderate", 98), ("minor", 99)):
+            with self.subTest(severity=severity):
+                self.assertEqual(calculate_score([{"rule": "label", "severity": severity}]), expected_score)
 
     def test_weights_are_per_occurrence_without_per_rule_cap(self):
         issues = [{"rule": "label", "severity": "critical"} for _ in range(3)]
