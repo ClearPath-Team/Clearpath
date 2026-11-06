@@ -5,8 +5,8 @@
 - **Track:** `M4` (API, web, and orchestration)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** `Unassigned`
+- **Status:** `In review`
+- **Assignee:** `@andreiBirsanIoan`
 - **Branch:** `m4-website-language-selector`
 - **Created Date:** 2026-11-06
 
@@ -41,13 +41,13 @@ The agent is permitted to modify only the following files:
 ---
 
 ## 4. Acceptance Criteria
-- [ ] **Website Language Switcher (`web/components/LanguageSelector.tsx` or Header):**
+- [x] **Website Language Switcher (`web/components/LanguageSelector.tsx` or Header):**
   - Add an accessible, visible language switcher toggle/dropdown in the main header navigation (`web/app/layout.tsx`).
   - Set **English (`en`)** as the primary / default language for the website.
   - Provide **Romanian (`ro`)** as the secondary language option.
   - Dynamically updates `<html lang="en">` or `<html lang="ro">` attributes for screen readers and SEO.
   - Persists the selected website language in client storage (`localStorage` / cookies) so user preference is remembered across refreshes and page transitions.
-- [ ] **UI Internationalization (i18n):**
+- [x] **UI Internationalization (i18n):**
   - Create a lightweight, type-safe localization dictionary/provider (e.g. `web/lib/i18n.ts` or `web/locales/`) supporting English and Romanian translations.
   - Translate the following core website sections:
     - Header navigation ("New Analysis", "GitHub", skip to main content).
@@ -55,7 +55,7 @@ The agent is permitted to modify only the following files:
     - URL input placeholder, submit button text, and validation/error banners.
     - Report dashboard UI labels (score card, status badges, severity filter tabs, issues list, video playback guidance, timestamp instructions).
     - Footer attribution text.
-- [ ] **Analysis Language Default Synchronization (First Analysis):**
+- [x] **Analysis Language Default Synchronization (First Analysis):**
   - When a user loads the landing page (`/`), the analysis language toggle defaults to the currently selected website language (`en` if website is English, `ro` if website is Romanian).
   - If the user changes the website language before touching the analysis toggle, the analysis language selection dynamically updates to match.
   - If the user explicitly selects a different analysis language (manual override), preserve their manual choice for the submission.
@@ -96,5 +96,7 @@ cd ..
 ---
 
 ## 8. Execution Log (Updated by Assignee)
-- **Status Change:** `Backlog` -> `Ready` on 2026-11-06
+- **2026-11-06:** Implementation proposed on `m4-website-language-selector`: typed EN/RO translations, persistent header selector, document language updates, localized landing/report, synchronized analysis default with manual override. Next.js build and integrated backend flow not yet verified.
+- **Dependency:** M4-03 (#36) must merge for the API to actually consume `lang`. The current `main` ignores the extra JSON property.
+- **Status Change:** `Ready` -> `In review`
 - **Claimed by:** Unassigned
