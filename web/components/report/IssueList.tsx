@@ -31,7 +31,8 @@ const KNOWN_RULE_CATEGORIES: Record<string, Category> = {
   "duplicate-id-aria": "screen_reader",
 };
 function issueCategory(issue: Issue): Category {
-  if (issue.category) return issue.category;
+  const classified = issue as Issue & { category?: Category };
+  if (classified.category && classified.category in CATEGORY_LABELS) return classified.category;
   return KNOWN_RULE_CATEGORIES[issue.rule] ??
     (issue.rule.startsWith("aria-") ? "screen_reader" : "structure_navigation");
 }
