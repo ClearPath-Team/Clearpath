@@ -64,14 +64,14 @@ def run_pipeline(analysis_id: str, url: str, lang: str = "ro") -> None:
             events["lang"] = lang
         else:
             from worker.engine.events import build_events
-            events = build_events(nodes, lang=lang)
+            events = build_events(nodes) if lang == "ro" else build_events(nodes, lang=lang)
         write_json(out_dir / "events.json", events)
 
         if is_stubbed("audit"):
             issues = read_json(SAMPLES / "issues.json")
         else:
             from worker.engine.audit import run_audit
-            issues = run_audit(url, nodes, lang=lang)
+            issues = run_audit(url, nodes) if lang == "ro" else run_audit(url, nodes, lang=lang)
         write_json(out_dir / "issues.json", issues)
 
         # Stage 3: Render (Video clip + Timeline)
@@ -83,7 +83,8 @@ def run_pipeline(analysis_id: str, url: str, lang: str = "ro") -> None:
                 shutil.copy(sample_clip, out_dir / "clip.mp4")
         else:
             from worker.media.render import render_clip
-            timeline = render_clip(url, nodes, events, out_dir, lang=lang)
+            timeline = (render_clip(url, nodes, events, out_dir) if lang == "ro" else
+                        render_clip(url, nodes, events, out_dir, lang=lang)
         write_json(out_dir / "timeline.json", timeline)
 
         # Stage 4: Report (Assembly + Scoring)
