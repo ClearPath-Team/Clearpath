@@ -70,7 +70,14 @@ def _synthesize(text, output):
     elif engine == "edge-tts":
         edge_bin = shutil.which("edge-tts")
         if not edge_bin:
-            raise RuntimeError("Edge TTS executable not found")
+            executable = "edge-tts.exe" if os.name == "nt" else "edge-tts"
+            candidate = Path(sys.executable).parent / executable
+            if candidate.is_file():
+                edge_bin = str(candidate)
+            else:
+                raise RuntimeError(
+                    f"Edge TTS executable not found in PATH or {candidate}"
+                )
 
         mp3 = output.with_suffix(".mp3")
         voice = os.environ.get("EDGE_TTS_VOICE", "ro-RO-EmilNeural")
