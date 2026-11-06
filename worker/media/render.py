@@ -11,8 +11,12 @@ import sys
 import tempfile
 import wave
 from pathlib import Path
+from dotenv import load_dotenv
+
+
 
 ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(ROOT / ".env")
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -49,15 +53,48 @@ def _voice_path():
 
 def _synthesize(text, output):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
-    if engine != "piper":
-        raise RuntimeError(f"Unsupported TTS_ENGINE={engine!r}; configure piper")
-    model = _voice_path()
-    if not model.is_file():
-        raise RuntimeError(f"Piper model not found: {model}")
-    _run(["piper", "--model", str(model), "--output_file", str(output)],
-         input_text=text)
+
+    if engine == "piper":
+        model = _voice_path()
+        if not model.is_file():
+            raise RuntimeError(f"Piper model not found: {model}")
+        piper_bin = shutil.which("piper")
+        if not piper_bin:
+            raise RuntimeError("Piper executable not found")
+        _run(
+            [piper_bin, "--model", str(model),
+             "--output_file", str(output)],
+            input_text=text,
+        )
+
+    elif engine == "edge-tts":
+        edge_bin = shutil.which("edge-tts")
+        if not edge_bin:
+            raise RuntimeError("Edge TTS executable not found")
+
+        mp3 = output.with_suffix(".mp3")
+        voice = os.environ.get("EDGE_TTS_VOICE", "ro-RO-EmilNeural")
+        _run([
+            edge_bin,
+            "--voice", voice,
+            "--text", text,
+            "--write-media", str(mp3),
+        ])
+        _run([
+            "ffmpeg", "-y", "-v", "error",
+            "-i", str(mp3),
+            "-ar", "48000",
+            "-ac", "1",
+            "-c:a", "pcm_s16le",
+            str(output),
+        ])
+
+    else:
+        raise RuntimeError(f"Unsupported TTS_ENGINE={engine!r}")
+
     if not output.is_file() or output.stat().st_size == 0:
-        raise RuntimeError("Piper did not generate audio")
+        raise RuntimeError("TTS did not generate audio")
+
     return _duration(output)
 
 
