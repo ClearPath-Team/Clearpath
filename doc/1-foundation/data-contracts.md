@@ -121,7 +121,7 @@ All entities are linked via `node_id`. The association with the real DOM is esta
   "title": "Finalizează comanda",
   "score": 38,
   "counts": { "critical": 4, "serious": 3, "moderate": 1, "minor": 0 },
-  "categories": { "visual_contrast": 1, "screen_reader": 3, "motor_keyboard": 1, "structure_navigation": 3 },
+  "categories": { "visual_contrast": 2, "screen_reader": 4, "motor_keyboard": 1, "structure_navigation": 2 },
   "clip_url": "/media/a7f3c2d1/clip.mp4",
   "duration": 84.2,
   "focus_trap": true,
