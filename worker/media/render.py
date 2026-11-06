@@ -136,22 +136,15 @@ def normalize_romanian_text(text: str) -> str:
     return unicodedata.normalize("NFC", text)
 
 
-def _speakable_announcement(text: str, lang: str = "ro") -> str:
-    """Keep speech, timeline and subtitles consistent for punctuation-only text."""
-    if lang not in ("ro", "en"):
-        raise ValueError(f"Unsupported narration language: {lang}")
-    value = str(text or "").strip()
-    normalized = normalize_romanian_text(value) if lang == "ro" else unicodedata.normalize("NFC", value)
-    if not any(char.isalnum() for char in normalized):
-        return "No textual content" if lang == "en" else "Element fără conținut textual"
-    return normalized
+def _speakable_announcement(text: str) -> str:
+    """Replace announcements with no letters/digits so TTS produces audio."""
+    normalized = normalize_romanian_text(str(text).strip())
+    return normalized if any(char.isalnum() for char in normalized) else "Element fără conținut textual"
 
 
-def _synthesize(text, output, lang: str = "ro"):
+def _synthesize(text, output):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
-    if lang not in ("ro", "en"):
-        raise ValueError(f"Unsupported TTS language: {lang}")
-    normalized = _speakable_announcement(text, lang=lang)
+    normalized = _speakable_announcement(text)
 
     if engine == "piper":
         model = _voice_path(lang)
@@ -272,7 +265,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path, lang: str = 
         audio_files, frame_files, durations = [], [], []
         current = 0.0
         for index, event in enumerate(items):
-            spoken = _speakable_announcement(event.get("text", ""), lang=lang)
+            spoken = _speakable_announcement(event.get("text", ""))
             wav = temp / f"voice_{index:04d}.wav"
             duration = _synthesize(spoken, wav) if lang == "ro" else _synthesize(spoken, wav, lang=lang)
             audio_files.append(wav)
@@ -312,10 +305,15 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path, lang: str = 
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch(headless=True)
             try:
-                page = browser.new_page(viewport={
-                    "width": int(viewport.get("width", 1280)),
-                    "height": int(viewport.get("height", 720)),
-                }, device_scale_factor=1)
+                context = browser.new_context(
+                    viewport={
+                        "width": int(viewport.get("width", 1280)),
+                        "height": int(viewport.get("height", 720)),
+                    },
+                    device_scale_factor=1,
+                    bypass_csp=True,
+                )
+                page = context.new_page()
                 page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 for i, event in enumerate(items):
                     _draw_overlay(page, node_by_id.get(event.get("node_id")),

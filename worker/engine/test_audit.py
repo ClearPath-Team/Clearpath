@@ -137,6 +137,15 @@ class LiveAuditTests(unittest.TestCase):
         linked = [issue for issue in issues if issue["node_id"] is not None]
         self.assertGreaterEqual(len(linked), 5)
         self.assertTrue(all(issue["node_id"] in valid_ids for issue in linked))
+        selectors = {issue["rule"]: issue["selector"] for issue in issues}
+        self.assertEqual(selectors["button-name"], "#cart")
+        self.assertEqual(selectors["image-alt"], "#product-image")
+        self.assertEqual(selectors["label"], "#email")
+        self.assertEqual(selectors["keyboard-trap"], "#promo")
+        contrast = [i for i in issues if i["rule"] == "color-contrast"]
+        self.assertEqual(len(contrast), 2)
+        by_id = {n["id"]: n for n in source["nodes"]}
+        self.assertTrue(all(by_id[i["node_id"]]["selector"] == i["selector"] for i in linked))
         self.assertEqual([issue["id"] for issue in issues], [f"i{i}" for i in range(1, len(issues) + 1)])
         self.assertEqual(len({(issue["rule"], issue["selector"]) for issue in issues}), len(issues))
         self.assertEqual(set(issues[0]), {"id", "rule", "severity", "node_id", "selector", "title", "recommendation", "help_url"})

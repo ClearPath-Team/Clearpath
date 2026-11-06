@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-11-06T17:54:21.833722+00:00",
+  "task_id": "INTEG-02",
+  "total_audited": 8,
+  "results": [
+    {
+      "name": "Google",
+      "url": "https://www.google.com",
+      "category": "Search / Minimal",
+      "analysis_id": "test-goog",
+      "status": "done",
+      "score": 90,
+      "counts": {
+        "critical": 0,
+        "serious": 2,
+        "moderate": 0,
+        "minor": 0
+      },
+      "total_issues": 2,
+      "nodes_count": 26,
+      "events_count": 27,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 48.017
+    },
+    {
+      "name": "Amazon",
+      "url": "https://www.amazon.com",
+      "category": "E-Commerce (Global)",
+      "analysis_id": "e2e-amazon",
+      "status": "done",
+      "score": 0,
+      "counts": {
+        "critical": 2,
+        "serious": 4,
+        "moderate": 17,
+        "minor": 31
+      },
+      "total_issues": 54,
+      "nodes_count": 178,
+      "events_count": 40,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 96.929
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.com",
+      "category": "SaaS / Web App",
+      "analysis_id": "e2e-discord",
+      "status": "done",
+      "score": 30,
+      "counts": {
+        "critical": 0,
+        "serious": 14,
+        "moderate": 0,
+        "minor": 0
+      },
+      "total_issues": 14,
+      "nodes_count": 95,
+      "events_count": 40,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 126.743
+    },
+    {
+      "name": "eMAG Store",
+      "url": "https://www.emag.ro",
+      "category": "E-Commerce (Romanian)",
+      "analysis_id": "e2e-emag",
+      "status": "done",
+      "score": 94,
+      "counts": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0
+      },
+      "total_issues": 3,
+      "nodes_count": 2,
+      "events_count": 3,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 3.537
+    },
+    {
+      "name": "eMAG Corporate",
+      "url": "https://www.emag.com",
+      "category": "Corporate (Global)",
+      "analysis_id": "e2e-https---www-emag-com",
+      "status": "done",
+      "score": 19,
+      "counts": {
+        "critical": 0,
+        "serious": 13,
+        "moderate": 8,
+        "minor": 0
+      },
+      "total_issues": 21,
+      "nodes_count": 120,
+      "events_count": 40,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 116.19
+    },
+    {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org",
+      "category": "Reference / Content",
+      "analysis_id": "e2e-wikipedia",
+      "status": "done",
+      "score": 97,
+      "counts": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 3
+      },
+      "total_issues": 3,
+      "nodes_count": 400,
+      "events_count": 40,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 73.454
+    },
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com",
+      "category": "Minimal / Legacy HTML",
+      "analysis_id": "e2e-hacker-news",
+      "status": "done",
+      "score": 0,
+      "counts": {
+        "critical": 4,
+        "serious": 238,
+        "moderate": 3,
+        "minor": 0
+      },
+      "total_issues": 245,
+      "nodes_count": 400,
+      "events_count": 40,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 48.333
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com",
+      "category": "Developer Platform",
+      "analysis_id": "e2e-github",
+      "status": "done",
+      "score": 100,
+      "counts": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "total_issues": 0,
+      "nodes_count": 200,
+      "events_count": 40,
+      "focus_trap": false,
+      "clip_rendered": true,
+      "duration_seconds": 155.002
+    }
+  ]
+}
