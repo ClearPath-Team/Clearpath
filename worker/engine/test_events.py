@@ -91,5 +91,34 @@ class EventsTests(unittest.TestCase):
         self.assertEqual([event["node_id"] for event in build_events(source)["events"]], [None, "n0", "n2"])
 
 
+    def test_english_role_and_state_announcements(self):
+        cases = [
+            ("heading", "Welcome", {"level": 2}, "Welcome, heading level 2"),
+            ("button", "Submit", {}, "Submit, button"),
+            ("link", "", {}, "link"),
+            ("textbox", "Search", {"states": {}}, "Search, edit, blank"),
+            ("input", "Email", {"value": "a@example.org"}, "Email, edit, contains a@example.org"),
+            ("checkbox", "Accept", {"states": {"checked": True}}, "Accept, check box, checked"),
+            ("checkbox", "Accept", {"states": {"checked": False}}, "Accept, check box, not checked"),
+            ("radio", "Payment", {"states": {"checked": False}}, "Payment, radio button, not selected"),
+            ("combobox", "Country", {}, "Country, combo box"),
+            ("image", "", {}, "graphic unlabelled"),
+            ("banner", "", {}, "banner landmark"),
+            ("navigation", "Main navigation", {}, "Main navigation, navigation landmark"),
+            ("button", "Menu", {"states": {"required": True, "disabled": True}}, "Menu, button, required, unavailable"),
+        ]
+        for role, name, props, expected in cases:
+            with self.subTest(role=role, name=name):
+                speech = build_events({"nodes": [node(0, role, name, **props)]}, lang="en")
+                self.assertEqual(speech["lang"], "en")
+                self.assertEqual(speech["events"][1]["text"], expected)
+
+    def test_english_title_and_invalid_lang(self):
+        self.assertEqual(build_events({"title": "Example", "nodes": []}, lang="en")["events"][0]["text"],
+                         "Page Example")
+        with self.assertRaises(ValueError):
+            build_events({"nodes": []}, lang="fr")
+
+
 if __name__ == "__main__":
     unittest.main()
