@@ -54,8 +54,8 @@ The assignee is permitted to modify or create:
 ---
 
 ## 5. Acceptance Criteria
-- [ ] Extend `scripts/test_popular_sites.py` or author an automated batch configuration for the 9 specified Romanian platforms.
-- [ ] Run full 5-stage pipeline analyses on each target site:
+- [x] Extend `scripts/test_popular_sites.py` or author an automated batch configuration for the 9 specified Romanian platforms.
+- [x] Run full 5-stage pipeline analyses on each target site:
   - `https://flip.ro`
   - `https://vivre.ro`
   - `https://tazz.ro`
@@ -72,8 +72,8 @@ The assignee is permitted to modify or create:
   - `clip.mp4` (narrated video with yellow highlight overlays)
   - `timeline.json` (synchronized event and issue timestamps)
   - `report.json` (calculated accessibility score 0–100)
-- [ ] Handle or document edge bot shields (Cloudflare, AWS WAF, PerimeterX) and cookie consent overlays encountered on Romanian domains.
-- [ ] Compile a comprehensive markdown audit report summarizing scores, WCAG violation distributions, and video links across the Romanian ecosystem.
+- [x] Handle or document edge bot shields (Cloudflare, AWS WAF, PerimeterX) and cookie consent overlays encountered on Romanian domains.
+- [x] Compile a comprehensive markdown audit report summarizing scores, WCAG violation distributions, and video links across the Romanian ecosystem.
 
 ---
 
@@ -122,31 +122,47 @@ for d in Path('data').glob('e2e-ro-*'):
 
 ---
 
-## 9. Execution Log
-- **2026-11-06:** Implemented reproducible 9-platform Romanian preset, unique run IDs, zero-stub production runner, artifact verification, and JSON/Markdown results manifest. Execution of all nine live sites is **not yet verified** (requires configured local Chromium, ffmpeg, Piper and network). No results, scores, videos or bot-shield outcomes are claimed without collected artifacts.
-- **Run:** `python scripts/test_popular_sites.py --preset romanian --output romanian-audit.json --markdown romanian-audit.md`.
-- **Completion criteria:** execute all nine live runs without stubs and review generated JSON, Markdown and recorded clips.
+## 9. Execution Log and Final Evidence
 
-### 2026-11-06 live execution evidence
+**2026-11-06:** All nine prescribed URLs were executed with `CP_STUBS=` and `TTS_ENGINE=piper`. All nine pipeline runs produced every required artifact. JSON consistency, positive durations, score bounds and audio/video streams were independently checked with the runner verifier and ffprobe. Eight captures contain the target landing-page content. Tazz yielded only a cookie-consent capture and remains unvalidated as a service audit; the task stays **In progress** and issue #44 must remain open.
 
-All nine specified targets were attempted with `CP_STUBS=` and `TTS_ENGINE=piper` using Playwright Chromium. Every run failed during extraction with `net::ERR_CERT_AUTHORITY_INVALID`. No site score, issue count or narrated clip is claimed. A second run after importing the managed environment proxy CA into the local NSS store produced the same error. Certificate verification was not disabled.
+Initial attempts failed because Chromium did not trust the environment proxy CA. The correction was to import that managed CA into the NSS store and include the same NSS filesystem mapping in the browser invocation. TLS verification was never disabled. Subsequent attempts reached the real pages. No CAPTCHA, authentication or bot-shield bypass was attempted; no purchases, bookings or payments were made.
 
-| Target | Result | Evidence |
-| --- | --- | --- |
-| https://flip.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://vivre.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://tazz.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://pago.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://salt.bank | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://sameday.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://ejobs.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://elefant.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
-| https://kinderpedia.co | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+### Captured results
 
-Local run manifests and logs: `.local/romanian-audit.json`, `.local/romanian-audit.md`, `.local/romanian-run.log`, and `.local/ro-{0,1,2}.{json,md,log}`. Per-run failure states are in gitignored `data/e2e-ro-*/status.json`. This task remains In progress until the full nine-site audit succeeds in a browser with valid managed proxy trust. Do not mark it Done based on the preset implementation alone.
+Scores are ClearPath page-level heuristic results, not percentages of WCAG/legal compliance. A zero means the weighted penalty reached the floor; it is not an independent accessibility verdict on an entire company. The default maximum of 40 narrated announcements was retained (Tazz exposed only seven).
 
+| Platform | Review result | Captured score | Findings C/S/M/m | Clip seconds | Processing seconds | Analysis ID |
+| --- | --- | ---: | --- | ---: | ---: | --- |
+| Flip.ro | Artifact validation passed | 0 | 0/2/562/0 | 124.572 | 599.44 | `e2e-ro-https---flip-ro-16f6d8e1` |
+| Vivre | Artifact validation passed | 96 | 0/0/2/0 | 105.973 | 535.98 | `e2e-ro-https---vivre-ro-83b168ce` |
+| Tazz | Consent-only; blocked verification | — | 1/8/0/4 | 19.505 | 282.55 | `e2e-ro-https---tazz-ro-af2322b1` |
+| Pago | Artifact validation passed | 93 | 0/1/1/0 | 82.974 | 430.32 | `e2e-ro-https---pago-ro-26f88438` |
+| Salt Bank | Artifact validation passed | 0 | 6/11/5/0 | 152.320 | 599.21 | `e2e-ro-https---salt-bank-edbc19f3` |
+| Sameday | Artifact validation passed | 0 | 1/34/14/0 | 129.007 | 499.27 | `e2e-ro-https---sameday-ro-805d838d` |
+| eJobs | Artifact validation passed | 0 | 1/0/96/0 | 87.223 | 489.12 | `e2e-ro-https---ejobs-ro-5318424a` |
+| Elefant.ro | Artifact validation passed | 0 | 2/513/2/0 | 76.890 | 582.86 | `e2e-ro-https---elefant-ro-ae3a1c57` |
+| Kinderpedia | Artifact validation passed | 96 | 0/0/2/0 | 140.234 | 503.05 | `e2e-ro-https---kinderpedia-co-2aa47a26` |
 
-## 8. Execution Log
-- **2026-11-06 20:29 UTC:** Linked PR: https://github.com/ClearPath-Team/Clearpath/pull/62
+### Interpretation and limitations
 
-- **Trust-store diagnosis:** The NSS write mapping must be present in the same permission-scoped invocation as browser execution. With that mapping and the managed proxy CA imported, Flip.ro returned verified HTTPS 200. Certificate verification remains enabled. All nine targets are being rerun; verified manifests supersede the initial blocked-at-extraction table above.
+- **Tazz:** The original run recorded a Wolt-titled document with six accessibility nodes, all belonging to cookie-consent text and controls (seven narrated events including the page announcement). No representative service score is claimed. Independent follow-up HTTP and TLS-verified browser requests returned HTTP 503, with an environment-proxy upstream transport failure. The browser follow-up remained at `https://tazz.ro/`; a redirect to another domain was not established. Revalidate when the full target content is reachable.
+- **Flip.ro and Elefant:** Cookiebot content persisted at the beginning of extraction and may dominate the initial narration. Main-page nodes were also present, but consent handling and the recorded video require manual review. Sameday also exposed consent preferences alongside main navigation.
+- **Kinderpedia:** The captured landing-page content is English. The requested Romanian narration/recommendation mode was retained; existing English accessible names remain English.
+- All captures are single-page, unauthenticated observations. Extraction is capped at 400 nodes; narration at 40 announcements. Findings without corresponding narration may have no timestamp.
+- Processing took several minutes per site in this shared CPU environment; this run does **not** establish the product's under-three-minute performance target.
+- Captures were reviewed for title, representative node content, artifact consistency and audio/video streams. No claim is made that a real blind user or a real screen reader completed a task.
+
+### Reproduction and artifacts
+
+Run the documented preset in an environment with working browser certificate trust:
+
+```bash
+CP_STUBS= TTS_ENGINE=piper .venv/bin/python scripts/test_popular_sites.py --preset romanian --output .local/romanian-audit.json --markdown .local/romanian-audit.md
+```
+
+Each analysis ID above identifies `data/<id>/nodes.json`, `events.json`, `issues.json`, `timeline.json`, `report.json`, `status.json` and `clip.mp4`. With the API serving that data directory, videos are available at `/media/<id>/clip.mp4` and JSON/HTML downloads at `/api/analyses/<id>/export?format=json|html`. The captured artifacts are local, gitignored runtime data, not files published by this code PR.
+
+Local evidence manifests: `.local/verified-ro-{0,1,2}.{json,md,log}` and `.local/final-romanian-audit.json`. The consent-only Tazz findings remain in the raw artifact for transparency, but its raw score is excluded from the target-results table.
+
+- **Pull Request:** https://github.com/ClearPath-Team/Clearpath/pull/62
