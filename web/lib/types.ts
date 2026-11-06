@@ -3,10 +3,16 @@ export type Severity = "critical" | "serious" | "moderate" | "minor";
 
 export const SEVERITIES: Severity[] = ["critical", "serious", "moderate", "minor"];
 
+export type IssueCategory = "visual_contrast" | "screen_reader" | "motor_keyboard" | "structure_navigation";
+export type WCAGPrinciple = "perceivable" | "operable" | "understandable" | "robust";
+
 export interface Issue {
   id: string;
   rule: string;
   severity: Severity;
+  category?: IssueCategory;
+  category_label?: { en: string; ro: string };
+  wcag_principle?: WCAGPrinciple;
   node_id: string | null;
   selector: string;
   title: string;
@@ -21,6 +27,7 @@ export interface Report {
   title: string;
   score: number;
   counts: Record<Severity, number>;
+  categories?: Record<IssueCategory, number>;
   clip_url: string;
   duration: number;
   focus_trap: boolean;
