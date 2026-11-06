@@ -16,7 +16,6 @@ import os
 import sys
 import time
 import traceback
-import re
 from uuid import uuid4
 from datetime import datetime, timezone
 from pathlib import Path
@@ -135,7 +134,8 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
     
     slug = "".join(c if c.isalnum() else "-" for c in name.lower()).strip("-")
     # Unique per-run ID avoids mistaking stale reports from previous attempts for success.
-    analysis_id = f"e2e-{"ro-" if romanian else ""}{slug}-{uuid4().hex[:8]}"
+    prefix = "e2e-ro-" if romanian else "e2e-"
+    analysis_id = f"{prefix}{slug}-{uuid4().hex[:8]}"
     out_dir = DATA_DIR / analysis_id
     
     print(f"\n========================================================")
@@ -143,6 +143,7 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
     print(f"========================================================")
     
     start_time = time.monotonic()
+    previous_stubs = os.environ.get("CP_STUBS")
     result = {
         "name": name,
         "url": url,
@@ -231,7 +232,10 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
         print(f"FAILED on {name}: {exc}")
         traceback.print_exc()
         
-    os.environ.pop("CP_STUBS", None)
+    if previous_stubs is None:
+        os.environ.pop("CP_STUBS", None)
+    else:
+        os.environ["CP_STUBS"] = previous_stubs
     result["duration_seconds"] = round(time.monotonic() - start_time, 2)
     print(f"Finished {name} in {result['duration_seconds']}s — Status: {result['status']}")
     return result
