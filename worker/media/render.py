@@ -44,22 +44,48 @@ def _duration(path):
         return wav.getnframes() / wav.getframerate()
 
 
-def _validate_clip_duration(probe_stdout: str, narration_total: float, tolerance: float = 2.0) -> float:
-    """Returns the rendered clip's real duration from ffprobe JSON output.
+# Short enough that no announcement can be lost; absorbs AAC frame (~21ms) and
+# last-video-frame rounding in the muxed clip.
+CLIP_END_SLACK_SECONDS = 0.1
+MAX_CLIP_EXCESS_SECONDS = 1.0
 
-    Raises instead of substituting the narration total: a missing, non-finite,
-    non-positive, or mismatched duration means clip.mp4 is broken, and publishing
-    it as a success would point issue timestamps past the end of the video."""
+
+def _probed_duration(probe_stdout: str) -> float:
+    """Extracts format.duration from `ffprobe -of json` output, rejecting any
+    response that doesn't have the expected structure and types."""
     try:
-        probed = float(json.loads(probe_stdout)["format"]["duration"])
-    except (KeyError, ValueError, TypeError):
-        raise RuntimeError("ffprobe did not report a duration for clip.mp4") from None
+        data = json.loads(probe_stdout)
+    except (TypeError, ValueError):
+        raise RuntimeError("ffprobe returned non-JSON output for clip.mp4") from None
+    if not isinstance(data, dict) or not isinstance(data.get("format"), dict):
+        raise RuntimeError("ffprobe JSON for clip.mp4 has no 'format' object")
+    raw = data["format"].get("duration")
+    if isinstance(raw, bool) or not isinstance(raw, (str, int, float)):
+        raise RuntimeError(f"ffprobe reported no usable duration for clip.mp4: {raw!r}")
+    try:
+        probed = float(raw)
+    except ValueError:
+        raise RuntimeError(f"ffprobe reported a non-numeric clip duration: {raw!r}") from None
     if not math.isfinite(probed) or probed <= 0:
-        raise RuntimeError(f"ffprobe reported an invalid clip duration: {probed}")
-    if abs(probed - narration_total) > tolerance:
+        raise RuntimeError(f"ffprobe reported an invalid clip duration: {raw!r}")
+    return probed
+
+
+def _validate_clip_duration(probe_stdout: str, last_event_end: float) -> float:
+    """Returns the rendered clip's real duration, raising if clip.mp4 is broken.
+
+    The clip must cover the end of the final announcement, otherwise issue
+    timestamps could point past the end of the video. A clip far longer than
+    the narration also signals a bad mux. Never substitutes a synthetic value."""
+    probed = _probed_duration(probe_stdout)
+    if probed + CLIP_END_SLACK_SECONDS < last_event_end:
         raise RuntimeError(
-            f"clip.mp4 duration {probed:.3f}s does not match narration "
-            f"{narration_total:.3f}s (tolerance {tolerance}s); render is incomplete")
+            f"clip.mp4 is truncated: {probed:.3f}s but the last announcement ends at "
+            f"{last_event_end:.3f}s")
+    if probed - last_event_end > MAX_CLIP_EXCESS_SECONDS:
+        raise RuntimeError(
+            f"clip.mp4 is {probed:.3f}s, more than {MAX_CLIP_EXCESS_SECONDS}s longer than "
+            f"the narration ({last_event_end:.3f}s); render is inconsistent")
     return round(probed, 3)
 
 
@@ -247,7 +273,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
               "-movflags", "+faststart", "-shortest", str(clip)])
         probe = _run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size",
               "-of", "json", str(clip)])
-        clip_duration = _validate_clip_duration(probe.stdout, current)
+        clip_duration = _validate_clip_duration(probe.stdout, timeline[-1]["end"])
     result = {"duration": clip_duration, "clip": "clip.mp4", "entries": timeline}
     (out_dir / "timeline.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
