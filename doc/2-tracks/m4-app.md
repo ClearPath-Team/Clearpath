@@ -26,6 +26,9 @@ Starts from the repository root: `python -m uvicorn api.main:app --reload --port
 |---|---|---|
 | POST | `/api/analyses` | Body `{ "url": "..." }`. Validates URL, generates `id = uuid4().hex[:8]`, writes `status.json` with `queued`, spawns pipeline process, returns `202 { "id": "..." }`. |
 | GET | `/api/analyses/{id}` | Returns `{ id, url, status, error, report }`. `report` is `null` until `done`. Returns 404 if not found. |
+| GET | `/api/analyses/{id}/timeline` | Returns `data/{id}/timeline.json` unchanged (`duration`, `clip`, `entries[]`) for the report transcript. 404 if the analysis or its timeline does not exist, 409 while it is not `done`. |
+
+All `{id}` path parameters must match `[A-Za-z0-9_-]{1,64}`; anything else returns 404 so a request can never resolve outside `DATA_DIR`.
 | GET | `/media/{id}/clip.mp4` | Serves media files via `app.mount("/media", StaticFiles(directory=DATA_DIR))`. |
 | GET | `/api/health` | Health check: `{ "ok": true }`. |
 

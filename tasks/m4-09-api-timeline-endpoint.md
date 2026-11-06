@@ -5,8 +5,8 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In progress`
+- **Assignee:** `Sergiu1809`
 - **Branch:** `m4-api-timeline`
 - **Created Date:** 2026-11-06
 
@@ -69,3 +69,5 @@ sleep 5 && curl -s localhost:8000/api/analyses/$ID/timeline | python3 -m json.to
 
 ## 8. Execution Log (Updated by Assignee)
 - **2026-11-06:** Task created as Ready (split from M4-08).
+
+- **2026-11-06 17:33 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
