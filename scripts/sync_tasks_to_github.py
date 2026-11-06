@@ -93,15 +93,21 @@ def sync_task(file_path: Path, repo: str, token: str) -> None:
     gh = subprocess.run(["which", "gh"], capture_output=True, text=True)
     if gh.returncode == 0:
         existing = subprocess.run(
-            ["gh", "issue", "list", "--repo", repo, "--search", f"[{task_id}]", "--state", "all", "--json", "number,title", "-q", ".[0].number"],
+            ["gh", "issue", "list", "--repo", repo, "--search", f"[{task_id}]", "--state", "all", "--json", "number,title"],
             capture_output=True, text=True
         )
         if existing.returncode == 0 and existing.stdout.strip():
-            issue_num = existing.stdout.strip()
-            print(f"Found existing Issue #{issue_num} for {task_id}; linking without re-creating.")
-            new_content = re.sub(r"(-\s*\*\*GitHub Issue:\*\*\s*).*", rf"\g<1>#{issue_num}", content)
-            file_path.write_text(new_content, encoding="utf-8")
-            return
+            try:
+                items = json.loads(existing.stdout)
+                for it in items:
+                    if f"[{task_id}]" in it.get("title", ""):
+                        issue_num = str(it["number"])
+                        print(f"Found existing Issue #{issue_num} for {task_id}; linking without re-creating.")
+                        new_content = re.sub(r"(-\s*\*\*GitHub Issue:\*\*\s*).*", rf"\g<1>#{issue_num}", content)
+                        file_path.write_text(new_content, encoding="utf-8")
+                        return
+            except Exception:
+                pass
 
     print(f"Creating GitHub Issue for {task_id}: '{title}'...")
 
