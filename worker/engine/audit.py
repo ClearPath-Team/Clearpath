@@ -9,13 +9,15 @@ if str(ROOT) not in sys.path:
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError, sync_playwright
 
 from worker.common import AXE_PATH, SELECTOR_JS, SAMPLES, VIEWPORT, read_json, write_json
-from worker.engine.recommendations import RECOMMENDATIONS
+from worker.engine.recommendations import RECOMMENDATIONS, EN_RECOMMENDATIONS
 
 SEVERITY_ORDER = {"critical": 0, "serious": 1, "moderate": 2, "minor": 3}
 
 
-def _map_violations(page, violations: list, nodes: dict) -> list[dict]:
+def _map_violations(page, violations: list, nodes: dict, lang: str = "ro") -> list[dict]:
     """Resolve axe targets through the shared selector generator and nearest ancestors."""
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported audit language: {lang}")
     by_selector = {}
     for node in sorted(nodes.get("nodes", []), key=lambda item: item["order"]):
         by_selector.setdefault(node.get("selector"), node["id"])
@@ -23,8 +25,9 @@ def _map_violations(page, violations: list, nodes: dict) -> list[dict]:
     seen = set()
     for violation in violations:
         rule = violation["id"]
-        title, recommendation = RECOMMENDATIONS.get(
-            rule, (violation["help"], violation["description"]))
+        title, recommendation = (RECOMMENDATIONS.get(
+            rule, (violation["help"], violation["description"])) if lang == "ro" else
+            EN_RECOMMENDATIONS.get(rule, (violation["help"], violation["description"])))
         for item in violation["nodes"]:
             targets = item.get("target") or []
             # Multiple selectors refer to iframe paths; nested arrays refer to shadow DOM.
@@ -48,7 +51,7 @@ def _map_violations(page, violations: list, nodes: dict) -> list[dict]:
     trap = nodes.get("focus_trap")
     if trap:
         trap_data = trap if isinstance(trap, dict) else {}
-        title, recommendation = RECOMMENDATIONS["keyboard-trap"]
+        title, recommendation = (RECOMMENDATIONS if lang == "ro" else EN_RECOMMENDATIONS)["keyboard-trap"]
         issues.append({
             "rule": "keyboard-trap", "severity": "critical",
             "node_id": trap_data.get("node_id") or by_selector.get(trap_data.get("selector")),
@@ -59,7 +62,7 @@ def _map_violations(page, violations: list, nodes: dict) -> list[dict]:
     return [{"id": f"i{index}", **issue} for index, issue in enumerate(issues, start=1)]
 
 
-def run_audit(url: str, nodes: dict) -> list[dict]:
+def run_audit(url: str, nodes: dict, lang: str = "ro") -> list[dict]:
     """Runs axe-core on the page, resolves canonical selectors, and maps issues to node_ids."""
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
@@ -74,7 +77,7 @@ def run_audit(url: str, nodes: dict) -> list[dict]:
                 page.wait_for_timeout(800)
                 page.add_script_tag(path=AXE_PATH)
                 results = page.evaluate("async () => await axe.run(document, {resultTypes: ['violations']})")
-                return _map_violations(page, results["violations"], nodes)
+                return _map_violations(page, results["violations"], nodes, lang=lang)
             finally:
                 context.close()
         finally:
