@@ -111,4 +111,4 @@ python -m worker.pipeline dev_en http://localhost:8080/bad-checkout.html --lang 
 ## 8. Execution Log (Updated by Assignee)
 - **2026-11-06:** Implemented API request validation, subprocess `--lang`, status propagation, pipeline language handling, report language badge. Website selector and analysis language radio are inherited from M4-04 (#38).
 - **Validation pending:** Merge M2-03 (#32) to supply language-aware `build_events`, `run_audit`, `render_clip`; run integrated tests and frontend build before Done.
-- **Claimed by:** Unassigned
+- **Claimed by:** @andreiBirsanIoan
