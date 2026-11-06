@@ -1,7 +1,8 @@
-import Link from "next/link";
-import { strings } from "@/lib/strings";
+"use client";
 
-const t = strings.analysis;
+import Link from "next/link";
+import { useStrings } from "@/lib/useStrings";
+
 
 type Props = {
   message: string;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export default function AnalysisFailed({ message, onRetry, retrying }: Props) {
+  const strings = useStrings();
+  const t = strings.analysis;
   return (
     <div className="mx-auto max-w-[560px] px-6 py-24">
       <div role="alert" className="flex flex-col items-center gap-3 rounded bg-surface px-7 py-8 text-center">

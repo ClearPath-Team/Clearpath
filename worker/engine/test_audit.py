@@ -148,7 +148,14 @@ class LiveAuditTests(unittest.TestCase):
         self.assertTrue(all(by_id[i["node_id"]]["selector"] == i["selector"] for i in linked))
         self.assertEqual([issue["id"] for issue in issues], [f"i{i}" for i in range(1, len(issues) + 1)])
         self.assertEqual(len({(issue["rule"], issue["selector"]) for issue in issues}), len(issues))
-        self.assertEqual(set(issues[0]), {"id", "rule", "severity", "node_id", "selector", "title", "recommendation", "help_url"})
+        self.assertEqual(set(issues[0]), {"id", "rule", "severity", "node_id", "selector", "title", "recommendation", "help_url",
+                                         "category", "category_label", "wcag_principle"})
+        expected = {"button-name": "screen_reader", "image-alt": "screen_reader", "label": "screen_reader",
+                    "link-name": "screen_reader", "keyboard-trap": "motor_keyboard", "color-contrast": "visual_contrast",
+                    "heading-order": "structure_navigation", "html-has-lang": "structure_navigation"}
+        for issue in issues:
+            self.assertEqual(issue["category"], expected[issue["rule"]])
+            self.assertEqual(set(issue["category_label"]), {"en", "ro"})
 
 
 if __name__ == "__main__":

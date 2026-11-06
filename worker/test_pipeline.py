@@ -131,6 +131,24 @@ class MockedPipelineTests(unittest.TestCase):
         self.assertIn("extract failed", status["error"])
         self.assertFalse((self.folder / "failed" / "report.json").exists())
 
+    def test_english_language_reaches_all_stages_and_report(self):
+        from worker.engine.events import build_events
+        nodes = read_json(SAMPLES / "nodes.json")
+        with mock.patch.dict(os.environ, {"CP_STUBS": ""}), \
+                mock.patch("worker.extract.extract.extract", return_value=nodes), \
+                mock.patch("worker.engine.events.build_events", wraps=build_events) as events, \
+                mock.patch("worker.engine.audit.run_audit", return_value=read_json(SAMPLES / "issues.json")) as audit, \
+                mock.patch("worker.media.render.render_clip", return_value=read_json(SAMPLES / "timeline.json")) as render:
+            pipeline.run_pipeline("english", "https://example.com", lang="en")
+        for stage in (events, audit, render):
+            self.assertEqual(stage.call_args.kwargs["lang"], "en")
+        folder = self.folder / "english"
+        self.assertEqual(read_json(folder / "status.json")["lang"], "en")
+        self.assertEqual(read_json(folder / "report.json")["lang"], "en")
+        speech = read_json(folder / "events.json")
+        self.assertEqual(speech["lang"], "en")
+        self.assertTrue(speech["events"][0]["text"].startswith("Page "))
+
     def test_keyboard_trap_penalty_applied_once(self):
         issues = read_json(SAMPLES / "issues.json")
         trap = next(i for i in issues if i["rule"] == "keyboard-trap")

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useLanguage } from "@/components/LanguageProvider";
 import { Loader2 } from "lucide-react";
 import AnalysisFailed from "@/components/analysis/AnalysisFailed";
 import AnalysisProgress from "@/components/analysis/AnalysisProgress";
@@ -12,12 +13,14 @@ import Transcript from "@/components/report/Transcript";
 import TrapBanner from "@/components/report/TrapBanner";
 import VideoPlayer from "@/components/report/VideoPlayer";
 import { formatSeconds } from "@/lib/format";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 import { SEVERITIES, type AnalysisStatusResponse, type Issue, type Severity, type Timeline } from "@/lib/types";
 
-const t = strings.report;
 
 export default function AnalysisPage() {
+  const strings = useStrings();
+  const t = strings.report;
+  const { language } = useLanguage();
   const params = useParams();
   const router = useRouter();
   const id = params?.id as string;
@@ -64,7 +67,7 @@ export default function AnalysisPage() {
     fetchStatus();
 
     return () => clearTimeout(timer);
-  }, [id, apiUrl]);
+  }, [id, apiUrl, strings]);
 
   // The transcript is fetched once the analysis is done (M4-09 endpoint).
   const isDone = data?.status === "done";
@@ -125,7 +128,7 @@ export default function AnalysisPage() {
       const res = await fetch(`${apiUrl}/api/analyses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: data.url }),
+        body: JSON.stringify({ url: data.url, lang: data.lang ?? data.report?.lang ?? language }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
@@ -160,7 +163,7 @@ export default function AnalysisPage() {
   }
 
   // Backend content (titles, recommendations, announcements) is in the analysis language.
-  const contentLang = report.lang ?? "ro";
+  const contentLang = report.lang ?? data?.lang ?? "ro";
   const videoUrl = report.clip_url
     ? `${apiUrl}${report.clip_url.startsWith("/") ? "" : "/"}${report.clip_url}`
     : `${apiUrl}/media/${id}/clip.mp4`;

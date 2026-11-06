@@ -1,8 +1,11 @@
-import { strings } from "@/lib/strings";
+"use client";
 
-const t = strings.analysis.video;
+import { useStrings } from "@/lib/useStrings";
+
 
 export default function VideoErrorPanel() {
+  const strings = useStrings();
+  const t = strings.analysis.video;
   return (
     <div
       role="status"

@@ -1,4 +1,6 @@
-import { strings } from "@/lib/strings";
+"use client";
+
+import { useStrings } from "@/lib/useStrings";
 import type { Severity } from "@/lib/types";
 
 // Full class names so Tailwind's scanner keeps them.
@@ -23,6 +25,7 @@ export function SeverityIcon({ severity, size = 10 }: { severity: Severity; size
 }
 
 export function SeverityBadge({ severity }: { severity: Severity }) {
+  const strings = useStrings();
   const style = SEVERITY_STYLE[severity];
   return (
     <span className={`inline-flex items-center gap-1.5 self-start rounded px-2.5 py-0.5 text-[13px] font-semibold ${style.bg} ${style.text}`}>

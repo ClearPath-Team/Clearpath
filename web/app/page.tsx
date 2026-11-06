@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Language } from "@/lib/i18n";
 import { useRouter } from "next/navigation";
 import { AlertCircle, Loader2 } from "lucide-react";
-import { strings } from "@/lib/strings";
+import { useStrings } from "@/lib/useStrings";
 
-const t = strings.home;
 const DEMO_URL = "http://localhost:8080/bad-checkout.html";
 
 const PREVIEW_TRANSCRIPT = [
@@ -31,6 +32,11 @@ const STEP_ICONS = [
 ];
 
 export default function HomePage() {
+  const strings = useStrings();
+  const t = strings.home;
+  const { language } = useLanguage();
+  const [analysisLanguageOverride, setAnalysisLanguageOverride] = useState<Language | null>(null);
+  const analysisLanguage = analysisLanguageOverride ?? language;
   const router = useRouter();
   const [url, setUrl] = useState(DEMO_URL);
   const [loading, setLoading] = useState(false);
@@ -52,7 +58,7 @@ export default function HomePage() {
       const res = await fetch(`${apiUrl}/api/analyses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: trimmed }),
+        body: JSON.stringify({ url: trimmed, lang: analysisLanguage }),
       });
 
       if (!res.ok) {
@@ -89,6 +95,19 @@ export default function HomePage() {
         </p>
 
         <form onSubmit={handleSubmit} noValidate className="mt-5 flex w-full max-w-[640px] flex-col gap-2.5 text-left">
+          <fieldset aria-describedby="analysis-language-help" className="mb-3 rounded border border-hairline p-3">
+            <legend className="px-1 text-sm font-medium">{t.analysisLanguage}</legend>
+            <div className="flex gap-5">
+              {(["en", "ro"] as const).map((lang) => (
+                <label key={lang} className="flex items-center gap-2 text-sm">
+                  <input type="radio" name="analysis-language" value={lang} checked={analysisLanguage === lang}
+                    disabled={loading} onChange={() => setAnalysisLanguageOverride(lang)} className="accent-accent" />
+                  {lang === "en" ? t.english : t.romanian}
+                </label>
+              ))}
+            </div>
+            <p id="analysis-language-help" className="mt-2 text-xs text-ink-secondary">{t.analysisLanguageHelp}</p>
+          </fieldset>
           <label htmlFor="url" className="pl-1 text-sm font-medium text-ink-tertiary">
             {t.urlLabel}
           </label>

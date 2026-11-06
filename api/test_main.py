@@ -76,6 +76,31 @@ class TimelineEndpointTests(unittest.TestCase):
         self.assertEqual(res.status_code, 404)
         self.assertNotIn(b"not-a-demo-clip", res.content)
 
+    def test_selected_language_reaches_worker_and_status(self):
+        for lang in ("ro", "en"):
+            with self.subTest(lang=lang), mock.patch.object(main, "validate_target_url"), \
+                    mock.patch.object(main.subprocess, "Popen") as spawn:
+                res = self.client.post("/api/analyses", json={"url": "https://example.com", "lang": lang})
+                spawn.call_args.kwargs["stdout"].close()
+                self.assertEqual(res.status_code, 202)
+                self.assertEqual(res.json()["lang"], lang)
+                self.assertEqual(spawn.call_args.args[0][-2:], ["--lang", lang])
+                status = self.client.get(f"/api/analyses/{res.json()['id']}").json()
+                self.assertEqual(status["lang"], lang)
+
+    def test_legacy_requests_default_to_romanian(self):
+        with mock.patch.object(main, "validate_target_url"), mock.patch.object(main.subprocess, "Popen") as spawn:
+            res = self.client.post("/api/analyses", json={"url": "https://example.com"})
+            spawn.call_args.kwargs["stdout"].close()
+        self.assertEqual(res.status_code, 202)
+        self.assertEqual(res.json()["lang"], "ro")
+
+    def test_unsupported_language_is_rejected_before_starting_worker(self):
+        with mock.patch.object(main.subprocess, "Popen") as spawn:
+            res = self.client.post("/api/analyses", json={"url": "https://example.com", "lang": "fr"})
+        self.assertEqual(res.status_code, 422)
+        spawn.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

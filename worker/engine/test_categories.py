@@ -1,7 +1,6 @@
 """Canonical taxonomy contracts and regression tests."""
 import copy
 import unittest
-from unittest.mock import Mock, patch
 
 from worker.common import SAMPLES, read_json
 from worker.engine.categories import (
@@ -58,11 +57,16 @@ class TaxonomyTests(unittest.TestCase):
         self.assertEqual(set(report["categories"]), set(CATEGORY_LABELS))
         self.assertEqual(read_json(SAMPLES / "report.json")["categories"], report["categories"])
 
-    def test_live_audit_mapping_result_is_enriched(self):
-        # _map_violations deliberately keeps its old shape for callers; run_audit
-        # enriches the production output. Check the helper used in the pipeline.
-        data = [{"id": "i1", "rule": "label", "severity": "critical"}]
-        self.assertEqual([enrich_issue(i) for i in data][0]["category"], "screen_reader")
+    def test_legacy_issues_gain_taxonomy_when_report_is_rebuilt(self):
+        legacy = [{"id": "i1", "rule": "label", "severity": "critical", "node_id": "n1"}]
+        before = copy.deepcopy(legacy)
+        report = build_report("legacy", "url", {}, legacy,
+                              {"duration": 2, "entries": [{"node_id": "n1", "start": 1}]})
+        self.assertEqual(report["issues"][0]["category"], "screen_reader")
+        self.assertEqual(report["issues"][0]["timestamp"], 1)
+        self.assertEqual(report["categories"]["screen_reader"], 1)
+        self.assertEqual(report["score"], 90)
+        self.assertEqual(legacy, before)
 
 
 if __name__ == "__main__":

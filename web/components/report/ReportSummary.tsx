@@ -1,8 +1,9 @@
-import { strings } from "@/lib/strings";
+"use client";
+
+import { useStrings } from "@/lib/useStrings";
 import { SEVERITIES, type Severity } from "@/lib/types";
 import { SEVERITY_STYLE, SeverityIcon } from "./Severity";
 
-const t = strings.report;
 
 type Props = {
   score: number;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export default function ReportSummary({ score, counts }: Props) {
+  const strings = useStrings();
+  const t = strings.report;
   const clamped = Math.max(0, Math.min(100, score));
   return (
     <section aria-label={t.summaryLabel} className="flex flex-wrap gap-5">

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { formatSeconds } from "@/lib/format";
-import { strings } from "@/lib/strings";
+import { useLanguage } from "@/components/LanguageProvider";
+import { useStrings } from "@/lib/useStrings";
 import { SEVERITIES, type Issue, type Severity } from "@/lib/types";
 import { SeverityBadge } from "./Severity";
 
@@ -46,6 +47,9 @@ type Props = {
 };
 
 export default function IssueList({ issues, counts, selectedId, lang, onPlay }: Props) {
+  const { language } = useLanguage();
+  const strings = useStrings();
+  const t = strings.report;
   const [filter, setFilter] = useState<"all" | Severity>("all");
   const [category, setCategory] = useState<"all" | Category>("all");
   const visible = issues.filter((issue) =>
@@ -87,8 +91,8 @@ export default function IssueList({ issues, counts, selectedId, lang, onPlay }: 
       <div role="group" aria-label={lang === "en" ? "Filter issues by category" : "Filtrează problemele după categorie"} className="flex flex-wrap gap-2">
         {(["all", ...CATEGORIES] as const).map((key) => {
           const selected = category === key;
-          const label = key === "all" ? (lang === "en" ? "All categories" : "Toate categoriile")
-            : CATEGORY_LABELS[key][lang === "en" ? "en" : "ro"];
+          const label = key === "all" ? (language === "en" ? "All categories" : "Toate categoriile")
+            : CATEGORY_LABELS[key][language];
           const count = key === "all" ? issues.length
             : issues.filter((issue) => issueCategory(issue) === key).length;
           return (
