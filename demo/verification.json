@@ -1,33 +1,34 @@
 {
   "browser": "Microsoft Edge",
-  "network_policy": "All non-loopback browser HTTP(S) requests blocked in a fresh context; service workers disabled. Host Wi-Fi was not changed.",
+  "host_network_disconnected": false,
+  "stack_started_while_disconnected": false,
   "runs": {
     "bad-checkout": {
       "score": 33,
-      "video_played": true,
-      "seek_mode": "issue-timestamp-button",
+      "range_status": 206,
+      "critical_issue_id": "i1",
       "seek_seconds": 11.632,
-      "observed_seek_seconds": 11.654,
-      "active_card_highlight": true,
-      "range_status": 206
+      "observed_seek_seconds": 11.64,
+      "video_played": true,
+      "active_card_highlight": true
     },
     "site1": {
-      "score": 76,
+      "score": 0,
+      "range_status": 206,
+      "critical_issue_id": "i2",
+      "seek_seconds": 28.85,
+      "observed_seek_seconds": 28.85,
       "video_played": true,
-      "seek_mode": "video-seek; structural issues have null timestamps",
-      "seek_seconds": 5.0,
-      "observed_seek_seconds": 5.018,
-      "active_card_highlight": "not applicable: no issue featured in narration",
-      "range_status": 206
+      "active_card_highlight": true
     },
     "site2": {
-      "score": 89,
+      "score": 0,
+      "range_status": 206,
+      "critical_issue_id": "i1",
+      "seek_seconds": 13.971,
+      "observed_seek_seconds": 13.971,
       "video_played": true,
-      "seek_mode": "video-seek; structural issues have null timestamps",
-      "seek_seconds": 5.0,
-      "observed_seek_seconds": 5.017,
-      "active_card_highlight": "not applicable: no issue featured in narration",
-      "range_status": 206
+      "active_card_highlight": true
     }
   },
   "browser_version": "156.0.4314.58",

@@ -1,6 +1,6 @@
 {
-  "url": "https://www.berkshirehathaway.com/",
-  "title": "BERKSHIRE HATHAWAY INC.",
+  "url": "https://projects.accesscomputing.uw.edu/au/before.html",
+  "title": "Accessible University Demo Site - Inaccessible Version",
   "viewport": {
     "width": 1280,
     "height": 720
@@ -9,8 +9,8 @@
     {
       "id": "n0",
       "order": 0,
-      "role": "text",
-      "name": "B",
+      "role": "image",
+      "name": "au123456789.gif",
       "level": null,
       "states": {
         "required": false,
@@ -22,20 +22,20 @@
       "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(1)",
+      "selector": "#logo",
       "bbox": {
-        "x": 510,
-        "y": 8,
-        "w": 22,
-        "h": 36
+        "x": 129,
+        "y": 42,
+        "w": 441,
+        "h": 90
       },
       "visible": true
     },
     {
       "id": "n1",
       "order": 1,
-      "role": "text",
-      "name": "ERKSHIRE ",
+      "role": "navigation",
+      "name": "Demo site menu",
       "level": null,
       "states": {
         "required": false,
@@ -47,168 +47,18 @@
       "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(2)",
+      "selector": "#AU-menu",
       "bbox": {
-        "x": 532,
-        "y": 21,
-        "w": 98,
-        "h": 20
+        "x": 895.875,
+        "y": 20,
+        "w": 253.125,
+        "h": 19
       },
       "visible": true
     },
     {
       "id": "n2",
       "order": 2,
-      "role": "text",
-      "name": "H",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(3)",
-      "bbox": {
-        "x": 630,
-        "y": 8,
-        "w": 25,
-        "h": 36
-      },
-      "visible": true
-    },
-    {
-      "id": "n3",
-      "order": 3,
-      "role": "text",
-      "name": "ATHAWAY ",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(4)",
-      "bbox": {
-        "x": 655,
-        "y": 21,
-        "w": 90,
-        "h": 20
-      },
-      "visible": true
-    },
-    {
-      "id": "n4",
-      "order": 4,
-      "role": "text",
-      "name": "INC.",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(5)",
-      "bbox": {
-        "x": 585,
-        "y": 25,
-        "w": 185,
-        "h": 51
-      },
-      "visible": true
-    },
-    {
-      "id": "n5",
-      "order": 5,
-      "role": "text",
-      "name": "3555 Farnam Street",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(5)",
-      "bbox": {
-        "x": 585,
-        "y": 25,
-        "w": 185,
-        "h": 51
-      },
-      "visible": true
-    },
-    {
-      "id": "n6",
-      "order": 6,
-      "role": "text",
-      "name": "Omaha, NE 68131",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(5)",
-      "bbox": {
-        "x": 585,
-        "y": 25,
-        "w": 185,
-        "h": 51
-      },
-      "visible": true
-    },
-    {
-      "id": "n7",
-      "order": 7,
-      "role": "text",
-      "name": "Official Home Page",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1)",
-      "bbox": {
-        "x": 510,
-        "y": 22,
-        "w": 260,
-        "h": 74
-      },
-      "visible": true
-    },
-    {
-      "id": "n8",
-      "order": 8,
       "role": "list",
       "name": "",
       "level": null,
@@ -219,15 +69,165 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
+      "list_size": 4,
+      "focusable": false,
+      "parent": "n1",
+      "selector": "#AU-menu > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 895.875,
+        "y": 20,
+        "w": 253.125,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n3",
+      "order": 3,
+      "role": "link",
+      "name": "Home",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n2",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 898.265625,
+        "y": 15,
+        "w": 61,
+        "h": 29
+      },
+      "visible": true
+    },
+    {
+      "id": "n4",
+      "order": 4,
+      "role": "link",
+      "name": "Before",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n2",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 968.046875,
+        "y": 15,
+        "w": 66,
+        "h": 29
+      },
+      "visible": true
+    },
+    {
+      "id": "n5",
+      "order": 5,
+      "role": "link",
+      "name": "After",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n2",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 1042.828125,
+        "y": 15,
+        "w": 52,
+        "h": 29
+      },
+      "visible": true
+    },
+    {
+      "id": "n6",
+      "order": 6,
+      "role": "link",
+      "name": "Info",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n2",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 1103.609375,
+        "y": 15,
+        "w": 43,
+        "h": 29
+      },
+      "visible": true
+    },
+    {
+      "id": "n7",
+      "order": 7,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 4,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "selector": "#menu",
       "bbox": {
-        "x": 72.203125,
-        "y": 132,
-        "w": 566.796875,
-        "h": 20
+        "x": 141,
+        "y": 136,
+        "w": 1000,
+        "h": 0
+      },
+      "visible": false
+    },
+    {
+      "id": "n8",
+      "order": 8,
+      "role": "link",
+      "name": "About",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n7",
+      "selector": "#menu > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 146,
+        "y": 141,
+        "w": 73,
+        "h": 27
       },
       "visible": true
     },
@@ -235,7 +235,7 @@
       "id": "n9",
       "order": 9,
       "role": "link",
-      "name": "A Message from Warren E. Buffett",
+      "name": "Academics",
       "level": null,
       "states": {
         "required": false,
@@ -246,21 +246,21 @@
       "value": null,
       "list_size": null,
       "focusable": true,
-      "parent": "n8",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "parent": "n7",
+      "selector": "#menu > li:nth-of-type(2) > a:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 132,
-        "w": 210,
-        "h": 19
+        "x": 230,
+        "y": 141,
+        "w": 111,
+        "h": 27
       },
       "visible": true
     },
     {
       "id": "n10",
       "order": 10,
-      "role": "list",
-      "name": "",
+      "role": "link",
+      "name": "Admissions",
       "level": null,
       "states": {
         "required": false,
@@ -269,15 +269,15 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "list_size": null,
+      "focusable": true,
+      "parent": "n7",
+      "selector": "#menu > li:nth-of-type(3) > a:nth-of-type(1)",
       "bbox": {
-        "x": 641,
-        "y": 132,
-        "w": 566.796875,
-        "h": 40
+        "x": 352,
+        "y": 141,
+        "w": 114,
+        "h": 27
       },
       "visible": true
     },
@@ -285,7 +285,7 @@
       "id": "n11",
       "order": 11,
       "role": "link",
-      "name": "Fraudulent Claims Regarding Mr. Buffett's Endorsements of Investment Products and Political Candidates",
+      "name": "Visitors",
       "level": null,
       "states": {
         "required": false,
@@ -296,20 +296,20 @@
       "value": null,
       "list_size": null,
       "focusable": true,
-      "parent": "n10",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "parent": "n7",
+      "selector": "#menu > li:nth-of-type(4) > a:nth-of-type(1)",
       "bbox": {
-        "x": 681,
-        "y": 132,
-        "w": 511,
-        "h": 39
+        "x": 477,
+        "y": 141,
+        "w": 85,
+        "h": 27
       },
       "visible": true
     },
     {
       "id": "n12",
       "order": 12,
-      "role": "list",
+      "role": "image",
       "name": "",
       "level": null,
       "states": {
@@ -319,23 +319,23 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
+      "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "selector": "#slides > div:nth-of-type(1) > img:nth-of-type(1)",
       "bbox": {
-        "x": 72.203125,
-        "y": 190,
-        "w": 566.796875,
-        "h": 40
+        "x": 139.234375,
+        "y": 184,
+        "w": 747.515625,
+        "h": 420.140625
       },
       "visible": true
     },
     {
       "id": "n13",
       "order": 13,
-      "role": "link",
-      "name": "Annual & Interim Reports",
+      "role": "text",
+      "name": "A modern shool",
       "level": null,
       "states": {
         "required": false,
@@ -345,22 +345,22 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n12",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#slides > div:nth-of-type(1) > div:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 190,
-        "w": 156,
-        "h": 19
+        "x": 376.484375,
+        "y": 373.0625,
+        "w": 273,
+        "h": 46
       },
       "visible": true
     },
     {
       "id": "n14",
       "order": 14,
-      "role": "text",
-      "name": "Updated August 8, 2026",
+      "role": "list",
+      "name": "",
       "level": null,
       "states": {
         "required": false,
@@ -369,23 +369,23 @@
         "disabled": false
       },
       "value": null,
-      "list_size": null,
+      "list_size": 4,
       "focusable": false,
-      "parent": "n12",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "parent": null,
+      "selector": "#carousel > ul:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 215,
-        "w": 98,
-        "h": 12
+        "x": 139.234375,
+        "y": 624.140625,
+        "w": 747.515625,
+        "h": 44
       },
       "visible": true
     },
     {
       "id": "n15",
       "order": 15,
-      "role": "list",
-      "name": "",
+      "role": "text",
+      "name": "Welcome!",
       "level": null,
       "states": {
         "required": false,
@@ -394,23 +394,23 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
+      "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "selector": "#main > div:nth-of-type(2)",
       "bbox": {
-        "x": 641,
-        "y": 190,
-        "w": 566.796875,
-        "h": 40
+        "x": 139.234375,
+        "y": 687.328125,
+        "w": 747.515625,
+        "h": 32
       },
       "visible": true
     },
     {
       "id": "n16",
       "order": 16,
-      "role": "link",
-      "name": "News Releases from Berkshire Hathaway and from Warren Buffett",
+      "role": "text",
+      "name": "Accessible University (AU) is a fictional university, and this is its fictional home page. This page is designed to demonstrate a variety of common web design problems that result in visitors with disabilities being unable to access the content or features of a web page. Although the heading at the top of this section of the page suggests that AU may be a welcoming institution, the inaccessible design of this page sends the opposite message.",
       "level": null,
       "states": {
         "required": false,
@@ -420,22 +420,22 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n15",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > p:nth-of-type(1)",
       "bbox": {
-        "x": 681,
-        "y": 190,
-        "w": 403,
-        "h": 19
+        "x": 139.234375,
+        "y": 738.515625,
+        "w": 747.515625,
+        "h": 95
       },
       "visible": true
     },
     {
       "id": "n17",
       "order": 17,
-      "role": "text",
-      "name": "Updated November 4, 2026",
+      "role": "image",
+      "name": "horizontal line graphic",
       "level": null,
       "states": {
         "required": false,
@@ -446,21 +446,21 @@
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n15",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "parent": null,
+      "selector": "#main > img:nth-of-type(1)",
       "bbox": {
-        "x": 681,
-        "y": 215,
-        "w": 111,
-        "h": 12
+        "x": 139.234375,
+        "y": 865.515625,
+        "w": 400,
+        "h": 5
       },
       "visible": true
     },
     {
       "id": "n18",
       "order": 18,
-      "role": "list",
-      "name": "",
+      "role": "text",
+      "name": "Bienvenido!",
       "level": null,
       "states": {
         "required": false,
@@ -469,23 +469,23 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
+      "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "selector": "#main > div:nth-of-type(3)",
       "bbox": {
-        "x": 72.203125,
-        "y": 248,
-        "w": 566.796875,
-        "h": 20
+        "x": 139.234375,
+        "y": 909.703125,
+        "w": 747.515625,
+        "h": 32
       },
       "visible": true
     },
     {
       "id": "n19",
       "order": 19,
-      "role": "link",
-      "name": "Link to SEC Filings",
+      "role": "text",
+      "name": "Accesible Universidad (UA) es una universidad ficticia, y esta es su página de ficción. Esta página está diseñada para demostrar una variedad de común de diseño web que se traducen en problemas de los visitantes con discapacidad no poder acceder al contenido o las características de una página web. Aunque el título en la parte superior de esta sección de la página sugiere que AU puede ser una institución de bienvenida, el diseño inaccesible de esta página envía el mensaje opuesto.",
       "level": null,
       "states": {
         "required": false,
@@ -495,47 +495,22 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n18",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > p:nth-of-type(2)",
       "bbox": {
-        "x": 112.203125,
-        "y": 248,
-        "w": 118,
-        "h": 19
+        "x": 139.234375,
+        "y": 960.890625,
+        "w": 747.515625,
+        "h": 95
       },
       "visible": true
     },
     {
       "id": "n20",
       "order": 20,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 641,
-        "y": 248,
-        "w": 566.796875,
-        "h": 40
-      },
-      "visible": true
-    },
-    {
-      "id": "n21",
-      "order": 21,
-      "role": "link",
-      "name": "Annual Meeting Information",
+      "role": "image",
+      "name": "horizontal line graphic",
       "level": null,
       "states": {
         "required": false,
@@ -545,14 +520,39 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n20",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > img:nth-of-type(2)",
       "bbox": {
-        "x": 681,
-        "y": 248,
-        "w": 168,
-        "h": 19
+        "x": 139.234375,
+        "y": 1087.890625,
+        "w": 400,
+        "h": 5
+      },
+      "visible": true
+    },
+    {
+      "id": "n21",
+      "order": 21,
+      "role": "text",
+      "name": "Can you spot the barriers?",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > div:nth-of-type(4)",
+      "bbox": {
+        "x": 139.234375,
+        "y": 1132.078125,
+        "w": 747.515625,
+        "h": 32
       },
       "visible": true
     },
@@ -560,7 +560,7 @@
       "id": "n22",
       "order": 22,
       "role": "text",
-      "name": "Updated April 20, 2026",
+      "name": "There are at least 22 accessibility issues on this page. To see a list of all known issues, ",
       "level": null,
       "states": {
         "required": false,
@@ -571,46 +571,21 @@
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n20",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "parent": null,
+      "selector": "#main > p:nth-of-type(3)",
       "bbox": {
-        "x": 681,
-        "y": 273,
-        "w": 95,
-        "h": 12
+        "x": 139.234375,
+        "y": 1183.265625,
+        "w": 747.515625,
+        "h": 38
       },
       "visible": true
     },
     {
       "id": "n23",
       "order": 23,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 72.203125,
-        "y": 306,
-        "w": 566.796875,
-        "h": 40
-      },
-      "visible": true
-    },
-    {
-      "id": "n24",
-      "order": 24,
       "role": "link",
-      "name": "Warren Buffett's Letters to Berkshire Shareholders",
+      "name": "click here",
       "level": null,
       "states": {
         "required": false,
@@ -621,21 +596,21 @@
       "value": null,
       "list_size": null,
       "focusable": true,
-      "parent": "n23",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "parent": null,
+      "selector": "#main > p:nth-of-type(3) > a:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 306,
-        "w": 305,
-        "h": 19
+        "x": 740.234375,
+        "y": 1183.265625,
+        "w": 66,
+        "h": 18
       },
       "visible": true
     },
     {
-      "id": "n25",
-      "order": 25,
+      "id": "n24",
+      "order": 24,
       "role": "text",
-      "name": "Updated February 22, 2025",
+      "name": ". To see a more accessible version of this same page, ",
       "level": null,
       "states": {
         "required": false,
@@ -646,21 +621,21 @@
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n23",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "parent": null,
+      "selector": "#main > p:nth-of-type(3)",
       "bbox": {
-        "x": 112.203125,
-        "y": 331,
-        "w": 110,
-        "h": 12
+        "x": 139.234375,
+        "y": 1183.265625,
+        "w": 747.515625,
+        "h": 38
       },
       "visible": true
     },
     {
-      "id": "n26",
-      "order": 26,
-      "role": "list",
-      "name": "",
+      "id": "n25",
+      "order": 25,
+      "role": "link",
+      "name": "click here",
       "level": null,
       "states": {
         "required": false,
@@ -669,15 +644,40 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#main > p:nth-of-type(3) > a:nth-of-type(2)",
+      "bbox": {
+        "x": 444.234375,
+        "y": 1202.265625,
+        "w": 66,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n26",
+      "order": 26,
+      "role": "text",
+      "name": ". For a cheat sheet of accessibility issues, ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "selector": "#main > p:nth-of-type(3)",
       "bbox": {
-        "x": 641,
-        "y": 306,
-        "w": 566.796875,
-        "h": 60
+        "x": 139.234375,
+        "y": 1183.265625,
+        "w": 747.515625,
+        "h": 38
       },
       "visible": true
     },
@@ -685,7 +685,7 @@
       "id": "n27",
       "order": 27,
       "role": "link",
-      "name": "Greg Abel's Letters to Berkshire Shareholders",
+      "name": "click here",
       "level": null,
       "states": {
         "required": false,
@@ -696,13 +696,13 @@
       "value": null,
       "list_size": null,
       "focusable": true,
-      "parent": "n26",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "parent": null,
+      "selector": "#main > p:nth-of-type(3) > a:nth-of-type(3)",
       "bbox": {
-        "x": 681,
-        "y": 306,
-        "w": 278,
-        "h": 19
+        "x": 802.234375,
+        "y": 1202.265625,
+        "w": 66,
+        "h": 18
       },
       "visible": true
     },
@@ -710,7 +710,7 @@
       "id": "n28",
       "order": 28,
       "role": "text",
-      "name": "Updated February 28, 2026",
+      "name": ".",
       "level": null,
       "states": {
         "required": false,
@@ -721,21 +721,21 @@
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n26",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "parent": null,
+      "selector": "#main > p:nth-of-type(3)",
       "bbox": {
-        "x": 681,
-        "y": 331,
-        "w": 110,
-        "h": 12
+        "x": 139.234375,
+        "y": 1183.265625,
+        "w": 747.515625,
+        "h": 38
       },
       "visible": true
     },
     {
       "id": "n29",
       "order": 29,
-      "role": "list",
-      "name": "",
+      "role": "image",
+      "name": "horizontal line graphic",
       "level": null,
       "states": {
         "required": false,
@@ -744,23 +744,23 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 1,
+      "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "selector": "#main > img:nth-of-type(3)",
       "bbox": {
-        "x": 72.203125,
-        "y": 384,
-        "w": 566.796875,
-        "h": 20
+        "x": 139.234375,
+        "y": 1253.265625,
+        "w": 400,
+        "h": 5
       },
       "visible": true
     },
     {
       "id": "n30",
       "order": 30,
-      "role": "link",
-      "name": "Special Letters from Warren & Charlie RE:Past, Present and Future",
+      "role": "text",
+      "name": "AU Enrollment Trends",
       "level": null,
       "states": {
         "required": false,
@@ -770,47 +770,22 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n29",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > div:nth-of-type(5)",
       "bbox": {
-        "x": 112.203125,
-        "y": 384,
-        "w": 408,
-        "h": 19
+        "x": 139.234375,
+        "y": 1297.453125,
+        "w": 747.515625,
+        "h": 32
       },
       "visible": true
     },
     {
       "id": "n31",
       "order": 31,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 641,
-        "y": 384,
-        "w": 566.796875,
-        "h": 20
-      },
-      "visible": true
-    },
-    {
-      "id": "n32",
-      "order": 32,
-      "role": "link",
-      "name": "Charlie Munger's Letters to Wesco Shareholders",
+      "role": "text",
+      "name": "Last Year",
       "level": null,
       "states": {
         "required": false,
@@ -820,13 +795,38 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n31",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > b:nth-of-type(1)",
       "bbox": {
-        "x": 681,
-        "y": 384,
-        "w": 294,
+        "x": 396.75,
+        "y": 1361.640625,
+        "w": 70,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n32",
+      "order": 32,
+      "role": "text",
+      "name": "This Year",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(3) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 700,
+        "y": 1361.640625,
+        "w": 70,
         "h": 19
       },
       "visible": true
@@ -834,33 +834,8 @@
     {
       "id": "n33",
       "order": 33,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(1) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 72.203125,
-        "y": 439,
-        "w": 566.796875,
-        "h": 40
-      },
-      "visible": true
-    },
-    {
-      "id": "n34",
-      "order": 34,
-      "role": "link",
-      "name": "Links to Berkshire Operating Companies",
+      "role": "text",
+      "name": "CS",
       "level": null,
       "states": {
         "required": false,
@@ -870,13 +845,38 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n33",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > b:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 439,
-        "w": 247,
+        "x": 299.984375,
+        "y": 1406.640625,
+        "w": 23,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n34",
+      "order": 34,
+      "role": "text",
+      "name": "Eng",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 357.5,
+        "y": 1406.640625,
+        "w": 31,
         "h": 19
       },
       "visible": true
@@ -884,33 +884,8 @@
     {
       "id": "n35",
       "order": 35,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(2) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 641,
-        "y": 439,
-        "w": 566.796875,
-        "h": 20
-      },
-      "visible": true
-    },
-    {
-      "id": "n36",
-      "order": 36,
-      "role": "link",
-      "name": "Berkshire Hathaway Energy Investor Presentations",
+      "role": "text",
+      "name": "Eco",
       "level": null,
       "states": {
         "required": false,
@@ -920,13 +895,38 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n35",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(3) > b:nth-of-type(1)",
       "bbox": {
-        "x": 681,
-        "y": 439,
-        "w": 306,
+        "x": 417.140625,
+        "y": 1406.640625,
+        "w": 30,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n36",
+      "order": 36,
+      "role": "text",
+      "name": "Phy",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(4) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 475.890625,
+        "y": 1406.640625,
+        "w": 30,
         "h": 19
       },
       "visible": true
@@ -934,33 +934,8 @@
     {
       "id": "n37",
       "order": 37,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(1) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 72.203125,
-        "y": 497,
-        "w": 566.796875,
-        "h": 40
-      },
-      "visible": true
-    },
-    {
-      "id": "n38",
-      "order": 38,
-      "role": "link",
-      "name": "Corporate Governance",
+      "role": "text",
+      "name": "Psy",
       "level": null,
       "states": {
         "required": false,
@@ -970,13 +945,38 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n37",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(5) > b:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 497,
-        "w": 140,
+        "x": 537.515625,
+        "y": 1406.640625,
+        "w": 29,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n38",
+      "order": 38,
+      "role": "text",
+      "name": "CS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(6) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 604.015625,
+        "y": 1406.640625,
+        "w": 23,
         "h": 19
       },
       "visible": true
@@ -984,33 +984,8 @@
     {
       "id": "n39",
       "order": 39,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(2) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 641,
-        "y": 497,
-        "w": 566.796875,
-        "h": 20
-      },
-      "visible": true
-    },
-    {
-      "id": "n40",
-      "order": 40,
-      "role": "link",
-      "name": "Common Stock Information",
+      "role": "text",
+      "name": "Eng",
       "level": null,
       "states": {
         "required": false,
@@ -1020,13 +995,38 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n39",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(7) > b:nth-of-type(1)",
       "bbox": {
-        "x": 681,
-        "y": 497,
-        "w": 169,
+        "x": 661.53125,
+        "y": 1406.640625,
+        "w": 31,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n40",
+      "order": 40,
+      "role": "text",
+      "name": "Eco",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(8) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 721.171875,
+        "y": 1406.640625,
+        "w": 30,
         "h": 19
       },
       "visible": true
@@ -1034,33 +1034,8 @@
     {
       "id": "n41",
       "order": 41,
-      "role": "list",
-      "name": "",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": 1,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(1) > ul:nth-of-type(1)",
-      "bbox": {
-        "x": 72.203125,
-        "y": 555,
-        "w": 566.796875,
-        "h": 20
-      },
-      "visible": true
-    },
-    {
-      "id": "n42",
-      "order": 42,
-      "role": "link",
-      "name": "Sustainability",
+      "role": "text",
+      "name": "Phy",
       "level": null,
       "states": {
         "required": false,
@@ -1070,13 +1045,38 @@
       },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n41",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(9) > b:nth-of-type(1)",
       "bbox": {
-        "x": 112.203125,
-        "y": 555,
-        "w": 78,
+        "x": 779.921875,
+        "y": 1406.640625,
+        "w": 30,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n42",
+      "order": 42,
+      "role": "text",
+      "name": "Psy",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(10) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 840.765625,
+        "y": 1406.640625,
+        "w": 29,
         "h": 19
       },
       "visible": true
@@ -1084,7 +1084,782 @@
     {
       "id": "n43",
       "order": 43,
-      "role": "list",
+      "role": "text",
+      "name": "Undergraduate",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 152.234375,
+        "y": 1451.640625,
+        "w": 115,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n44",
+      "order": 44,
+      "role": "text",
+      "name": "1481",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2)",
+      "bbox": {
+        "x": 279.734375,
+        "y": 1439.140625,
+        "w": 63.5,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n45",
+      "order": 45,
+      "role": "text",
+      "name": "400",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(3)",
+      "bbox": {
+        "x": 343.234375,
+        "y": 1439.140625,
+        "w": 59.53125,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n46",
+      "order": 46,
+      "role": "text",
+      "name": "727",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(4)",
+      "bbox": {
+        "x": 402.765625,
+        "y": 1439.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n47",
+      "order": 47,
+      "role": "text",
+      "name": "747",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(5)",
+      "bbox": {
+        "x": 461.515625,
+        "y": 1439.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n48",
+      "order": 48,
+      "role": "text",
+      "name": "1006",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(6)",
+      "bbox": {
+        "x": 520.265625,
+        "y": 1439.140625,
+        "w": 63.5,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n49",
+      "order": 49,
+      "role": "text",
+      "name": "1500",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(7)",
+      "bbox": {
+        "x": 583.765625,
+        "y": 1439.140625,
+        "w": 63.5,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n50",
+      "order": 50,
+      "role": "text",
+      "name": "340",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(8)",
+      "bbox": {
+        "x": 647.265625,
+        "y": 1439.140625,
+        "w": 59.53125,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n51",
+      "order": 51,
+      "role": "text",
+      "name": "777",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(9)",
+      "bbox": {
+        "x": 706.796875,
+        "y": 1439.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n52",
+      "order": 52,
+      "role": "text",
+      "name": "787",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(10)",
+      "bbox": {
+        "x": 765.546875,
+        "y": 1439.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n53",
+      "order": 53,
+      "role": "text",
+      "name": "1112",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(11)",
+      "bbox": {
+        "x": 824.296875,
+        "y": 1439.140625,
+        "w": 61.953125,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n54",
+      "order": 54,
+      "role": "text",
+      "name": "Graduate",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 174.734375,
+        "y": 1496.640625,
+        "w": 70,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n55",
+      "order": 55,
+      "role": "text",
+      "name": "310",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2)",
+      "bbox": {
+        "x": 279.734375,
+        "y": 1484.140625,
+        "w": 63.5,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n56",
+      "order": 56,
+      "role": "text",
+      "name": "84",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(3)",
+      "bbox": {
+        "x": 343.234375,
+        "y": 1484.140625,
+        "w": 59.53125,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n57",
+      "order": 57,
+      "role": "text",
+      "name": "273",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(4)",
+      "bbox": {
+        "x": 402.765625,
+        "y": 1484.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n58",
+      "order": 58,
+      "role": "text",
+      "name": "69",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(5)",
+      "bbox": {
+        "x": 461.515625,
+        "y": 1484.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n59",
+      "order": 59,
+      "role": "text",
+      "name": "312",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(6)",
+      "bbox": {
+        "x": 520.265625,
+        "y": 1484.140625,
+        "w": 63.5,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n60",
+      "order": 60,
+      "role": "text",
+      "name": "350",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(7)",
+      "bbox": {
+        "x": 583.765625,
+        "y": 1484.140625,
+        "w": 63.5,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n61",
+      "order": 61,
+      "role": "text",
+      "name": "64",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(8)",
+      "bbox": {
+        "x": 647.265625,
+        "y": 1484.140625,
+        "w": 59.53125,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n62",
+      "order": 62,
+      "role": "text",
+      "name": "341",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(9)",
+      "bbox": {
+        "x": 706.796875,
+        "y": 1484.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n63",
+      "order": 63,
+      "role": "text",
+      "name": "72",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(10)",
+      "bbox": {
+        "x": 765.546875,
+        "y": 1484.140625,
+        "w": 58.75,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n64",
+      "order": 64,
+      "role": "text",
+      "name": "325",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#enrollment > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(11)",
+      "bbox": {
+        "x": 824.296875,
+        "y": 1484.140625,
+        "w": 61.953125,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n65",
+      "order": 65,
+      "role": "image",
+      "name": "horizontal line graphic",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > img:nth-of-type(4)",
+      "bbox": {
+        "x": 139.234375,
+        "y": 1561.640625,
+        "w": 400,
+        "h": 5
+      },
+      "visible": true
+    },
+    {
+      "id": "n66",
+      "order": 66,
+      "role": "text",
+      "name": "AU Video",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#main > div:nth-of-type(6)",
+      "bbox": {
+        "x": 139.234375,
+        "y": 1605.828125,
+        "w": 747.515625,
+        "h": 32
+      },
+      "visible": true
+    },
+    {
+      "id": "n67",
+      "order": 67,
+      "role": "button",
+      "name": "play",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": true
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 139.234375,
+        "y": 2003.875,
+        "w": 48,
+        "h": 48
+      },
+      "visible": true
+    },
+    {
+      "id": "n68",
+      "order": 68,
+      "role": "button",
+      "name": "mute",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": true
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > input:nth-of-type(2)",
+      "bbox": {
+        "x": 742.75,
+        "y": 2003.875,
+        "w": 48,
+        "h": 48
+      },
+      "visible": true
+    },
+    {
+      "id": "n69",
+      "order": 69,
+      "role": "button",
+      "name": "enter full screen",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": true
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(2)",
+      "bbox": {
+        "x": 790.75,
+        "y": 2003.875,
+        "w": 48,
+        "h": 48
+      },
+      "visible": true
+    },
+    {
+      "id": "n70",
+      "order": 70,
+      "role": "button",
+      "name": "show more media controls",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": true
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(3)",
+      "bbox": {
+        "x": 838.75,
+        "y": 2003.875,
+        "w": 48,
+        "h": 48
+      },
+      "visible": true
+    },
+    {
+      "id": "n71",
+      "order": 71,
+      "role": "text",
+      "name": "Apply Now!",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#appForm > div:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 211.59375,
+        "w": 225.265625,
+        "h": 32
+      },
+      "visible": true
+    },
+    {
+      "id": "n72",
+      "order": 72,
+      "role": "text",
+      "name": "(required fields are in blue)",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#appForm > p:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 245.984375,
+        "w": 225.265625,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n73",
+      "order": 73,
+      "role": "text",
+      "name": "Name:",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(2)",
+      "bbox": {
+        "x": 915.5,
+        "y": 280.984375,
+        "w": 225.265625,
+        "h": 41
+      },
+      "visible": true
+    },
+    {
+      "id": "n74",
+      "order": 74,
+      "role": "textbox",
       "name": "",
       "level": null,
       "states": {
@@ -1094,23 +1869,48 @@
         "disabled": false
       },
       "value": null,
-      "list_size": 0,
-      "focusable": false,
+      "list_size": null,
+      "focusable": true,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(1)",
       "bbox": {
-        "x": 641,
-        "y": 555,
-        "w": 566.796875,
-        "h": 0
+        "x": 915.5,
+        "y": 299.984375,
+        "w": 222,
+        "h": 22
       },
-      "visible": false
+      "visible": true
     },
     {
-      "id": "n44",
-      "order": 44,
-      "role": "link",
-      "name": "GEICO logo ",
+      "id": "n75",
+      "order": 75,
+      "role": "text",
+      "name": "Email:",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(3)",
+      "bbox": {
+        "x": 915.5,
+        "y": 337.984375,
+        "w": 225.265625,
+        "h": 41
+      },
+      "visible": true
+    },
+    {
+      "id": "n76",
+      "order": 76,
+      "role": "textbox",
+      "name": "",
       "level": null,
       "states": {
         "required": false,
@@ -1122,20 +1922,95 @@
       "list_size": null,
       "focusable": true,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > a:nth-of-type(1)",
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(3) > input:nth-of-type(1)",
       "bbox": {
-        "x": 602.5,
-        "y": 643,
-        "w": 75,
+        "x": 915.5,
+        "y": 356.984375,
+        "w": 222,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n77",
+      "order": 77,
+      "role": "text",
+      "name": "Country:",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(4)",
+      "bbox": {
+        "x": 915.5,
+        "y": 394.984375,
+        "w": 225.265625,
+        "h": 41
+      },
+      "visible": true
+    },
+    {
+      "id": "n78",
+      "order": 78,
+      "role": "textbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(4) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 413.984375,
+        "w": 222,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n79",
+      "order": 79,
+      "role": "text",
+      "name": "Desired major(s):",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(5) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 451.984375,
+        "w": 131,
         "h": 19
       },
       "visible": true
     },
     {
-      "id": "n45",
-      "order": 45,
+      "id": "n80",
+      "order": 80,
       "role": "text",
-      "name": "FOR A FREE CAR INSURANCE RATE QUOTE THAT COULD SAVE YOU SUBSTANTIAL MONEY",
+      "name": "Computer Science",
       "level": null,
       "states": {
         "required": false,
@@ -1147,20 +2022,345 @@
       "list_size": null,
       "focusable": false,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1)",
+      "selector": "#majors > div:nth-of-type(1)",
       "bbox": {
-        "x": 422,
-        "y": 660,
-        "w": 436,
-        "h": 24
+        "x": 915.5,
+        "y": 487.984375,
+        "w": 160,
+        "h": 19
       },
       "visible": true
     },
     {
-      "id": "n46",
-      "order": 46,
-      "role": "link",
-      "name": "WWW.GEICO.COM",
+      "id": "n81",
+      "order": 81,
+      "role": "checkbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(1) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 1059.5,
+        "y": 490.984375,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n82",
+      "order": 82,
+      "role": "text",
+      "name": "Engineering",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(2)",
+      "bbox": {
+        "x": 915.5,
+        "y": 506.984375,
+        "w": 160,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n83",
+      "order": 83,
+      "role": "checkbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(2) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 1059.5,
+        "y": 509.984375,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n84",
+      "order": 84,
+      "role": "text",
+      "name": "Economics",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(3)",
+      "bbox": {
+        "x": 915.5,
+        "y": 525.984375,
+        "w": 160,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n85",
+      "order": 85,
+      "role": "checkbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(3) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 1059.5,
+        "y": 528.984375,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n86",
+      "order": 86,
+      "role": "text",
+      "name": "Physics",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(4)",
+      "bbox": {
+        "x": 915.5,
+        "y": 544.984375,
+        "w": 160,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n87",
+      "order": 87,
+      "role": "checkbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(4) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 1059.5,
+        "y": 547.984375,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n88",
+      "order": 88,
+      "role": "text",
+      "name": "Psychology",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(5)",
+      "bbox": {
+        "x": 915.5,
+        "y": 563.984375,
+        "w": 160,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n89",
+      "order": 89,
+      "role": "checkbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(5) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 1059.5,
+        "y": 566.984375,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n90",
+      "order": 90,
+      "role": "text",
+      "name": "Spanish",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(6)",
+      "bbox": {
+        "x": 915.5,
+        "y": 582.984375,
+        "w": 160,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n91",
+      "order": 91,
+      "role": "checkbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#majors > div:nth-of-type(6) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 1059.5,
+        "y": 585.984375,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n92",
+      "order": 92,
+      "role": "text",
+      "name": "Security Test",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#captcha > b:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 617.984375,
+        "w": 99,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n93",
+      "order": 93,
+      "role": "text",
+      "name": "Please enter the two words you see below, separated by a space",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#captcha > p:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 641.984375,
+        "w": 225.265625,
+        "h": 57
+      },
+      "visible": true
+    },
+    {
+      "id": "n94",
+      "order": 94,
+      "role": "textbox",
+      "name": "",
       "level": null,
       "states": {
         "required": false,
@@ -1172,70 +2372,170 @@
       "list_size": null,
       "focusable": true,
       "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1) > a:nth-of-type(1)",
+      "selector": "#captcha > input:nth-of-type(1)",
       "bbox": {
-        "x": 497.5,
-        "y": 672,
+        "x": 915.5,
+        "y": 714.984375,
+        "w": 222,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n95",
+      "order": 95,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#captcha > img:nth-of-type(1)",
+      "bbox": {
+        "x": 915.5,
+        "y": 744.984375,
+        "w": 188,
+        "h": 58
+      },
+      "visible": true
+    },
+    {
+      "id": "n96",
+      "order": 96,
+      "role": "button",
+      "name": "Submit",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#submit",
+      "bbox": {
+        "x": 915.5,
+        "y": 818.984375,
+        "w": 57,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n97",
+      "order": 97,
+      "role": "contentinfo",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#footer > footer:nth-of-type(1)",
+      "bbox": {
+        "x": 136.1875,
+        "y": 2129.265625,
+        "w": 864,
+        "h": 110.390625
+      },
+      "visible": true
+    },
+    {
+      "id": "n98",
+      "order": 98,
+      "role": "link",
+      "name": "Creative Commons License",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n97",
+      "selector": "#ccLogo > a:nth-of-type(1)",
+      "bbox": {
+        "x": 136.1875,
+        "y": 2147.265625,
         "w": 88,
-        "h": 12
-      },
-      "visible": true
-    },
-    {
-      "id": "n47",
-      "order": 47,
-      "role": "text",
-      "name": " OR CALL 1-888-395-6349, 24 HOURS A DAY",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1)",
-      "bbox": {
-        "x": 422,
-        "y": 660,
-        "w": 436,
-        "h": 24
-      },
-      "visible": true
-    },
-    {
-      "id": "n48",
-      "order": 48,
-      "role": "text",
-      "name": "If you have any comments about our WEB page, you can write us at the address shown above. However, due to the limited number of personnel in our corporate office, we are unable to provide a direct response.",
-      "level": null,
-      "states": {
-        "required": false,
-        "checked": null,
-        "expanded": null,
-        "disabled": false
-      },
-      "value": null,
-      "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > font:nth-of-type(1) > p:nth-of-type(1)",
-      "bbox": {
-        "x": 8,
-        "y": 718,
-        "w": 1264,
         "h": 16
       },
       "visible": true
     },
     {
-      "id": "n49",
-      "order": 49,
+      "id": "n99",
+      "order": 99,
+      "role": "text",
+      "name": "Accessible University",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n97",
+      "selector": "#license > span:nth-of-type(1)",
+      "bbox": {
+        "x": 238.578125,
+        "y": 2129.265625,
+        "w": 132,
+        "h": 16
+      },
+      "visible": true
+    },
+    {
+      "id": "n100",
+      "order": 100,
+      "role": "text",
+      "name": " by ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n97",
+      "selector": "#license",
+      "bbox": {
+        "x": 136.1875,
+        "y": 2129.265625,
+        "w": 864,
+        "h": 32
+      },
+      "visible": true
+    },
+    {
+      "id": "n101",
+      "order": 101,
       "role": "link",
-      "name": "Legal Disclaimer",
+      "name": "University of Washington",
       "level": null,
       "states": {
         "required": false,
@@ -1246,21 +2546,21 @@
       "value": null,
       "list_size": null,
       "focusable": true,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(2) > font:nth-of-type(1) > a:nth-of-type(1)",
+      "parent": "n97",
+      "selector": "#license > a:nth-of-type(1)",
       "bbox": {
-        "x": 8,
-        "y": 768,
-        "w": 87,
-        "h": 15
+        "x": 393.578125,
+        "y": 2129.265625,
+        "w": 155,
+        "h": 16
       },
       "visible": true
     },
     {
-      "id": "n50",
-      "order": 50,
+      "id": "n102",
+      "order": 102,
       "role": "text",
-      "name": "Copyright © 1977-2026",
+      "name": " is licensed under a ",
       "level": null,
       "states": {
         "required": false,
@@ -1271,21 +2571,46 @@
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(3) > font:nth-of-type(1)",
+      "parent": "n97",
+      "selector": "#license",
       "bbox": {
-        "x": 8,
-        "y": 800,
-        "w": 261,
-        "h": 15
+        "x": 136.1875,
+        "y": 2129.265625,
+        "w": 864,
+        "h": 32
       },
       "visible": true
     },
     {
-      "id": "n51",
-      "order": 51,
+      "id": "n103",
+      "order": 103,
+      "role": "link",
+      "name": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n97",
+      "selector": "#license > a:nth-of-type(2)",
+      "bbox": {
+        "x": 238.578125,
+        "y": 2129.265625,
+        "w": 733,
+        "h": 32
+      },
+      "visible": true
+    },
+    {
+      "id": "n104",
+      "order": 104,
       "role": "text",
-      "name": " Berkshire Hathaway Inc.",
+      "name": ".",
       "level": null,
       "states": {
         "required": false,
@@ -1296,89 +2621,206 @@
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(3) > font:nth-of-type(1) > b:nth-of-type(1)",
+      "parent": "n97",
+      "selector": "#license",
       "bbox": {
-        "x": 130,
-        "y": 800,
-        "w": 139,
-        "h": 15
+        "x": 136.1875,
+        "y": 2129.265625,
+        "w": 864,
+        "h": 32
+      },
+      "visible": true
+    },
+    {
+      "id": "n105",
+      "order": 105,
+      "role": "text",
+      "name": "This product was originally developed with support from the National Institute on Disability and Rehabilitation Research of the U.S. Department of Education (grant #H133D010306), and has been subsequently updated and maintained with support from the National Science Foundation (grants #CNS-0540615, CNS-0837508, CNS-1042260, CNS-1539179, and CNS-2137312). The contents do not necessarily represent the policies of the U.S. federal government, and you should not assume their endorsement.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n97",
+      "selector": "#footer > footer:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 136.1875,
+        "y": 2175.65625,
+        "w": 864,
+        "h": 64
       },
       "visible": true
     }
   ],
   "focus_order": [
     {
+      "node_id": "n3",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n4",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n5",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n6",
+      "selector": "#AU-menu > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n8",
+      "selector": "#menu > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)"
+    },
+    {
       "node_id": "n9",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "selector": "#menu > li:nth-of-type(2) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n10",
+      "selector": "#menu > li:nth-of-type(3) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(3) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(3) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(3) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(3) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)"
     },
     {
       "node_id": "n11",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "selector": "#menu > li:nth-of-type(4) > a:nth-of-type(1)"
     },
     {
-      "node_id": "n13",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
     },
     {
-      "node_id": "n16",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)"
     },
     {
-      "node_id": "n19",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": null,
+      "selector": "#menu > li:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)"
     },
     {
-      "node_id": "n21",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n23",
+      "selector": "#main > p:nth-of-type(3) > a:nth-of-type(1)"
     },
     {
-      "node_id": "n24",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n25",
+      "selector": "#main > p:nth-of-type(3) > a:nth-of-type(2)"
     },
     {
       "node_id": "n27",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "selector": "#main > p:nth-of-type(3) > a:nth-of-type(3)"
     },
     {
-      "node_id": "n30",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": null,
+      "selector": "#main > video:nth-of-type(1)"
     },
     {
-      "node_id": "n32",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n74",
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(2) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n34",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n76",
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(3) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n36",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n78",
+      "selector": "#appForm > form:nth-of-type(1) > div:nth-of-type(4) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n38",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n81",
+      "selector": "#majors > div:nth-of-type(1) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n40",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n83",
+      "selector": "#majors > div:nth-of-type(2) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n42",
-      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n85",
+      "selector": "#majors > div:nth-of-type(3) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n44",
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > a:nth-of-type(1)"
+      "node_id": "n87",
+      "selector": "#majors > div:nth-of-type(4) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n46",
-      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n89",
+      "selector": "#majors > div:nth-of-type(5) > input:nth-of-type(1)"
     },
     {
-      "node_id": "n49",
-      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(2) > font:nth-of-type(1) > a:nth-of-type(1)"
+      "node_id": "n91",
+      "selector": "#majors > div:nth-of-type(6) > input:nth-of-type(1)"
+    },
+    {
+      "node_id": "n94",
+      "selector": "#captcha > input:nth-of-type(1)"
+    },
+    {
+      "node_id": "n96",
+      "selector": "#submit"
+    },
+    {
+      "node_id": "n98",
+      "selector": "#ccLogo > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n101",
+      "selector": "#license > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n103",
+      "selector": "#license > a:nth-of-type(2)"
     }
   ],
   "focus_trap": null
