@@ -4,6 +4,7 @@ Run: python -m worker.media.render URL NODES_JSON EVENTS_JSON OUTPUT_DIR
 Requires piper (CLI), ffmpeg, ffprobe, Playwright Chromium and a Romanian voice.
 """
 import json
+import math
 import os
 import shutil
 import subprocess
@@ -43,21 +44,22 @@ def _duration(path):
         return wav.getnframes() / wav.getframerate()
 
 
-def _resolve_clip_duration(probe_stdout: str, narration_total: float, tolerance: float = 2.0) -> float:
-    """Parses `ffprobe -show_entries format=duration` JSON output and validates
-    it against the cumulative narration timeline. Falls back to the narration
-    total when ffprobe's output is missing, non-positive, or diverges from the
-    expected duration by more than `tolerance` seconds (a sign the clip didn't
-    render correctly rather than a sane rounding difference)."""
-    fallback = round(narration_total, 3)
+def _validate_clip_duration(probe_stdout: str, narration_total: float, tolerance: float = 2.0) -> float:
+    """Returns the rendered clip's real duration from ffprobe JSON output.
+
+    Raises instead of substituting the narration total: a missing, non-finite,
+    non-positive, or mismatched duration means clip.mp4 is broken, and publishing
+    it as a success would point issue timestamps past the end of the video."""
     try:
         probed = float(json.loads(probe_stdout)["format"]["duration"])
-    except (KeyError, ValueError, TypeError, json.JSONDecodeError):
-        return fallback
-    if probed <= 0:
-        return fallback
+    except (KeyError, ValueError, TypeError):
+        raise RuntimeError("ffprobe did not report a duration for clip.mp4") from None
+    if not math.isfinite(probed) or probed <= 0:
+        raise RuntimeError(f"ffprobe reported an invalid clip duration: {probed}")
     if abs(probed - narration_total) > tolerance:
-        return fallback
+        raise RuntimeError(
+            f"clip.mp4 duration {probed:.3f}s does not match narration "
+            f"{narration_total:.3f}s (tolerance {tolerance}s); render is incomplete")
     return round(probed, 3)
 
 
@@ -245,7 +247,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
               "-movflags", "+faststart", "-shortest", str(clip)])
         probe = _run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size",
               "-of", "json", str(clip)])
-        clip_duration = _resolve_clip_duration(probe.stdout, current)
+        clip_duration = _validate_clip_duration(probe.stdout, current)
     result = {"duration": clip_duration, "clip": "clip.mp4", "entries": timeline}
     (out_dir / "timeline.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
