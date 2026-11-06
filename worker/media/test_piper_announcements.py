@@ -32,5 +32,40 @@ class PiperAnnouncementTests(unittest.TestCase):
                 self.assertEqual(run.call_args.kwargs["input_text"], "Element fără conținut textual")
 
 
+    def test_render_caption_matches_synthesized_timeline_text(self):
+        """Regression: screenshot captions must match what Piper narrates."""
+        import sys
+        from types import ModuleType, SimpleNamespace
+        from unittest.mock import MagicMock
+
+        fake_playwright = MagicMock()
+        fake_sync_api = ModuleType("playwright.sync_api")
+        fake_sync_api.sync_playwright = MagicMock(return_value=fake_playwright)
+
+        events = {"events": [
+            {"seq": 0, "node_id": None, "text": ","},
+            {"seq": 1, "node_id": None, "text": "Ştiinţă"},
+        ]}
+        nodes = {"nodes": [], "viewport": {"width": 640, "height": 480}}
+        spoken_texts = []
+        with TemporaryDirectory() as directory:
+            with (
+                patch.dict(sys.modules, {"playwright.sync_api": fake_sync_api}),
+                patch.object(render.shutil, "which", return_value="/usr/bin/ffmpeg"),
+                patch.object(render, "_synthesize",
+                             side_effect=lambda text, output: spoken_texts.append(text) or 1.0),
+                patch.object(render, "_run", return_value=SimpleNamespace(stdout="{}")),
+                patch.object(render, "_validate_clip_duration", return_value=2.3),
+                patch.object(render, "_draw_overlay") as overlay,
+            ):
+                result = render.render_clip("http://localhost/test", nodes, events, Path(directory))
+
+        timeline_texts = [entry["text"] for entry in result["entries"]]
+        caption_texts = [call.args[2] for call in overlay.call_args_list]
+        self.assertEqual(timeline_texts, ["Element fără conținut textual", "Știință"])
+        self.assertEqual(spoken_texts, timeline_texts)
+        self.assertEqual(caption_texts, timeline_texts)
+
+
 if __name__ == "__main__":
     unittest.main()
