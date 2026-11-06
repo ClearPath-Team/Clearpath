@@ -1,0 +1,160 @@
+{
+  "duration": 49.385,
+  "clip": "clip.mp4",
+  "entries": [
+    {
+      "seq": 0,
+      "node_id": null,
+      "text": "Pagina Accessible University Demo Site - Inaccessible Version",
+      "start": 0.0,
+      "end": 4.063
+    },
+    {
+      "seq": 1,
+      "node_id": "n0",
+      "text": "au123456789.gif, imagine",
+      "start": 4.363,
+      "end": 10.656
+    },
+    {
+      "seq": 2,
+      "node_id": "n1",
+      "text": "Demo site menu, reper navigare",
+      "start": 10.956,
+      "end": 13.22
+    },
+    {
+      "seq": 3,
+      "node_id": "n2",
+      "text": "listă cu 4 elemente",
+      "start": 13.52,
+      "end": 15.273
+    },
+    {
+      "seq": 4,
+      "node_id": "n3",
+      "text": "Home, link",
+      "start": 15.573,
+      "end": 16.386
+    },
+    {
+      "seq": 5,
+      "node_id": "n4",
+      "text": "Before, link",
+      "start": 16.686,
+      "end": 17.789
+    },
+    {
+      "seq": 6,
+      "node_id": "n5",
+      "text": "After, link",
+      "start": 18.089,
+      "end": 19.157
+    },
+    {
+      "seq": 7,
+      "node_id": "n6",
+      "text": "Info, link",
+      "start": 19.457,
+      "end": 20.444
+    },
+    {
+      "seq": 8,
+      "node_id": "n7",
+      "text": "listă cu 4 elemente",
+      "start": 20.744,
+      "end": 22.45
+    },
+    {
+      "seq": 9,
+      "node_id": "n8",
+      "text": "About, link",
+      "start": 22.75,
+      "end": 23.749
+    },
+    {
+      "seq": 10,
+      "node_id": "n9",
+      "text": "Academics, link",
+      "start": 24.049,
+      "end": 25.349
+    },
+    {
+      "seq": 11,
+      "node_id": "n10",
+      "text": "Admissions, link",
+      "start": 25.649,
+      "end": 26.961
+    },
+    {
+      "seq": 12,
+      "node_id": "n11",
+      "text": "Visitors, link",
+      "start": 27.261,
+      "end": 28.55
+    },
+    {
+      "seq": 13,
+      "node_id": "n12",
+      "text": "imagine fără descriere",
+      "start": 28.85,
+      "end": 31.183
+    },
+    {
+      "seq": 14,
+      "node_id": "n13",
+      "text": "A modern shool",
+      "start": 31.483,
+      "end": 32.575
+    },
+    {
+      "seq": 15,
+      "node_id": "n14",
+      "text": "listă cu 4 elemente",
+      "start": 32.875,
+      "end": 34.767
+    },
+    {
+      "seq": 16,
+      "node_id": "n17",
+      "text": "horizontal line graphic, imagine",
+      "start": 35.067,
+      "end": 37.412
+    },
+    {
+      "seq": 17,
+      "node_id": "n20",
+      "text": "horizontal line graphic, imagine",
+      "start": 37.712,
+      "end": 40.069
+    },
+    {
+      "seq": 18,
+      "node_id": "n23",
+      "text": "click here, link",
+      "start": 40.369,
+      "end": 41.577
+    },
+    {
+      "seq": 19,
+      "node_id": "n74",
+      "text": "casetă de editare, necompletat",
+      "start": 41.877,
+      "end": 44.117
+    },
+    {
+      "seq": 20,
+      "node_id": "n76",
+      "text": "casetă de editare, necompletat",
+      "start": 44.417,
+      "end": 46.728
+    },
+    {
+      "seq": 21,
+      "node_id": "n78",
+      "text": "casetă de editare, necompletat",
+      "start": 47.028,
+      "end": 49.385
+    }
+  ]
+}

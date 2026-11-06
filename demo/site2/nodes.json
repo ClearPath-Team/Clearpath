@@ -1,0 +1,6033 @@
+{
+  "url": "https://www.drudgereport.com/",
+  "title": "DRUDGE REPORT® 2027",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "order": 0,
+      "role": "link",
+      "name": "Inside investigative blitz coming for Trump's corporate allies...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-TOP-LEFT > a:nth-of-type(1)",
+      "bbox": {
+        "x": 8,
+        "y": 69,
+        "w": 455,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n1",
+      "order": 1,
+      "role": "link",
+      "name": "Probe into secret robot sessions with Musk...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-TOP-LEFT > a:nth-of-type(2)",
+      "bbox": {
+        "x": 8,
+        "y": 84,
+        "w": 315,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n2",
+      "order": 2,
+      "role": "link",
+      "name": "THE HIT LIST...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-TOP-LEFT > a:nth-of-type(3)",
+      "bbox": {
+        "x": 8,
+        "y": 99,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n3",
+      "order": 3,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > img:nth-of-type(1)",
+      "bbox": {
+        "x": 390,
+        "y": 159,
+        "w": 500,
+        "h": 333.328125
+      },
+      "visible": true
+    },
+    {
+      "id": "n4",
+      "order": 4,
+      "role": "link",
+      "name": "TECH WRECK",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 476.5,
+        "y": 493.328125,
+        "w": 327,
+        "h": 56
+      },
+      "visible": true
+    },
+    {
+      "id": "n5",
+      "order": 5,
+      "role": "link",
+      "name": "BERNIE WARNS AI OLIGARCHS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(2)",
+      "bbox": {
+        "x": 276,
+        "y": 551.328125,
+        "w": 728,
+        "h": 56
+      },
+      "visible": true
+    },
+    {
+      "id": "n6",
+      "order": 6,
+      "role": "link",
+      "name": "OHIO VOTERS BLOCK DATA CENTERS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(3)",
+      "bbox": {
+        "x": 192.5,
+        "y": 609.328125,
+        "w": 895,
+        "h": 56
+      },
+      "visible": true
+    },
+    {
+      "id": "n7",
+      "order": 7,
+      "role": "link",
+      "name": "ANTHROPIC IPO DELAY?",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(4)",
+      "bbox": {
+        "x": 350,
+        "y": 667.328125,
+        "w": 580,
+        "h": 56
+      },
+      "visible": true
+    },
+    {
+      "id": "n8",
+      "order": 8,
+      "role": "link",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 315,
+        "y": 794.328125,
+        "w": 650,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n9",
+      "order": 9,
+      "role": "link",
+      "name": "NOONAN: Trump Is Author of the Ruin...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(1)",
+      "bbox": {
+        "x": 13,
+        "y": 854.328125,
+        "w": 266,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n10",
+      "order": 10,
+      "role": "link",
+      "name": "TINA BROWN: Big Beautiful Blow-out...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(2)",
+      "bbox": {
+        "x": 13,
+        "y": 884.328125,
+        "w": 259,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n11",
+      "order": 11,
+      "role": "link",
+      "name": "FT: Murdoch media empire cools on Don... 'Rupert does not want to be with a loser'...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(3)",
+      "bbox": {
+        "x": 13,
+        "y": 914.328125,
+        "w": 308,
+        "h": 45
+      },
+      "visible": true
+    },
+    {
+      "id": "n12",
+      "order": 12,
+      "role": "link",
+      "name": "LOOMER MELTDOWN; ANNOUNCES HIATUS...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(4)",
+      "bbox": {
+        "x": 13,
+        "y": 974.328125,
+        "w": 252,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n13",
+      "order": 13,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_left > img:nth-of-type(1)",
+      "bbox": {
+        "x": 13,
+        "y": 1004.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n14",
+      "order": 14,
+      "role": "link",
+      "name": "JD GOES FOR THE CROWN!",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(5)",
+      "bbox": {
+        "x": 13,
+        "y": 1219.328125,
+        "w": 154,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n15",
+      "order": 15,
+      "role": "link",
+      "name": "DeSantis, Cruz emerge as early winners for '28...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(6)",
+      "bbox": {
+        "x": 13,
+        "y": 1249.328125,
+        "w": 343,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n16",
+      "order": 16,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_left > img:nth-of-type(2)",
+      "bbox": {
+        "x": 13,
+        "y": 1279.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n17",
+      "order": 17,
+      "role": "link",
+      "name": "Melania Hands Putin His Greatest Victory?",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(7)",
+      "bbox": {
+        "x": 13,
+        "y": 1494.328125,
+        "w": 287,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n18",
+      "order": 18,
+      "role": "link",
+      "name": "PAPER: Guilfoyle out for revenge with hit list of targets...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(8)",
+      "bbox": {
+        "x": 13,
+        "y": 1524.328125,
+        "w": 343,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n19",
+      "order": 19,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_left > img:nth-of-type(3)",
+      "bbox": {
+        "x": 13,
+        "y": 1569.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n20",
+      "order": 20,
+      "role": "link",
+      "name": "RIP CYBERTRUCK: TESLA to wind down production after years of poor sales...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(9)",
+      "bbox": {
+        "x": 13,
+        "y": 1784.328125,
+        "w": 399,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n21",
+      "order": 21,
+      "role": "link",
+      "name": "White House said STARINK donated its service, but tax dollars funding it...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(10)",
+      "bbox": {
+        "x": 13,
+        "y": 1829.328125,
+        "w": 371,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n22",
+      "order": 22,
+      "role": "link",
+      "name": "Musk quietly deletes tweets...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > i:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 13,
+        "y": 1874.328125,
+        "w": 210,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n23",
+      "order": 23,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_left > img:nth-of-type(4)",
+      "bbox": {
+        "x": 13,
+        "y": 1904.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n24",
+      "order": 24,
+      "role": "link",
+      "name": "Hasan draws new viewers as he jokingly ushers in 'Woke 3.0'...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_left > a:nth-of-type(11)",
+      "bbox": {
+        "x": 13,
+        "y": 2119.328125,
+        "w": 378,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n25",
+      "order": 25,
+      "role": "link",
+      "name": "LIVE: TRENDING...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(1)",
+      "bbox": {
+        "x": 13,
+        "y": 2172.828125,
+        "w": 119,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n26",
+      "order": 26,
+      "role": "link",
+      "name": "WORLD NEWSPAPERS PAGE ONES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(2)",
+      "bbox": {
+        "x": 13,
+        "y": 2187.828125,
+        "w": 182,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n27",
+      "order": 27,
+      "role": "link",
+      "name": "FRONT PAGES UK",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(3)",
+      "bbox": {
+        "x": 13,
+        "y": 2202.828125,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n28",
+      "order": 28,
+      "role": "link",
+      "name": "BOXOFFICE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(4)",
+      "bbox": {
+        "x": 13,
+        "y": 2232.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n29",
+      "order": 29,
+      "role": "link",
+      "name": "TV RATINGS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(5)",
+      "bbox": {
+        "x": 76,
+        "y": 2232.828125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n30",
+      "order": 30,
+      "role": "link",
+      "name": "PODCAST RANKS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(6)",
+      "bbox": {
+        "x": 13,
+        "y": 2247.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n31",
+      "order": 31,
+      "role": "link",
+      "name": "MEDIA CHARTS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(7)",
+      "bbox": {
+        "x": 13,
+        "y": 2262.828125,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n32",
+      "order": 32,
+      "role": "link",
+      "name": "ABCNEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(8)",
+      "bbox": {
+        "x": 13,
+        "y": 2292.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n33",
+      "order": 33,
+      "role": "link",
+      "name": "ATLANTIC",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(9)",
+      "bbox": {
+        "x": 13,
+        "y": 2307.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n34",
+      "order": 34,
+      "role": "link",
+      "name": "AXIOS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(10)",
+      "bbox": {
+        "x": 13,
+        "y": 2322.828125,
+        "w": 35,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n35",
+      "order": 35,
+      "role": "link",
+      "name": "BBC",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(11)",
+      "bbox": {
+        "x": 13,
+        "y": 2337.828125,
+        "w": 21,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n36",
+      "order": 36,
+      "role": "link",
+      "name": "BILLBOARD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(12)",
+      "bbox": {
+        "x": 13,
+        "y": 2352.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n37",
+      "order": 37,
+      "role": "link",
+      "name": "BNO NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(13)",
+      "bbox": {
+        "x": 13,
+        "y": 2367.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n38",
+      "order": 38,
+      "role": "link",
+      "name": "BOSTON GLOBE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(14)",
+      "bbox": {
+        "x": 13,
+        "y": 2382.828125,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n39",
+      "order": 39,
+      "role": "link",
+      "name": "BOSTON HERALD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(15)",
+      "bbox": {
+        "x": 13,
+        "y": 2397.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n40",
+      "order": 40,
+      "role": "link",
+      "name": "BREITBART",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(16)",
+      "bbox": {
+        "x": 13,
+        "y": 2412.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n41",
+      "order": 41,
+      "role": "link",
+      "name": "BUSINESS INSIDER",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(17)",
+      "bbox": {
+        "x": 13,
+        "y": 2427.828125,
+        "w": 112,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n42",
+      "order": 42,
+      "role": "link",
+      "name": "CBS NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(18)",
+      "bbox": {
+        "x": 13,
+        "y": 2442.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n43",
+      "order": 43,
+      "role": "link",
+      "name": "CBS NEWS LOCAL",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(19)",
+      "bbox": {
+        "x": 13,
+        "y": 2457.828125,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n44",
+      "order": 44,
+      "role": "link",
+      "name": "C-SPAN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(20)",
+      "bbox": {
+        "x": 13,
+        "y": 2472.828125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n45",
+      "order": 45,
+      "role": "link",
+      "name": "CHICAGO SUN-TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(21)",
+      "bbox": {
+        "x": 13,
+        "y": 2487.828125,
+        "w": 119,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n46",
+      "order": 46,
+      "role": "link",
+      "name": "CHICAGO TRIB",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(22)",
+      "bbox": {
+        "x": 13,
+        "y": 2502.828125,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n47",
+      "order": 47,
+      "role": "link",
+      "name": "CHRISTIAN SCIENCE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(23)",
+      "bbox": {
+        "x": 13,
+        "y": 2517.828125,
+        "w": 119,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n48",
+      "order": 48,
+      "role": "link",
+      "name": "CNBC",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(24)",
+      "bbox": {
+        "x": 13,
+        "y": 2532.828125,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n49",
+      "order": 49,
+      "role": "link",
+      "name": "CNN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(25)",
+      "bbox": {
+        "x": 13,
+        "y": 2547.828125,
+        "w": 21,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n50",
+      "order": 50,
+      "role": "link",
+      "name": "CRAZY DAYS AND NIGHTS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(26)",
+      "bbox": {
+        "x": 13,
+        "y": 2562.828125,
+        "w": 147,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n51",
+      "order": 51,
+      "role": "link",
+      "name": "DAILY BEAST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(27)",
+      "bbox": {
+        "x": 13,
+        "y": 2577.828125,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n52",
+      "order": 52,
+      "role": "link",
+      "name": "DAILY CALLER",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(28)",
+      "bbox": {
+        "x": 13,
+        "y": 2592.828125,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n53",
+      "order": 53,
+      "role": "link",
+      "name": "DEADLINE HOLLYWOOD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(29)",
+      "bbox": {
+        "x": 13,
+        "y": 2607.828125,
+        "w": 126,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n54",
+      "order": 54,
+      "role": "link",
+      "name": "EL NUEVO DIA [SAN JUAN]",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(30)",
+      "bbox": {
+        "x": 13,
+        "y": 2622.828125,
+        "w": 161,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n55",
+      "order": 55,
+      "role": "link",
+      "name": "ENT WEEKLY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(31)",
+      "bbox": {
+        "x": 13,
+        "y": 2637.828125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n56",
+      "order": 56,
+      "role": "link",
+      "name": "FOXNEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(32)",
+      "bbox": {
+        "x": 13,
+        "y": 2652.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n57",
+      "order": 57,
+      "role": "link",
+      "name": "FREE PRESS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(33)",
+      "bbox": {
+        "x": 13,
+        "y": 2667.828125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n58",
+      "order": 58,
+      "role": "link",
+      "name": "HILL",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(34)",
+      "bbox": {
+        "x": 13,
+        "y": 2682.828125,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n59",
+      "order": 59,
+      "role": "link",
+      "name": "JUST IN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(35)",
+      "bbox": {
+        "x": 41,
+        "y": 2682.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n60",
+      "order": 60,
+      "role": "link",
+      "name": "H'WOOD REPORTER",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(36)",
+      "bbox": {
+        "x": 13,
+        "y": 2697.828125,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n61",
+      "order": 61,
+      "role": "link",
+      "name": "HUFFINGTON POST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(37)",
+      "bbox": {
+        "x": 13,
+        "y": 2712.828125,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n62",
+      "order": 62,
+      "role": "link",
+      "name": "INTERCEPT",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(38)",
+      "bbox": {
+        "x": 13,
+        "y": 2727.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n63",
+      "order": 63,
+      "role": "link",
+      "name": "LA DAILY NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(39)",
+      "bbox": {
+        "x": 13,
+        "y": 2742.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n64",
+      "order": 64,
+      "role": "link",
+      "name": "LA TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(40)",
+      "bbox": {
+        "x": 13,
+        "y": 2757.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n65",
+      "order": 65,
+      "role": "link",
+      "name": "MARKETWATCH",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(41)",
+      "bbox": {
+        "x": 13,
+        "y": 2772.828125,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n66",
+      "order": 66,
+      "role": "link",
+      "name": "MEDIAITE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(42)",
+      "bbox": {
+        "x": 13,
+        "y": 2787.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n67",
+      "order": 67,
+      "role": "link",
+      "name": "MOTHER JONES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(43)",
+      "bbox": {
+        "x": 13,
+        "y": 2802.828125,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n68",
+      "order": 68,
+      "role": "link",
+      "name": "NATION",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(44)",
+      "bbox": {
+        "x": 13,
+        "y": 2817.828125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n69",
+      "order": 69,
+      "role": "link",
+      "name": "NATIONAL REVIEW",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(45)",
+      "bbox": {
+        "x": 13,
+        "y": 2832.828125,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n70",
+      "order": 70,
+      "role": "link",
+      "name": "NBC NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(46)",
+      "bbox": {
+        "x": 13,
+        "y": 2847.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n71",
+      "order": 71,
+      "role": "link",
+      "name": "NEW REPUBLIC",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(47)",
+      "bbox": {
+        "x": 13,
+        "y": 2862.828125,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n72",
+      "order": 72,
+      "role": "link",
+      "name": "NEW YORK",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(48)",
+      "bbox": {
+        "x": 13,
+        "y": 2877.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n73",
+      "order": 73,
+      "role": "link",
+      "name": "NY DAILY NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(49)",
+      "bbox": {
+        "x": 13,
+        "y": 2892.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n74",
+      "order": 74,
+      "role": "link",
+      "name": "NY POST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(50)",
+      "bbox": {
+        "x": 13,
+        "y": 2907.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n75",
+      "order": 75,
+      "role": "link",
+      "name": "NY TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(51)",
+      "bbox": {
+        "x": 13,
+        "y": 2922.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n76",
+      "order": 76,
+      "role": "link",
+      "name": "WIRE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(52)",
+      "bbox": {
+        "x": 69,
+        "y": 2922.828125,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n77",
+      "order": 77,
+      "role": "link",
+      "name": "NEW YORKER",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(53)",
+      "bbox": {
+        "x": 13,
+        "y": 2937.828125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n78",
+      "order": 78,
+      "role": "link",
+      "name": "NEWSMAX",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(54)",
+      "bbox": {
+        "x": 13,
+        "y": 2952.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n79",
+      "order": 79,
+      "role": "link",
+      "name": "NEWZIT",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(55)",
+      "bbox": {
+        "x": 13,
+        "y": 2967.828125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n80",
+      "order": 80,
+      "role": "link",
+      "name": "PEOPLE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(56)",
+      "bbox": {
+        "x": 13,
+        "y": 2982.828125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n81",
+      "order": 81,
+      "role": "link",
+      "name": "POLITICO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(57)",
+      "bbox": {
+        "x": 13,
+        "y": 2997.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n82",
+      "order": 82,
+      "role": "link",
+      "name": "RAW STORY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(58)",
+      "bbox": {
+        "x": 13,
+        "y": 3012.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n83",
+      "order": 83,
+      "role": "link",
+      "name": "REASON",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(59)",
+      "bbox": {
+        "x": 13,
+        "y": 3027.828125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n84",
+      "order": 84,
+      "role": "link",
+      "name": "ROLL CALL",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(60)",
+      "bbox": {
+        "x": 13,
+        "y": 3042.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n85",
+      "order": 85,
+      "role": "link",
+      "name": "ROLLING STONE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(61)",
+      "bbox": {
+        "x": 13,
+        "y": 3057.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n86",
+      "order": 86,
+      "role": "link",
+      "name": "SALON",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(62)",
+      "bbox": {
+        "x": 13,
+        "y": 3072.828125,
+        "w": 35,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n87",
+      "order": 87,
+      "role": "link",
+      "name": "SAN FRAN CHRON",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(63)",
+      "bbox": {
+        "x": 13,
+        "y": 3087.828125,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n88",
+      "order": 88,
+      "role": "link",
+      "name": "SEMAFOR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(64)",
+      "bbox": {
+        "x": 13,
+        "y": 3102.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n89",
+      "order": 89,
+      "role": "link",
+      "name": "SHOWBIZ 411",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(65)",
+      "bbox": {
+        "x": 13,
+        "y": 3117.828125,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n90",
+      "order": 90,
+      "role": "link",
+      "name": "SKY NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(66)",
+      "bbox": {
+        "x": 13,
+        "y": 3132.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n91",
+      "order": 91,
+      "role": "link",
+      "name": "LIVE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(67)",
+      "bbox": {
+        "x": 69,
+        "y": 3132.828125,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n92",
+      "order": 92,
+      "role": "link",
+      "name": "SMOKING GUN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(68)",
+      "bbox": {
+        "x": 13,
+        "y": 3147.828125,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n93",
+      "order": 93,
+      "role": "link",
+      "name": "STATELINE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(69)",
+      "bbox": {
+        "x": 13,
+        "y": 3162.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n94",
+      "order": 94,
+      "role": "link",
+      "name": "TMZ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(70)",
+      "bbox": {
+        "x": 13,
+        "y": 3177.828125,
+        "w": 21,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n95",
+      "order": 95,
+      "role": "link",
+      "name": "US NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(71)",
+      "bbox": {
+        "x": 13,
+        "y": 3192.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n96",
+      "order": 96,
+      "role": "link",
+      "name": "USA TODAY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(72)",
+      "bbox": {
+        "x": 13,
+        "y": 3207.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n97",
+      "order": 97,
+      "role": "link",
+      "name": "VANITY FAIR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(73)",
+      "bbox": {
+        "x": 13,
+        "y": 3222.828125,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n98",
+      "order": 98,
+      "role": "link",
+      "name": "VARIETY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(74)",
+      "bbox": {
+        "x": 13,
+        "y": 3237.828125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n99",
+      "order": 99,
+      "role": "link",
+      "name": "WALL STREET JOURNAL",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(75)",
+      "bbox": {
+        "x": 13,
+        "y": 3252.828125,
+        "w": 133,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n100",
+      "order": 100,
+      "role": "link",
+      "name": "WASH EXAMINER",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(76)",
+      "bbox": {
+        "x": 13,
+        "y": 3267.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n101",
+      "order": 101,
+      "role": "link",
+      "name": "WASH POST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(77)",
+      "bbox": {
+        "x": 13,
+        "y": 3282.828125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n102",
+      "order": 102,
+      "role": "link",
+      "name": "LATEST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(78)",
+      "bbox": {
+        "x": 76,
+        "y": 3282.828125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n103",
+      "order": 103,
+      "role": "link",
+      "name": "WASH SUN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(79)",
+      "bbox": {
+        "x": 13,
+        "y": 3297.828125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n104",
+      "order": 104,
+      "role": "link",
+      "name": "WASH TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(80)",
+      "bbox": {
+        "x": 13,
+        "y": 3312.828125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n105",
+      "order": 105,
+      "role": "link",
+      "name": "WORLD OF REEL",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(81)",
+      "bbox": {
+        "x": 13,
+        "y": 3327.828125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n106",
+      "order": 106,
+      "role": "link",
+      "name": "WRAP",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(82)",
+      "bbox": {
+        "x": 13,
+        "y": 3342.828125,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n107",
+      "order": 107,
+      "role": "link",
+      "name": "Protesters Break Into MICROSOFT Data Center in Amsterdam...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(1)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 854.328125,
+        "w": 322,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n108",
+      "order": 108,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_center > img:nth-of-type(1)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 899.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n109",
+      "order": 109,
+      "role": "link",
+      "name": "Lawmakers summon Jensen Huang over Chinese spying concerns...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(2)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1114.328125,
+        "w": 343,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n110",
+      "order": 110,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_center > img:nth-of-type(2)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1159.328125,
+        "w": 200,
+        "h": 254.671875
+      },
+      "visible": true
+    },
+    {
+      "id": "n111",
+      "order": 111,
+      "role": "link",
+      "name": "BRAND BEHIND BARS...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(3)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1429,
+        "w": 140,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n112",
+      "order": 112,
+      "role": "link",
+      "name": "COULD FACE MORE CHARGES...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(4)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1459,
+        "w": 182,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n113",
+      "order": 113,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_center > img:nth-of-type(3)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1489,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n114",
+      "order": 114,
+      "role": "link",
+      "name": "ANOTHER BLOW TO THE MANOSPHERE...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(5)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1704,
+        "w": 231,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n115",
+      "order": 115,
+      "role": "link",
+      "name": "MAGA MEDIA FIVE STAGES OF ELECTION GRIEF...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(6)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1734,
+        "w": 301,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n116",
+      "order": 116,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_center > img:nth-of-type(4)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1764,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n117",
+      "order": 117,
+      "role": "link",
+      "name": "ALL THE NEW FACES IN SENATE...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(7)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 1979,
+        "w": 210,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n118",
+      "order": 118,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_center > img:nth-of-type(5)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2009,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n119",
+      "order": 119,
+      "role": "link",
+      "name": "Elizabeth Warren's Power Is Wall St Nightmare...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(8)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2224,
+        "w": 336,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n120",
+      "order": 120,
+      "role": "link",
+      "name": "Height of her authority...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(9)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2254,
+        "w": 182,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n121",
+      "order": 121,
+      "role": "link",
+      "name": "Hollywood's New Superhero Is the Guy Who Tells Moviegoers When to Pee...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(10)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2284,
+        "w": 399,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n122",
+      "order": 122,
+      "role": "link",
+      "name": "TRAVEL HELL: Family doused when man urinates in middle of passenger waiting area at Florida airport...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_center > a:nth-of-type(11)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2329,
+        "w": 399,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n123",
+      "order": 123,
+      "role": "link",
+      "name": "AFRICAN NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(1)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2382.5,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n124",
+      "order": 124,
+      "role": "link",
+      "name": "ARAB NEWS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(2)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2397.5,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n125",
+      "order": 125,
+      "role": "link",
+      "name": "BILD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(3)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2412.5,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n126",
+      "order": 126,
+      "role": "link",
+      "name": "CHINA PEOPLE'S DAILY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(4)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2427.5,
+        "w": 140,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n127",
+      "order": 127,
+      "role": "link",
+      "name": "CLARIN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(5)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2442.5,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n128",
+      "order": 128,
+      "role": "link",
+      "name": "DIE WELT",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(6)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2457.5,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n129",
+      "order": 129,
+      "role": "link",
+      "name": "DIE ZEIT",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(7)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2472.5,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n130",
+      "order": 130,
+      "role": "link",
+      "name": "ECONOMIST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(8)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2487.5,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n131",
+      "order": 131,
+      "role": "link",
+      "name": "EL MUNDO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(9)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2502.5,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n132",
+      "order": 132,
+      "role": "link",
+      "name": "EL PAIS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(10)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2517.5,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n133",
+      "order": 133,
+      "role": "link",
+      "name": "FINANCIAL TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(11)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2532.5,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n134",
+      "order": 134,
+      "role": "link",
+      "name": "FOLHA DE S. PAULO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(12)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2547.5,
+        "w": 119,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n135",
+      "order": 135,
+      "role": "link",
+      "name": "GAZETA WYBORCZA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(13)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2562.5,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n136",
+      "order": 136,
+      "role": "link",
+      "name": "GBN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(14)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2577.5,
+        "w": 21,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n137",
+      "order": 137,
+      "role": "link",
+      "name": "HAARETZ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(15)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2592.5,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n138",
+      "order": 138,
+      "role": "link",
+      "name": "HINDUSTAN TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(16)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2607.5,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n139",
+      "order": 139,
+      "role": "link",
+      "name": "HURRIYET",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(17)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2622.5,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n140",
+      "order": 140,
+      "role": "link",
+      "name": "JAPAN TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(18)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2637.5,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n141",
+      "order": 141,
+      "role": "link",
+      "name": "JERUSALEM POST",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(19)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2652.5,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n142",
+      "order": 142,
+      "role": "link",
+      "name": "LA PRENSA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(20)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2667.5,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n143",
+      "order": 143,
+      "role": "link",
+      "name": "LA REPUBBLICA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(21)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2682.5,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n144",
+      "order": 144,
+      "role": "link",
+      "name": "LE FIGARO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(22)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2697.5,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n145",
+      "order": 145,
+      "role": "link",
+      "name": "LE MONDE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(23)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2712.5,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n146",
+      "order": 146,
+      "role": "link",
+      "name": "LE SOIR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(24)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2727.5,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n147",
+      "order": 147,
+      "role": "link",
+      "name": "MOSCOW TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(25)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2742.5,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n148",
+      "order": 148,
+      "role": "link",
+      "name": "NEW EUROPEAN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(26)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2757.5,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n149",
+      "order": 149,
+      "role": "link",
+      "name": "NIKKEI ASIA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(27)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2772.5,
+        "w": 77,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n150",
+      "order": 150,
+      "role": "link",
+      "name": "RIO TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(28)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2787.5,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n151",
+      "order": 151,
+      "role": "link",
+      "name": "SYDNEY MORNING HERALD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(29)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2802.5,
+        "w": 147,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n152",
+      "order": 152,
+      "role": "link",
+      "name": "TIMES OF INDIA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(30)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2817.5,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n153",
+      "order": 153,
+      "role": "link",
+      "name": "[UK] DAILY MAIL",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(31)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2832.5,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n154",
+      "order": 154,
+      "role": "link",
+      "name": "FEED",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(32)",
+      "bbox": {
+        "x": 541.65625,
+        "y": 2832.5,
+        "w": 28,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n155",
+      "order": 155,
+      "role": "link",
+      "name": "[UK] DAILY MIRROR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(33)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2847.5,
+        "w": 119,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n156",
+      "order": 156,
+      "role": "link",
+      "name": "[UK] DAILY STAR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(34)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2862.5,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n157",
+      "order": 157,
+      "role": "link",
+      "name": "[UK] EXPRESS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(35)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2877.5,
+        "w": 84,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n158",
+      "order": 158,
+      "role": "link",
+      "name": "[UK] GUARDIAN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(36)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2892.5,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n159",
+      "order": 159,
+      "role": "link",
+      "name": "[UK] INDEPENDENT",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(37)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2907.5,
+        "w": 112,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n160",
+      "order": 160,
+      "role": "link",
+      "name": "[UK] METRO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(38)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2922.5,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n161",
+      "order": 161,
+      "role": "link",
+      "name": "[UK] STANDARD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(39)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2937.5,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n162",
+      "order": 162,
+      "role": "link",
+      "name": "[UK] SUN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(40)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2952.5,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n163",
+      "order": 163,
+      "role": "link",
+      "name": "[UK] TELEGRAPH",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(41)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2967.5,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n164",
+      "order": 164,
+      "role": "link",
+      "name": "[UK] TIMES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(42)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2982.5,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n165",
+      "order": 165,
+      "role": "link",
+      "name": "YESHIVA WORLD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(43)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 2997.5,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n166",
+      "order": 166,
+      "role": "link",
+      "name": "YOMIURI SHIMBUN",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_center > a:nth-of-type(44)",
+      "bbox": {
+        "x": 436.65625,
+        "y": 3012.5,
+        "w": 105,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n167",
+      "order": 167,
+      "role": "link",
+      "name": "Measles Cases Top 5,000 First Time Since '90s...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(1)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 869.328125,
+        "w": 336,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n168",
+      "order": 168,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > img:nth-of-type(1)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 899.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n169",
+      "order": 169,
+      "role": "link",
+      "name": "TROUBLES: SALON SAYS GOODBYE AFTER 31 YEARS!",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(2)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1114.328125,
+        "w": 308,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n170",
+      "order": 170,
+      "role": "link",
+      "name": "Early staple of internet discourse...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(3)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1144.328125,
+        "w": 259,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n171",
+      "order": 171,
+      "role": "link",
+      "name": "FLASHBACK: DIRTY DRUDGE...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(4)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1174.328125,
+        "w": 182,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n172",
+      "order": 172,
+      "role": "link",
+      "name": "Europe Hit By More Bomb Threats Targeting TV Studios, Flights... Third Day of Chaos...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(5)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1204.328125,
+        "w": 371,
+        "h": 60
+      },
+      "visible": true
+    },
+    {
+      "id": "n173",
+      "order": 173,
+      "role": "link",
+      "name": "What If Apocalypse Is Already Here?",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(6)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1279.328125,
+        "w": 245,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n174",
+      "order": 174,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > img:nth-of-type(2)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1309.328125,
+        "w": 200,
+        "h": 200
+      },
+      "visible": true
+    },
+    {
+      "id": "n175",
+      "order": 175,
+      "role": "link",
+      "name": "Paraguay President resigns under mounting pressure from bank collapse...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(7)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1524.328125,
+        "w": 385,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n176",
+      "order": 176,
+      "role": "link",
+      "name": "Pope Reckons With Latin American Right...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(8)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1569.328125,
+        "w": 287,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n177",
+      "order": 177,
+      "role": "link",
+      "name": "Faces test of health...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(9)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1599.328125,
+        "w": 161,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n178",
+      "order": 178,
+      "role": "link",
+      "name": "STUDY: GLP-1 Users Experiencing Frequent 'Food Noise'...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(10)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1629.328125,
+        "w": 392,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n179",
+      "order": 179,
+      "role": "link",
+      "name": "Cult Leader in Kenya Sentenced to 200 Years in Prison for Mass Murder...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(11)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1659.328125,
+        "w": 399,
+        "h": 30
+      },
+      "visible": true
+    },
+    {
+      "id": "n180",
+      "order": 180,
+      "role": "link",
+      "name": "AGENCE FRANCE-PRESSE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(12)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1704.328125,
+        "w": 140,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n181",
+      "order": 181,
+      "role": "link",
+      "name": "AP TOP",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(13)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1719.328125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n182",
+      "order": 182,
+      "role": "link",
+      "name": "AP RADIO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(14)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1734.328125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n183",
+      "order": 183,
+      "role": "link",
+      "name": "BLOOMBERG",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(15)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1749.328125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n184",
+      "order": 184,
+      "role": "link",
+      "name": "DEUTSCHE PRESSE-AGENTUR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(16)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1764.328125,
+        "w": 161,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n185",
+      "order": 185,
+      "role": "link",
+      "name": "DEUTCHE WELLE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(17)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1779.328125,
+        "w": 91,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n186",
+      "order": 186,
+      "role": "link",
+      "name": "INTERFAX",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(18)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1794.328125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n187",
+      "order": 187,
+      "role": "link",
+      "name": "ITAR-TASS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(19)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1809.328125,
+        "w": 63,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n188",
+      "order": 188,
+      "role": "link",
+      "name": "KYODO",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(20)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1824.328125,
+        "w": 35,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n189",
+      "order": 189,
+      "role": "link",
+      "name": "MCCLATCHY [DC]",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(21)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1839.328125,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n190",
+      "order": 190,
+      "role": "link",
+      "name": "NHK",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(22)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1854.328125,
+        "w": 21,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n191",
+      "order": 191,
+      "role": "link",
+      "name": "PRAVDA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(23)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1869.328125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n192",
+      "order": 192,
+      "role": "link",
+      "name": "PRESS TRUST INDIA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(24)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1884.328125,
+        "w": 119,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n193",
+      "order": 193,
+      "role": "link",
+      "name": "REUTERS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(25)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1899.328125,
+        "w": 49,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n194",
+      "order": 194,
+      "role": "link",
+      "name": "POLITICS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(26)",
+      "bbox": {
+        "x": 909.3125,
+        "y": 1899.328125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n195",
+      "order": 195,
+      "role": "link",
+      "name": " WORLD",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(27)",
+      "bbox": {
+        "x": 965.3125,
+        "y": 1899.328125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n196",
+      "order": 196,
+      "role": "link",
+      "name": "XINHUA",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(28)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1914.328125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n197",
+      "order": 197,
+      "role": "link",
+      "name": "YONHAP",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(29)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1929.328125,
+        "w": 42,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n198",
+      "order": 198,
+      "role": "textbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > form:nth-of-type(1) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1959.328125,
+        "w": 177,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n199",
+      "order": 199,
+      "role": "button",
+      "name": "SEARCH DRUDGE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > form:nth-of-type(1) > input:nth-of-type(2)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 1981.328125,
+        "w": 129,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n200",
+      "order": 200,
+      "role": "link",
+      "name": "ARCHIVES",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(30)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2018.328125,
+        "w": 56,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n201",
+      "order": 201,
+      "role": "link",
+      "name": "RECENT HEADLINES...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(31)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2033.328125,
+        "w": 133,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n202",
+      "order": 202,
+      "role": "link",
+      "name": "DRUDGE QUAKE SHEET",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(32)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2063.328125,
+        "w": 126,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n203",
+      "order": 203,
+      "role": "link",
+      "name": "DRUDGE WEATHER ACTION",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(33)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2078.328125,
+        "w": 147,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n204",
+      "order": 204,
+      "role": "link",
+      "name": "ZOOM EARTH",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(34)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2093.328125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n205",
+      "order": 205,
+      "role": "text",
+      "name": "DRUDGE REPORT APP",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n206",
+      "order": 206,
+      "role": "text",
+      "name": "FIRST ALERTS, SPEED, CLASSIC VIEW AND COLUMN ZOOM...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n207",
+      "order": 207,
+      "role": "text",
+      "name": "ALWAYS EDITED BY HUMAN BEING...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n208",
+      "order": 208,
+      "role": "link",
+      "name": "IPHONE/IPAD...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(35)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2183.328125,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n209",
+      "order": 209,
+      "role": "link",
+      "name": "ANDROID...",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(36)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2198.328125,
+        "w": 70,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n210",
+      "order": 210,
+      "role": "text",
+      "name": "SEND NEWS TIPS TO DRUDGE",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > form:nth-of-type(2)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2228.328125,
+        "w": 406.6875,
+        "h": 193
+      },
+      "visible": true
+    },
+    {
+      "id": "n211",
+      "order": 211,
+      "role": "textbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > form:nth-of-type(2) > textarea:nth-of-type(1)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2243.328125,
+        "w": 186,
+        "h": 156
+      },
+      "visible": true
+    },
+    {
+      "id": "n212",
+      "order": 212,
+      "role": "button",
+      "name": "SUBMIT",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > form:nth-of-type(2) > input:nth-of-type(1)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2399.328125,
+        "w": 64,
+        "h": 22
+      },
+      "visible": true
+    },
+    {
+      "id": "n213",
+      "order": 213,
+      "role": "link",
+      "name": "EMAIL: DRUDGE@DRUDGEREPORT.COM",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > a:nth-of-type(37)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2442.828125,
+        "w": 210,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n214",
+      "order": 214,
+      "role": "text",
+      "name": "VISITS TO DRUDGE 11/06/2026",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n215",
+      "order": 215,
+      "role": "text",
+      "name": "32,499,435 PAST 24 HOURS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n216",
+      "order": 216,
+      "role": "text",
+      "name": "500,960,753 PAST 31 DAYS",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n217",
+      "order": 217,
+      "role": "text",
+      "name": "6,322,357,799 PAST YEAR",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right",
+      "bbox": {
+        "x": 860.3125,
+        "y": 860.828125,
+        "w": 406.6875,
+        "h": 1725.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n218",
+      "order": 218,
+      "role": "link",
+      "name": "PRIVACY POLICY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "#dr_hu_container_bottom_right > div:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 860.3125,
+        "y": 2562.828125,
+        "w": 98,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n219",
+      "order": 219,
+      "role": "button",
+      "name": "Toggle privacy and legal settings display",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > button:nth-of-type(1)",
+      "bbox": {
+        "x": 15,
+        "y": 615,
+        "w": 50,
+        "h": 50
+      },
+      "visible": true
+    },
+    {
+      "id": "n220",
+      "order": 220,
+      "role": "heading",
+      "name": "gpp_maybe How your data is used",
+      "level": 1,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+      "bbox": {
+        "x": 85,
+        "y": 516,
+        "w": 267,
+        "h": 26
+      },
+      "visible": true
+    },
+    {
+      "id": "n221",
+      "order": 221,
+      "role": "text",
+      "name": "Your privacy preferences are important. That's why, based on legitimate interest, we and our partners process and share only limited data such as your device type and content interactions for advertising, research and service development purposes.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 85,
+        "y": 552,
+        "w": 267,
+        "h": 84
+      },
+      "visible": true
+    },
+    {
+      "id": "n222",
+      "order": 222,
+      "role": "text",
+      "name": "View ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+      "bbox": {
+        "x": 85,
+        "y": 646,
+        "w": 267,
+        "h": 14
+      },
+      "visible": true
+    },
+    {
+      "id": "n223",
+      "order": 223,
+      "role": "button",
+      "name": "partner list",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 114,
+        "y": 645,
+        "w": 59,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n224",
+      "order": 224,
+      "role": "text",
+      "name": " and manage ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+      "bbox": {
+        "x": 85,
+        "y": 646,
+        "w": 267,
+        "h": 14
+      },
+      "visible": true
+    },
+    {
+      "id": "n225",
+      "order": 225,
+      "role": "button",
+      "name": "privacy settings",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2) > a:nth-of-type(2)",
+      "bbox": {
+        "x": 248,
+        "y": 645,
+        "w": 86,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n226",
+      "order": 226,
+      "role": "text",
+      "name": ".",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+      "bbox": {
+        "x": 85,
+        "y": 646,
+        "w": 267,
+        "h": 14
+      },
+      "visible": true
+    },
+    {
+      "id": "n227",
+      "order": 227,
+      "role": "button",
+      "name": "Dismiss privacy and legal settings display",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > toolbar:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "bbox": {
+        "x": 357,
+        "y": 516,
+        "w": 28,
+        "h": 18
+      },
+      "visible": true
+    }
+  ],
+  "focus_order": [
+    {
+      "node_id": "n0",
+      "selector": "#DR-HU-TOP-LEFT > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n1",
+      "selector": "#DR-HU-TOP-LEFT > a:nth-of-type(2)"
+    },
+    {
+      "node_id": "n2",
+      "selector": "#DR-HU-TOP-LEFT > a:nth-of-type(3)"
+    },
+    {
+      "node_id": "n4",
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n5",
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(2)"
+    },
+    {
+      "node_id": "n6",
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(3)"
+    },
+    {
+      "node_id": "n7",
+      "selector": "#DR-HU-MAIN > font:nth-of-type(1) > font:nth-of-type(1) > a:nth-of-type(4)"
+    },
+    {
+      "node_id": "n8",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n9",
+      "selector": "#dr_hu_container_left > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n10",
+      "selector": "#dr_hu_container_left > a:nth-of-type(2)"
+    },
+    {
+      "node_id": "n11",
+      "selector": "#dr_hu_container_left > a:nth-of-type(3)"
+    },
+    {
+      "node_id": "n12",
+      "selector": "#dr_hu_container_left > a:nth-of-type(4)"
+    },
+    {
+      "node_id": "n14",
+      "selector": "#dr_hu_container_left > a:nth-of-type(5)"
+    },
+    {
+      "node_id": "n15",
+      "selector": "#dr_hu_container_left > a:nth-of-type(6)"
+    },
+    {
+      "node_id": "n17",
+      "selector": "#dr_hu_container_left > a:nth-of-type(7)"
+    },
+    {
+      "node_id": "n18",
+      "selector": "#dr_hu_container_left > a:nth-of-type(8)"
+    },
+    {
+      "node_id": "n20",
+      "selector": "#dr_hu_container_left > a:nth-of-type(9)"
+    },
+    {
+      "node_id": "n21",
+      "selector": "#dr_hu_container_left > a:nth-of-type(10)"
+    },
+    {
+      "node_id": "n22",
+      "selector": "#dr_hu_container_left > i:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n24",
+      "selector": "#dr_hu_container_left > a:nth-of-type(11)"
+    },
+    {
+      "node_id": "n25",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n26",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(2)"
+    },
+    {
+      "node_id": "n27",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(3)"
+    },
+    {
+      "node_id": "n28",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(4)"
+    },
+    {
+      "node_id": "n29",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(5)"
+    },
+    {
+      "node_id": "n30",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(6)"
+    },
+    {
+      "node_id": "n31",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(7)"
+    },
+    {
+      "node_id": "n32",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(8)"
+    },
+    {
+      "node_id": "n33",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(9)"
+    },
+    {
+      "node_id": "n34",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(10)"
+    },
+    {
+      "node_id": "n35",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(11)"
+    },
+    {
+      "node_id": "n36",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(12)"
+    },
+    {
+      "node_id": "n37",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(13)"
+    },
+    {
+      "node_id": "n38",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(14)"
+    },
+    {
+      "node_id": "n39",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(15)"
+    },
+    {
+      "node_id": "n40",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(16)"
+    },
+    {
+      "node_id": "n41",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(17)"
+    },
+    {
+      "node_id": "n42",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(18)"
+    },
+    {
+      "node_id": "n43",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(19)"
+    },
+    {
+      "node_id": "n44",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(20)"
+    },
+    {
+      "node_id": "n45",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(21)"
+    },
+    {
+      "node_id": "n46",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(22)"
+    },
+    {
+      "node_id": "n47",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(23)"
+    },
+    {
+      "node_id": "n48",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(24)"
+    },
+    {
+      "node_id": "n49",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(25)"
+    },
+    {
+      "node_id": "n50",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(26)"
+    },
+    {
+      "node_id": "n51",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(27)"
+    },
+    {
+      "node_id": "n52",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(28)"
+    },
+    {
+      "node_id": "n53",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(29)"
+    },
+    {
+      "node_id": "n54",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(30)"
+    },
+    {
+      "node_id": "n55",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(31)"
+    },
+    {
+      "node_id": "n56",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(32)"
+    },
+    {
+      "node_id": "n57",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(33)"
+    },
+    {
+      "node_id": "n58",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(34)"
+    },
+    {
+      "node_id": "n59",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(35)"
+    },
+    {
+      "node_id": "n60",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(36)"
+    },
+    {
+      "node_id": "n61",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(37)"
+    },
+    {
+      "node_id": "n62",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(38)"
+    },
+    {
+      "node_id": "n63",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(39)"
+    },
+    {
+      "node_id": "n64",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(40)"
+    },
+    {
+      "node_id": "n65",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(41)"
+    },
+    {
+      "node_id": "n66",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(42)"
+    },
+    {
+      "node_id": "n67",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(43)"
+    },
+    {
+      "node_id": "n68",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(44)"
+    },
+    {
+      "node_id": "n69",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(45)"
+    },
+    {
+      "node_id": "n70",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(46)"
+    },
+    {
+      "node_id": "n71",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(47)"
+    },
+    {
+      "node_id": "n72",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(48)"
+    },
+    {
+      "node_id": "n73",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(49)"
+    },
+    {
+      "node_id": "n74",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(50)"
+    },
+    {
+      "node_id": "n75",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(51)"
+    },
+    {
+      "node_id": "n76",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(52)"
+    },
+    {
+      "node_id": "n77",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(53)"
+    },
+    {
+      "node_id": "n78",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(54)"
+    },
+    {
+      "node_id": "n79",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(55)"
+    },
+    {
+      "node_id": "n80",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(56)"
+    },
+    {
+      "node_id": "n81",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(57)"
+    },
+    {
+      "node_id": "n82",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(58)"
+    },
+    {
+      "node_id": "n83",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(59)"
+    },
+    {
+      "node_id": "n84",
+      "selector": "#dr_hu_container_bottom_left > a:nth-of-type(60)"
+    }
+  ],
+  "focus_trap": null
+}
