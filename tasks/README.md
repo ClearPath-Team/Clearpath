@@ -25,6 +25,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M4-03`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-03-analysis-language-toggle.md`](m4-03-analysis-language-toggle.md) |
 | **`M4-04`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-04-website-language-selector-and-analysis-default.md`](m4-04-website-language-selector-and-analysis-default.md) |
 | **`DEMO-02`** | Demo | P1 | `Ready` | *(Unassigned)* | [`demo-02-revamp-bad-checkout-ux.md`](demo-02-revamp-bad-checkout-ux.md) |
+| **`INTEG-02`** | Shared | P1 | `In progress` | `@agent` | [`integ-02-live-popular-websites-e2e.md`](integ-02-live-popular-websites-e2e.md) |
 
 ---
 
