@@ -18,12 +18,15 @@ class EventsTests(unittest.TestCase):
         result = build_events(source)
         speech = {event["node_id"]: event["text"] for event in result["events"]}
         self.assertEqual(result["lang"], "ro")
-        self.assertEqual(speech[None], "Pagina Finalizează comanda")
-        self.assertEqual(speech["n6"], "buton")
-        self.assertEqual(speech["n9"], "imagine fără descriere")
-        self.assertEqual(speech["n15"], "casetă de editare, necompletat")
-        self.assertEqual(speech["n8"], "Finalizează comanda, titlu nivel 1")
-        self.assertEqual(speech["n14"], "Nume complet, casetă de editare, necompletat, obligatoriu")
+        nodes = {n["selector"]: n for n in source["nodes"]}
+        heading = next(n for n in source["nodes"] if n["role"] == "heading" and n["level"] == 1)
+        self.assertEqual(speech[None], f"Pagina {source['title']}")
+        self.assertEqual(speech[nodes["#cart"]["id"]], "buton")
+        self.assertEqual(speech[nodes["#product-image"]["id"]], "imagine fără descriere")
+        self.assertEqual(speech[nodes["#email"]["id"]], "casetă de editare, necompletat")
+        self.assertEqual(speech[heading["id"]], "Finalizează comanda, titlu nivel 1")
+        self.assertEqual(speech[nodes["#name"]["id"]],
+                         f"{nodes['#name']['name']}, casetă de editare, necompletat, obligatoriu")
         self.assertEqual(source, original)
 
     def test_controls_and_optional_states(self):
