@@ -1,7 +1,7 @@
 # Task: [M2-03] English Screen Reader Speech Rules, Recommendations & Voice Synthesis
 
 - **Task ID:** `M2-03`
-- **GitHub Issue:** Pending (created automatically on push)
+- **GitHub Issue:** #32
 - **Track:** `M2` (Announcement engine, audit, and reporting)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

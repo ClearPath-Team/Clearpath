@@ -1,7 +1,7 @@
 # Task: [M4-04] Website Language Selector (English Main / Romanian Secondary) & Initial Analysis Language Default
 
 - **Task ID:** `M4-04`
-- **GitHub Issue:** Pending (created automatically on push)
+- **GitHub Issue:** #38
 - **Track:** `M4` (API, web, and orchestration)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

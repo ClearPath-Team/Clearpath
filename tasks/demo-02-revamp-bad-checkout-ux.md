@@ -1,7 +1,7 @@
 # Task: [DEMO-02] Modernize & Revamp Demo Checkout Page (bad-checkout.html) for Realism & Better UX
 
 - **Task ID:** `DEMO-02`
-- **GitHub Issue:** Pending (created automatically on push)
+- **GitHub Issue:** #31
 - **Track:** `Demo` (Demo site and presentation UX)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`

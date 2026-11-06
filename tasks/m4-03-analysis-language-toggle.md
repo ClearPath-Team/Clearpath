@@ -1,7 +1,7 @@
 # Task: [M4-03] Toggleable Analysis Language in URL Submission & End-to-End Flow
 
 - **Task ID:** `M4-03`
-- **GitHub Issue:** Pending (created automatically on push)
+- **GitHub Issue:** #36
 - **Track:** `M4` (API, web, and orchestration)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
