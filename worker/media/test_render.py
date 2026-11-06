@@ -45,7 +45,7 @@ class RenderClipTests(unittest.TestCase):
         self.out_dir = Path(tempfile.mkdtemp(prefix="cp-test-render-"))
         self.addCleanup(shutil.rmtree, self.out_dir, ignore_errors=True)
 
-    def _render(self, probed_duration):
+    def _render(self, probed_duration, lang="ro"):
         probe_stdout = json.dumps({"format": {"duration": str(probed_duration)}})
 
         def fake_run(args, *, input_text=None):
@@ -55,7 +55,8 @@ class RenderClipTests(unittest.TestCase):
                 mock.patch.object(render, "_synthesize", return_value=SPOKEN_SECONDS), \
                 mock.patch.object(render, "_run", side_effect=fake_run), \
                 mock.patch("playwright.sync_api.sync_playwright"):
-            return render_clip(URL, self.nodes, self.events, self.out_dir)
+            return (render_clip(URL, self.nodes, self.events, self.out_dir) if lang == "ro"
+                    else render_clip(URL, self.nodes, self.events, self.out_dir, lang=lang))
 
     def test_returns_and_writes_contract_schema(self):
         expected_total = _narration_total(len(self.events["events"]))
@@ -99,6 +100,16 @@ class RenderClipTests(unittest.TestCase):
     def test_english_punctuation_fallback(self):
         self.assertEqual(render._speakable_announcement("...", lang="en"), "No textual content")
         self.assertEqual(render._speakable_announcement("...", lang="ro"), "Element fără conținut textual")
+
+    def test_english_render_uses_english_fallback_and_language(self):
+        self.events = {"events": [{"seq": 0, "node_id": None, "text": ","}]}
+        with mock.patch.object(render, "_draw_overlay") as overlay:
+            with mock.patch.object(render, "_synthesize", return_value=SPOKEN_SECONDS) as synth:
+                result = self._render(1.05, lang="en")
+        self.assertEqual(result["entries"][0]["text"], "No textual content")
+        self.assertEqual(overlay.call_args.args[2], "No textual content")
+        self.assertEqual(synth.call_args.args[0], "No textual content")
+        self.assertEqual(synth.call_args.kwargs["lang"], "en")
 
     def test_truncated_clip_fails_without_writing_timeline(self):
         with self.assertRaises(RuntimeError):
