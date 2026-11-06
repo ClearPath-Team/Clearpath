@@ -1,7 +1,7 @@
 # Task: [M4-03] Frontend Visual Redesign (Claude Design mockups -> Next.js)
 
 - **Task ID:** `M4-03`
-- **GitHub Issue:** pending
+- **GitHub Issue:** #28
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
