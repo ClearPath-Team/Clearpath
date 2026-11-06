@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useLanguage } from "@/components/LanguageProvider";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -47,6 +48,7 @@ interface AnalysisReport {
   id: string;
   url: string;
   title?: string;
+  lang?: "en" | "ro";
   score?: number;
   counts?: IssueCounts;
   focus_trap?: boolean;
@@ -57,22 +59,24 @@ interface AnalysisReport {
 
 interface AnalysisStatusResponse {
   id: string;
+  lang?: "en" | "ro";
   url: string;
   status: "queued" | "extracting" | "analyzing" | "rendering" | "done" | "failed";
   error: string | null;
   report: AnalysisReport | null;
 }
 
-const STEPS = [
-  { key: "queued", label: "Inițializare sesiune", desc: "Pregătire mediu de testare" },
-  { key: "extracting", label: "Arbore de accesibilitate", desc: "Extragere CDP & parcurgere Tab" },
-  { key: "analyzing", label: "Screen reader & audit WCAG", desc: "Sinteză vocală & reguli axe-core" },
-  { key: "rendering", label: "Randare video sincronizat", desc: "Evidențiere vizuală & muxing audio" },
-];
 
 export default function AnalysisPage() {
   const params = useParams();
   const router = useRouter();
+  const { t } = useLanguage();
+  const STEPS = [
+    { key: "queued", label: t("stepQueued"), desc: t("stepQueuedDesc") },
+    { key: "extracting", label: t("stepExtracting"), desc: t("stepExtractingDesc") },
+    { key: "analyzing", label: t("stepAnalyzing"), desc: t("stepAnalyzingDesc") },
+    { key: "rendering", label: t("stepRendering"), desc: t("stepRenderingDesc") },
+  ];
   const id = params?.id as string;
 
   const [data, setData] = useState<AnalysisStatusResponse | null>(null);
@@ -98,7 +102,7 @@ export default function AnalysisPage() {
         const res = await fetch(`${apiUrl}/api/analyses/${id}`);
         if (!res.ok) {
           if (res.status === 404) {
-            setError(`Analiza cu id-ul '${id}' nu a fost găsită.`);
+            setError(`${t("analysisNotFound")} ${id}`);
             return;
           }
           throw new Error(`HTTP ${res.status}`);
@@ -110,15 +114,15 @@ export default function AnalysisPage() {
           timer = setTimeout(fetchStatus, 1500);
         }
       } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : "Eroare necunoscută";
-        setError(`Eroare de conexiune la API: ${message}`);
+        const message = err instanceof Error ? err.message : t("unknownError");
+        setError(`${t("apiConnection")} ${message}`);
       }
     };
 
     fetchStatus();
 
     return () => clearTimeout(timer);
-  }, [id, apiUrl]);
+  }, [id, apiUrl, t]);
 
   // Video timeupdate handler
   const handleTimeUpdate = () => {
@@ -182,9 +186,9 @@ export default function AnalysisPage() {
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950 text-indigo-300 text-xs font-semibold uppercase tracking-wider border border-indigo-800">
               <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-400" />
-              Analiză în desfășurare
+              {t("inProgress")}
             </div>
-            <h1 className="text-2xl font-bold text-white">Analizăm experiența de accesibilitate</h1>
+            <h1 className="text-2xl font-bold text-white">{t("analyzingExperience")}</h1>
             <p className="text-sm text-slate-400 font-mono break-all">{data.url}</p>
           </div>
 
@@ -220,9 +224,9 @@ export default function AnalysisPage() {
                     <div className="flex items-center justify-between">
                       <div className="text-sm font-semibold text-white">{step.label}</div>
                       {isCurrent && (
-                        <span className="text-xs font-medium text-indigo-400 animate-pulse">Se procesează...</span>
+                        <span className="text-xs font-medium text-indigo-400 animate-pulse">{t("processing")}</span>
                       )}
-                      {isPast && <span className="text-xs text-emerald-400">Finalizat</span>}
+                      {isPast && <span className="text-xs text-emerald-400">{t("completed")}</span>}
                     </div>
                     <div className="text-xs text-slate-400 mt-0.5">{step.desc}</div>
                   </div>
@@ -232,7 +236,7 @@ export default function AnalysisPage() {
           </div>
 
           <div className="text-center text-xs text-slate-500">
-            Procesarea completă durează de obicei între 15 și 30 de secunde.
+            {t("processEstimate")}
           </div>
         </div>
       </div>
@@ -248,9 +252,9 @@ export default function AnalysisPage() {
             <AlertTriangle className="w-6 h-6" />
           </div>
           <div className="space-y-2">
-            <h1 className="text-2xl font-bold text-white">Analiza nu a putut fi finalizată</h1>
+            <h1 className="text-2xl font-bold text-white">{t("failed")}</h1>
             <p className="text-sm text-red-200">
-              {error || data?.error || "A intervenit o eroare neașteptată în timpul execuției pipeline-ului."}
+              {error || data?.error || t("unexpectedError")}
             </p>
           </div>
           <button
@@ -258,7 +262,7 @@ export default function AnalysisPage() {
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-all"
           >
             <RotateCcw className="w-4 h-4" />
-            Încearcă din nou
+            {t("tryAgain")}
           </button>
         </div>
       </div>
@@ -310,7 +314,7 @@ export default function AnalysisPage() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-              <span>Raport de accesibilitate</span>
+              <span>{t("reportTitle")}</span>
               <span>•</span>
               <span className="font-mono">{report.id}</span>
             </div>
@@ -318,19 +322,22 @@ export default function AnalysisPage() {
               {report.url}
             </h1>
             <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="inline-flex items-center rounded-md border border-indigo-800 bg-indigo-950 px-3 py-1 text-xs font-semibold text-indigo-200">
+                {(report.lang || data?.lang || "ro") === "en" ? "🇬🇧 English" : "🇷🇴 Română"}
+              </span>
               {hasTrap && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-red-950 border border-red-800 text-red-300 text-xs font-bold">
                   <ShieldAlert className="w-4 h-4 text-red-400" />
-                  Capcană de tastatură detectată
+                  {t("trapDetected")}
                 </span>
               )}
               <span className="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">
                 <Volume2 className="w-3.5 h-3.5 text-indigo-400" />
-                {report.issues.length} probleme identificate
+                {report.issues.length} {t("identifiedIssues")}
               </span>
               <span className="inline-flex items-center gap-1 px-3 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">
                 <Clock className="w-3.5 h-3.5 text-slate-400" />
-                Durată clip: {formatSeconds(duration)}
+                {t("clipDuration")} {formatSeconds(duration)}
               </span>
             </div>
           </div>
@@ -344,7 +351,7 @@ export default function AnalysisPage() {
                 <span className="text-3xl tracking-tight leading-none">{score}</span>
                 <span className="text-[11px] uppercase tracking-wider font-bold opacity-80 mt-1">/ 100</span>
               </div>
-              <span className="text-xs text-slate-400 font-semibold mt-1.5">Scor Accesibilitate</span>
+              <span className="text-xs text-slate-400 font-semibold mt-1.5">{t("accessibilityScore")}</span>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -353,14 +360,14 @@ export default function AnalysisPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all border border-slate-700"
               >
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                {copied ? "Link copiat!" : "Copiază linkul"}
+                {copied ? t("linkCopied") : t("copyLink")}
               </button>
               <button
                 onClick={() => router.push("/")}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-all"
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                Analiză nouă
+                {t("newAnalysis")}
               </button>
             </div>
           </div>
@@ -375,7 +382,7 @@ export default function AnalysisPage() {
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/80">
               <div className="flex items-center gap-2 text-sm font-bold text-white">
                 <Play className="w-4 h-4 text-indigo-400 fill-indigo-400" />
-                Demonstrație Narată & Sincronizată
+                {t("narratedDemo")}
               </div>
               <span className="text-xs text-slate-400 font-mono">
                 {formatSeconds(currentTime)} / {formatSeconds(videoRef.current?.duration || 20)}
@@ -394,7 +401,7 @@ export default function AnalysisPage() {
                 className="w-full h-full object-contain"
               >
                 <source src={videoUrl} type="video/mp4" />
-                Browserul tău nu suportă redarea video HTML5.
+                {t("videoUnsupported")}
               </video>
 
               {videoError && (
@@ -403,9 +410,9 @@ export default function AnalysisPage() {
                     <AlertTriangle className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-semibold text-white">Clipul video nu a putut fi redat</p>
+                    <p className="text-sm font-semibold text-white">{t("videoFailed")}</p>
                     <p className="text-xs text-slate-400 max-w-sm">
-                      Fișierul video nu este încă generat sau conține date mock nefinalizate.
+                      {t("videoUnavailable")}
                     </p>
                   </div>
                 </div>
@@ -414,7 +421,7 @@ export default function AnalysisPage() {
 
             <div className="p-4 text-xs text-slate-400 bg-slate-950/40 border-t border-slate-800/80 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              Fă click pe orice buton de timestamp din lista din dreapta pentru a sări direct la incident.
+              {t("timestampHelp")}
             </div>
           </div>
         </div>
@@ -424,11 +431,11 @@ export default function AnalysisPage() {
           {/* Severity Filter Tabs */}
           <div className="flex items-center gap-1.5 p-1.5 bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto text-xs font-semibold">
             {[
-              { key: "all", label: "Toate", count: counts.total },
-              { key: "critical", label: "Critice", count: counts.critical },
-              { key: "serious", label: "Grave", count: counts.serious },
-              { key: "moderate", label: "Medii", count: counts.moderate },
-              { key: "minor", label: "Minore", count: counts.minor },
+              { key: "all", label: t("all"), count: counts.total },
+              { key: "critical", label: t("criticalPlural"), count: counts.critical },
+              { key: "serious", label: t("seriousPlural"), count: counts.serious },
+              { key: "moderate", label: t("moderatePlural"), count: counts.moderate },
+              { key: "minor", label: t("minorPlural"), count: counts.minor },
             ].map((f) => (
               <button
                 key={f.key}
@@ -455,7 +462,7 @@ export default function AnalysisPage() {
           <div className="space-y-3">
             {filteredIssues.length === 0 ? (
               <div className="p-8 rounded-2xl bg-slate-900 border border-slate-800 text-center text-slate-400 text-sm">
-                Nu există probleme pentru filtrul selectat.
+                {t("noIssues")}
               </div>
             ) : (
               filteredIssues.map((issue) => {
@@ -477,12 +484,12 @@ export default function AnalysisPage() {
 
                 const impactRo =
                   severity === "critical"
-                    ? "Critic"
+                    ? t("critical")
                     : severity === "serious"
-                    ? "Grav"
+                    ? t("serious")
                     : severity === "moderate"
-                    ? "Mediu"
-                    : "Minor";
+                    ? t("moderate")
+                    : t("minor");
 
                 return (
                   <div
@@ -509,13 +516,13 @@ export default function AnalysisPage() {
                             type="button"
                             onClick={() => seekTo(issue.timestamp!)}
                             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-950 hover:bg-indigo-900 border border-indigo-800 text-indigo-300 text-xs font-mono font-bold transition-colors"
-                            title="Sari la acest timestamp în video"
+                            title={t("seekTitle")}
                           >
                             <Play className="w-3 h-3 fill-indigo-300" />
                             {formatSeconds(issue.timestamp)}
                           </button>
                         ) : (
-                          <span className="text-[11px] text-slate-500 font-medium">Nu apare în clip</span>
+                          <span className="text-[11px] text-slate-500 font-medium">{t("notInClip")}</span>
                         )}
                       </div>
 
@@ -523,9 +530,9 @@ export default function AnalysisPage() {
                         className="text-sm text-slate-200 cursor-pointer select-none font-medium leading-snug pt-1"
                         onClick={() => setExpandedIssue(isExpanded ? null : issue.id)}
                       >
-                        <div>{title}</div>
+                        <div lang={report.lang || "ro"}>{title}</div>
                         {issue.description && (
-                          <div className="text-xs text-slate-400 mt-1 font-normal">
+                          <div lang={report.lang || "ro"} className="text-xs text-slate-400 mt-1 font-normal">
                             {issue.description}
                           </div>
                         )}
@@ -539,11 +546,11 @@ export default function AnalysisPage() {
                         >
                           {isExpanded ? (
                             <>
-                              Ascunde detalii <ChevronUp className="w-3.5 h-3.5" />
+                              {t("hideDetails")} <ChevronUp className="w-3.5 h-3.5" />
                             </>
                           ) : (
                             <>
-                              Vezi recomandare <ChevronDown className="w-3.5 h-3.5" />
+                              {t("viewRecommendation")} <ChevronDown className="w-3.5 h-3.5" />
                             </>
                           )}
                         </button>
@@ -555,7 +562,7 @@ export default function AnalysisPage() {
                             rel="noreferrer"
                             className="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-slate-200"
                           >
-                            Ghid WCAG <ExternalLink className="w-3 h-3" />
+                            {t("wcagGuide")} <ExternalLink className="w-3 h-3" />
                           </a>
                         )}
                       </div>
@@ -567,9 +574,9 @@ export default function AnalysisPage() {
                         {issue.recommendation && (
                           <div className="space-y-1">
                             <span className="font-semibold text-slate-300 uppercase text-[10px] tracking-wider">
-                              Recomandare de remediere:
+                              {t("recommendation")}
                             </span>
-                            <div className="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/40 text-indigo-200 leading-relaxed">
+                            <div lang={report.lang || "ro"} className="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/40 text-indigo-200 leading-relaxed">
                               {issue.recommendation}
                             </div>
                           </div>
@@ -578,7 +585,7 @@ export default function AnalysisPage() {
                         {issue.selector && (
                           <div className="space-y-1">
                             <span className="font-semibold text-slate-400 uppercase text-[10px] tracking-wider">
-                              Selector CSS:
+                              {t("cssSelector")}
                             </span>
                             <pre className="p-2 rounded bg-black/60 font-mono text-[11px] text-slate-300 overflow-x-auto border border-slate-800">
                               <code>{issue.selector}</code>
