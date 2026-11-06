@@ -48,6 +48,7 @@ interface AnalysisReport {
   id: string;
   url: string;
   title?: string;
+  lang?: "en" | "ro";
   score?: number;
   counts?: IssueCounts;
   focus_trap?: boolean;
@@ -525,9 +526,9 @@ export default function AnalysisPage() {
                         className="text-sm text-slate-200 cursor-pointer select-none font-medium leading-snug pt-1"
                         onClick={() => setExpandedIssue(isExpanded ? null : issue.id)}
                       >
-                        <div>{title}</div>
+                        <div lang={report.lang || "ro"}>{title}</div>
                         {issue.description && (
-                          <div className="text-xs text-slate-400 mt-1 font-normal">
+                          <div lang={report.lang || "ro"} className="text-xs text-slate-400 mt-1 font-normal">
                             {issue.description}
                           </div>
                         )}
@@ -571,7 +572,7 @@ export default function AnalysisPage() {
                             <span className="font-semibold text-slate-300 uppercase text-[10px] tracking-wider">
                               {t("recommendation")}
                             </span>
-                            <div className="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/40 text-indigo-200 leading-relaxed">
+                            <div lang={report.lang || "ro"} className="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/40 text-indigo-200 leading-relaxed">
                               {issue.recommendation}
                             </div>
                           </div>
