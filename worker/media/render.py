@@ -90,8 +90,12 @@ def _validate_clip_duration(probe_stdout: str, last_event_end: float) -> float:
     return round(probed, 3)
 
 
-def _voice_path():
-    return Path(os.environ.get("PIPER_MODEL", str(ROOT / "assets/voices/ro_RO-mihai-medium.onnx")))
+def _voice_path(lang: str = "ro"):
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported voice language: {lang}")
+    env = "PIPER_MODEL_EN" if lang == "en" else "PIPER_MODEL"
+    default_voice = "en_US-lessac-medium.onnx" if lang == "en" else "ro_RO-mihai-medium.onnx"
+    return Path(os.environ.get(env, str(ROOT / "assets/voices" / default_voice)))
 
 
 def _resolve_binary(name: str) -> str:
@@ -132,12 +136,14 @@ def normalize_romanian_text(text: str) -> str:
     return unicodedata.normalize("NFC", text)
 
 
-def _synthesize(text, output):
+def _synthesize(text, output, lang: str = "ro"):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
-    normalized = normalize_romanian_text(text)
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported TTS language: {lang}")
+    normalized = normalize_romanian_text(text) if lang == "ro" else unicodedata.normalize("NFC", str(text))
 
     if engine == "piper":
-        model = _voice_path()
+        model = _voice_path(lang)
         if not model.is_file():
             raise RuntimeError(f"Piper model not found: {model}")
         _run([_piper_bin(), "--model", str(model), "--output_file", str(output)],
@@ -145,7 +151,8 @@ def _synthesize(text, output):
     elif engine == "edge-tts":
         edge_bin = _edge_tts_bin()
         mp3 = output.with_suffix(".mp3")
-        voice = os.environ.get("EDGE_TTS_VOICE", "ro-RO-EmilNeural")
+        voice = os.environ.get("EDGE_TTS_VOICE_EN" if lang == "en" else "EDGE_TTS_VOICE",
+                               "en-US-ChristopherNeural" if lang == "en" else "ro-RO-EmilNeural")
         try:
             _run([
                 edge_bin,
@@ -233,10 +240,12 @@ def _concat_file(paths, output):
             file.write("file '" + escaped + "'\n")
 
 
-def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
+def render_clip(url: str, nodes: dict, events: dict, out_dir: Path, lang: str = "ro") -> dict:
     """Produce clip.mp4 and timeline.json; raise on missing dependencies."""
     from playwright.sync_api import sync_playwright
 
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported render language: {lang}")
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
@@ -256,7 +265,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
             if not spoken:
                 raise ValueError(f"Empty announcement at index {index}")
             wav = temp / f"voice_{index:04d}.wav"
-            duration = _synthesize(spoken, wav)
+            duration = _synthesize(spoken, wav) if lang == "ro" else _synthesize(spoken, wav, lang=lang)
             audio_files.append(wav)
             seq = event.get("seq", index)
             timeline.append({
@@ -340,6 +349,7 @@ if __name__ == "__main__":
     nodes_path = sys.argv[2] if len(sys.argv) > 2 else str(SAMPLES / "nodes.json")
     events_path = sys.argv[3] if len(sys.argv) > 3 else str(SAMPLES / "events.json")
     out = Path(sys.argv[4]) if len(sys.argv) > 4 else Path("data/dev")
+    lang = sys.argv[sys.argv.index("--lang") + 1] if "--lang" in sys.argv else "ro"
     print(json.dumps(render_clip(url, read_json(nodes_path),
-                                 read_json(events_path), out),
+                                 read_json(events_path), out, lang=lang),
                      indent=2, ensure_ascii=False))
