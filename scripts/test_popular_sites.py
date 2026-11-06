@@ -211,7 +211,7 @@ def test_site(site_info: dict, run_render: bool = True, romanian: bool = False) 
             report_data = read_json(rep_path)
             result["score"] = report_data.get("score")
             failures = verify_artifacts(out_dir, full_render=run_render)
-            result["status"] = "success" if not failures else "partial"
+            result["status"] = "success" if not failures and run_render else "partial"
             if failures:
                 result["error_message"] = "; ".join(failures)
         else:
