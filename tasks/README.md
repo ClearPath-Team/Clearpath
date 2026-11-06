@@ -19,7 +19,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M4-02`** | M4 | P0 | `Done` | `@alexcontz` | [`m4-02-frontend-dashboard-fixes.md`](m4-02-frontend-dashboard-fixes.md) |
 | **`INTEG-01`** | Shared | P0 | `Ready` | *(Unassigned)* | [`integ-01-pipeline-end-to-end-verification.md`](integ-01-pipeline-end-to-end-verification.md) |
 | **`DEMO-01`** | M4 | P0 | `Ready` | *(Unassigned)* | [`demo-01-offline-precaching-and-presentation.md`](demo-01-offline-precaching-and-presentation.md) |
-| **`M1-02`** | M1 | P1 | `Ready` | *(Unassigned)* | [`m1-02-cookie-dismissal-and-live-resilience.md`](m1-02-cookie-dismissal-and-live-resilience.md) |
+| **`M1-02`** | M1 | P1 | `In review` | `@Sergiu1809` | [`m1-02-cookie-dismissal-and-live-resilience.md`](m1-02-cookie-dismissal-and-live-resilience.md) |
 | **`M3-03`** | M3 | P1 | `In progress` | `@andreiBirsanIoan` | [`m3-03-romanian-tts-quality-and-subtitles.md`](m3-03-romanian-tts-quality-and-subtitles.md) |
 
 ---
