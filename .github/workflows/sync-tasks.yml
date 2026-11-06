@@ -2,8 +2,6 @@ name: Sync Tasks to GitHub Issues
 
 on:
   push:
-    branches:
-      - main
     paths:
       - 'tasks/**.md'
   workflow_dispatch:
@@ -39,6 +37,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [[ -n $(git status -s tasks/) ]]; then
             git add tasks/
-            git commit -m "chore(tasks): auto-link new task files to GitHub issues [skip ci]"
-            git push
+            git commit -m "chore(tasks): auto-link task files to GitHub issues [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
           fi

@@ -16,6 +16,14 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 
 ---
 
+## Task Synchronization Across Branches
+
+When creating a new task file (`tasks/mX-YY-slug.md`) on **any feature branch**:
+- **Automatic via CI:** Pushing your branch to GitHub automatically triggers [`.github/workflows/sync-tasks.yml`](../.github/workflows/sync-tasks.yml). GitHub Actions creates the GitHub Issue, writes the `#<issue_number>` into the markdown file, and pushes the commit directly to your feature branch.
+- **Manual (Immediate):** You can also run `python scripts/sync_tasks_to_github.py` locally while on your branch to create the issue immediately before committing.
+
+---
+
 ## Anti-Collision Protocol for Multi-Agent Collaboration
 
 The project follows a 5-stage task lifecycle: **`Backlog` ➔ `Ready` ➔ `In progress` ➔ `In review` ➔ `Done`**.
