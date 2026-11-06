@@ -59,6 +59,7 @@ interface AnalysisReport {
 
 interface AnalysisStatusResponse {
   id: string;
+  lang?: "en" | "ro";
   url: string;
   status: "queued" | "extracting" | "analyzing" | "rendering" | "done" | "failed";
   error: string | null;
@@ -321,6 +322,9 @@ export default function AnalysisPage() {
               {report.url}
             </h1>
             <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="inline-flex items-center rounded-md border border-indigo-800 bg-indigo-950 px-3 py-1 text-xs font-semibold text-indigo-200">
+                {(report.lang || data?.lang || "ro") === "en" ? "🇬🇧 English" : "🇷🇴 Română"}
+              </span>
               {hasTrap && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-red-950 border border-red-800 text-red-300 text-xs font-bold">
                   <ShieldAlert className="w-4 h-4 text-red-400" />
