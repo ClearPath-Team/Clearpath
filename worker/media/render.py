@@ -109,7 +109,7 @@ def _concat_file(paths, output):
     with output.open("w", encoding="utf-8") as file:
         for path in paths:
             escaped = str(path.resolve()).replace("'", "'\\''")
-            file.write("file '" + escaped + "'\\n")
+            file.write("file '" + escaped + "'\n")
 
 
 def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
@@ -193,10 +193,10 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
         with frame_list.open("w", encoding="utf-8") as file:
             for frame, duration in zip(frame_files, durations):
                 escaped = str(frame.resolve()).replace("'", "'\\''")
-                file.write(f"file '{escaped}'\\n")
-                file.write(f"duration {duration:.6f}\\n")
+                file.write(f"file '{escaped}'\n")
+                file.write(f"duration {duration:.6f}\n")
             last = str(frame_files[-1].resolve()).replace("'", "'\\''")
-            file.write(f"file '{last}'\\n")
+            file.write(f"file '{last}'\n")
         clip = out_dir / "clip.mp4"
         _run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
               "-i", str(frame_list), "-i", str(audio),
