@@ -5,9 +5,10 @@
 - **Track:** `Shared` (Infrastructure and team workflow)
 - **Type:** `Chore`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `Done`
+- **Assignee:** `@AndreiBcs`
 - **Branch:** `shared-playwright-deps`
+- **Pull Request:** https://github.com/ClearPath-Team/Clearpath/pull/18
 - **Created Date:** 2026-11-06
 
 ---
@@ -42,9 +43,9 @@ While CI runs `sudo apt-get install` in `.github/workflows/ci.yml`, local enviro
 ---
 
 ## 4. Acceptance Criteria
-- [ ] `scripts/check_env.py` provides exact apt/brew/winget commands when Chromium launch fails due to missing OS libraries.
-- [ ] Unit tests requiring live Chromium launch (`test_audit.py` and `test_cli.py`) check browser launchability and skip gracefully with an informative message (`unittest.skipIf`) instead of failing hard with missing shared library exceptions.
-- [ ] Setup documentation in `doc/setup/troubleshooting.md` and `setup-prompt.md` includes explicit instructions for installing Playwright system dependencies on Ubuntu/Debian/WSL (`sudo playwright install-deps chromium`).
+- [x] `scripts/check_env.py` provides exact apt/brew/winget commands when Chromium launch fails due to missing OS libraries.
+- [x] Unit tests requiring live Chromium launch (`test_audit.py` and `test_cli.py`) check browser launchability and skip gracefully with an informative message (`unittest.skipIf`) instead of failing hard with missing shared library exceptions.
+- [x] Setup documentation in `doc/setup/troubleshooting.md` and `setup-prompt.md` includes explicit instructions for installing Playwright system dependencies on Ubuntu/Debian/WSL (`sudo playwright install-deps chromium`).
 
 ---
 
@@ -69,5 +70,11 @@ While CI runs `sudo apt-get install` in `.github/workflows/ci.yml`, local enviro
 
 ---
 
-## 8. Execution Log
-- **2026-11-06:** Task created as Ready based on midpoint integration findings.
+## 8. Execution Log (Updated by Assignee)
+- **Status Change:** `Backlog` -> `Ready` on 2026-11-06
+- **Claimed by:** `@AndreiBcs`
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/18
+
+- **2026-11-06 14:47 UTC:** Claimed by @AndreiBcs (Status -> In progress)
+- **2026-11-06 14:50 UTC:** PR opened: https://github.com/ClearPath-Team/Clearpath/pull/18 (Status -> In review)
+- **2026-11-06 15:27 UTC:** PR #18 merged into main, Issue #13 closed (Status -> Done)

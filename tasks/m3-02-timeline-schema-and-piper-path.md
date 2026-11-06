@@ -5,9 +5,10 @@
 - **Track:** `M3` (TTS, recording, and media rendering)
 - **Type:** `Bug`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `In review`
+- **Status:** `Done`
 - **Assignee:** `@Sergiu1809`
 - **Branch:** `m3-fix-timeline-schema`
+- **Pull Request:** https://github.com/ClearPath-Team/Clearpath/pull/16
 - **Created Date:** 2026-11-06
 
 ---
@@ -74,18 +75,18 @@ The agent is **only** permitted to modify files in:
 ---
 
 ## 4. Acceptance Criteria
-- [ ] `render_clip()` returns and writes a dictionary matching `contracts/samples/timeline.json`:
+- [x] `render_clip()` returns and writes a dictionary matching `contracts/samples/timeline.json`:
   - `"duration"`: float (total audio/clip duration in seconds, rounded to 3 decimal places)
   - `"clip"`: string `"clip.mp4"`
   - `"entries"`: list of event objects
-- [ ] Each entry in `"entries"` contains:
+- [x] Each entry in `"entries"` contains:
   - `"seq"`: integer sequence index (0, 1, 2, ...)
   - `"node_id"`: string node identifier (`"n0"`, `"n1"`, ...) or `null`
   - `"text"`: string spoken announcement text
   - `"start"`: float start offset in seconds
   - `"end"`: float end offset in seconds
-- [ ] Piper executable is resolved via `shutil.which("piper") or str(Path(sys.executable).parent / "piper")` (or `PiperVoice` SDK) so execution never fails inside virtual environments.
-- [ ] `render_clip()` output can be passed directly to `build_report()` in `worker/engine/report.py` without raising `KeyError` or missing timestamps.
+- [x] Piper executable is resolved via `shutil.which("piper") or str(Path(sys.executable).parent / "piper")` (or `PiperVoice` SDK) so execution never fails inside virtual environments.
+- [x] `render_clip()` output can be passed directly to `build_report()` in `worker/engine/report.py` without raising `KeyError` or missing timestamps.
 
 ---
 
@@ -139,4 +140,5 @@ CP_STUBS=extract,audit .venv/bin/python -m worker.pipeline test-m3-pipe http://l
 ## 8. Execution Log
 - **2026-11-06:** Task created as Ready based on midpoint integration findings.
 - **2026-11-06 14:39 UTC:** Claimed by @Sergiu1809 (Status -> In progress)
-- **2026-11-06:** PR #16 opened; review feedback addressed (Status -> In review)
+- **2026-11-06 14:44 UTC:** PR #16 opened; review feedback addressed (Status -> In review)
+- **2026-11-06 15:37 UTC:** PR #16 merged into main, Issue #12 closed (Status -> Done)

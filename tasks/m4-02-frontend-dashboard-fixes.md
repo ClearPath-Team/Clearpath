@@ -5,7 +5,7 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Bug`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `In review`
+- **Status:** `Done`
 - **Assignee:** `@alexcontz`
 - **Branch:** `m4-fix-frontend-dashboard`
 - **Created Date:** 2026-11-06
@@ -89,3 +89,4 @@ cd ..
 - **PR:** https://github.com/ClearPath-Team/Clearpath/pull/19
 
 - **2026-11-06 14:53 UTC:** PR opened: https://github.com/ClearPath-Team/Clearpath/pull/19 (Status -> In review)
+- **2026-11-06 15:05 UTC:** PR #19 merged into main, Issue #17 closed (Status -> Done)

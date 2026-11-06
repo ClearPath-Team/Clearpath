@@ -19,6 +19,9 @@ Every decision that alters a technology choice, data contract, or core product b
 
 | Date | Issue | Owner | Status |
 |---|---|---|---|
+| 2026-11-06 | M3-02 / #12: canonical timeline.json schema {duration, clip, entries} and venv piper path | M3 | Resolved (via PR #16) |
+| 2026-11-06 | SHARED-02 / #13: Playwright host OS dependencies and graceful headless test fallbacks | Shared | Resolved (via PR #18) |
+| 2026-11-06 | M4-02 / #17: fix frontend dashboard severity filter, CSS highlights and untrack .env.local | M4 | Resolved (via PR #19) |
 | 2026-11-06 | M2-02 / #11: reconcile implemented scoring, contract documentation and sample report | M2 | Adopted (via PR #14); details below |
 
 ### M2-02: One scoring policy for live and sample reports
