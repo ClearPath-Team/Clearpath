@@ -11,12 +11,8 @@ import sys
 import tempfile
 import wave
 from pathlib import Path
-from dotenv import load_dotenv
-
-
 
 ROOT = Path(__file__).resolve().parents[2]
-load_dotenv(ROOT / ".env")
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -51,6 +47,27 @@ def _voice_path():
     return Path(os.environ.get("PIPER_MODEL", str(ROOT / "assets/voices/ro_RO-mihai-medium.onnx")))
 
 
+def _resolve_binary(name: str) -> str:
+    """Resolves an executable by name, inspecting system PATH first and falling back
+    to the active Python interpreter's directory (e.g. .venv/bin or Scripts/)."""
+    found = shutil.which(name)
+    if found:
+        return found
+    exe_name = f"{name}.exe" if os.name == "nt" else name
+    candidate = Path(sys.executable).parent / exe_name
+    if candidate.is_file():
+        return str(candidate)
+    raise RuntimeError(f"Missing executable: {name} (checked PATH and {candidate})")
+
+
+def _piper_bin() -> str:
+    return _resolve_binary("piper")
+
+
+def _edge_tts_bin() -> str:
+    return _resolve_binary("edge-tts")
+
+
 def _synthesize(text, output):
     engine = os.environ.get("TTS_ENGINE", "piper").lower()
 
@@ -58,43 +75,38 @@ def _synthesize(text, output):
         model = _voice_path()
         if not model.is_file():
             raise RuntimeError(f"Piper model not found: {model}")
-        piper_bin = shutil.which("piper")
-        if not piper_bin:
-            raise RuntimeError("Piper executable not found")
         _run(
-            [piper_bin, "--model", str(model),
+            [_piper_bin(), "--model", str(model),
              "--output_file", str(output)],
             input_text=text,
         )
 
     elif engine == "edge-tts":
-        edge_bin = shutil.which("edge-tts")
-        if not edge_bin:
-            executable = "edge-tts.exe" if os.name == "nt" else "edge-tts"
-            candidate = Path(sys.executable).parent / executable
-            if candidate.is_file():
-                edge_bin = str(candidate)
-            else:
-                raise RuntimeError(
-                    f"Edge TTS executable not found in PATH or {candidate}"
-                )
-
+        edge_bin = _edge_tts_bin()
         mp3 = output.with_suffix(".mp3")
         voice = os.environ.get("EDGE_TTS_VOICE", "ro-RO-EmilNeural")
-        _run([
-            edge_bin,
-            "--voice", voice,
-            "--text", text,
-            "--write-media", str(mp3),
-        ])
-        _run([
-            "ffmpeg", "-y", "-v", "error",
-            "-i", str(mp3),
-            "-ar", "48000",
-            "-ac", "1",
-            "-c:a", "pcm_s16le",
-            str(output),
-        ])
+        try:
+            _run([
+                edge_bin,
+                "--voice", voice,
+                "--text", text,
+                "--write-media", str(mp3),
+            ])
+            _run([
+                "ffmpeg", "-y", "-v", "error",
+                "-i", str(mp3),
+                "-ar", "48000",
+                "-ac", "1",
+                "-c:a", "pcm_s16le",
+                str(output),
+            ])
+        except RuntimeError as exc:
+            raise RuntimeError(
+                f"Edge TTS synthesis failed (ensure internet connection is available): {exc}"
+            ) from exc
+        finally:
+            if mp3.is_file():
+                mp3.unlink(missing_ok=True)
 
     else:
         raise RuntimeError(f"Unsupported TTS_ENGINE={engine!r}")
