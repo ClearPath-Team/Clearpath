@@ -66,8 +66,64 @@ def _speech(node: dict) -> str:
     return ", ".join(parts)
 
 
-def build_events(nodes: dict) -> dict:
+def _speech_en(node: dict) -> str:
+    """English approximations of common screen-reader role and state announcements."""
+    role = node.get("role")
+    name = (node.get("name") or "").strip()
+    states = node.get("states") or {}
+    value = node.get("value")
+    parts = [name] if name else []
+    if role == "heading":
+        parts.append("heading" + (f" level {node['level']}" if node.get("level") else ""))
+    elif role in ("link", "button"):
+        parts.append(role)
+    elif role in ("textbox", "input"):
+        parts.append("edit")
+        parts.append("blank" if value is None or not str(value).strip() else f"contains {value}")
+    elif role in ("checkbox", "radio"):
+        parts.append("check box" if role == "checkbox" else "radio button")
+        checked = states.get("checked")
+        if checked == "mixed":
+            parts.append("partially checked")
+        elif checked is not None:
+            parts.append(("checked" if checked else "not checked") if role == "checkbox"
+                         else ("selected" if checked else "not selected"))
+    elif role == "combobox":
+        parts.append("combo box")
+        if value is not None and str(value).strip():
+            parts.append(str(value))
+    elif role == "image":
+        parts.append("graphic" if name else "graphic unlabelled")
+    elif role == "list":
+        parts.append(f"list with {node['list_size']} items" if node.get("list_size") is not None else "list")
+    elif role == "text":
+        words = name.split()
+        return " ".join(words[:12]) + ("..." if len(words) > 12 else "")
+    else:
+        label = {
+            "banner": "banner landmark", "navigation": "navigation landmark",
+            "main": "main landmark", "contentinfo": "content information landmark",
+            "search": "search landmark", "form": "form landmark",
+            "region": "region", "complementary": "complementary landmark",
+        }.get(role)
+        if label is None:
+            return ""
+        parts.append(label)
+    if states.get("required"):
+        parts.append("required")
+    if states.get("disabled"):
+        parts.append("unavailable")
+    if states.get("expanded") is True:
+        parts.append("expanded")
+    elif states.get("expanded") is False:
+        parts.append("collapsed")
+    return ", ".join(parts)
+
+
+def build_events(nodes: dict, lang: str = "ro") -> dict:
     """Translates linear accessibility tree nodes into screen reader speech announcements."""
+    if lang not in ("ro", "en"):
+        raise ValueError(f"Unsupported announcement language: {lang}")
     ordered = sorted(nodes.get("nodes", []), key=lambda node: node["order"])
     candidates = []
     text_run = 0
@@ -88,7 +144,7 @@ def build_events(nodes: dict) -> dict:
                 continue
         else:
             text_run = 0
-        speech = _speech(node)
+        speech = _speech_en(node) if lang == "en" else _speech(node)
         if speech:
             candidates.append((position, node, speech))
 
@@ -107,17 +163,19 @@ def build_events(nodes: dict) -> dict:
             selected.pop(replacement)
             selected.append(candidate)
     selected.sort(key=lambda candidate: candidate[0])
-    events = [{"seq": 0, "node_id": None, "text": f"Pagina {nodes.get('title') or ''}".strip()}]
+    introduction = "Page" if lang == "en" else "Pagina"
+    events = [{"seq": 0, "node_id": None, "text": f"{introduction} {nodes.get('title') or ''}".strip()}]
     events.extend({"seq": seq, "node_id": node["id"], "text": speech}
                   for seq, (_, node, speech) in enumerate(selected, start=1))
-    return {"lang": "ro", "events": events}
+    return {"lang": lang, "events": events}
 
 
 if __name__ == "__main__":
     import json
     path = sys.argv[1] if len(sys.argv) > 1 else str(SAMPLES / "nodes.json")
-    result = build_events(read_json(path))
-    if len(sys.argv) > 2:
+    lang = "en" if "--lang" in sys.argv and sys.argv.index("--lang") + 1 < len(sys.argv) and sys.argv[sys.argv.index("--lang") + 1] == "en" else "ro"
+    result = build_events(read_json(path), lang=lang)
+    if len(sys.argv) > 2 and sys.argv[2] != "--lang":
         write_json(Path(sys.argv[2]), result)
     else:
         sys.stdout.reconfigure(encoding="utf-8")
