@@ -82,7 +82,8 @@ class RenderClipTests(unittest.TestCase):
 
         self.assertEqual(report["duration"], timeline["duration"])
         timestamps = {issue["rule"]: issue["timestamp"] for issue in report["issues"]}
-        cart_index = next(i for i, e in enumerate(self.events["events"]) if e["node_id"] == "n6")
+        cart_id = next(n["id"] for n in self.nodes["nodes"] if n["selector"] == "#cart")
+        cart_index = next(i for i, e in enumerate(self.events["events"]) if e["node_id"] == cart_id)
         self.assertAlmostEqual(timestamps["button-name"],
                                cart_index * (SPOKEN_SECONDS + PAUSE_SECONDS), places=3)
         self.assertIsNone(timestamps["html-has-lang"])
@@ -260,7 +261,12 @@ class RealRenderEndToEndTests(unittest.TestCase):
     def test_generated_mp4_is_synchronized_with_timeline(self):
         nodes = read_json(SAMPLES / "nodes.json")
         sample_events = read_json(SAMPLES / "events.json")["events"]
-        events = {"events": [e for e in sample_events if e["node_id"] in ("n5", "n6", "n9")]}
+        cart_id = next(n["id"] for n in nodes["nodes"] if n["selector"] == "#cart")
+        selected_ids = {n["id"] for n in nodes["nodes"]
+                        if n["selector"] in ("#cart", "#product-image")
+                        or (n["role"] == "link" and not n["name"])}
+        events = {"events": [e for e in sample_events if e["node_id"] in selected_ids]}
+        self.assertEqual(len(events["events"]), 3)
         site = (Path(__file__).resolve().parents[2] / "test-site" / "bad-checkout.html").as_uri()
         out_dir = Path(tempfile.mkdtemp(prefix="cp-test-real-render-"))
         self.addCleanup(shutil.rmtree, out_dir, ignore_errors=True)
@@ -276,7 +282,8 @@ class RealRenderEndToEndTests(unittest.TestCase):
         self.assertEqual(sorted(s["codec_type"] for s in probe["streams"]), ["audio", "video"])
         clip_seconds = float(probe["format"]["duration"])
         self.assertAlmostEqual(timeline["duration"], clip_seconds, places=2)
-        self.assertEqual([e["node_id"] for e in timeline["entries"]], ["n5", "n6", "n9"])
+        self.assertEqual([e["node_id"] for e in timeline["entries"]],
+                         [e["node_id"] for e in events["events"]])
         for entry in timeline["entries"]:
             self.assertLessEqual(entry["end"], clip_seconds + render.CLIP_END_SLACK_SECONDS)
         self.assertEqual(json.loads((out_dir / "timeline.json").read_text(encoding="utf-8")), timeline)
@@ -284,7 +291,8 @@ class RealRenderEndToEndTests(unittest.TestCase):
         issues = read_json(SAMPLES / "issues.json")
         report = build_report("e2e", site, nodes, issues, timeline)
         stamps = {i["rule"]: i["timestamp"] for i in report["issues"]}
-        self.assertEqual(stamps["button-name"], timeline["entries"][1]["start"])
+        cart_start = next(e["start"] for e in timeline["entries"] if e["node_id"] == cart_id)
+        self.assertEqual(stamps["button-name"], cart_start)
         self.assertLess(stamps["button-name"], report["duration"])
 
 

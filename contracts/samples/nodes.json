@@ -1,7 +1,10 @@
 {
   "url": "http://localhost:8080/bad-checkout.html",
-  "title": "Finalizează comanda",
-  "viewport": { "width": 1280, "height": 720 },
+  "title": "Finalizează comanda · PasUșor Sport",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
   "nodes": [
     {
       "id": "n0",
@@ -9,43 +12,73 @@
       "role": "banner",
       "name": "",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
       "parent": null,
       "selector": "html > body:nth-of-type(1) > header:nth-of-type(1)",
-      "bbox": { "x": 0, "y": 0, "w": 1280, "h": 60 },
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 85.390625
+      },
       "visible": true
     },
     {
       "id": "n1",
       "order": 1,
-      "role": "text",
-      "name": "PasUșor",
+      "role": "link",
+      "name": "PasUșor. Încălțăminte Sportivă & Lifestyle",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
-      "focusable": false,
+      "focusable": true,
       "parent": "n0",
-      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1)",
-      "bbox": { "x": 32, "y": 18, "w": 80, "h": 24 },
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 20,
+        "w": 202.203125,
+        "h": 45.390625
+      },
       "visible": true
     },
     {
       "id": "n2",
       "order": 2,
       "role": "navigation",
-      "name": "",
+      "name": "Categorii produse",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
       "parent": "n0",
-      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1)",
-      "bbox": { "x": 500, "y": 18, "w": 250, "h": 24 },
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1)",
+      "bbox": {
+        "x": 581.09375,
+        "y": 32.9375,
+        "w": 242,
+        "h": 19.5
+      },
       "visible": true
     },
     {
@@ -54,13 +87,23 @@
       "role": "link",
       "name": "Bărbați",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": true,
       "parent": "n2",
-      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
-      "bbox": { "x": 510, "y": 18, "w": 60, "h": 24 },
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 581.09375,
+        "y": 32.9375,
+        "w": 43,
+        "h": 19.5
+      },
       "visible": true
     },
     {
@@ -69,234 +112,1544 @@
       "role": "link",
       "name": "Femei",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": true,
       "parent": "n2",
-      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(2)",
-      "bbox": { "x": 580, "y": 18, "w": 50, "h": 24 },
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(2)",
+      "bbox": {
+        "x": 651.09375,
+        "y": 32.9375,
+        "w": 36,
+        "h": 19.5
+      },
       "visible": true
     },
     {
       "id": "n5",
       "order": 5,
       "role": "link",
-      "name": "",
+      "name": "Copii",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": true,
       "parent": "n2",
-      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
-      "bbox": { "x": 640, "y": 18, "w": 24, "h": 24 },
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+      "bbox": {
+        "x": 714.09375,
+        "y": 32.9375,
+        "w": 30,
+        "h": 19.5
+      },
       "visible": true
     },
     {
       "id": "n6",
       "order": 6,
-      "role": "button",
-      "name": "",
+      "role": "link",
+      "name": "Reduceri",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": true,
-      "parent": "n0",
-      "selector": "#cart",
-      "bbox": { "x": 1040, "y": 16, "w": 32, "h": 32 },
+      "parent": "n2",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(4)",
+      "bbox": {
+        "x": 771.09375,
+        "y": 32.9375,
+        "w": 52,
+        "h": 19.5
+      },
       "visible": true
     },
     {
       "id": "n7",
       "order": 7,
-      "role": "main",
+      "role": "link",
       "name": "",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
-      "focusable": false,
-      "parent": null,
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1)",
-      "bbox": { "x": 280, "y": 84, "w": 720, "h": 600 },
+      "focusable": true,
+      "parent": "n0",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 1111.984375,
+        "y": 26.6875,
+        "w": 29,
+        "h": 32
+      },
       "visible": true
     },
     {
       "id": "n8",
       "order": 8,
-      "role": "heading",
-      "name": "Finalizează comanda",
-      "level": 1,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "role": "button",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
-      "focusable": false,
-      "parent": "n7",
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > h1:nth-of-type(1)",
-      "bbox": { "x": 296, "y": 84, "w": 688, "h": 40 },
+      "focusable": true,
+      "parent": "n0",
+      "selector": "#cart",
+      "bbox": {
+        "x": 1160.984375,
+        "y": 26.6875,
+        "w": 29,
+        "h": 32
+      },
       "visible": true
     },
     {
       "id": "n9",
       "order": 9,
-      "role": "image",
+      "role": "main",
       "name": "",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n7",
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > img:nth-of-type(1)",
-      "bbox": { "x": 296, "y": 134, "w": 160, "h": 100 },
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 107.390625,
+        "w": 1100,
+        "h": 1076.9375
+      },
       "visible": true
     },
     {
       "id": "n10",
       "order": 10,
-      "role": "heading",
-      "name": "Produsul tău",
-      "level": 4,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "role": "text",
+      "name": "Acasă ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n7",
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > h4:nth-of-type(1)",
-      "bbox": { "x": 296, "y": 244, "w": 688, "h": 24 },
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 107.390625,
+        "w": 1100,
+        "h": 16.5
+      },
       "visible": true
     },
     {
       "id": "n11",
       "order": 11,
       "role": "text",
-      "name": "Adidași de alergare, mărimea 42, 349 lei",
+      "name": " Coș de cumpărături ",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n7",
+      "parent": "n9",
       "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > p:nth-of-type(1)",
-      "bbox": { "x": 296, "y": 274, "w": 688, "h": 20 },
+      "bbox": {
+        "x": 90,
+        "y": 107.390625,
+        "w": 1100,
+        "h": 16.5
+      },
       "visible": true
     },
     {
       "id": "n12",
       "order": 12,
       "role": "text",
-      "name": "Livrare gratuită pentru comenzi de peste 200 de lei",
+      "name": " Finalizare comandă",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n7",
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > p:nth-of-type(2)",
-      "bbox": { "x": 296, "y": 300, "w": 688, "h": 20 },
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 107.390625,
+        "w": 1100,
+        "h": 16.5
+      },
       "visible": true
     },
     {
       "id": "n13",
       "order": 13,
       "role": "heading",
-      "name": "Date de livrare",
-      "level": 2,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "name": "Finalizează comanda",
+      "level": 1,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n7",
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > h2:nth-of-type(1)",
-      "bbox": { "x": 296, "y": 334, "w": 688, "h": 32 },
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 136.890625,
+        "w": 265,
+        "h": 36.25
+      },
       "visible": true
     },
     {
       "id": "n14",
       "order": 14,
-      "role": "textbox",
-      "name": "Nume complet",
+      "role": "text",
+      "name": "Încă un pas și ești gata de mișcare.",
       "level": null,
-      "states": { "required": true, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n7",
-      "selector": "#name",
-      "bbox": { "x": 296, "y": 380, "w": 360, "h": 36 },
+      "focusable": false,
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 179.140625,
+        "w": 265,
+        "h": 19.5
+      },
       "visible": true
     },
     {
       "id": "n15",
       "order": 15,
-      "role": "textbox",
-      "name": "",
+      "role": "text",
+      "name": "Comandă în siguranță",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n7",
-      "selector": "#email",
-      "bbox": { "x": 296, "y": 424, "w": 360, "h": 36 },
+      "focusable": false,
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+      "bbox": {
+        "x": 1053,
+        "y": 159.265625,
+        "w": 137,
+        "h": 17
+      },
       "visible": true
     },
     {
       "id": "n16",
       "order": 16,
-      "role": "textbox",
-      "name": "Cod promoțional",
+      "role": "list",
+      "name": "Progres comandă",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
-      "list_size": null,
-      "focusable": true,
-      "parent": "n7",
-      "selector": "#promo",
-      "bbox": { "x": 296, "y": 486, "w": 360, "h": 36 },
+      "list_size": 3,
+      "focusable": false,
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > ol:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 222.640625,
+        "w": 1100,
+        "h": 26
+      },
       "visible": true
     },
     {
       "id": "n17",
       "order": 17,
-      "role": "textbox",
-      "name": "Telefon",
+      "role": "text",
+      "name": "Coș de cumpărături",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
-      "focusable": true,
-      "parent": "n7",
-      "selector": "#phone",
-      "bbox": { "x": 296, "y": 548, "w": 360, "h": 36 },
+      "focusable": false,
+      "parent": "n16",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 222.640625,
+        "w": 237,
+        "h": 26
+      },
       "visible": true
     },
     {
       "id": "n18",
       "order": 18,
       "role": "text",
-      "name": "Plasează comanda",
+      "name": "Date livrare & plată",
       "level": null,
-      "states": { "required": false, "checked": null, "expanded": null, "disabled": false },
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
       "value": null,
       "list_size": null,
       "focusable": false,
-      "parent": "n7",
-      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1)",
-      "bbox": { "x": 296, "y": 600, "w": 180, "h": 44 },
+      "parent": "n16",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2)",
+      "bbox": {
+        "x": 349,
+        "y": 222.640625,
+        "w": 235,
+        "h": 26
+      },
+      "visible": true
+    },
+    {
+      "id": "n19",
+      "order": 19,
+      "role": "text",
+      "name": "Confirmare comandă",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n16",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3)",
+      "bbox": {
+        "x": 606,
+        "y": 222.640625,
+        "w": 147,
+        "h": 26
+      },
+      "visible": true
+    },
+    {
+      "id": "n20",
+      "order": 20,
+      "role": "complementary",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1)",
+      "bbox": {
+        "x": 750.8125,
+        "y": 272.640625,
+        "w": 439.1875,
+        "h": 566.34375
+      },
+      "visible": true
+    },
+    {
+      "id": "n21",
+      "order": 21,
+      "role": "heading",
+      "name": "Comanda ta 1 produs",
+      "level": 4,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > h4:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 295.640625,
+        "w": 393.1875,
+        "h": 25.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n22",
+      "order": 22,
+      "role": "image",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "#product-image",
+      "bbox": {
+        "x": 773.8125,
+        "y": 342.5625,
+        "w": 112,
+        "h": 112
+      },
+      "visible": true
+    },
+    {
+      "id": "n23",
+      "order": 23,
+      "role": "text",
+      "name": "ALERGARE · COLECȚIA NOUĂ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 899.8125,
+        "y": 347.140625,
+        "w": 147,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n24",
+      "order": 24,
+      "role": "text",
+      "name": "PasUșor Pro Runner X",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 899.8125,
+        "y": 367.140625,
+        "w": 147,
+        "h": 18.84375
+      },
+      "visible": true
+    },
+    {
+      "id": "n25",
+      "order": 25,
+      "role": "text",
+      "name": "Mărime: 42 · Negru / Neon",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+      "bbox": {
+        "x": 899.8125,
+        "y": 390.984375,
+        "w": 147,
+        "h": 16.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n26",
+      "order": 26,
+      "role": "text",
+      "name": "Cantitate: 1",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+      "bbox": {
+        "x": 899.8125,
+        "y": 409.484375,
+        "w": 147,
+        "h": 16.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n27",
+      "order": 27,
+      "role": "text",
+      "name": "349,00 Lei",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(4)",
+      "bbox": {
+        "x": 899.8125,
+        "y": 434.984375,
+        "w": 147,
+        "h": 21
+      },
+      "visible": true
+    },
+    {
+      "id": "n28",
+      "order": 28,
+      "role": "text",
+      "name": "Subtotal produse",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 500.984375,
+        "w": 90,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n29",
+      "order": 29,
+      "role": "text",
+      "name": "349,00 Lei",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > strong:nth-of-type(1)",
+      "bbox": {
+        "x": 1111,
+        "y": 500.984375,
+        "w": 56,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n30",
+      "order": 30,
+      "role": "text",
+      "name": "Cost livrare",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 525.984375,
+        "w": 59,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n31",
+      "order": 31,
+      "role": "text",
+      "name": "Gratuit",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "#delivery-cost",
+      "bbox": {
+        "x": 1131,
+        "y": 525.984375,
+        "w": 36,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n32",
+      "order": 32,
+      "role": "text",
+      "name": "TVA inclus (19%)",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 550.984375,
+        "w": 88,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n33",
+      "order": 33,
+      "role": "text",
+      "name": "55,72 Lei",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > strong:nth-of-type(1)",
+      "bbox": {
+        "x": 1119,
+        "y": 550.984375,
+        "w": 48,
+        "h": 18
+      },
+      "visible": true
+    },
+    {
+      "id": "n34",
+      "order": 34,
+      "role": "text",
+      "name": "Total de plată",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 617.234375,
+        "w": 85,
+        "h": 19.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n35",
+      "order": 35,
+      "role": "text",
+      "name": "349,00 Lei",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "#grand-total",
+      "bbox": {
+        "x": 1058.984375,
+        "y": 608.984375,
+        "w": 108.015625,
+        "h": 36
+      },
+      "visible": true
+    },
+    {
+      "id": "n36",
+      "order": 36,
+      "role": "text",
+      "name": "Plasează comanda ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 661.984375,
+        "w": 393.1875,
+        "h": 47
+      },
+      "visible": true
+    },
+    {
+      "id": "n37",
+      "order": 37,
+      "role": "text",
+      "name": "Prin plasarea comenzii accepți termenii și condițiile magazinului.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 720.984375,
+        "w": 393.1875,
+        "h": 16
+      },
+      "visible": true
+    },
+    {
+      "id": "n38",
+      "order": 38,
+      "role": "text",
+      "name": "Plată securizată SSL 256-bit",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 776.984375,
+        "w": 191.59375,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n39",
+      "order": 39,
+      "role": "text",
+      "name": "Retur gratuit în 30 de zile",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+      "bbox": {
+        "x": 975.40625,
+        "y": 776.984375,
+        "w": 191.59375,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n40",
+      "order": 40,
+      "role": "text",
+      "name": "Garanție 24 de luni",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+      "bbox": {
+        "x": 773.8125,
+        "y": 805.984375,
+        "w": 191.59375,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n41",
+      "order": 41,
+      "role": "text",
+      "name": "Suport: 0800 800 123",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > aside:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
+      "bbox": {
+        "x": 975.40625,
+        "y": 805.984375,
+        "w": 191.59375,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n42",
+      "order": 42,
+      "role": "form",
+      "name": "Date pentru comandă",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > form:nth-of-type(1)",
+      "bbox": {
+        "x": 90,
+        "y": 272.640625,
+        "w": 636.8125,
+        "h": 911.6875
+      },
+      "visible": true
+    },
+    {
+      "id": "n43",
+      "order": 43,
+      "role": "heading",
+      "name": "Date de contact și livrare",
+      "level": 2,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n42",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > form:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)",
+      "bbox": {
+        "x": 144,
+        "y": 295.640625,
+        "w": 181.203125,
+        "h": 24
+      },
+      "visible": true
+    },
+    {
+      "id": "n44",
+      "order": 44,
+      "role": "textbox",
+      "name": "Nume complet *",
+      "level": null,
+      "states": {
+        "required": true,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#name",
+      "bbox": {
+        "x": 115,
+        "y": 362.140625,
+        "w": 586.8125,
+        "h": 42
+      },
+      "visible": true
+    },
+    {
+      "id": "n45",
+      "order": 45,
+      "role": "textbox",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#email",
+      "bbox": {
+        "x": 115,
+        "y": 442.640625,
+        "w": 285.40625,
+        "h": 42
+      },
+      "visible": true
+    },
+    {
+      "id": "n46",
+      "order": 46,
+      "role": "textbox",
+      "name": "Telefon",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#phone",
+      "bbox": {
+        "x": 416.40625,
+        "y": 442.640625,
+        "w": 285.40625,
+        "h": 42
+      },
+      "visible": true
+    },
+    {
+      "id": "n47",
+      "order": 47,
+      "role": "textbox",
+      "name": "Adresă completă",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#address",
+      "bbox": {
+        "x": 115,
+        "y": 523.140625,
+        "w": 586.8125,
+        "h": 42
+      },
+      "visible": true
+    },
+    {
+      "id": "n48",
+      "order": 48,
+      "role": "textbox",
+      "name": "Oraș",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#city",
+      "bbox": {
+        "x": 115,
+        "y": 603.640625,
+        "w": 285.40625,
+        "h": 42
+      },
+      "visible": true
+    },
+    {
+      "id": "n49",
+      "order": 49,
+      "role": "combobox",
+      "name": "Județ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": false,
+        "disabled": false
+      },
+      "value": "Selectează județul",
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#county",
+      "bbox": {
+        "x": 416.40625,
+        "y": 603.640625,
+        "w": 285.40625,
+        "h": 41
+      },
+      "visible": true
+    },
+    {
+      "id": "n50",
+      "order": 50,
+      "role": "text",
+      "name": "Metodă de livrare",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n42",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > form:nth-of-type(1) > div:nth-of-type(1) > fieldset:nth-of-type(1) > legend:nth-of-type(1)",
+      "bbox": {
+        "x": 115,
+        "y": 709.640625,
+        "w": 129.90625,
+        "h": 24
+      },
+      "visible": true
+    },
+    {
+      "id": "n51",
+      "order": 51,
+      "role": "radio",
+      "name": "Curier rapid Fan Courier · 15,00 Lei",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#delivery-courier",
+      "bbox": {
+        "x": 128,
+        "y": 765.640625,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n52",
+      "order": 52,
+      "role": "radio",
+      "name": "Ridicare din easybox Sameday · Gratuit",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": true,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#delivery-easybox",
+      "bbox": {
+        "x": 427.40625,
+        "y": 765.640625,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n53",
+      "order": 53,
+      "role": "text",
+      "name": "Metodă de plată",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n42",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > form:nth-of-type(1) > div:nth-of-type(2) > fieldset:nth-of-type(1) > legend:nth-of-type(1)",
+      "bbox": {
+        "x": 115,
+        "y": 875.140625,
+        "w": 120.515625,
+        "h": 24
+      },
+      "visible": true
+    },
+    {
+      "id": "n54",
+      "order": 54,
+      "role": "radio",
+      "name": "Card bancar online Plată rapidă și securizată",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": true,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#payment-card",
+      "bbox": {
+        "x": 128,
+        "y": 931.140625,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n55",
+      "order": 55,
+      "role": "radio",
+      "name": "Plată la livrare Ramburs la primirea coletului",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": false,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#payment-cash",
+      "bbox": {
+        "x": 427.40625,
+        "y": 931.140625,
+        "w": 13,
+        "h": 13
+      },
+      "visible": true
+    },
+    {
+      "id": "n56",
+      "order": 56,
+      "role": "textbox",
+      "name": "Cod promoțional",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n42",
+      "selector": "#promo",
+      "bbox": {
+        "x": 115,
+        "y": 1087.640625,
+        "w": 449.8125,
+        "h": 42
+      },
+      "visible": true
+    },
+    {
+      "id": "n57",
+      "order": 57,
+      "role": "text",
+      "name": "Livrare gratuită activată",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n42",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > form:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 582.8125,
+        "y": 1080.140625,
+        "w": 119,
+        "h": 34.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n58",
+      "order": 58,
+      "role": "text",
+      "name": "Livrare gratuită pentru comenzi de peste 200 de lei. Termen estimat: 24–48 de ore lucrătoare.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n42",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(2) > form:nth-of-type(1) > section:nth-of-type(2) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 115,
+        "y": 1142.640625,
+        "w": 586.8125,
+        "h": 18.6875
+      },
+      "visible": true
+    },
+    {
+      "id": "n59",
+      "order": 59,
+      "role": "contentinfo",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > footer:nth-of-type(1)",
+      "bbox": {
+        "x": 0,
+        "y": 1222.328125,
+        "w": 1280,
+        "h": 63.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n60",
+      "order": 60,
+      "role": "text",
+      "name": "© 2026 PasUșor Sport",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n59",
+      "selector": "html > body:nth-of-type(1) > footer:nth-of-type(1) > span:nth-of-type(1)",
+      "bbox": {
+        "x": 412.5,
+        "y": 1246.328125,
+        "w": 112,
+        "h": 16.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n61",
+      "order": 61,
+      "role": "text",
+      "name": "Conceput pentru mișcare.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n59",
+      "selector": "html > body:nth-of-type(1) > footer:nth-of-type(1) > span:nth-of-type(2)",
+      "bbox": {
+        "x": 544.5,
+        "y": 1246.328125,
+        "w": 132,
+        "h": 16.5
+      },
+      "visible": true
+    },
+    {
+      "id": "n62",
+      "order": 62,
+      "role": "text",
+      "name": "Ai nevoie de ajutor? 0800 800 123",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n59",
+      "selector": "html > body:nth-of-type(1) > footer:nth-of-type(1) > span:nth-of-type(3)",
+      "bbox": {
+        "x": 696.5,
+        "y": 1246.328125,
+        "w": 171,
+        "h": 16.5
+      },
       "visible": true
     }
   ],
   "focus_order": [
-    { "node_id": "n3", "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)" },
-    { "node_id": "n4", "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(2)" },
-    { "node_id": "n5", "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)" },
-    { "node_id": "n6", "selector": "#cart" },
-    { "node_id": "n14", "selector": "#name" },
-    { "node_id": "n15", "selector": "#email" },
-    { "node_id": "n16", "selector": "#promo" }
+    {
+      "node_id": "n1",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n3",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n4",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(2)"
+    },
+    {
+      "node_id": "n5",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)"
+    },
+    {
+      "node_id": "n6",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(4)"
+    },
+    {
+      "node_id": "n7",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n8",
+      "selector": "#cart"
+    },
+    {
+      "node_id": "n44",
+      "selector": "#name"
+    },
+    {
+      "node_id": "n45",
+      "selector": "#email"
+    },
+    {
+      "node_id": "n46",
+      "selector": "#phone"
+    },
+    {
+      "node_id": "n47",
+      "selector": "#address"
+    },
+    {
+      "node_id": "n48",
+      "selector": "#city"
+    },
+    {
+      "node_id": "n49",
+      "selector": "#county"
+    },
+    {
+      "node_id": "n52",
+      "selector": "#delivery-easybox"
+    },
+    {
+      "node_id": "n54",
+      "selector": "#payment-card"
+    },
+    {
+      "node_id": "n56",
+      "selector": "#promo"
+    }
   ],
-  "focus_trap": { "node_id": "n16", "selector": "#promo" }
+  "focus_trap": {
+    "node_id": "n56",
+    "selector": "#promo"
+  }
 }

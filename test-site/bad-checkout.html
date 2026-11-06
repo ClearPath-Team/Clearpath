@@ -1,45 +1,209 @@
 <!DOCTYPE html>
+<!-- Intentional audit fixture: do not repair the documented accessibility flaws. -->
 <html>
 <head>
-<meta charset="utf-8">
-<title>Finalizează comanda</title>
-<style>
-  body { font-family: system-ui, sans-serif; margin: 0; color: #222; }
-  header { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; background: #1e293b; color: #fff; }
-  header a { color: #fff; margin-right: 12px; }
-  .icon-btn { background: none; border: 0; cursor: pointer; }
-  main { max-width: 720px; margin: 24px auto; padding: 0 16px; }
-  .muted { color: #c4c4c4; }
-  .fake-btn { display: inline-block; background: #16a34a; color: #fff; padding: 12px 20px; border-radius: 6px; cursor: pointer; }
-  input { display: block; margin: 6px 0 14px; padding: 8px; width: 100%; max-width: 360px; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Finalizează comanda ta de încălțăminte sport PasUșor.">
+  <title>Finalizează comanda · PasUșor Sport</title>
+  <style>
+    :root { --ink:#172334; --secondary:#526176; --line:#e2e8f0; --green:#08794d; --canvas:#f6f8fa; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--canvas); color:var(--ink); font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    button,input,select { font:inherit; }
+    button,a,input,select { -webkit-tap-highlight-color:transparent; }
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { outline:3px solid #2563eb; outline-offset:4px; }
+    header { background:#0f172a; color:#f8fafc; }
+    .header-inner { max-width:1100px; padding:20px 0; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .brand { display:flex; align-items:center; gap:11px; }
+    .brand-mark { width:38px; height:38px; display:grid; place-items:center; border:1px solid #568672; border-radius:11px; background:#173d33; color:#a8f3c6; }
+    .brand-name { display:block; font-size:24px; line-height:1.1; font-weight:850; letter-spacing:-1px; }
+    .brand-name b { color:#a8f3c6; font-weight:inherit; }
+    .brand-note { display:block; margin-top:4px; color:#cbd5e1; font-size:10px; letter-spacing:.4px; }
+    nav { display:flex; gap:27px; font-size:13px; font-weight:600; }
+    nav a:hover { color:#a8f3c6; }
+    .header-actions { display:flex; align-items:center; gap:20px; }
+    .header-actions a,.icon-btn { display:grid; place-items:center; position:relative; width:29px; height:32px; color:white; }
+    .icon-btn { padding:0; border:0; background:none; cursor:pointer; }
+    .cart-count { position:absolute; top:-3px; right:-7px; width:16px; height:16px; border-radius:50%; background:#a8f3c6; color:#0f172a; font-size:10px; font-weight:800; line-height:16px; text-align:center; }
+    main { max-width:1100px; margin:22px auto 38px; }
+    .breadcrumb { margin:0 0 13px; color:var(--secondary); font-size:11px; }
+    .breadcrumb span { padding:0 8px; }
+    .page-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    h1 { margin:0; font-size:29px; letter-spacing:-1px; line-height:1.25; }
+    .intro { margin:6px 0 0; color:var(--secondary); font-size:13px; }
+    .secure-note { display:flex; align-items:center; gap:7px; color:var(--green); font-size:11px; font-weight:650; }
+    .steps { list-style:none; display:flex; align-items:center; gap:22px; margin:24px 0; padding:0; }
+    .steps li { display:flex; align-items:center; gap:9px; font-size:12px; font-weight:600; white-space:nowrap; }
+    .steps li:not(:last-child)::after { content:""; width:76px; height:1px; background:#cbd5e1; margin-left:14px; }
+    .step-number { width:26px; height:26px; display:grid; place-items:center; border-radius:50%; border:1px solid #cbd5e1; color:var(--secondary); background:white; font-size:11px; }
+    .complete .step-number { border-color:#c2e7d1; color:var(--green); background:#e6f5ec; }
+    .current .step-number { background:var(--ink); color:white; border-color:var(--ink); }
+    .next { color:var(--secondary); }
+    .checkout-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:24px; align-items:start; }
+    .card { border:1px solid var(--line); border-radius:14px; background:white; box-shadow:0 4px 8px -3px #17233409; }
+    .order-summary { grid-column:2; grid-row:1; position:sticky; top:24px; overflow:hidden; }
+    .summary-body { padding:22px; }
+    h4 { display:flex; align-items:center; justify-content:space-between; margin:0 0 20px; font-size:17px; letter-spacing:-.4px; }
+    .item-count { font-size:11px; font-weight:500; color:var(--secondary); }
+    .product { display:flex; gap:14px; align-items:center; padding-bottom:22px; border-bottom:1px solid var(--line); }
+    .product-image { width:112px; height:112px; flex:0 0 112px; border-radius:10px; background:#eef2f1; object-fit:contain; }
+    .product-category { color:var(--green); font-size:9px; font-weight:750; letter-spacing:1px; text-transform:uppercase; }
+    .product-title { margin:5px 0; font-size:13px; line-height:1.45; font-weight:750; }
+    .product-meta { margin:2px 0; color:var(--secondary); font-size:11px; }
+    .product-price { margin:9px 0 0; font-size:14px; font-weight:750; }
+    .costs { padding:15px 0; border-bottom:1px solid var(--line); }
+    .cost-row { display:flex; justify-content:space-between; gap:12px; margin:7px 0; color:var(--secondary); font-size:12px; }
+    .cost-row strong { color:var(--ink); font-weight:600; }
+    .cost-row .free { color:var(--green); }
+    .total { display:flex; justify-content:space-between; align-items:center; margin:17px 0; font-size:13px; font-weight:700; }
+    .total strong { font-size:24px; letter-spacing:-.8px; }
+    /* Intentionally non-semantic and low contrast: retained for the audit. */
+    .fake-btn { padding:13px 17px; border-radius:9px; background:#16a34a; color:#fff; text-align:center; font-size:14px; font-weight:700; cursor:pointer; }
+    .fake-btn:hover { background:#15803d; }
+    .terms { margin:12px 0 0; color:var(--secondary); text-align:center; font-size:10px; line-height:1.6; }
+    .trust { display:grid; grid-template-columns:1fr 1fr; gap:14px 10px; padding:17px 22px; background:#f8fafc; border-top:1px solid var(--line); font-size:10px; color:var(--secondary); }
+    .trust div { display:flex; align-items:center; gap:7px; }
+    .trust svg { flex-shrink:0; color:var(--green); }
+    .checkout-form { grid-column:1; grid-row:1; display:grid; gap:18px; }
+    .form-card { padding:22px 24px; }
+    h2,h3 { margin:0; font-size:16px; font-weight:750; letter-spacing:-.3px; }
+    .section-heading { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+    .section-heading svg { color:var(--green); }
+    .fields { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .field { min-width:0; }
+    .field.wide { grid-column:1/-1; }
+    label,.visual-label { display:block; margin-bottom:6px; font-size:11px; font-weight:650; }
+    .required { color:var(--green); }
+    input:not([type=radio]),select { display:block; width:100%; padding:11px 12px; border:1px solid #cbd5e1; border-radius:7px; background:white; color:var(--ink); font-size:12px; }
+    input::placeholder { color:#64748b; opacity:1; }
+    .input-shell { position:relative; }
+    .email-placeholder { position:absolute; top:11px; left:13px; color:#64748b; font-size:12px; pointer-events:none; }
+    .input-shell:focus-within .email-placeholder,.input-shell.has-value .email-placeholder { display:none; }
+    fieldset { border:0; margin:0; padding:0; min-width:0; }
+    legend { padding:0; margin-bottom:16px; font-size:16px; font-weight:750; letter-spacing:-.3px; }
+    .options { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .option { display:flex; align-items:flex-start; gap:8px; margin:0; padding:12px; border:1px solid #cbd5e1; border-radius:9px; cursor:pointer; }
+    .option:has(:checked) { border-color:#2b9461; background:#f0faf4; }
+    .option input { margin:3px 0 0; accent-color:var(--green); }
+    .option label { flex:1; margin:0; cursor:pointer; }
+    .option-title { display:block; font-size:11px; font-weight:700; }
+    .option-detail { display:block; margin-top:4px; color:var(--secondary); font-size:10px; font-weight:400; }
+    .payment-marks { display:flex; gap:4px; margin-top:7px; }
+    .payment-marks b { border:1px solid #d5dce6; border-radius:3px; background:white; padding:1px 4px; color:#26366c; font-size:9px; font-style:italic; }
+    .promo-row { display:flex; align-items:center; gap:18px; }
+    .promo-row .field { flex:1; }
+    .promo-note { color:var(--green); font-size:11px; padding-top:18px; }
+    /* Deliberately fails WCAG contrast, independent of the decorative borders. */
+    .muted { margin:13px 0 0; color:#c4c4c4; font-size:11px; line-height:1.7; }
+    footer { display:flex; justify-content:center; gap:20px; padding:23px; border-top:1px solid var(--line); color:var(--secondary); font-size:11px; background:white; }
+    @media (max-width:1160px) { .header-inner,main { margin-left:24px; margin-right:24px; } }
+    @media (max-width:760px) {
+      .header-inner { padding:16px 0; margin:0 18px; gap:14px; }
+      nav { display:none; } .brand-note { font-size:9px; } .brand-name { font-size:22px; }
+      main { margin:20px 16px 28px; } h1 { font-size:25px; } .secure-note { display:none; }
+      .steps { gap:12px; margin:20px 0; } .steps li { gap:6px; font-size:10px; white-space:normal; }
+      .steps li:not(:last-child)::after { width:16px; margin-left:4px; }
+      .step-number { flex:0 0 23px; width:23px; height:23px; }
+      .checkout-grid { grid-template-columns:1fr; gap:18px; }
+      .order-summary { position:static; grid-column:1; grid-row:1; }
+      .checkout-form { grid-column:1; grid-row:2; }
+      .form-card { padding:20px; } .fields,.options { grid-template-columns:1fr; }
+      .promo-row { align-items:flex-start; flex-direction:column; gap:2px; } .promo-row .field { width:100%; }
+      .promo-note { padding-top:6px; } footer { flex-wrap:wrap; gap:8px 16px; }
+    }
+  </style>
 </head>
 <body>
 <header>
-  <div style="font-weight:700">PasUșor</div>
-  <nav>
-    <a href="#barbati">Bărbați</a>
-    <a href="#femei">Femei</a>
-    <a href="#cauta"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="9" cy="9" r="6" stroke="#fff" fill="none" stroke-width="2"/></svg></a>
-  </nav>
-  <button id="cart" class="icon-btn"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 4h2l2 11h11l2-8H6" stroke="#fff" fill="none" stroke-width="2"/></svg></button>
+  <div class="header-inner">
+    <a class="brand" href="#acasa">
+      <span class="brand-mark" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="m5 16 6-10M10 18l7-12M15 18l5-8" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg></span>
+      <span><span class="brand-name">PasUșor<b>.</b></span><span class="brand-note">Încălțăminte Sportivă &amp; Lifestyle</span></span>
+    </a>
+    <nav aria-label="Categorii produse"><a href="#barbati">Bărbați</a><a href="#femei">Femei</a><a href="#copii">Copii</a><a href="#reduceri">Reduceri</a></nav>
+    <div class="header-actions">
+      <!-- Intentionally unnamed search link and cart button. Badge is decorative. -->
+      <a href="#cauta"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+      <button id="cart" class="icon-btn" type="button"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 3h2l2.5 12h11l2-8H6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg><span class="cart-count" aria-hidden="true">1</span></button>
+    </div>
+  </div>
 </header>
 <main>
-  <h1>Finalizează comanda</h1>
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Crect width='160' height='100' fill='%23e2e8f0'/%3E%3C/svg%3E" width="160" height="100">
-  <h4>Produsul tău</h4>
-  <p>Adidași de alergare, mărimea 42, 349 lei</p>
-  <p class="muted">Livrare gratuită pentru comenzi de peste 200 de lei</p>
-
-  <h2>Date de livrare</h2>
-  <label for="name">Nume complet</label>
-  <input id="name" required>
-  <input id="email" type="email">
-  <label for="promo">Cod promoțional</label>
-  <input id="promo" onkeydown="if (event.key === 'Tab') { event.preventDefault(); }">
-  <label for="phone">Telefon</label>
-  <input id="phone" type="tel">
-  <div class="fake-btn" onclick="this.textContent = 'Comandă trimisă'">Plasează comanda</div>
+  <p class="breadcrumb">Acasă <span aria-hidden="true">/</span> Coș de cumpărături <span aria-hidden="true">/</span> Finalizare comandă</p>
+  <div class="page-heading">
+    <div><h1>Finalizează comanda</h1><p class="intro">Încă un pas și ești gata de mișcare.</p></div>
+    <div class="secure-note"><svg aria-hidden="true" width="15" height="17" viewBox="0 0 20 22" fill="none"><rect x="3" y="9" width="14" height="11" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M6 9V6a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5"/></svg>Comandă în siguranță</div>
+  </div>
+  <ol class="steps" aria-label="Progres comandă">
+    <li class="complete"><span class="step-number" aria-hidden="true">✓</span>Coș de cumpărături</li>
+    <li class="current" aria-current="step"><span class="step-number" aria-hidden="true">2</span>Date livrare &amp; plată</li>
+    <li class="next"><span class="step-number" aria-hidden="true">3</span>Confirmare comandă</li>
+  </ol>
+  <div class="checkout-grid">
+    <!-- Summary comes first in DOM: h1 -> h4 is the intentional heading jump. -->
+    <aside class="card order-summary">
+      <div class="summary-body">
+        <h4>Comanda ta <span class="item-count">1 produs</span></h4>
+        <div class="product">
+          <!-- Intentionally no alt attribute on the product photograph. -->
+          <img id="product-image" class="product-image" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22360%22%20height%3D%22360%22%20viewBox%3D%220%200%20360%20360%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23e8eeeb%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f5f7f5%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22upper%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2334433e%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23101c18%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22sole%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23f9fbf4%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23cbd4c3%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22shadow%22%3E%3CfeGaussianBlur%20stdDeviation%3D%229%22%2F%3E%3C%2Ffilter%3E%3Cpattern%20id%3D%22mesh%22%20width%3D%226%22%20height%3D%226%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Ccircle%20cx%3D%222%22%20cy%3D%222%22%20r%3D%22.7%22%20fill%3D%22%23809586%22%20opacity%3D%22.45%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22360%22%20height%3D%22360%22%20rx%3D%2224%22%20fill%3D%22url%28%23bg%29%22%2F%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%2299%22%20r%3D%22103%22%20fill%3D%22%23d6e6d9%22%20opacity%3D%22.6%22%2F%3E%3Cellipse%20cx%3D%22180%22%20cy%3D%22253%22%20rx%3D%22130%22%20ry%3D%2217%22%20fill%3D%22%23324d39%22%20opacity%3D%22.19%22%20filter%3D%22url%28%23shadow%29%22%2F%3E%3Cg%20transform%3D%22rotate%28-13%20180%20200%29%22%3E%3Cpath%20d%3D%22M45%20213c14-10%2030-14%2053-16l50-31%2028-56c13%203%2025%2015%2034%2034l33%2034%2061%2028c17%208%2023%2023%2011%2034-20%2014-57%2019-111%2018l-133-9c-24-2-38-17-26-36Z%22%20fill%3D%22url%28%23upper%29%22%2F%3E%3Cpath%20d%3D%22m101%20196%2048-30%2026-53%2021%2029-32%2050-40%2022Z%22%20fill%3D%22%2353695b%22%2F%3E%3Cpath%20d%3D%22m52%20213%2078-9%2042-49%2024-10%2028%2033%2067%2030-14%2023-113%207-107-7Z%22%20fill%3D%22url%28%23mesh%29%22%2F%3E%3Cpath%20d%3D%22m133%20221%2034-37%2028-2%2034%2037-16%2014-28-29-24%2027Z%22%20fill%3D%22%23c2ed62%22%2F%3E%3Cpath%20d%3D%22m178%20115-18%2039%2026%208%2020-23%22%20fill%3D%22%23263c2e%22%2F%3E%3Cpath%20d%3D%22m166%20162%2029%207m-36%203%2028%208m-36%203%2029%208m-37%204%2028%208%22%20stroke%3D%22%23b9c5b6%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M43%20225c57%2014%20128%2023%20199%2016%2029-3%2049-8%2075-20l3%2015c-19%2022-63%2032-116%2030l-135-10c-20-3-31-13-26-31Z%22%20fill%3D%22url%28%23sole%29%22%2F%3E%3Cpath%20d%3D%22m48%20244%2037%208m11%200%2039%206m13%200%2040%204m13-1%2039-1m12-2%2028-6m10-3%2022-12%22%20stroke%3D%22%2397a18e%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22m52%20221%2034-4%22%20stroke%3D%22%23c2ed62%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22m277%20215%2025-3%22%20stroke%3D%22%23c2ed62%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" width="112" height="112">
+          <div><span class="product-category">Alergare · Colecția nouă</span><p class="product-title">PasUșor Pro Runner X</p><p class="product-meta">Mărime: 42 · Negru / Neon</p><p class="product-meta">Cantitate: 1</p><p class="product-price">349,00 Lei</p></div>
+        </div>
+        <div class="costs">
+          <div class="cost-row"><span>Subtotal produse</span><strong>349,00 Lei</strong></div>
+          <div class="cost-row"><span>Cost livrare</span><strong class="free" id="delivery-cost">Gratuit</strong></div>
+          <div class="cost-row"><span>TVA inclus (19%)</span><strong>55,72 Lei</strong></div>
+        </div>
+        <div class="total"><span>Total de plată</span><strong id="grand-total">349,00 Lei</strong></div>
+        <div class="fake-btn" onclick="this.textContent = 'Comandă trimisă cu succes!'">Plasează comanda <span aria-hidden="true">→</span></div>
+        <p class="terms">Prin plasarea comenzii accepți termenii și condițiile magazinului.</p>
+      </div>
+      <div class="trust">
+        <div><span aria-hidden="true">🔒</span>Plată securizată SSL 256-bit</div>
+        <div><span aria-hidden="true">↩</span>Retur gratuit în 30 de zile</div>
+        <div><span aria-hidden="true">✓</span>Garanție 24 de luni</div>
+        <div><span aria-hidden="true">☎</span>Suport: 0800 800 123</div>
+      </div>
+    </aside>
+    <form class="checkout-form" aria-label="Date pentru comandă" onsubmit="return false">
+      <section class="card form-card">
+        <div class="section-heading"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 21v-3a7 7 0 0 1 14 0v3" stroke="currentColor" stroke-width="1.6"/></svg><h2>Date de contact și livrare</h2></div>
+        <div class="fields">
+          <div class="field wide"><label for="name">Nume complet <span class="required">*</span></label><input id="name" name="name" autocomplete="name" placeholder="Nume și prenume" required></div>
+          <div class="field"><span class="visual-label" aria-hidden="true">Adresă de e-mail</span><div class="input-shell"><input id="email" name="email" type="email" autocomplete="email" oninput="this.parentElement.classList.toggle('has-value', this.value.length > 0)"><span class="email-placeholder" aria-hidden="true">exemplu@email.ro</span></div></div>
+          <div class="field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx"></div>
+          <div class="field wide"><label for="address">Adresă completă</label><input id="address" name="address" autocomplete="street-address" placeholder="Stradă, număr, bloc, apartament"></div>
+          <div class="field"><label for="city">Oraș</label><input id="city" name="city" autocomplete="address-level2" placeholder="Orașul tău"></div>
+          <div class="field"><label for="county">Județ</label><select id="county" name="county" autocomplete="address-level1"><option value="">Selectează județul</option>București</option>Cluj</option>Timiș</option>Brașov</option>Iași</option></select></div>
+        </div>
+      </section>
+      <div class="card form-card"><fieldset><legend>Metodă de livrare</legend><div class="options">
+        <div class="option"><input id="delivery-courier" type="radio" name="delivery" value="15"><label for="delivery-courier"><span class="option-title">Curier rapid</span><span class="option-detail">Fan Courier · 15,00 Lei</span></label></div>
+        <div class="option"><input id="delivery-easybox" type="radio" name="delivery" value="0" checked><label for="delivery-easybox"><span class="option-title">Ridicare din easybox</span><span class="option-detail">Sameday · Gratuit</span></label></div>
+      </div></fieldset></div>
+      <div class="card form-card"><fieldset><legend>Metodă de plată</legend><div class="options">
+        <div class="option"><input id="payment-card" type="radio" name="payment" value="card" checked><label for="payment-card"><span class="option-title">Card bancar online</span><span class="option-detail">Plată rapidă și securizată</span><span class="payment-marks" aria-hidden="true"><b>VISA</b><b>Mastercard</b></span></label></div>
+        <div class="option"><input id="payment-cash" type="radio" name="payment" value="cash"><label for="payment-cash"><span class="option-title">Plată la livrare</span><span class="option-detail">Ramburs la primirea coletului</span></label></div>
+      </div></fieldset></div>
+      <section class="card form-card">
+        <div class="promo-row"><div class="field"><label for="promo">Cod promoțional</label><input id="promo" name="promo" placeholder="Introdu codul tău" onkeydown="if (event.key === 'Tab') { event.preventDefault(); }"></div><span class="promo-note">Livrare gratuită activată</span></div>
+        <p class="muted">Livrare gratuită pentru comenzi de peste 200 de lei. Termen estimat: 24–48 de ore lucrătoare.</p>
+      </section>
+    </form>
+  </div>
 </main>
+<footer><span>© 2026 PasUșor Sport</span><span>Conceput pentru mișcare.</span><span>Ai nevoie de ajutor? 0800 800 123</span></footer>
+<script>
+  document.querySelectorAll('input[name="delivery"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      var cost = Number(this.value);
+      document.getElementById('delivery-cost').textContent = cost ? '15,00 Lei' : 'Gratuit';
+      document.getElementById('delivery-cost').classList.toggle('free', cost === 0);
+      document.getElementById('grand-total').textContent = (349 + cost).toFixed(2).replace('.', ',') + ' Lei';
+    });
+  });
+</script>
 </body>
 </html>
