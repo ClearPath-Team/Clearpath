@@ -2,6 +2,7 @@
 from pathlib import Path
 import re
 import sys
+import time
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
@@ -26,9 +27,27 @@ ATOMIC_ROLES = {"heading", "link", "button", "textbox", "checkbox", "radio", "co
 SKIP_SUBTREE_ROLES = {"LabelText", "InlineTextBox"}
 MAX_NODES = 400
 
+NAVIGATION_TIMEOUT_MS = 30000
+LOAD_EVENT_GRACE_MS = 10000
+NETWORKIDLE_GRACE_MS = 5000
+SETTLE_MS = 800
+
 COOKIE_BUTTON_PATTERN = re.compile(
-    r"^(?:accept all|accept|agree|i agree|acceptă|sunt de acord)$", re.IGNORECASE
+    r"^\s*(?:"
+    r"(?:accept|acceptă|accepta|allow|permite)(?:\s+(?:all|toate|tot))?"
+    r"(?:\s+(?:cookies|cookie-urile|cookie-uri|cookie))?"
+    r"|agree|i agree|ok|de acord|sunt de acord"
+    r")\s*$",
+    re.IGNORECASE,
 )
+COOKIE_DISMISS_BUDGET_MS = 2000
+# Generic labels like "OK" or "Accept" also appear on ordinary forms; only click
+# them inside something that looks like a consent banner or a modal dialog.
+CONSENT_CONTEXT_JS = """(el) => !!el.closest(
+  '[id*="cookie" i],[class*="cookie" i],[aria-label*="cookie" i],'
+  + '[id*="consent" i],[class*="consent" i],[aria-label*="consent" i],'
+  + '[id*="gdpr" i],[class*="gdpr" i],[id*="onetrust" i],[id*="cookiebot" i],'
+  + '[role="dialog"],[role="alertdialog"],[aria-modal="true"],dialog')"""
 
 # Resolves the canonical selector, document-coordinate bbox, and visibility for a DOM node.
 RESOLVE_JS = (
@@ -41,28 +60,45 @@ RESOLVE_JS = (
 
 
 def open_page(browser, url: str):
-    """Opens `url` in a new page with the standard viewport, falling back from
-    networkidle to load on timeout (shared behavior across M1/M2/M3)."""
+    """Opens `url` with the standard viewport and dismisses a cookie banner if present.
+
+    Only a missing DOM is fatal. The load event and network idle are waited for
+    with bounded grace periods, so slow fonts or never-idle trackers don't fail
+    extraction, and the page is never re-navigated."""
     page = browser.new_page(viewport=VIEWPORT)
     try:
-        try:
-            page.goto(url, wait_until="networkidle", timeout=30000)
-        except PlaywrightTimeoutError:
-            page.goto(url, wait_until="load", timeout=30000)
+        page.goto(url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT_MS)
     except Exception as exc:
         page.close()
         raise RuntimeError(f"Failed to load page at {url}: {exc}") from exc
-    page.wait_for_timeout(800)
+    for state, grace_ms in (("load", LOAD_EVENT_GRACE_MS), ("networkidle", NETWORKIDLE_GRACE_MS)):
+        try:
+            page.wait_for_load_state(state, timeout=grace_ms)
+        except PlaywrightTimeoutError:
+            pass
+    page.wait_for_timeout(SETTLE_MS)
+    _dismiss_cookie_banner(page)
     return page
 
 
-def _dismiss_cookie_banner(page) -> None:
+def _dismiss_cookie_banner(page) -> bool:
+    """Clicks the first visible consent button inside a banner/dialog. Never raises."""
+    deadline = time.monotonic() + COOKIE_DISMISS_BUDGET_MS / 1000
     try:
-        btn = page.get_by_role("button", name=COOKIE_BUTTON_PATTERN).first
-        if btn.is_visible(timeout=500):
-            btn.click(timeout=1000)
+        candidates = page.get_by_role("button", name=COOKIE_BUTTON_PATTERN)
+        for i in range(min(candidates.count(), 5)):
+            remaining_ms = int((deadline - time.monotonic()) * 1000)
+            if remaining_ms <= 0:
+                return False
+            btn = candidates.nth(i)
+            if not btn.is_visible() or not btn.evaluate(CONSENT_CONTEXT_JS):
+                continue
+            btn.click(timeout=remaining_ms)
+            page.wait_for_timeout(300)
+            return True
     except Exception:
         pass
+    return False
 
 
 def _prop(node: dict, name: str):
@@ -196,7 +232,6 @@ def extract(url: str) -> dict:
         browser = pw.chromium.launch(headless=True)
         try:
             page = open_page(browser, url)
-            _dismiss_cookie_banner(page)
             title = page.title()
 
             cdp = page.context.new_cdp_session(page)
