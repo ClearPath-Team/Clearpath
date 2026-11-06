@@ -24,8 +24,14 @@ FPS = 12
 
 def _run(args, *, input_text=None):
     try:
-        return subprocess.run(args, input=input_text, text=True, capture_output=True,
-                              check=True)
+       return subprocess.run(
+    args,
+    input=input_text,
+    text=True,
+    encoding="utf-8",
+    capture_output=True,
+    check=True
+)
     except FileNotFoundError as exc:
         raise RuntimeError(f"Missing executable: {args[0]}") from exc
     except subprocess.CalledProcessError as exc:
@@ -201,7 +207,7 @@ def render_clip(url: str, nodes: dict, events: dict, out_dir: Path) -> dict:
         _run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
               "-i", str(frame_list), "-i", str(audio),
               "-map", "0:v:0", "-map", "1:a:0",
-              "-vsync", "vfr", "-r", str(FPS), "-c:v", "libx264",
+              "-fps_mode", "vfr", "-c:v", "libx264",
               "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
               "-movflags", "+faststart", "-shortest", str(clip)])
         _run(["ffprobe", "-v", "error", "-show_entries", "format=duration,size",
