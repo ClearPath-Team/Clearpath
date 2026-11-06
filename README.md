@@ -20,7 +20,8 @@ Developed by the **Four The Win** team for **Astra Hack** (November 6–7, 2026)
 8. [Testing Individual Modules](#testing-individual-modules)
 9. [Working with Mock Data (CP_STUBS)](#working-with-mock-data-cp_stubs)
 10. [Troubleshooting & Common Issues](#troubleshooting--common-issues)
-11. [Project Documentation](#project-documentation)
+11. [Team Workflow & Task Management](#team-workflow--task-management)
+12. [Project Documentation](#project-documentation)
 
 ---
 
@@ -292,6 +293,51 @@ For comprehensive solutions, refer to [`doc/setup/troubleshooting.md`](doc/setup
 
 ---
 
+## Team Workflow & Task Management
+
+ClearPath tracks delivery through **GitHub Projects (v2)** paired with our local version-controlled task registry in [`tasks/`](tasks/).
+
+```
+  1. Backlog         2. Ready          3. In progress       4. In review        5. Done
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│ Idea / Task │ ─► │ Issue ready │ ─► │ Agent claims│  ─► │ PR opened   │  ─► │ PR Merged   │
+│ drafted     │    │ on Board    │    │ cuts branch │     │ CI checks ok│     │ Issue Closed│
+└─────────────┘    └─────────────┘    └─────────────┘     └─────────────┘     └─────────────┘
+```
+
+### Tooling: Use GitHub CLI (`gh`), Avoid MCP Servers
+> [!IMPORTANT]
+> **Why GitHub CLI (`gh`) is recommended over MCP:**  
+> - **Zero Config & Robust:** `gh` authenticates via browser SSO (`gh auth login`), runs reliably across all shells, and powers our automated CI workflows.
+> - **Why MCP is discouraged:** Running the GitHub MCP server (`@modelcontextprotocol/server-github`) requires managing background Node daemons, custom JSON manifests per IDE, risks token leakage in plaintext configs, and lacks atomic local file locks.
+
+### How Coworkers Generate New Tasks
+Teammates have two zero-friction ways to generate tasks:
+1. **From GitHub Web UI:** Go to **Issues ➔ New issue ➔ Agent task**. Choose Track and Priority, fill in Goal and Acceptance Criteria, and submit. The issue auto-populates on the board under `Ready`.
+2. **From Any AI Assistant:** Ask your IDE agent: *"Draft a task for Track M2: add contrast checking and save to tasks/m2-02-contrast.md"*. When pushed to `main`, GitHub Actions (`.github/workflows/sync-tasks.yml`) automatically creates the issue and mirrors the link back!
+
+### How to Work on a Task (Daily Command Cheat Sheet)
+Provide your AI assistant with the universal prompt in [`tasks/team-task-prompt.md`](tasks/team-task-prompt.md). The AI coordinates through [`scripts/task.py`](scripts/task.py):
+
+```bash
+# 1. View all active tasks and assignees
+python scripts/task.py list
+
+# 2. Check if a task is free or locked
+python scripts/task.py check M4-01
+
+# 3. Claim the task atomically (sets 'In progress' & creates track branch)
+python scripts/task.py claim M4-01 --assignee @your-github-username
+
+# 4. Work strictly within declared Scope and run task Validation commands
+
+# 5. When PR is opened, move task to 'In review'
+python scripts/task.py done M4-01 --pr <PR_URL>
+```
+*When your PR is merged into `main`, GitHub automatically closes the issue and moves the board card to `Done`.*
+
+---
+
 ## Project Documentation
 
 > [!IMPORTANT]
@@ -302,7 +348,7 @@ Detailed technical documentation is organized inside [`doc/`](doc/):
 
 * [`CLAUDE.md`](CLAUDE.md) — **Master agent guide** (complete documentation map, track boundaries, and execution rules).
 * [`setup-prompt.md`](setup-prompt.md) — **Automated setup prompt** for agentic AIs (WSL2, native Linux, macOS, Windows).
-* [`setup-workflow-projects.md`](setup-workflow-projects.md) — **Connecting Agentic AI to GitHub Projects** (v2) and Issues (MCP, CLI, and GitHub Actions).
+* [`doc/setup/setup-workflow-projects.md`](doc/setup/setup-workflow-projects.md) — **Connecting Agentic AI to GitHub Projects** (v2) and Issues (CLI and GitHub Actions).
 * [`doc/setup/setup.md`](doc/setup/setup.md) — Complete unified setup guide (local development and baseline Docker stack).
 * [`doc/setup/troubleshooting.md`](doc/setup/troubleshooting.md) — In-depth catalog of solutions for setup and runtime issues.
 * [`doc/1-foundation/product.md`](doc/1-foundation/product.md) — Product vision, user journey, and MVP feature boundaries.

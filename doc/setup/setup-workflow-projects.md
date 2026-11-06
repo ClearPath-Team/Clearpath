@@ -94,52 +94,62 @@ gh label create "type:documentation" --color "14b8a6" --description "Documentati
 
 ---
 
-## 3. Connecting Your AI Agent (3 Methods)
+## 3. Connecting Your AI Agent (Recommended: GitHub CLI `gh`)
 
-### Method 1: Model Context Protocol (MCP) — Best for IDE Agents (Cursor, Claude, Antigravity)
-The Model Context Protocol allows AI coding assistants to invoke GitHub tools directly within the IDE.
+> [!IMPORTANT]
+> **Tooling Recommendation: Use GitHub CLI (`gh`) & Repository Scripts**  
+> We **strongly recommend** using the official **GitHub CLI (`gh`)** paired with the repository's native `scripts/task.py` and GitHub Actions.  
+> 
+> **Why the MCP Server approach is discouraged:**
+> - **Brittle & Heavy:** Running `@modelcontextprotocol/server-github` requires configuring local JSON manifests, managing background Node.js daemons, and troubleshooting socket disconnections across IDE restarts.
+> - **Credential Exposure:** MCP configs often store unencrypted Personal Access Tokens in plaintext configuration files.
+> - **Zero Config with `gh`:** The `gh` CLI is officially maintained, authenticates securely via browser SSO (`gh auth login`), works natively inside any terminal or IDE subshell, and powers our automated CI workflows out of the box.
 
-1. **Create a GitHub Personal Access Token (PAT):**
-   * Go to **GitHub Settings** ➔ **Developer settings** ➔ **Personal access tokens** (classic or fine-grained).
-   * Required Scopes: `repo` (all), `project` (read/write), `read:org`.
-2. **Add GitHub MCP Server to your IDE Config:**
-   * **In Claude Desktop** (`claude_desktop_config.json`):
-     ```json
-     {
-       "mcpServers": {
-         "github": {
-           "command": "npx",
-           "args": ["-y", "@modelcontextprotocol/server-github"],
-           "env": {
-             "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_yourTokenHere"
-           }
-         }
-       }
-     }
-     ```
-   * **In Cursor:** Settings ➔ Features ➔ MCP ➔ Add new MCP server:
-     * Name: `github`
-     * Type: `command`
-     * Command: `npx -y @modelcontextprotocol/server-github` (with `GITHUB_PERSONAL_ACCESS_TOKEN` set in environment).
-3. **Capabilities Unlocked:**
-   * The AI can directly call `search_issues`, `get_issue`, `create_issue`, `create_pull_request`, and query the project board via GraphQL.
+### Method 1 (Strongly Recommended): GitHub CLI (`gh`) + `scripts/task.py`
+This is the standard approach for ClearPath developers and all AI agents (Antigravity, Cursor, Claude Code, etc.):
+
+1. **Authenticate `gh` Once:**
+   ```bash
+   gh auth login
+   ```
+2. **Use Repository Task Automation:**
+   The repository provides [`scripts/task.py`](scripts/task.py) to manage task assignments and prevent duplicate work:
+   ```bash
+   # View all tasks and assignees
+   python scripts/task.py list
+
+   # Check if a task is free
+   python scripts/task.py check M4-01
+
+   # Atomically claim a task (sets 'In progress' & creates branch)
+   python scripts/task.py claim M4-01 --assignee @your-username
+
+   # Mark task as ready for review when PR is opened (sets 'In review')
+   python scripts/task.py done M4-01 --pr <PR_URL>
+   ```
 
 ---
 
-### Method 2: GitHub CLI (`gh` + `gh project`) — Best for Terminal Agents
-If you use terminal-based AI agents (such as Antigravity CLI, Claude Code, or Aider), the agent can execute standard `gh` CLI commands to perform all 12 adapter operations.
+### Method 2 (Discouraged): Model Context Protocol (MCP) Server
+*(Not recommended for ClearPath — provided only as a reference for environments where terminal execution is disabled)*
 
-1. **Install and Authenticate `gh`:**
-   ```bash
-   # Linux / WSL:
-   sudo apt install gh
-   # macOS:
-   brew install gh
-   # Windows:
-   winget install GitHub.cli
-
-   gh auth login
-   gh auth refresh -s project   # Grants permission to read/write project boards
+1. Create a GitHub Personal Access Token (PAT) with `repo`, `project`, and `read:org` scopes.
+2. Configure your IDE MCP settings:
+   ```json
+   {
+     "mcpServers": {
+       "github": {
+         "command": "npx",
+         "args": ["-y", "@modelcontextprotocol/server-github"],
+         "env": {
+           "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_yourTokenHere"
+         }
+       }
+     }
+   }
+   ```
+> [!WARNING]
+> MCP does not respect the local atomic file locks in `tasks/`. Always prefer `gh` and `scripts/task.py`.
    ```
 2. **Standard CLI Commands for Agent Operations:**
 

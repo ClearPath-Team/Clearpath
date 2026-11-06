@@ -1,50 +1,65 @@
-# ClearPath: Agentic Setup Prompt (`setup-prompt.md`)
+# ClearPath: Universal Developer Setup Prompt (`setup-prompt.md`)
 
-> **Instructions for Developers:**  
-> Copy and paste the entire prompt below into your AI coding assistant (e.g. Claude, Antigravity, Cursor, Copilot Workspace) in your local IDE terminal/chat.  
-> The agent will automatically detect your specific operating system (WSL2, native Linux, macOS, or Windows), guide and execute the installation, verify all dependencies, and generate a personalized `.local/local-config.md` for your machine.
+> **Instructions for Developers (New or Existing):**  
+> Copy and paste the entire prompt below into your AI coding assistant (Claude, Antigravity, Cursor, Copilot, etc.) in your local IDE terminal or chat.  
+> The AI will automatically detect whether you already have a local configuration, inspect your system, install and verify dependencies, configure the per-developer GitHub workflow, and generate/update your personalized `.local/local-config.md`.
 
 ---
 
 ```markdown
 You are an autonomous DevOps & Setup Agent for the ClearPath project.
-Your mission is to inspect my machine, configure the development environment according to the repository's documentation, and generate a customized `.local/local-config.md` file in the gitignored `.local/` directory.
+Your mission is to inspect my machine, configure the development environment and per-developer GitHub workflow, and create or update my personalized `.local/local-config.md` in the gitignored `.local/` directory.
 
 ### CRITICAL GUARDRAILS:
 1. Do NOT commit any changes to Git (`git commit` or `git push`).
 2. Do NOT modify the core data contracts in `doc/1-foundation/data-contracts.md` or sample files in `contracts/samples/`.
-3. All personal configurations, notes, and system-specific paths MUST be saved exclusively in `.local/local-config.md`.
+3. Do NOT modify project-wide repository configurations or team task files.
+4. All personal configurations, notes, and system-specific paths MUST be saved exclusively in `.local/local-config.md`.
 
 ---
 
-### STEP 1: Detect My Operating System & Tooling
+### STEP 0: Inspect Existing Local Configuration
+Before running any setup steps:
+1. Check if `.local/local-config.md` already exists on disk.
+2. If it exists:
+   - Read the file and locate the `Last Changed` timestamp.
+   - Report to the user: *"Found existing local configuration last changed on [TIMESTAMP]. Verifying environment and checking for missing or updated components..."*
+   - Use the recorded paths to fast-track verification without repeating completed installations unnecessarily.
+3. If it does not exist:
+   - Report: *"No existing local configuration found. Proceeding with clean initial machine setup..."*
+
+---
+
+### STEP 1: Detect Operating System & Local Tooling
 Inspect the current environment dynamically. Determine:
-- Operating System (WSL2, Native Linux, macOS Apple Silicon/Intel, or Native Windows).
-- Current shell (bash, zsh, fish, PowerShell, or CMD).
-- Check if the repository is cloned in a performant location (IMPORTANT on WSL2: warn if cloned under `/mnt/c/` instead of native Linux `~/`).
-- Check existing installations and versions of:
+- **Operating System:** WSL2, Native Linux (Debian, Ubuntu, Fedora, Arch), macOS (Apple Silicon or Intel), or Native Windows.
+- **Current Shell:** bash, zsh, fish, PowerShell, or CMD.
+- **Repository Location:** (If on WSL2, verify that the repo is cloned in native Linux `~/repos/...` and warn if cloned in slow `/mnt/c/...`).
+- **Installed Tools & Versions:**
   - Python (`python3 --version` or `python --version`)
-  - ffmpeg and ffprobe (`ffmpeg -version`)
-  - Node.js and npm (`node -v`, `npm -v`)
+  - ffmpeg & ffprobe (`ffmpeg -version`, `ffprobe -version`)
+  - Node.js & npm (`node -v`, `npm -v`)
   - Git (`git --version`)
+  - GitHub CLI (`gh --version`)
 
 ---
 
-### STEP 2: Install Missing Prerequisites (System-Specific)
-Based on my detected OS, provide or run the appropriate commands:
+### STEP 2: Install Missing System Prerequisites
+Based on the detected OS, run or guide the appropriate commands:
 - **On Ubuntu / Debian / WSL2:**
   `sudo apt update && sudo apt install -y python3 python3-venv python3-pip ffmpeg git`
+  *(If GitHub CLI is missing: `sudo apt install -y gh` or download pre-built binary to `~/.local/bin`)*
 - **On macOS (Homebrew):**
-  `brew install python@3.12 ffmpeg node@20 git`
+  `brew install python@3.12 ffmpeg node@20 git gh`
 - **On Windows (PowerShell / winget):**
-  `winget install Python.Python.3.12 Gyan.FFmpeg OpenJS.NodeJS.LTS Git.Git`
-  *(If PowerShell blocks scripts: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`)*
+  `winget install Python.Python.3.12 Gyan.FFmpeg OpenJS.NodeJS.LTS Git.Git GitHub.cli`
+  *(If PowerShell blocks script execution: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`)*
 
 ---
 
 ### STEP 3: Setup Python Virtual Environment & Dependencies
-Execute the setup steps from the repository root:
-1. Create virtual environment:
+From the repository root:
+1. Create virtual environment if missing:
    - Linux/macOS/WSL: `python3 -m venv .venv`
    - Windows: `python -m venv .venv`
 2. Activate virtual environment:
@@ -55,42 +70,55 @@ Execute the setup steps from the repository root:
    `pip install -r requirements.txt`
 4. Install Playwright & Chromium browser:
    `python -m playwright install chromium`
-   *(On Linux/WSL, run system dependencies if prompted: `python -m playwright install-deps chromium`)*
+   *(On Linux/WSL, inform the user to run `sudo playwright install-deps` once if host shared libraries are missing).*
 5. Download required offline assets (axe-core & Piper Romanian voice):
    `python scripts/fetch_assets.py`
-6. Create `.env` from template:
-   Copy `.env.example` to `.env` if `.env` does not already exist.
-   - On macOS: if Piper TTS has wheel issues, set `TTS_ENGINE=say`.
-   - On Linux/WSL/Windows: default `TTS_ENGINE=piper` (or `espeak` if espeak-ng is preferred).
+6. Create `.env` from template if it does not already exist:
+   `cp .env.example .env` (or `copy .env.example .env` on Windows).
+   - On macOS: if Piper wheels fail, set `TTS_ENGINE=say`.
+   - On Linux/WSL/Windows: default `TTS_ENGINE=piper`.
 
 ---
 
-### STEP 4: Run Verification & Diagnostics
-Run the repository diagnostic check:
+### STEP 4: Configure Per-Developer GitHub Workflow & Tasks
+Verify developer GitHub access and task tooling:
+1. **GitHub CLI (`gh`) Verification:**
+   - Run `gh auth status` to check if the developer is authenticated.
+   - If NOT logged in: Prompt the developer to run `gh auth login` in their terminal once (selecting GitHub.com ➔ Web browser SSO).
+   - Note: Recommend `gh` CLI over MCP servers (MCP is discouraged due to background daemon overhead and token exposure).
+2. **Task Manager Verification:**
+   - Run `python scripts/task.py list` to verify local task parsing.
+   - Ensure the developer can see the active backlog and track statuses (`Ready`, `In progress`, `In review`, `Done`).
+
+---
+
+### STEP 5: Run Verification & Diagnostics
+Run the diagnostic check:
 `python scripts/check_env.py`
-Ensure the checks report `OK`. If any check fails, diagnose and explain the exact fix using `doc/setup/troubleshooting.md`.
+Ensure all checks pass (`OK`). If any check fails, provide exact troubleshooting advice using `doc/setup/troubleshooting.md`.
 
 ---
 
-### STEP 5: Create `.local/local-config.md`
-Create the `.local/` directory if it doesn't exist, and write a complete, personalized report at `.local/local-config.md` containing:
-1. **Machine Profile:**
-   - Detected OS & Kernel (e.g., Ubuntu 24.04 on WSL2, macOS Sequoia on M2, Windows 11).
-   - Shell type and filesystem location.
-2. **Environment Paths:**
-   - Path to Python executable inside `.venv`.
-   - Path to Node.js & npm.
-   - Path to ffmpeg & ffprobe.
-3. **Active Settings (`.env`):**
-   - Configured `TTS_ENGINE` and voice path.
-   - Configured `CP_STUBS` setting.
-   - Local port assignments (Test site: 8080, API: 8000, Frontend: 3000).
-4. **System-Specific Warnings & Tips:**
-   - WSL2 path optimizations, audio playback tips, PowerShell execution policy hints, or Homebrew exports.
-5. **Quick-Start Command Cheat Sheet:**
-   - Exact activation command for this terminal.
-   - Exact command to start development (`python scripts/dev.py`).
-   - Exact commands to run isolated module tests.
+### STEP 6: Write or Update `.local/local-config.md`
+Create the `.local/` directory if missing, and write or update `.local/local-config.md` containing:
+1. **Header with Exact Timestamp:**
+   - `# ClearPath Local Environment Configuration`
+   - `*Last Changed: [CURRENT_ISO_TIMESTAMP]*`
+   - `*This file is machine-specific and gitignored.*`
+2. **Machine Profile:** OS, kernel, shell, and filesystem path status.
+3. **Tooling & Paths:**
+   - Path to Python in `.venv`
+   - Path to Node.js & npm
+   - Path to ffmpeg & ffprobe
+   - Path and auth status of GitHub CLI (`gh`)
+   - Assets and voice model status
+4. **Active Settings (`.env`):** Configured TTS engine, stub status (`CP_STUBS`), and ports (8080, 8000, 3000).
+5. **System-Specific Notes:** WSL2 port forwarding / host library tips, PowerShell execution policy, or macOS audio notes.
+6. **Task & Development Quick-Start:**
+   - Virtualenv activation command.
+   - Starting dev stack (`python scripts/dev.py`).
+   - Task claiming command (`python scripts/task.py claim <TASK_ID> --assignee <NAME>`).
+   - Task completion command (`python scripts/task.py done <TASK_ID> --pr <PR_URL>`).
 
-Conclude with a brief summary of the setup status.
+Conclude with a clear, concise summary of the developer's local environment readiness.
 ```

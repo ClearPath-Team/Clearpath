@@ -217,8 +217,10 @@ All project documentation resides in `doc/`. Below is the complete directory inv
 ### 5.7. Agentic Workflows & Setup Guides
 * **`setup-prompt.md`**  
   *Universal Agentic Setup Prompt.* Prompt designed to be given to an AI coding assistant on any developer machine (WSL2, native Linux, macOS, Windows) to inspect the OS, install missing tools, run `check_env.py`, and generate `.local/local-config.md`.
-* **`setup-workflow-projects.md`**  
-  *Agentic AI Integration with GitHub Projects & Issues.* Complete reference manual for integrating coding agents with GitHub Projects (v2) and Issues using Model Context Protocol (MCP), GitHub CLI (`gh`), or GitHub Actions per `.github/agentic-workflow.yml`.
+* **`doc/setup/setup-workflow-projects.md`**  
+  *Agentic AI Integration with GitHub Projects & Issues.* Complete reference manual for integrating coding agents with GitHub Projects (v2) and Issues. Recommends GitHub CLI (`gh`) over MCP.
+* **`tasks/`**  
+  *Authoritative Task Registry.* Markdown specifications for each milestone task (`tasks/mX-YY-slug.md`) containing Goal, Scope, Acceptance Criteria, and Validation commands. Includes universal teammate prompt [`tasks/team-task-prompt.md`](tasks/team-task-prompt.md).
 
 ---
 
@@ -236,3 +238,36 @@ All project documentation resides in `doc/`. Below is the complete directory inv
 6. **Documentation Placement:** Keep root clean (`CLAUDE.md` and `README.md` only). All new docs belong in the appropriate `doc/` subdirectory named in `kebab-case.md`.
 7. **Local Developer Scratchpad (`.local/`):** Developers and agents should store personal notes, temporary test scripts, scratch work, and debug dumps inside the `.local/` directory, which is gitignored.
 8. **No Unprompted Commits:** Never run `git commit` or `git push` unless explicitly commanded by the user.
+
+---
+
+## 7. Multi-Agent Task Workflow & Coordination Protocol
+
+All team members and AI coding assistants operate under the **5-Stage Lifecycle**:
+$$\textbf{Backlog} \longrightarrow \textbf{Ready} \longrightarrow \textbf{In progress} \longrightarrow \textbf{In review} \longrightarrow \textbf{Done}$$
+
+### Tooling Strategy: Use GitHub CLI (`gh`), Avoid MCP
+- **Strongly Recommended:** Use **GitHub CLI (`gh`)** (`gh auth login`) and the built-in [`scripts/task.py`](scripts/task.py) CLI. It provides zero-overhead, shell-native execution, and powers GitHub Actions CI.
+- **Discouraged:** The **MCP server approach** (`@modelcontextprotocol/server-github`) is discouraged for ClearPath because it requires managing local background Node daemons, risks token exposure in plaintext configs, and lacks atomic local file locks.
+
+### Anti-Collision Protocol
+Before modifying any code, the AI agent **must**:
+1. Check task status: `python scripts/task.py check <TASK_ID>`
+2. If claimed by another user: **STOP immediately**. Never take or edit an assigned task.
+3. If unassigned: Atomically claim it:
+   ```bash
+   python scripts/task.py claim <TASK_ID> --assignee @your-github-username
+   ```
+   *(Sets Status to `In progress` on the project board and cuts the dedicated track branch)*.
+4. Modify **only** files declared in the task's `Scope`.
+5. Execute the exact test commands under `Validation`.
+6. Open a PR referencing `Closes #<id>` and update status to `In review`:
+   ```bash
+   python scripts/task.py done <TASK_ID> --pr <PR_URL>
+   ```
+7. A peer reviews and merges the PR into `main`. The issue closes and card moves to `Done` automatically.
+
+### Task Generation for Coworkers
+Coworkers can generate new tasks without manual script execution:
+- **Option A (GitHub Web):** Go to **Issues ➔ New issue ➔ Agent task** and submit.
+- **Option B (AI Assistant):** Prompt any AI to draft `tasks/mX-YY-slug.md`. Once pushed to `main`, GitHub Actions (`.github/workflows/sync-tasks.yml`) automatically creates the GitHub Issue and mirrors the link back.

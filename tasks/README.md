@@ -8,6 +8,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 
 | Task ID | Track | Priority | Status | Assignee | Task File |
 |---|---|---|---|---|---|
+| **`SHARED-01`** | Shared | P1 | `Done` | `@alexcontz` | [`shared-01-setup-workflow-projects.md`](shared-01-setup-workflow-projects.md) |
 | **`M1-01`** | M1 | P1 | `Ready` | *(Unassigned)* | [`m1-01-cdp-ax-tree.md`](m1-01-cdp-ax-tree.md) |
 | **`M2-01`** | M2 | P1 | `Ready` | *(Unassigned)* | [`m2-01-speech-and-audit.md`](m2-01-speech-and-audit.md) |
 | **`M3-01`** | M3 | P1 | `Ready` | *(Unassigned)* | [`m3-01-tts-and-render.md`](m3-01-tts-and-render.md) |

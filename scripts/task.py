@@ -109,7 +109,7 @@ def cmd_list(args):
         if ass == "Unassigned":
             ass_display = "(available)"
         else:
-            ass_display = f"@{ass}"
+            ass_display = f"@{ass.lstrip('@')}"
         print(f"{t['id']:<10} | {t['track']:<6} | {t['status']:<10} | {ass_display:<20} | {t['priority']:<20} | {t['filename']}")
 
 
