@@ -91,4 +91,46 @@ export const strings = {
       errorBody: "The report and the issues found are still available.",
     },
   },
+  report: {
+    eyebrow: "Accessibility report",
+    summaryLabel: "Summary",
+    score: "Accessibility score",
+    outOf: "/ 100",
+    severity: {
+      critical: { label: "Critical", plural: "Critical" },
+      serious: { label: "Serious", plural: "Serious" },
+      moderate: { label: "Moderate", plural: "Moderate" },
+      minor: { label: "Minor", plural: "Minor" },
+    },
+    trap: {
+      title: "Keyboard trap",
+      bodyWithTime: (time: string, selector: string) =>
+        `At ${time}, keyboard focus gets stuck on ${selector}. Someone using only the keyboard can’t move past it.`,
+      body: (selector: string) =>
+        `Keyboard focus gets stuck on ${selector}. Someone using only the keyboard can’t move past it.`,
+    },
+    playFrom: (time: string) => `Play from ${time}`,
+    video: {
+      title: "Narrated video",
+      unsupported: "Your browser can’t play this video.",
+      markersLabel: "Issues in the video",
+      markerLabel: (severity: string, title: string, time: string) => `${severity} issue at ${time}: ${title}`,
+      nowPlaying: (time: string, title: string) => `Playing from ${time}: ${title}`,
+    },
+    transcript: {
+      title: "What the user hears",
+      unavailable: "The transcript isn’t available for this analysis.",
+      seekLabel: (time: string, text: string) => `Play from ${time}: ${text}`,
+      hasIssue: "has an issue",
+    },
+    issues: {
+      title: "Issues found",
+      filterLabel: "Filter by severity",
+      all: "All",
+      empty: "No issues at this severity.",
+      notInVideo: "Not in the video: this issue affects the whole page.",
+      wcagGuide: "WCAG guidance",
+      opensInNewTab: "(opens in a new tab)",
+    },
+  },
 } as const;
