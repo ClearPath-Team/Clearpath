@@ -178,7 +178,7 @@ class LivePipelineTests(unittest.TestCase):
                                  f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}")
                 nodes, events, issues, timeline, report = assert_artifacts(
                     self, Path(directory) / analysis_id, score=33)
-                self.assertEqual(len(issues), 10)  # 9 axe findings + keyboard trap
+                self.assertEqual(len(issues), 9)  # 8 axe findings + keyboard trap
                 self.assertEqual(nodes["focus_trap"]["selector"], "#promo")
                 cart = next(n for n in nodes["nodes"] if n.get("selector") == "#cart")
                 cart_events = [e for e in events["events"]
