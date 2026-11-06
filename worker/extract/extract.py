@@ -1,5 +1,6 @@
 """Track M1: Accessibility tree extraction via Chrome DevTools Protocol (CDP)."""
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -25,7 +26,9 @@ ATOMIC_ROLES = {"heading", "link", "button", "textbox", "checkbox", "radio", "co
 SKIP_SUBTREE_ROLES = {"LabelText", "InlineTextBox"}
 MAX_NODES = 400
 
-COOKIE_BUTTON_TEXTS = ["Accept all", "Accept", "Agree", "I agree", "Acceptă", "Sunt de acord"]
+COOKIE_BUTTON_PATTERN = re.compile(
+    r"^(?:accept all|accept|agree|i agree|acceptă|sunt de acord)$", re.IGNORECASE
+)
 
 # Resolves the canonical selector, document-coordinate bbox, and visibility for a DOM node.
 RESOLVE_JS = (
@@ -54,12 +57,12 @@ def open_page(browser, url: str):
 
 
 def _dismiss_cookie_banner(page) -> None:
-    for text in COOKIE_BUTTON_TEXTS:
-        try:
-            page.get_by_role("button", name=text, exact=False).first.click(timeout=2000)
-            return
-        except Exception:
-            continue
+    try:
+        btn = page.get_by_role("button", name=COOKIE_BUTTON_PATTERN).first
+        if btn.is_visible(timeout=500):
+            btn.click(timeout=1000)
+    except Exception:
+        pass
 
 
 def _prop(node: dict, name: str):
@@ -149,7 +152,6 @@ def _extract_tree(cdp, by_id: dict, root_id: str) -> list:
                 )
 
             value = (node.get("value") or {}).get("value")
-            expanded_raw = _prop(node, "expanded")
             selector, bbox, visible = _resolve_selector_bbox(cdp, node.get("backendDOMNodeId"))
 
             emitted.append({
@@ -161,7 +163,7 @@ def _extract_tree(cdp, by_id: dict, root_id: str) -> list:
                 "states": {
                     "required": _bool_prop(node, "required"),
                     "checked": _checked_prop(node),
-                    "expanded": bool(expanded_raw) if expanded_raw is not None else None,
+                    "expanded": _bool_prop(node, "expanded") if _prop(node, "expanded") is not None else None,
                     "disabled": _bool_prop(node, "disabled"),
                 },
                 "value": value,
@@ -230,4 +232,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         Path(sys.argv[2]).write_text(json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
     else:
+        sys.stdout.reconfigure(encoding="utf-8")
         print(json.dumps(res, indent=2, ensure_ascii=False))
