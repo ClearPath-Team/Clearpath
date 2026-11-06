@@ -18,12 +18,15 @@ class EventsTests(unittest.TestCase):
         result = build_events(source)
         speech = {event["node_id"]: event["text"] for event in result["events"]}
         self.assertEqual(result["lang"], "ro")
-        self.assertEqual(speech[None], "Pagina Finalizează comanda")
-        self.assertEqual(speech["n6"], "buton")
-        self.assertEqual(speech["n9"], "imagine fără descriere")
-        self.assertEqual(speech["n15"], "casetă de editare, necompletat")
-        self.assertEqual(speech["n8"], "Finalizează comanda, titlu nivel 1")
-        self.assertEqual(speech["n14"], "Nume complet, casetă de editare, necompletat, obligatoriu")
+        nodes = {n["selector"]: n for n in source["nodes"]}
+        heading = next(n for n in source["nodes"] if n["role"] == "heading" and n["level"] == 1)
+        self.assertEqual(speech[None], f"Pagina {source['title']}")
+        self.assertEqual(speech[nodes["#cart"]["id"]], "buton")
+        self.assertEqual(speech[nodes["#product-image"]["id"]], "imagine fără descriere")
+        self.assertEqual(speech[nodes["#email"]["id"]], "casetă de editare, necompletat")
+        self.assertEqual(speech[heading["id"]], "Finalizează comanda, titlu nivel 1")
+        self.assertEqual(speech[nodes["#name"]["id"]],
+                         f"{nodes['#name']['name']}, casetă de editare, necompletat, obligatoriu")
         self.assertEqual(source, original)
 
     def test_controls_and_optional_states(self):
@@ -89,6 +92,35 @@ class EventsTests(unittest.TestCase):
         self.assertEqual(build_events({"nodes": []})["events"], [{"seq": 0, "node_id": None, "text": "Pagina"}])
         source = {"nodes": [node(2, "link", "Doi"), node(0, "button", "Zero")]}
         self.assertEqual([event["node_id"] for event in build_events(source)["events"]], [None, "n0", "n2"])
+
+
+    def test_english_role_and_state_announcements(self):
+        cases = [
+            ("heading", "Welcome", {"level": 2}, "Welcome, heading level 2"),
+            ("button", "Submit", {}, "Submit, button"),
+            ("link", "", {}, "link"),
+            ("textbox", "Search", {"states": {}}, "Search, edit, blank"),
+            ("input", "Email", {"value": "a@example.org"}, "Email, edit, contains a@example.org"),
+            ("checkbox", "Accept", {"states": {"checked": True}}, "Accept, check box, checked"),
+            ("checkbox", "Accept", {"states": {"checked": False}}, "Accept, check box, not checked"),
+            ("radio", "Payment", {"states": {"checked": False}}, "Payment, radio button, not selected"),
+            ("combobox", "Country", {}, "Country, combo box"),
+            ("image", "", {}, "graphic unlabelled"),
+            ("banner", "", {}, "banner landmark"),
+            ("navigation", "Main navigation", {}, "Main navigation, navigation landmark"),
+            ("button", "Menu", {"states": {"required": True, "disabled": True}}, "Menu, button, required, unavailable"),
+        ]
+        for role, name, props, expected in cases:
+            with self.subTest(role=role, name=name):
+                speech = build_events({"nodes": [node(0, role, name, **props)]}, lang="en")
+                self.assertEqual(speech["lang"], "en")
+                self.assertEqual(speech["events"][1]["text"], expected)
+
+    def test_english_title_and_invalid_lang(self):
+        self.assertEqual(build_events({"title": "Example", "nodes": []}, lang="en")["events"][0]["text"],
+                         "Page Example")
+        with self.assertRaises(ValueError):
+            build_events({"nodes": []}, lang="fr")
 
 
 if __name__ == "__main__":

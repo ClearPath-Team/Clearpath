@@ -40,6 +40,17 @@ class AuditMappingTests(unittest.TestCase):
         self.assertEqual(results[1]["recommendation"], "Fallback recommendation")
         self.assertIsNone(results[1]["node_id"])
 
+    def test_english_uses_native_axe_text_and_english_keyboard_trap(self):
+        page = Mock()
+        page.evaluate.return_value = ["#unknown"]
+        nodes = {"focus_trap": {"selector": "#trap"}}
+        issues = _map_violations(page, [violation("untranslated-rule", [["#unknown"]])], nodes, lang="en")
+        self.assertEqual(issues[1]["title"], "Fallback title")
+        self.assertEqual(issues[1]["recommendation"], "Fallback recommendation")
+        self.assertIn("Keyboard trap", issues[0]["title"])
+        with self.assertRaises(ValueError):
+            _map_violations(page, [], {}, lang="fr")
+
     def test_frame_and_shadow_targets_are_skipped(self):
         page = Mock()
         results = _map_violations(page, [violation("label", [[], [["#host", "input"]], ["iframe", "input"]])], {})
@@ -126,6 +137,15 @@ class LiveAuditTests(unittest.TestCase):
         linked = [issue for issue in issues if issue["node_id"] is not None]
         self.assertGreaterEqual(len(linked), 5)
         self.assertTrue(all(issue["node_id"] in valid_ids for issue in linked))
+        selectors = {issue["rule"]: issue["selector"] for issue in issues}
+        self.assertEqual(selectors["button-name"], "#cart")
+        self.assertEqual(selectors["image-alt"], "#product-image")
+        self.assertEqual(selectors["label"], "#email")
+        self.assertEqual(selectors["keyboard-trap"], "#promo")
+        contrast = [i for i in issues if i["rule"] == "color-contrast"]
+        self.assertEqual(len(contrast), 2)
+        by_id = {n["id"]: n for n in source["nodes"]}
+        self.assertTrue(all(by_id[i["node_id"]]["selector"] == i["selector"] for i in linked))
         self.assertEqual([issue["id"] for issue in issues], [f"i{i}" for i in range(1, len(issues) + 1)])
         self.assertEqual(len({(issue["rule"], issue["selector"]) for issue in issues}), len(issues))
         self.assertEqual(set(issues[0]), {"id", "rule", "severity", "node_id", "selector", "title", "recommendation", "help_url"})
