@@ -87,6 +87,18 @@ class RenderClipTests(unittest.TestCase):
                                cart_index * (SPOKEN_SECONDS + PAUSE_SECONDS), places=3)
         self.assertIsNone(timestamps["html-has-lang"])
 
+    def test_punctuation_caption_matches_synthesized_timeline(self):
+        self.events = {"events": [{"seq": 0, "node_id": None, "text": ","}]}
+        with mock.patch.object(render, "_draw_overlay") as overlay:
+            result = self._render(1.05)
+        text = "Element fără conținut textual"
+        self.assertEqual(result["entries"][0]["text"], text)
+        self.assertEqual(overlay.call_args.args[2], text)
+
+    def test_english_punctuation_fallback(self):
+        self.assertEqual(render._speakable_announcement("...", lang="en"), "No textual content")
+        self.assertEqual(render._speakable_announcement("...", lang="ro"), "Element fără conținut textual")
+
     def test_truncated_clip_fails_without_writing_timeline(self):
         with self.assertRaises(RuntimeError):
             self._render(5.0)
