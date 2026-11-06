@@ -5,8 +5,8 @@
 - **Track:** `Shared` (Integration, Localization & Live Audit)
 - **Type:** `Test`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In progress`
+- **Assignee:** @andreiBirsanIoan
 - **Branch:** `integ-romanian-tech-audit`
 - **Created Date:** 2026-11-06
 
@@ -122,4 +122,4 @@ for d in Path('data').glob('e2e-ro-*'):
 ---
 
 ## 9. Execution Log
-- **2026-11-06:** Task `INTEG-03` created and added to backlog as `Ready` for assignment.
+- **2026-11-06:** Implemented reproducible 9-platform Romanian preset, unique run IDs, zero-stub production runner, artifact verification, and JSON/Markdown results manifest. Execution of all nine live sites is **not yet verified** (requires configured local Chromium, ffmpeg, Piper and network). No results, scores, videos or bot-shield outcomes are claimed without collected artifacts.\n- **Run:** `python scripts/test_popular_sites.py --preset romanian --output romanian-audit.json --markdown romanian-audit.md`.\n- **Completion criteria:** execute all nine live runs without stubs and review generated JSON, Markdown and recorded clips.
