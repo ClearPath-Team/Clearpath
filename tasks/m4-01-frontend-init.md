@@ -5,7 +5,7 @@
 - **Track:** `M4` (API, web, and demo)
 - **Type:** `Feature`
 - **Priority:** `P0 - blocks delivery`
-- **Status:** `In progress`
+- **Status:** `In review`
 - **Assignee:** `@alexcontz`
 - **Branch:** `m4-frontend-init`
 - **Created Date:** 2026-11-06
@@ -93,7 +93,8 @@ npm run dev
 
 ## 8. Execution Log (Updated by Assignee)
 - **Status Change:** `Backlog` -> `Ready` on 2026-11-06
-- **Claimed by:** *None*
-- **PR:** *None*
+- **Claimed by:** `@alexcontz`
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/10
 
-- **2026-11-06 13:03 UTC:** Claimed by @@alexcontz (Status -> In progress)
+- **2026-11-06 13:03 UTC:** Claimed by @alexcontz (Status -> In progress)
+- **2026-11-06 14:11 UTC:** PR #10 opened (Status -> In review)
