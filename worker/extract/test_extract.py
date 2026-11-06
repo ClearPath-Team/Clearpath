@@ -186,23 +186,26 @@ class ExtractRegressionTests(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp(prefix="cp-test-extract-"))
         self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
 
-    def test_bad_checkout_extraction_is_unchanged(self):
+    def test_bad_checkout_preserves_demo_controls_and_trap(self):
         result = extract_mod.extract(TEST_SITE)
 
-        self.assertEqual(len(result["nodes"]), 19)
-        self.assertEqual([n["role"] for n in result["nodes"]], [
-            "banner", "text", "navigation", "link", "link", "link", "button", "main",
-            "heading", "image", "heading", "text", "text", "heading", "textbox",
-            "textbox", "textbox", "textbox", "text"])
         by_selector = {n["selector"]: n for n in result["nodes"]}
         self.assertEqual((by_selector["#cart"]["role"], by_selector["#cart"]["name"]), ("button", ""))
+        self.assertEqual((by_selector["#email"]["role"], by_selector["#email"]["name"]), ("textbox", ""))
+        self.assertEqual((by_selector["#product-image"]["role"], by_selector["#product-image"]["name"]), ("image", ""))
+        self.assertTrue(by_selector["#name"]["states"]["required"])
+        self.assertEqual(by_selector["#county"]["role"], "combobox")
+        self.assertEqual(sum(n["role"] == "radio" for n in result["nodes"]), 4)
+        headings = [n for n in result["nodes"] if n["role"] == "heading"]
+        self.assertEqual([n["level"] for n in headings[:2]], [1, 4])
         self.assertEqual(result["focus_trap"], {"node_id": by_selector["#promo"]["id"],
                                                 "selector": "#promo"})
-        self.assertEqual([f["selector"] for f in result["focus_order"]][3:],
-                         ["#cart", "#name", "#email", "#promo"])
-        names = [n["name"] for n in result["nodes"]]
-        for label in ("Nume complet", "Cod promoțional", "Telefon"):
-            self.assertEqual(names.count(label), 1)
+        focus = [f["selector"] for f in result["focus_order"]]
+        self.assertEqual(focus[-1], "#promo")
+        for selector in ("#cart", "#name", "#email", "#phone", "#address", "#city", "#county"):
+            self.assertIn(selector, focus)
+        self.assertEqual(by_selector["#phone"]["name"], "Telefon")
+        self.assertEqual(by_selector["#promo"]["name"], "Cod promoțional")
 
 
     def test_consent_banner_is_dismissed_before_extraction(self):
@@ -217,6 +220,42 @@ class ExtractRegressionTests(unittest.TestCase):
         self.assertIn("Magazin", names)
         self.assertEqual(result["focus_order"][0]["selector"],
                          "html > body:nth-of-type(1) > main:nth-of-type(1) > a:nth-of-type(1)")
+
+
+class CheckoutInteractionTests(BrowserTests):
+    def test_offline_checkout_choices_and_intentional_keyboard_defects(self):
+        page = self.browser.new_page(viewport={"width": 1280, "height": 720})
+        self.addCleanup(page.close)
+        page.set_default_timeout(15_000)
+        external_requests = []
+        page.on("request", lambda request: external_requests.append(request.url)
+                if request.url.startswith(("http://", "https://")) else None)
+        # A file URL plus offline mode proves the page needs no server or CDN assets.
+        page.context.set_offline(True)
+        page.goto(TEST_SITE, timeout=15_000)
+        self.assertEqual(page.locator('input[type="radio"]').count(), 4)
+        self.assertEqual(external_requests, [])
+        self.assertTrue(page.locator("#product-image").evaluate("img => img.complete && img.naturalWidth > 0"))
+        self.assertEqual(page.locator("#grand-total").inner_text(), "349,00 Lei")
+        page.locator('input[name="delivery"][value="15"]').check()
+        self.assertEqual(page.locator("#delivery-cost").inner_text(), "15,00 Lei")
+        self.assertEqual(page.locator("#grand-total").inner_text(), "364,00 Lei")
+        page.locator('input[name="delivery"][value="0"]').check()
+        self.assertEqual(page.locator("#grand-total").inner_text(), "349,00 Lei")
+        page.locator('input[name="payment"][value="cash"]').check()
+        self.assertFalse(page.locator('input[name="payment"][value="card"]').is_checked())
+        page.locator("#promo").focus()
+        for key in ("Tab", "Shift+Tab"):
+            page.keyboard.press(key)
+            self.assertTrue(page.locator("#promo").evaluate("el => el === document.activeElement"))
+        self.assertEqual(page.locator(".fake-btn").evaluate("el => el.tabIndex"), -1)
+        self.assertIsNone(page.locator(".fake-btn").get_attribute("role"))
+        page.locator(".fake-btn").click()
+        self.assertEqual(page.locator(".fake-btn").inner_text(), "Comandă trimisă cu succes!")
+        for width in (1280, 390):
+            page.set_viewport_size({"width": width, "height": 844})
+            self.assertTrue(page.evaluate("document.documentElement.scrollWidth <= innerWidth"))
+        self.assertEqual(external_requests, [])
 
 
 class CookieBannerTests(BrowserTests):

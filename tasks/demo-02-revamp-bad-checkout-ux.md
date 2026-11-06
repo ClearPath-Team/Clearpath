@@ -2,11 +2,12 @@
 
 - **Task ID:** `DEMO-02`
 - **GitHub Issue:** #31
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/42
 - **Track:** `Demo` (Demo site and presentation UX)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** `Unassigned`
+- **Status:** `In review`
+- **Assignee:** `AndreiBcs`
 - **Branch:** `demo-revamp-bad-checkout`
 - **Created Date:** 2026-11-06
 
@@ -38,6 +39,7 @@ The assignee is permitted to modify or create:
 - `contracts/samples/nodes.json`, `events.json`, `issues.json`, `timeline.json`, `report.json` (regenerated mock samples to synchronize with any DOM hierarchy updates)
 - `worker/extract/test_extract.py` (update `test_bad_checkout_extraction_is_unchanged` assertions if node count or structure expands)
 - `worker/engine/test_audit.py` (verify that axe violation rule checks continue to pass against the revamped page)
+- `worker/engine/test_events.py`, `worker/engine/test_report.py`, `worker/engine/test_cli.py`, `worker/media/test_render.py`, `worker/test_pipeline.py` (dependent fixture assertions; scope extension explicitly approved by the requester)
 - `tasks/demo-02-revamp-bad-checkout-ux.md`
 - `tasks/README.md`
 
@@ -124,11 +126,11 @@ The table below defines the exact intentional accessibility defects that **must 
 ---
 
 ## 6. Acceptance Criteria
-- [ ] **Aesthetic & Realism:** `test-site/bad-checkout.html` appears as a genuine, contemporary Romanian online store with a clean two-column layout, modern typography, card styling, and cohesive branding.
-- [ ] **100% Offline & Self-Contained:** Zero external network requests (no CDNs, Google Fonts, or external image URLs). All styles, SVG icons, and product imagery are embedded directly in the HTML file.
-- [ ] **Romanian Language:** All visible user interface text, labels, delivery terms, and product descriptions are written in idiomatic Romanian with correct diacritics.
-- [ ] **Essential Selectors Preserved:** The core IDs and classes (`#cart`, `#name`, `#email`, `#promo`, `#phone`, `.fake-btn`, `.muted`) remain present in the DOM for downstream tests.
-- [ ] **All 8 axe-core Violations Detected:** Running `worker.engine.audit` against the page triggers:
+- [x] **Aesthetic & Realism:** `test-site/bad-checkout.html` appears as a genuine, contemporary Romanian online store with a clean two-column layout, modern typography, card styling, and cohesive branding.
+- [x] **100% Offline & Self-Contained:** Zero external network requests (no CDNs, Google Fonts, or external image URLs). All styles, SVG icons, and product imagery are embedded directly in the HTML file.
+- [x] **Romanian Language:** All visible user interface text, labels, delivery terms, and product descriptions are written in idiomatic Romanian with correct diacritics.
+- [x] **Essential Selectors Preserved:** The core IDs and classes (`#cart`, `#name`, `#email`, `#promo`, `#phone`, `.fake-btn`, `.muted`) remain present in the DOM for downstream tests.
+- [x] **All 8 axe-core Violations Detected:** Running `worker.engine.audit` against the page triggers:
   1. `html-has-lang`
   2. `button-name`
   3. `link-name`
@@ -137,10 +139,10 @@ The table below defines the exact intentional accessibility defects that **must 
   6. `color-contrast`
   7. `heading-order`
   8. `keyboard-trap`
-- [ ] **Keyboard Trap Detected:** CDP tab traversal in `worker.extract.tab_walk` halts at `#promo` and flags the trap.
-- [ ] **Sample Synchronization:** If the DOM tree structure changes, contract mock files in `contracts/samples/` are updated so offline tests continue to pass.
-- [ ] **Test Compatibility:** `worker/extract/test_extract.py` and `worker/engine/test_audit.py` pass without regression.
-- [ ] **End-to-End Pipeline Verification:** Executing `python -m worker.pipeline demo_revamp http://localhost:8080/bad-checkout.html` completes all 5 stages cleanly, generating `clip.mp4` with realistic visual highlights.
+- [x] **Keyboard Trap Detected:** CDP tab traversal in `worker.extract.tab_walk` halts at `#promo` and flags the trap.
+- [x] **Sample Synchronization:** If the DOM tree structure changes, contract mock files in `contracts/samples/` are updated so offline tests continue to pass.
+- [x] **Test Compatibility:** `worker/extract/test_extract.py` and `worker/engine/test_audit.py` pass without regression.
+- [x] **End-to-End Pipeline Verification:** Executing `python -m worker.pipeline demo_revamp http://localhost:8080/bad-checkout.html` completes all 5 stages cleanly, generating `clip.mp4` with realistic visual highlights.
 
 ---
 
@@ -209,3 +211,9 @@ kill $SERVER_PID
 
 ## 10. Execution Log
 - **2026-11-06:** Task specification created as Ready for the Demo Polish milestone.
+- **2026-11-06:** Implemented by @AndreiBcs; requester approved updating all tests affected by regenerated fixtures, without changes to extraction, narration, rendering, or scoring algorithms.
+- **2026-11-06:** Verified desktop (1280×720) and mobile (390×844), offline browser loading with no external requests, shipping total updates, payment selection, click feedback, and both Tab directions trapped on `#promo`. Radio inputs use explicit labels outside the input wrappers so the existing extractor includes them in narration.
+- **2026-11-06:** Full zero-stub pipeline completed with Chromium, Piper, and FFmpeg: 63 nodes, 38 announcements, 9 findings across all 8 required rules, score 33, H.264/AAC clip duration 155.285 s. Regenerated the five JSON fixtures from this run. The sample MP4 placeholder remains unchanged; the real verification clip is at `data/demo-revamp/clip.mp4` (gitignored).
+
+- **2026-11-06:** Validation passed: 67 worker tests (one opt-in full-pipeline test skipped; the real pipeline was verified separately), including real media rendering, plus 13 demo tests. Extraction/audit suites: 26 passing tests. `git diff --check` clean.
+- **2026-11-06:** Opened PR #42 against `main`; ready for peer review.
