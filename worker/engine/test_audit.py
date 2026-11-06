@@ -3,11 +3,16 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import threading
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
+
+from playwright.sync_api import Error as PlaywrightError
+from scripts.check_env import chromium_install_hint, chromium_skip_reason
 
 from worker.common import ROOT, SAMPLES, read_json
 from worker.engine.audit import _map_violations, run_audit
 from worker.engine.recommendations import RECOMMENDATIONS
+
+CHROMIUM_SKIP_REASON = chromium_skip_reason()
 
 
 def violation(rule, targets, impact="serious"):
@@ -59,6 +64,48 @@ class AuditMappingTests(unittest.TestCase):
         self.assertTrue(all(title and recommendation for title, recommendation in RECOMMENDATIONS.values()))
 
 
+class BrowserEnvironmentTests(unittest.TestCase):
+    def tearDown(self):
+        chromium_skip_reason.cache_clear()
+
+    def test_missing_host_libraries_produce_cached_skip_reason(self):
+        chromium_skip_reason.cache_clear()
+        with patch("scripts.check_env.chromium", side_effect=PlaywrightError(
+                "BrowserType.launch: Host system is missing dependencies to run browsers.")) as launch:
+            reason = chromium_skip_reason()
+            self.assertIn("Chromium unavailable", reason)
+            self.assertIn("-m playwright install", reason)
+            self.assertEqual(chromium_skip_reason(), reason)
+            launch.assert_called_once()
+
+    def test_missing_browser_binary_produces_skip_reason(self):
+        chromium_skip_reason.cache_clear()
+        with patch("scripts.check_env.chromium", side_effect=PlaywrightError("Executable doesn't exist at /cache/chromium")):
+            self.assertIn("install chromium", chromium_skip_reason())
+
+    def test_unexpected_browser_error_is_not_hidden(self):
+        chromium_skip_reason.cache_clear()
+        with patch("scripts.check_env.chromium", side_effect=PlaywrightError("unexpected browser crash")):
+            with self.assertRaisesRegex(PlaywrightError, "unexpected browser crash"):
+                chromium_skip_reason()
+
+    def test_available_browser_runs_live_tests(self):
+        chromium_skip_reason.cache_clear()
+        with patch("scripts.check_env.chromium", return_value="130.0"):
+            self.assertIsNone(chromium_skip_reason())
+
+    def test_platform_instructions_use_current_interpreter(self):
+        for platform, command in (("linux", "sudo apt-get update"), ("darwin", "brew install python@3.12"),
+                                  ("win32", "winget install --id Python.Python.3.12 --exact")):
+            with self.subTest(platform=platform), patch("scripts.check_env.sys.platform", platform):
+                hint = chromium_install_hint()
+                self.assertIn(command, hint)
+                self.assertIn("-m playwright install chromium", hint)
+                if platform == "linux":
+                    self.assertIn("-m playwright install-deps chromium", hint)
+
+
+@unittest.skipIf(CHROMIUM_SKIP_REASON is not None, CHROMIUM_SKIP_REASON or "")
 class LiveAuditTests(unittest.TestCase):
     def test_demo_uses_real_axe_and_maps_at_least_five_nodes(self):
         handler = partial(SimpleHTTPRequestHandler, directory=str(ROOT / "test-site"))

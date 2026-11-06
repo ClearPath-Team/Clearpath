@@ -9,6 +9,9 @@ import threading
 import unittest
 
 from worker.common import ROOT
+from scripts.check_env import chromium_skip_reason
+
+CHROMIUM_SKIP_REASON = chromium_skip_reason()
 
 
 class CliEncodingTests(unittest.TestCase):
@@ -32,6 +35,7 @@ class CliEncodingTests(unittest.TestCase):
         self.assertEqual(result["title"], "Finalizează comanda")
         self.assertEqual(result["score"], 38)
 
+    @unittest.skipIf(CHROMIUM_SKIP_REASON is not None, CHROMIUM_SKIP_REASON or "")
     def test_audit_stdout_is_utf8_even_with_cp1252_environment(self):
         handler = partial(SimpleHTTPRequestHandler, directory=str(ROOT / "test-site"))
         server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
