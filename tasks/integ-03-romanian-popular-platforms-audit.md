@@ -122,4 +122,24 @@ for d in Path('data').glob('e2e-ro-*'):
 ---
 
 ## 9. Execution Log
-- **2026-11-06:** Implemented reproducible 9-platform Romanian preset, unique run IDs, zero-stub production runner, artifact verification, and JSON/Markdown results manifest. Execution of all nine live sites is **not yet verified** (requires configured local Chromium, ffmpeg, Piper and network). No results, scores, videos or bot-shield outcomes are claimed without collected artifacts.\n- **Run:** `python scripts/test_popular_sites.py --preset romanian --output romanian-audit.json --markdown romanian-audit.md`.\n- **Completion criteria:** execute all nine live runs without stubs and review generated JSON, Markdown and recorded clips.
+- **2026-11-06:** Implemented reproducible 9-platform Romanian preset, unique run IDs, zero-stub production runner, artifact verification, and JSON/Markdown results manifest. Execution of all nine live sites is **not yet verified** (requires configured local Chromium, ffmpeg, Piper and network). No results, scores, videos or bot-shield outcomes are claimed without collected artifacts.
+- **Run:** `python scripts/test_popular_sites.py --preset romanian --output romanian-audit.json --markdown romanian-audit.md`.
+- **Completion criteria:** execute all nine live runs without stubs and review generated JSON, Markdown and recorded clips.
+
+### 2026-11-06 live execution evidence
+
+All nine specified targets were attempted with `CP_STUBS=` and `TTS_ENGINE=piper` using Playwright Chromium. Every run failed during extraction with `net::ERR_CERT_AUTHORITY_INVALID`. No site score, issue count or narrated clip is claimed. A second run after importing the managed environment proxy CA into the local NSS store produced the same error. Certificate verification was not disabled.
+
+| Target | Result | Evidence |
+| --- | --- | --- |
+| https://flip.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://vivre.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://tazz.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://pago.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://salt.bank | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://sameday.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://ejobs.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://elefant.ro | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+| https://kinderpedia.co | Blocked at extraction | Chromium certificate authority error; no complete report/video |
+
+Local run manifests and logs: `.local/romanian-audit.json`, `.local/romanian-audit.md`, `.local/romanian-run.log`, and `.local/ro-{0,1,2}.{json,md,log}`. Per-run failure states are in gitignored `data/e2e-ro-*/status.json`. This task remains In progress until the full nine-site audit succeeds in a browser with valid managed proxy trust. Do not mark it Done based on the preset implementation alone.

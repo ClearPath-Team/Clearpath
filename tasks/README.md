@@ -33,7 +33,7 @@ This directory contains the authoritative version-controlled backlog of tasks fo
 | **`M4-06`** | M4 | P1 | `Done` | `@Sergiu1809` | [`m4-06-analysis-progress-and-error-states.md`](m4-06-analysis-progress-and-error-states.md) |
 | **`M4-07`** | M4 | P1 | `Done` | `@Sergiu1809` | [`m4-07-report-view.md`](m4-07-report-view.md) |
 | **`M2-04`** | M2 | P1 | `In review` | `@andreiBirsanIoan` | [`m2-04-canonical-issue-categorization.md`](m2-04-canonical-issue-categorization.md) |
-| **`M4-10`** | M4 | P1 | `Ready` | *(Unassigned)* | [`m4-10-exportable-canonical-audit-reports.md`](m4-10-exportable-canonical-audit-reports.md) |
+| **`M4-10`** | M4 | P1 | `In progress` | `@andreiBirsanIoan` | [`m4-10-exportable-canonical-audit-reports.md`](m4-10-exportable-canonical-audit-reports.md) |
 
 ---
 

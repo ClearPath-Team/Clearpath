@@ -5,8 +5,8 @@
 - **Track:** `M4` (API, Web Dashboard, and Formal Reporting)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
-- **Status:** `Ready`
-- **Assignee:** Unassigned
+- **Status:** `In progress`
+- **Assignee:** `andreiBirsanIoan`
 - **Branch:** `m4-exportable-audit-reports`
 - **Created Date:** 2026-11-06
 
@@ -75,14 +75,14 @@ The assignee is permitted to modify or create:
 ---
 
 ## 5. Acceptance Criteria
-- [ ] Implement `generate_html_report(report_data)` generating a standalone, self-contained HTML file (embedded CSS, zero external CDN dependencies) optimized for print and PDF generation (`@media print`).
-- [ ] Add `GET /api/analyses/{id}/export?format=html|json` in `api/main.py`:
+- [x] Implement `generate_html_report(report_data)` generating a standalone, self-contained HTML file (embedded CSS, zero external CDN dependencies) optimized for print and PDF generation (`@media print`).
+- [x] Add `GET /api/analyses/{id}/export?format=html|json` in `api/main.py`:
   - Returns `text/html` with `Content-Disposition: attachment; filename="clearpath-audit-{id}.html"` when `format=html`.
   - Returns canonical `application/json` download when `format=json`.
   - Returns `404` if the analysis is not found, and `409` if still in progress.
-- [ ] The exported report groups all findings by the 4 canonical categories from `M2-04` with executive explanations.
-- [ ] Include an "Export Report" button in the Next.js analysis view (`web/app/a/[id]/page.tsx`) triggering report download or print dialog.
-- [ ] All unit and integration tests in `api/test_export.py` pass cleanly.
+- [x] The exported report groups all findings by the 4 canonical categories from `M2-04` with executive explanations.
+- [x] Include an "Export Report" button in the Next.js analysis view (`web/app/a/[id]/page.tsx`) triggering report download or print dialog.
+- [x] All unit and integration tests in `api/test_export.py` pass cleanly.
 
 ---
 
@@ -126,3 +126,8 @@ cd web && npm run build && cd ..
 
 ## 9. Execution Log
 - **2026-11-06:** Task `M4-10` created as Ready in backlog (depends on M2-04).
+
+
+- **2026-11-06:** Claimed by @andreiBirsanIoan. Implemented standalone printable HTML, canonical JSON download, categorized findings, escaped untrusted page content, transcript/bounding-box evidence, completion timestamps and bilingual export controls. HTML is PDF-ready through browser Print/Save as PDF; no server PDF engine added.
+- **Validation:** 18 export/existing API tests passed; Next.js production build passed. Canonical source JSON is preserved. Missing historical engine metadata is labelled not recorded; no engine versions or certification claims are invented. No automated findings is used instead of a claim of compliance.
+- **Limitations:** Legacy runs may lack transcript, bounding boxes, timestamp or engine provenance. Available evidence is exported and missing values are explicitly marked.

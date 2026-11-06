@@ -23,6 +23,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from worker.common import DATA_DIR, now_iso, read_json, write_json
+from api.export import generate_html_report
 
 app = FastAPI(title="ClearPath API", version="1.0.0")
 
@@ -178,6 +179,37 @@ def get_timeline(analysis_id: str):
     if not timeline_path.exists():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Timeline not found for this analysis.")
     return read_json(timeline_path)
+
+
+@app.get("/api/analyses/{analysis_id}/export")
+def export_analysis(analysis_id: str, format: Literal["html", "json"] = "html"):
+    """Download finished analysis evidence; HTML can be printed to PDF."""
+    job_dir = analysis_dir(analysis_id)
+    status_path = job_dir / "status.json"
+    if not status_path.is_file():
+        raise HTTPException(status_code=404, detail="Analysis not found.")
+    state = read_json(status_path)
+    if state.get("status") != "done":
+        raise HTTPException(status_code=409, detail="Analysis is not finished yet.")
+    report_path = job_dir / "report.json"
+    if not report_path.is_file():
+        raise HTTPException(status_code=404, detail="Report not found.")
+    headers = {
+        "Content-Disposition": f'attachment; filename="clearpath-audit-{analysis_id}.{format}"',
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-store",
+        "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+    }
+    if format == "json":
+        return Response(report_path.read_bytes(), media_type="application/json", headers=headers)
+    def optional(name):
+        path = job_dir / name
+        return read_json(path) if path.is_file() else None
+    content = generate_html_report(
+        read_json(report_path), timeline=optional("timeline.json"), nodes=optional("nodes.json"),
+        metadata={"completed_at": state.get("updated_at")},
+    )
+    return Response(content, media_type="text/html", headers=headers)
 
 
 @app.get("/media/{analysis_id}/clip.mp4")
