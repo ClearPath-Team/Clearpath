@@ -1,0 +1,131 @@
+version: 1
+name: clearpath-agentic-workflow
+
+# Provider-neutral contract. An AI provider may use REST, GraphQL, gh, MCP,
+# or its own GitHub integration as long as it preserves these operations.
+project:
+  name: ClearPath Delivery
+  status_field: Status
+  statuses:
+    - Backlog
+    - Todo
+    - Doing
+    - Testing
+    - Done
+  source_of_truth: project_status
+  status_labels_are_mirrors: true
+  required_fields:
+    - Status
+    - Track
+    - Priority
+    - Assignee
+    - Iteration
+    - Pull Request
+
+labels:
+  status:
+    backlog: status:backlog
+    todo: status:todo
+    doing: status:doing
+    testing: status:testing
+    done: status:done
+  type:
+    feature: type:feature
+    bug: type:bug
+    chore: type:chore
+    documentation: type:documentation
+  workflow:
+    blocked: workflow:blocked
+    needs_review: workflow:needs-review
+    ready: workflow:ready
+  track:
+    m1: track:m1
+    m2: track:m2
+    m3: track:m3
+    m4: track:m4
+    shared: track:shared
+  priority:
+    p0: priority:p0
+    p1: priority:p1
+    p2: priority:p2
+    p3: priority:p3
+
+issue_requirements:
+  required_sections:
+    - Goal
+    - Context
+    - Scope
+    - Acceptance criteria
+    - Validation
+    - Dependencies
+    - Out of scope
+  required_metadata:
+    - track
+    - type
+    - priority
+    - assignee
+    - project_status
+  default_project_status: Backlog
+
+provider_adapter:
+  required_operations:
+    - list_ready_work
+    - create_issue
+    - update_issue
+    - apply_labels
+    - assign_issue
+    - add_issue_to_project
+    - set_project_status
+    - set_project_fields
+    - add_issue_comment
+    - create_branch
+    - create_pull_request
+    - read_checks
+  optional_operations:
+    - request_review
+    - merge_pull_request
+    - close_issue
+
+lifecycle:
+  - status: Backlog
+    entry: Issue is captured but not sufficiently prepared for execution.
+    agent_action: Enrich the issue or leave it untouched.
+  - status: Todo
+    entry: Acceptance criteria, ownership, scope, and validation are complete.
+    agent_action: Claim only issues assigned to the agent or explicitly delegated.
+  - status: Doing
+    entry: Agent has started implementation.
+    agent_action: Work only within the issue scope and repository ownership rules.
+  - status: Testing
+    entry: Implementation is complete and validation is running or awaiting review.
+    agent_action: Report exact commands and results; do not claim completion on intent.
+  - status: Done
+    entry: Pull request is merged and all acceptance criteria are verified.
+    agent_action: Close the issue and record the final evidence.
+
+completion_gates:
+  - issue_has_acceptance_criteria
+  - issue_has_validation_commands
+  - issue_has_assignee
+  - issue_has_track_and_priority
+  - pull_request_links_issue
+  - required_checks_pass
+  - pull_request_merged
+  - acceptance_criteria_verified
+  - final_comment_contains_summary_files_tests_risks
+
+permissions:
+  default:
+    repository_contents: read
+    issues: write
+    projects: write
+    pull_requests: write
+    checks: read
+  human_approval_required:
+    - merge_pull_request
+    - close_issue
+    - modify_shared_contracts
+    - modify_dependencies
+    - modify_agent_instructions
+    - modify_workflow_permissions
+    - modify_files_owned_by_another_track

@@ -1,0 +1,105 @@
+{
+  "id": "dev1",
+  "url": "http://localhost:8080/bad-checkout.html",
+  "title": "Finalizează comanda",
+  "score": 28,
+  "counts": {
+    "critical": 4,
+    "serious": 3,
+    "moderate": 1,
+    "minor": 0
+  },
+  "clip_url": "/media/dev1/clip.mp4",
+  "duration": 30.0,
+  "focus_trap": true,
+  "issues": [
+    {
+      "id": "i1",
+      "rule": "button-name",
+      "severity": "critical",
+      "node_id": "n6",
+      "selector": "#cart",
+      "title": "Butonul nu are nume accesibil",
+      "recommendation": "Adaugă un text vizibil sau un atribut aria-label care descrie acțiunea butonului.",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/button-name",
+      "timestamp": 8.2
+    },
+    {
+      "id": "i2",
+      "rule": "image-alt",
+      "severity": "critical",
+      "node_id": "n9",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > img:nth-of-type(1)",
+      "title": "Imaginea nu are atribut alt",
+      "recommendation": "Adaugă un atribut alt care descrie scopul sau conținutul imaginii.",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt",
+      "timestamp": 12.1
+    },
+    {
+      "id": "i3",
+      "rule": "label",
+      "severity": "critical",
+      "node_id": "n15",
+      "selector": "#email",
+      "title": "Câmpul de formular nu are etichetă",
+      "recommendation": "Asociază un element <label for=\"email\"> sau un atribut aria-label câmpului.",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/label",
+      "timestamp": 20.2
+    },
+    {
+      "id": "i4",
+      "rule": "keyboard-trap",
+      "severity": "critical",
+      "node_id": "n16",
+      "selector": "#promo",
+      "title": "Capcană de tastatură: utilizatorul nu mai poate ieși cu Tab",
+      "recommendation": "Nu intercepta tasta Tab. Utilizatorul trebuie să poată ajunge la elementul următor fără mouse.",
+      "help_url": null,
+      "timestamp": 21.5
+    },
+    {
+      "id": "i5",
+      "rule": "link-name",
+      "severity": "serious",
+      "node_id": "n5",
+      "selector": "html > body:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+      "title": "Linkul nu are text discernibil",
+      "recommendation": "Adaugă un text vizibil sau aria-label pentru a descrie destinația linkului.",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/link-name",
+      "timestamp": 7.3
+    },
+    {
+      "id": "i7",
+      "rule": "color-contrast",
+      "severity": "serious",
+      "node_id": "n12",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > p:nth-of-type(2)",
+      "title": "Contrast insuficient între text și fundal",
+      "recommendation": "Mărește contrastul textului pentru a atinge raportul minim WCAG de 4.5:1.",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/color-contrast",
+      "timestamp": 14.7
+    },
+    {
+      "id": "i6",
+      "rule": "html-has-lang",
+      "severity": "serious",
+      "node_id": null,
+      "selector": "html",
+      "title": "Elementul html nu are atribut lang",
+      "recommendation": "Adaugă atributul lang pe tag-ul <html> (de exemplu <html lang=\"ro\">).",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/html-has-lang",
+      "timestamp": null
+    },
+    {
+      "id": "i8",
+      "rule": "heading-order",
+      "severity": "moderate",
+      "node_id": "n10",
+      "selector": "html > body:nth-of-type(1) > main:nth-of-type(1) > h4:nth-of-type(1)",
+      "title": "Ordinea nivelurilor de titlu este incorectă",
+      "recommendation": "Structurați titlurile ierarhic fără a sări peste niveluri (de exemplu de la h1 direct la h4).",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.10/heading-order",
+      "timestamp": 13.4
+    }
+  ]
+}

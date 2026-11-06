@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Finalizează comanda</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; color: #222; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; background: #1e293b; color: #fff; }
+  header a { color: #fff; margin-right: 12px; }
+  .icon-btn { background: none; border: 0; cursor: pointer; }
+  main { max-width: 720px; margin: 24px auto; padding: 0 16px; }
+  .muted { color: #c4c4c4; }
+  .fake-btn { display: inline-block; background: #16a34a; color: #fff; padding: 12px 20px; border-radius: 6px; cursor: pointer; }
+  input { display: block; margin: 6px 0 14px; padding: 8px; width: 100%; max-width: 360px; }
+</style>
+</head>
+<body>
+<header>
+  <div style="font-weight:700">PasUșor</div>
+  <nav>
+    <a href="#barbati">Bărbați</a>
+    <a href="#femei">Femei</a>
+    <a href="#cauta"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="9" cy="9" r="6" stroke="#fff" fill="none" stroke-width="2"/></svg></a>
+  </nav>
+  <button id="cart" class="icon-btn"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 4h2l2 11h11l2-8H6" stroke="#fff" fill="none" stroke-width="2"/></svg></button>
+</header>
+<main>
+  <h1>Finalizează comanda</h1>
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Crect width='160' height='100' fill='%23e2e8f0'/%3E%3C/svg%3E" width="160" height="100">
+  <h4>Produsul tău</h4>
+  <p>Adidași de alergare, mărimea 42, 349 lei</p>
+  <p class="muted">Livrare gratuită pentru comenzi de peste 200 de lei</p>
+
+  <h2>Date de livrare</h2>
+  <label for="name">Nume complet</label>
+  <input id="name" required>
+  <input id="email" type="email">
+  <label for="promo">Cod promoțional</label>
+  <input id="promo" onkeydown="if (event.key === 'Tab') { event.preventDefault(); }">
+  <label for="phone">Telefon</label>
+  <input id="phone" type="tel">
+  <div class="fake-btn" onclick="this.textContent = 'Comandă trimisă'">Plasează comanda</div>
+</main>
+</body>
+</html>

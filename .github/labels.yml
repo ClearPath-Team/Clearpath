@@ -1,0 +1,66 @@
+# Declarative label manifest. Apply once with the GitHub CLI or API.
+# Project Status remains authoritative; status labels are searchable mirrors.
+labels:
+  - name: status:backlog
+    color: "6b7280"
+    description: Captured work that is not ready to start
+  - name: status:todo
+    color: "2563eb"
+    description: Ready, scoped, assigned work
+  - name: status:doing
+    color: "f59e0b"
+    description: Work currently being implemented
+  - name: status:testing
+    color: "8b5cf6"
+    description: Implementation is under validation or review
+  - name: status:done
+    color: "16a34a"
+    description: Merged and acceptance criteria verified
+  - name: type:feature
+    color: "0ea5e9"
+    description: New behavior or capability
+  - name: type:bug
+    color: "dc2626"
+    description: Incorrect or broken behavior
+  - name: type:chore
+    color: "64748b"
+    description: Maintenance or tooling work
+  - name: type:documentation
+    color: "14b8a6"
+    description: Documentation-only work
+  - name: workflow:blocked
+    color: "b91c1c"
+    description: Cannot proceed without a dependency or decision
+  - name: workflow:needs-review
+    color: "7c3aed"
+    description: Human review is required
+  - name: workflow:ready
+    color: "22c55e"
+    description: Meets the definition of ready
+  - name: track:m1
+    color: "f97316"
+    description: Extraction and keyboard traversal
+  - name: track:m2
+    color: "e11d48"
+    description: Announcement engine, audit, and reporting
+  - name: track:m3
+    color: "a855f7"
+    description: TTS, recording, and media rendering
+  - name: track:m4
+    color: "0891b2"
+    description: Pipeline, API, web UI, and demo
+  - name: track:shared
+    color: "475569"
+    description: Shared files requiring team consensus
+  - name: priority:p0
+    color: "991b1b"
+    description: Blocks delivery or causes data loss
+  - name: priority:p1
+    color: "c2410c"
+    description: Important for the current milestone
+  - name: priority:p2
+    color: "ca8a04"
+    description: Valuable but not immediately blocking
+  - name: priority:p3
+    color: "65a30d"
+    description: Nice to have

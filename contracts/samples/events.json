@@ -1,0 +1,24 @@
+{
+  "lang": "ro",
+  "events": [
+    { "seq": 0, "node_id": null, "text": "Pagina Finalizează comanda" },
+    { "seq": 1, "node_id": "n0", "text": "Reper antet" },
+    { "seq": 2, "node_id": "n1", "text": "PasUșor" },
+    { "seq": 3, "node_id": "n2", "text": "Reper navigare" },
+    { "seq": 4, "node_id": "n3", "text": "Link, Bărbați" },
+    { "seq": 5, "node_id": "n4", "text": "Link, Femei" },
+    { "seq": 6, "node_id": "n5", "text": "Link" },
+    { "seq": 7, "node_id": "n6", "text": "Buton" },
+    { "seq": 8, "node_id": "n7", "text": "Reper conținut principal" },
+    { "seq": 9, "node_id": "n8", "text": "Titlu nivel 1, Finalizează comanda" },
+    { "seq": 10, "node_id": "n9", "text": "Imagine fără descriere" },
+    { "seq": 11, "node_id": "n10", "text": "Titlu nivel 4, Produsul tău" },
+    { "seq": 12, "node_id": "n11", "text": "Adidași de alergare, mărimea 42, 349 lei" },
+    { "seq": 13, "node_id": "n13", "text": "Titlu nivel 2, Date de livrare" },
+    { "seq": 14, "node_id": "n14", "text": "Nume complet, câmp de editare, obligatoriu" },
+    { "seq": 15, "node_id": "n15", "text": "Câmp de editare" },
+    { "seq": 16, "node_id": "n16", "text": "Cod promoțional, câmp de editare" },
+    { "seq": 17, "node_id": "n17", "text": "Telefon, câmp de editare" },
+    { "seq": 18, "node_id": "n18", "text": "Plasează comanda" }
+  ]
+}

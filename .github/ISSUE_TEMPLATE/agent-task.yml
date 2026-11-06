@@ -1,0 +1,108 @@
+name: Agent task
+description: A scoped, testable unit of work for a human or AI agent
+title: "[Task] "
+labels:
+  - status:backlog
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use one issue for one independently testable outcome. The Project `Status` field is authoritative; status labels mirror it for search.
+  - type: dropdown
+    id: track
+    attributes:
+      label: Track
+      options:
+        - M1 - extraction
+        - M2 - engine and reporting
+        - M3 - media
+        - M4 - API, web, and demo
+        - Shared - requires consensus
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Feature
+        - Bug
+        - Chore
+        - Documentation
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0 - blocks delivery
+        - P1 - current milestone
+        - P2 - important
+        - P3 - nice to have
+    validations:
+      required: true
+  - type: input
+    id: assignee
+    attributes:
+      label: Working owner
+      description: GitHub username of the human or AI operator responsible for this issue.
+      placeholder: "@username-or-agent"
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: State the outcome, not the implementation steps.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain the current behavior, relevant docs, and why this matters.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: List exact files, modules, endpoints, or contracts allowed to change.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Use observable, independently verifiable statements.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: List the exact test, lint, build, or manual verification commands.
+      placeholder: |
+        ```bash
+        ...
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Link prerequisite issues or write "None".
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: State nearby work that must not be included.
+    validations:
+      required: true

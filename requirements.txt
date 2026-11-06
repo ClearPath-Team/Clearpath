@@ -1,0 +1,7 @@
+# Un singur mediu Python pentru API și worker (Python 3.11 sau 3.12)
+playwright==1.48.0
+piper-tts==1.8.0
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+httpx==0.27.2
+python-dotenv==1.0.1

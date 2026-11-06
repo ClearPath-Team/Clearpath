@@ -1,0 +1,25 @@
+{
+  "duration": 30.0,
+  "clip": "clip.mp4",
+  "entries": [
+    { "seq": 0, "node_id": null, "text": "Pagina Finalizează comanda", "start": 0.5, "end": 1.8 },
+    { "seq": 1, "node_id": "n0", "text": "Reper antet", "start": 2.0, "end": 2.8 },
+    { "seq": 2, "node_id": "n1", "text": "PasUșor", "start": 3.0, "end": 3.7 },
+    { "seq": 3, "node_id": "n2", "text": "Reper navigare", "start": 4.0, "end": 4.8 },
+    { "seq": 4, "node_id": "n3", "text": "Link, Bărbați", "start": 5.0, "end": 6.0 },
+    { "seq": 5, "node_id": "n4", "text": "Link, Femei", "start": 6.2, "end": 7.1 },
+    { "seq": 6, "node_id": "n5", "text": "Link", "start": 7.3, "end": 8.0 },
+    { "seq": 7, "node_id": "n6", "text": "Buton", "start": 8.2, "end": 9.0 },
+    { "seq": 8, "node_id": "n7", "text": "Reper conținut principal", "start": 9.2, "end": 10.1 },
+    { "seq": 9, "node_id": "n8", "text": "Titlu nivel 1, Finalizează comanda", "start": 10.3, "end": 11.9 },
+    { "seq": 10, "node_id": "n9", "text": "Imagine fără descriere", "start": 12.1, "end": 13.2 },
+    { "seq": 11, "node_id": "n10", "text": "Titlu nivel 4, Produsul tău", "start": 13.4, "end": 14.5 },
+    { "seq": 12, "node_id": "n11", "text": "Adidași de alergare, mărimea 42, 349 lei", "start": 14.7, "end": 16.5 },
+    { "seq": 13, "node_id": "n13", "text": "Titlu nivel 2, Date de livrare", "start": 16.7, "end": 17.9 },
+    { "seq": 14, "node_id": "n14", "text": "Nume complet, câmp de editare, obligatoriu", "start": 18.1, "end": 20.0 },
+    { "seq": 15, "node_id": "n15", "text": "Câmp de editare", "start": 20.2, "end": 21.3 },
+    { "seq": 16, "node_id": "n16", "text": "Cod promoțional, câmp de editare", "start": 21.5, "end": 23.0 },
+    { "seq": 17, "node_id": "n17", "text": "Telefon, câmp de editare", "start": 23.2, "end": 24.5 },
+    { "seq": 18, "node_id": "n18", "text": "Plasează comanda", "start": 24.7, "end": 26.0 }
+  ]
+}
