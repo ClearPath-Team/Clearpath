@@ -1,0 +1,44 @@
+name: Sync Tasks to GitHub Issues
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tasks/**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sync Tasks
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          python scripts/sync_tasks_to_github.py
+
+      - name: Commit Updated Task Links
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status -s tasks/) ]]; then
+            git add tasks/
+            git commit -m "chore(tasks): auto-link new task files to GitHub issues [skip ci]"
+            git push
+          fi
