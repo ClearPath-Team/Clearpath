@@ -40,6 +40,17 @@ class AuditMappingTests(unittest.TestCase):
         self.assertEqual(results[1]["recommendation"], "Fallback recommendation")
         self.assertIsNone(results[1]["node_id"])
 
+    def test_english_uses_native_axe_text_and_english_keyboard_trap(self):
+        page = Mock()
+        page.evaluate.return_value = ["#unknown"]
+        nodes = {"focus_trap": {"selector": "#trap"}}
+        issues = _map_violations(page, [violation("untranslated-rule", [["#unknown"]])], nodes, lang="en")
+        self.assertEqual(issues[1]["title"], "Fallback title")
+        self.assertEqual(issues[1]["recommendation"], "Fallback recommendation")
+        self.assertIn("Keyboard trap", issues[0]["title"])
+        with self.assertRaises(ValueError):
+            _map_violations(page, [], {}, lang="fr")
+
     def test_frame_and_shadow_targets_are_skipped(self):
         page = Mock()
         results = _map_violations(page, [violation("label", [[], [["#host", "input"]], ["iframe", "input"]])], {})

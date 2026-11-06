@@ -45,7 +45,7 @@ class RenderClipTests(unittest.TestCase):
         self.out_dir = Path(tempfile.mkdtemp(prefix="cp-test-render-"))
         self.addCleanup(shutil.rmtree, self.out_dir, ignore_errors=True)
 
-    def _render(self, probed_duration):
+    def _render(self, probed_duration, lang="ro"):
         probe_stdout = json.dumps({"format": {"duration": str(probed_duration)}})
 
         def fake_run(args, *, input_text=None):
@@ -55,7 +55,8 @@ class RenderClipTests(unittest.TestCase):
                 mock.patch.object(render, "_synthesize", return_value=SPOKEN_SECONDS), \
                 mock.patch.object(render, "_run", side_effect=fake_run), \
                 mock.patch("playwright.sync_api.sync_playwright"):
-            return render_clip(URL, self.nodes, self.events, self.out_dir)
+            return (render_clip(URL, self.nodes, self.events, self.out_dir) if lang == "ro"
+                    else render_clip(URL, self.nodes, self.events, self.out_dir, lang=lang))
 
     def test_returns_and_writes_contract_schema(self):
         expected_total = _narration_total(len(self.events["events"]))
@@ -87,6 +88,28 @@ class RenderClipTests(unittest.TestCase):
         self.assertAlmostEqual(timestamps["button-name"],
                                cart_index * (SPOKEN_SECONDS + PAUSE_SECONDS), places=3)
         self.assertIsNone(timestamps["html-has-lang"])
+
+    def test_punctuation_caption_matches_synthesized_timeline(self):
+        self.events = {"events": [{"seq": 0, "node_id": None, "text": ","}]}
+        with mock.patch.object(render, "_draw_overlay") as overlay:
+            result = self._render(1.05)
+        text = "Element fără conținut textual"
+        self.assertEqual(result["entries"][0]["text"], text)
+        self.assertEqual(overlay.call_args.args[2], text)
+
+    def test_english_punctuation_fallback(self):
+        self.assertEqual(render._speakable_announcement("...", lang="en"), "No textual content")
+        self.assertEqual(render._speakable_announcement("...", lang="ro"), "Element fără conținut textual")
+
+    def test_english_render_uses_english_fallback_and_language(self):
+        self.events = {"events": [{"seq": 0, "node_id": None, "text": ","}]}
+        with mock.patch.object(render, "_draw_overlay") as overlay:
+            with mock.patch.object(render, "_synthesize", return_value=SPOKEN_SECONDS) as synth:
+                result = self._render(1.05, lang="en")
+        self.assertEqual(result["entries"][0]["text"], "No textual content")
+        self.assertEqual(overlay.call_args.args[2], "No textual content")
+        self.assertEqual(synth.call_args.args[0], "No textual content")
+        self.assertEqual(synth.call_args.kwargs["lang"], "en")
 
     def test_truncated_clip_fails_without_writing_timeline(self):
         with self.assertRaises(RuntimeError):
@@ -294,6 +317,28 @@ class RealRenderEndToEndTests(unittest.TestCase):
         cart_start = next(e["start"] for e in timeline["entries"] if e["node_id"] == cart_id)
         self.assertEqual(stamps["button-name"], cart_start)
         self.assertLess(stamps["button-name"], report["duration"])
+
+
+
+class EnglishVoiceTests(unittest.TestCase):
+    def test_english_model_selection(self):
+        with mock.patch.dict(os.environ, {"PIPER_MODEL_EN": "/tmp/custom-en.onnx"}):
+            self.assertEqual(render._voice_path("en"), Path("/tmp/custom-en.onnx"))
+
+    def test_english_edge_voice_selection(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "voice.wav"
+            def produce(args, **kwargs):
+                if "--write-media" in args:
+                    output.with_suffix(".mp3").write_bytes(b"mp3")
+                if args[0] == "ffmpeg":
+                    output.write_bytes(b"wav")
+            with mock.patch.dict(os.environ, {"TTS_ENGINE": "edge-tts"}, clear=True):
+                with mock.patch.object(render, "_edge_tts_bin", return_value="edge-tts"):
+                    with mock.patch.object(render, "_run", side_effect=produce) as runner:
+                        with mock.patch.object(render, "_duration", return_value=1.0):
+                            self.assertEqual(render._synthesize("Hello", output, lang="en"), 1.0)
+                            self.assertIn("en-US-ChristopherNeural", runner.call_args_list[0].args[0])
 
 
 if __name__ == "__main__":
