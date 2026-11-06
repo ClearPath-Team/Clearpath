@@ -1,7 +1,7 @@
 # Task: [INTEG-02] Live Popular Websites End-to-End Testing & Resilience Audit
 
 - **Task ID:** `INTEG-02`
-- **GitHub Issue:** Pending
+- **GitHub Issue:** #43
 - **Track:** `Shared` (Integration, Resilience & End-to-End Quality)
 - **Type:** `Test`
 - **Priority:** `P1 - current milestone`
