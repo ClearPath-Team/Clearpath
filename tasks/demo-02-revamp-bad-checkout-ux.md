@@ -2,6 +2,7 @@
 
 - **Task ID:** `DEMO-02`
 - **GitHub Issue:** #31
+- **PR:** https://github.com/ClearPath-Team/Clearpath/pull/42
 - **Track:** `Demo` (Demo site and presentation UX)
 - **Type:** `Feature`
 - **Priority:** `P1 - current milestone`
@@ -215,3 +216,4 @@ kill $SERVER_PID
 - **2026-11-06:** Full zero-stub pipeline completed with Chromium, Piper, and FFmpeg: 63 nodes, 38 announcements, 9 findings across all 8 required rules, score 33, H.264/AAC clip duration 155.285 s. Regenerated the five JSON fixtures from this run. The sample MP4 placeholder remains unchanged; the real verification clip is at `data/demo-revamp/clip.mp4` (gitignored).
 
 - **2026-11-06:** Validation passed: 67 worker tests (one opt-in full-pipeline test skipped; the real pipeline was verified separately), including real media rendering, plus 13 demo tests. Extraction/audit suites: 26 passing tests. `git diff --check` clean.
+- **2026-11-06:** Opened PR #42 against `main`; ready for peer review.
