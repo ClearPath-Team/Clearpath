@@ -1,0 +1,92 @@
+[
+  {
+    "id": "i1",
+    "rule": "definition-list",
+    "severity": "serious",
+    "node_id": null,
+    "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1)",
+    "title": "<dl> elements must only directly contain properly-ordered <dt> and <dd> groups, <script>, <template> or <div> elements",
+    "recommendation": "Ensure <dl> elements are structured correctly",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/definition-list?application=axeAPI"
+  },
+  {
+    "id": "i2",
+    "rule": "html-has-lang",
+    "severity": "serious",
+    "node_id": null,
+    "selector": "html",
+    "title": "Elementul html nu are atribut lang",
+    "recommendation": "Adaugă atributul lang pe tag-ul <html> (de exemplu <html lang=\"ro\">).",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/html-has-lang?application=axeAPI"
+  },
+  {
+    "id": "i3",
+    "rule": "landmark-one-main",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html",
+    "title": "Pagina nu are un reper pentru conținutul principal",
+    "recommendation": "Încadrează conținutul principal într-un element <main>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/landmark-one-main?application=axeAPI"
+  },
+  {
+    "id": "i4",
+    "rule": "page-has-heading-one",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html",
+    "title": "Pagina nu are un titlu principal",
+    "recommendation": "Adaugă un element <h1> care descrie subiectul principal al paginii.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI"
+  },
+  {
+    "id": "i5",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html > body:nth-of-type(1) > center:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i6",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i7",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html > body:nth-of-type(1) > font:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i8",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html > body:nth-of-type(1) > p:nth-of-type(1)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  },
+  {
+    "id": "i9",
+    "rule": "region",
+    "severity": "moderate",
+    "node_id": null,
+    "selector": "html > body:nth-of-type(1) > p:nth-of-type(8)",
+    "title": "Conținutul nu aparține unui reper de pagină",
+    "recommendation": "Organizează conținutul în repere precum <main>, <nav>, <header> și <footer>.",
+    "help_url": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
+  }
+]

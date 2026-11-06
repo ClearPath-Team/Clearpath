@@ -1,0 +1,36 @@
+{
+  "browser": "Microsoft Edge",
+  "network_policy": "All non-loopback browser HTTP(S) requests blocked in a fresh context; service workers disabled. Host Wi-Fi was not changed.",
+  "runs": {
+    "bad-checkout": {
+      "score": 33,
+      "video_played": true,
+      "seek_mode": "issue-timestamp-button",
+      "seek_seconds": 11.632,
+      "observed_seek_seconds": 11.654,
+      "active_card_highlight": true,
+      "range_status": 206
+    },
+    "site1": {
+      "score": 76,
+      "video_played": true,
+      "seek_mode": "video-seek; structural issues have null timestamps",
+      "seek_seconds": 5.0,
+      "observed_seek_seconds": 5.018,
+      "active_card_highlight": "not applicable: no issue featured in narration",
+      "range_status": 206
+    },
+    "site2": {
+      "score": 89,
+      "video_played": true,
+      "seek_mode": "video-seek; structural issues have null timestamps",
+      "seek_seconds": 5.0,
+      "observed_seek_seconds": 5.017,
+      "active_card_highlight": "not applicable: no issue featured in narration",
+      "range_status": 206
+    }
+  },
+  "browser_version": "156.0.4314.58",
+  "external_requests": [],
+  "browser_errors": []
+}

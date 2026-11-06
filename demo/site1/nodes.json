@@ -1,0 +1,1385 @@
+{
+  "url": "https://www.berkshirehathaway.com/",
+  "title": "BERKSHIRE HATHAWAY INC.",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "order": 0,
+      "role": "text",
+      "name": "B",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 510,
+        "y": 8,
+        "w": 22,
+        "h": 36
+      },
+      "visible": true
+    },
+    {
+      "id": "n1",
+      "order": 1,
+      "role": "text",
+      "name": "ERKSHIRE ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(2)",
+      "bbox": {
+        "x": 532,
+        "y": 21,
+        "w": 98,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n2",
+      "order": 2,
+      "role": "text",
+      "name": "H",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(3)",
+      "bbox": {
+        "x": 630,
+        "y": 8,
+        "w": 25,
+        "h": 36
+      },
+      "visible": true
+    },
+    {
+      "id": "n3",
+      "order": 3,
+      "role": "text",
+      "name": "ATHAWAY ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(4)",
+      "bbox": {
+        "x": 655,
+        "y": 21,
+        "w": 90,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n4",
+      "order": 4,
+      "role": "text",
+      "name": "INC.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(5)",
+      "bbox": {
+        "x": 585,
+        "y": 25,
+        "w": 185,
+        "h": 51
+      },
+      "visible": true
+    },
+    {
+      "id": "n5",
+      "order": 5,
+      "role": "text",
+      "name": "3555 Farnam Street",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(5)",
+      "bbox": {
+        "x": 585,
+        "y": 25,
+        "w": 185,
+        "h": 51
+      },
+      "visible": true
+    },
+    {
+      "id": "n6",
+      "order": 6,
+      "role": "text",
+      "name": "Omaha, NE 68131",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1) > font:nth-of-type(5)",
+      "bbox": {
+        "x": 585,
+        "y": 25,
+        "w": 185,
+        "h": 51
+      },
+      "visible": true
+    },
+    {
+      "id": "n7",
+      "order": 7,
+      "role": "text",
+      "name": "Official Home Page",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(1) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 510,
+        "y": 22,
+        "w": 260,
+        "h": 74
+      },
+      "visible": true
+    },
+    {
+      "id": "n8",
+      "order": 8,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 132,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n9",
+      "order": 9,
+      "role": "link",
+      "name": "A Message from Warren E. Buffett",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n8",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 132,
+        "w": 210,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n10",
+      "order": 10,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 132,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n11",
+      "order": 11,
+      "role": "link",
+      "name": "Fraudulent Claims Regarding Mr. Buffett's Endorsements of Investment Products and Political Candidates",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n10",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 132,
+        "w": 511,
+        "h": 39
+      },
+      "visible": true
+    },
+    {
+      "id": "n12",
+      "order": 12,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 190,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n13",
+      "order": 13,
+      "role": "link",
+      "name": "Annual & Interim Reports",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n12",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 190,
+        "w": 156,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n14",
+      "order": 14,
+      "role": "text",
+      "name": "Updated August 8, 2026",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n12",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 215,
+        "w": 98,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n15",
+      "order": 15,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 190,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n16",
+      "order": 16,
+      "role": "link",
+      "name": "News Releases from Berkshire Hathaway and from Warren Buffett",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n15",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 190,
+        "w": 403,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n17",
+      "order": 17,
+      "role": "text",
+      "name": "Updated November 4, 2026",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n15",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 215,
+        "w": 111,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n18",
+      "order": 18,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 248,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n19",
+      "order": 19,
+      "role": "link",
+      "name": "Link to SEC Filings",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n18",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 248,
+        "w": 118,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n20",
+      "order": 20,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 248,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n21",
+      "order": 21,
+      "role": "link",
+      "name": "Annual Meeting Information",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 248,
+        "w": 168,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n22",
+      "order": 22,
+      "role": "text",
+      "name": "Updated April 20, 2026",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n20",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 273,
+        "w": 95,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n23",
+      "order": 23,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 306,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n24",
+      "order": 24,
+      "role": "link",
+      "name": "Warren Buffett's Letters to Berkshire Shareholders",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n23",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 306,
+        "w": 305,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n25",
+      "order": 25,
+      "role": "text",
+      "name": "Updated February 22, 2025",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n23",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 331,
+        "w": 110,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n26",
+      "order": 26,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 306,
+        "w": 566.796875,
+        "h": 60
+      },
+      "visible": true
+    },
+    {
+      "id": "n27",
+      "order": 27,
+      "role": "link",
+      "name": "Greg Abel's Letters to Berkshire Shareholders",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n26",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 306,
+        "w": 278,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n28",
+      "order": 28,
+      "role": "text",
+      "name": "Updated February 28, 2026",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": "n26",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 331,
+        "w": 110,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n29",
+      "order": 29,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 384,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n30",
+      "order": 30,
+      "role": "link",
+      "name": "Special Letters from Warren & Charlie RE:Past, Present and Future",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n29",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 384,
+        "w": 408,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n31",
+      "order": 31,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 384,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n32",
+      "order": 32,
+      "role": "link",
+      "name": "Charlie Munger's Letters to Wesco Shareholders",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n31",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 384,
+        "w": 294,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n33",
+      "order": 33,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 439,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n34",
+      "order": 34,
+      "role": "link",
+      "name": "Links to Berkshire Operating Companies",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n33",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 439,
+        "w": 247,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n35",
+      "order": 35,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 439,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n36",
+      "order": 36,
+      "role": "link",
+      "name": "Berkshire Hathaway Energy Investor Presentations",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n35",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 439,
+        "w": 306,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n37",
+      "order": 37,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 497,
+        "w": 566.796875,
+        "h": 40
+      },
+      "visible": true
+    },
+    {
+      "id": "n38",
+      "order": 38,
+      "role": "link",
+      "name": "Corporate Governance",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n37",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 497,
+        "w": 140,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n39",
+      "order": 39,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 497,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n40",
+      "order": 40,
+      "role": "link",
+      "name": "Common Stock Information",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n39",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 681,
+        "y": 497,
+        "w": 169,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n41",
+      "order": 41,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 1,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(1) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 72.203125,
+        "y": 555,
+        "w": 566.796875,
+        "h": 20
+      },
+      "visible": true
+    },
+    {
+      "id": "n42",
+      "order": 42,
+      "role": "link",
+      "name": "Sustainability",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": "n41",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 112.203125,
+        "y": 555,
+        "w": 78,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n43",
+      "order": 43,
+      "role": "list",
+      "name": "",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": 0,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(2) > ul:nth-of-type(1)",
+      "bbox": {
+        "x": 641,
+        "y": 555,
+        "w": 566.796875,
+        "h": 0
+      },
+      "visible": false
+    },
+    {
+      "id": "n44",
+      "order": 44,
+      "role": "link",
+      "name": "GEICO logo ",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 602.5,
+        "y": 643,
+        "w": 75,
+        "h": 19
+      },
+      "visible": true
+    },
+    {
+      "id": "n45",
+      "order": 45,
+      "role": "text",
+      "name": "FOR A FREE CAR INSURANCE RATE QUOTE THAT COULD SAVE YOU SUBSTANTIAL MONEY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 422,
+        "y": 660,
+        "w": 436,
+        "h": 24
+      },
+      "visible": true
+    },
+    {
+      "id": "n46",
+      "order": 46,
+      "role": "link",
+      "name": "WWW.GEICO.COM",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 497.5,
+        "y": 672,
+        "w": 88,
+        "h": 12
+      },
+      "visible": true
+    },
+    {
+      "id": "n47",
+      "order": 47,
+      "role": "text",
+      "name": " OR CALL 1-888-395-6349, 24 HOURS A DAY",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 422,
+        "y": 660,
+        "w": 436,
+        "h": 24
+      },
+      "visible": true
+    },
+    {
+      "id": "n48",
+      "order": 48,
+      "role": "text",
+      "name": "If you have any comments about our WEB page, you can write us at the address shown above. However, due to the limited number of personnel in our corporate office, we are unable to provide a direct response.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > font:nth-of-type(1) > p:nth-of-type(1)",
+      "bbox": {
+        "x": 8,
+        "y": 718,
+        "w": 1264,
+        "h": 16
+      },
+      "visible": true
+    },
+    {
+      "id": "n49",
+      "order": 49,
+      "role": "link",
+      "name": "Legal Disclaimer",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": true,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(2) > font:nth-of-type(1) > a:nth-of-type(1)",
+      "bbox": {
+        "x": 8,
+        "y": 768,
+        "w": 87,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n50",
+      "order": 50,
+      "role": "text",
+      "name": "Copyright © 1977-2026",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(3) > font:nth-of-type(1)",
+      "bbox": {
+        "x": 8,
+        "y": 800,
+        "w": 261,
+        "h": 15
+      },
+      "visible": true
+    },
+    {
+      "id": "n51",
+      "order": 51,
+      "role": "text",
+      "name": " Berkshire Hathaway Inc.",
+      "level": null,
+      "states": {
+        "required": false,
+        "checked": null,
+        "expanded": null,
+        "disabled": false
+      },
+      "value": null,
+      "list_size": null,
+      "focusable": false,
+      "parent": null,
+      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(3) > font:nth-of-type(1) > b:nth-of-type(1)",
+      "bbox": {
+        "x": 130,
+        "y": 800,
+        "w": 139,
+        "h": 15
+      },
+      "visible": true
+    }
+  ],
+  "focus_order": [
+    {
+      "node_id": "n9",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n11",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n13",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n16",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n19",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n21",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n24",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n27",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n30",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n32",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n34",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n36",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(6) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n38",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n40",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(7) > td:nth-of-type(2) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n42",
+      "selector": "html > body:nth-of-type(1) > center:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(8) > td:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n44",
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n46",
+      "selector": "html > body:nth-of-type(1) > p:nth-of-type(8) > font:nth-of-type(1) > a:nth-of-type(1)"
+    },
+    {
+      "node_id": "n49",
+      "selector": "html > body:nth-of-type(1) > dl:nth-of-type(1) > p:nth-of-type(2) > font:nth-of-type(1) > a:nth-of-type(1)"
+    }
+  ],
+  "focus_trap": null
+}

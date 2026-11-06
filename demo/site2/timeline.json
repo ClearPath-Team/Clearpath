@@ -1,0 +1,132 @@
+{
+  "duration": 33.974,
+  "clip": "clip.mp4",
+  "entries": [
+    {
+      "seq": 0,
+      "node_id": null,
+      "text": "Pagina Space Jam",
+      "start": 0.0,
+      "end": 1.44
+    },
+    {
+      "seq": 1,
+      "node_id": "n0",
+      "text": "Press Box Shuttle, link",
+      "start": 1.74,
+      "end": 3.539
+    },
+    {
+      "seq": 2,
+      "node_id": "n1",
+      "text": "Jam Central, link",
+      "start": 3.839,
+      "end": 5.035
+    },
+    {
+      "seq": 3,
+      "node_id": "n2",
+      "text": "Planet B-Ball, link",
+      "start": 5.335,
+      "end": 6.728
+    },
+    {
+      "seq": 4,
+      "node_id": "n3",
+      "text": "Lunar Tunes, link",
+      "start": 7.028,
+      "end": 8.375
+    },
+    {
+      "seq": 5,
+      "node_id": "n4",
+      "text": "The Lineup, link",
+      "start": 8.675,
+      "end": 9.801
+    },
+    {
+      "seq": 6,
+      "node_id": "n5",
+      "text": "Space Jam, imagine",
+      "start": 10.101,
+      "end": 11.529
+    },
+    {
+      "seq": 7,
+      "node_id": "n6",
+      "text": "Jump Station, link",
+      "start": 11.829,
+      "end": 13.164
+    },
+    {
+      "seq": 8,
+      "node_id": "n7",
+      "text": "Junior Jam, link",
+      "start": 13.464,
+      "end": 14.451
+    },
+    {
+      "seq": 9,
+      "node_id": "n8",
+      "text": "Warner Studio Store, link",
+      "start": 14.751,
+      "end": 16.551
+    },
+    {
+      "seq": 10,
+      "node_id": "n9",
+      "text": "Stellar Souvenirs, link",
+      "start": 16.851,
+      "end": 18.534
+    },
+    {
+      "seq": 11,
+      "node_id": "n10",
+      "text": "Site Map, link",
+      "start": 18.834,
+      "end": 19.879
+    },
+    {
+      "seq": 12,
+      "node_id": "n11",
+      "text": "Behind the Jam, link",
+      "start": 20.179,
+      "end": 21.77
+    },
+    {
+      "seq": 13,
+      "node_id": "n12",
+      "text": "Privacy Policy, link",
+      "start": 22.07,
+      "end": 23.625
+    },
+    {
+      "seq": 14,
+      "node_id": "n13",
+      "text": "Terms, link",
+      "start": 23.925,
+      "end": 24.715
+    },
+    {
+      "seq": 15,
+      "node_id": "n14",
+      "text": "Accessibility, link",
+      "start": 25.015,
+      "end": 26.582
+    },
+    {
+      "seq": 16,
+      "node_id": "n15",
+      "text": "AdChoices, link",
+      "start": 26.882,
+      "end": 28.206
+    },
+    {
+      "seq": 17,
+      "node_id": "n16",
+      "text": "SPACE JAM, characters, names, and all related indicia are trademarks of Warner...",
+      "start": 28.506,
+      "end": 33.974
+    }
+  ]
+}

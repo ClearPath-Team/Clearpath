@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "generated_at": "2026-11-06T15:57:27.862959+00:00",
+  "pipeline": {
+    "CP_STUBS": "empty",
+    "TTS_ENGINE": "piper",
+    "MAX_EVENTS": 40
+  },
+  "runs": {
+    "bad-checkout": {
+      "url": "http://localhost:8080/bad-checkout.html",
+      "score": 33,
+      "issues": 9,
+      "duration": 52.595,
+      "load_seconds": null,
+      "files": {
+        "status.json": {
+          "bytes": 161,
+          "sha256": "c68030da761b1058f93eb8c618632d620344c865133b3f981dd45efb68f64a84"
+        },
+        "nodes.json": {
+          "bytes": 11795,
+          "sha256": "ee6ee89ebd507eef1e3e8bb0ff8b9c00530eaba32a4065a38d599ed7acf2bc3d"
+        },
+        "events.json": {
+          "bytes": 1976,
+          "sha256": "df11415874209af0af7bd798bd10e0bc26b33ff673bfe99f257aaf549eafebb1"
+        },
+        "issues.json": {
+          "bytes": 3783,
+          "sha256": "29d85321d39eced87c07210b6f591b6f480b863d2cb73d51240bcdfd1e65e36a"
+        },
+        "clip.mp4": {
+          "bytes": 903005,
+          "sha256": "6d85e254150d70ad6099665d5945a1e816df6fb60d53e6e8038bc6a2829d4c08"
+        },
+        "timeline.json": {
+          "bytes": 2861,
+          "sha256": "3bbe1117d4b6db69843254a5358615c621de11ac4d8ab075ffcf8fd4830405d6"
+        },
+        "report.json": {
+          "bytes": 4548,
+          "sha256": "72c5991c62173ac7d9c0309958d5d5299f359d6b62d781f2287b59a3b49d3e3f"
+        }
+      }
+    },
+    "site1": {
+      "url": "https://www.berkshirehathaway.com/",
+      "score": 76,
+      "issues": 9,
+      "duration": 117.363,
+      "load_seconds": 3.42,
+      "files": {
+        "status.json": {
+          "bytes": 149,
+          "sha256": "6356d020e6d36deeb28b10fa8e7d06c48aa618ae7604a08f3f2d3efda41401e3"
+        },
+        "nodes.json": {
+          "bytes": 39646,
+          "sha256": "2fec80233476b0b74fddb4d6eda7a0baa88c7d8f154d9034dedab99eeec5bd2b"
+        },
+        "events.json": {
+          "bytes": 4396,
+          "sha256": "180938c30a8477340815dd43be4e264cf054e2e7e44852739bfae7329b122c57"
+        },
+        "issues.json": {
+          "bytes": 3788,
+          "sha256": "d90d48db4fa6e077d5ee63a78120370800999fbbd709cd9ea7279330dc0737d8"
+        },
+        "clip.mp4": {
+          "bytes": 2061739,
+          "sha256": "d212a3e54a0871fb6ffc236c771a8280199c70a8f565195796c2e594f3e43839"
+        },
+        "timeline.json": {
+          "bytes": 6269,
+          "sha256": "8500adba022519e0cb38085907121551a285be1bc5fc67b9eeaaa4cc0e3b0716"
+        },
+        "report.json": {
+          "bytes": 4527,
+          "sha256": "1ea3c4aec851046e07bf9c154fe36a3ab9f54644cc8f8c33c566d92c09cc38d3"
+        }
+      }
+    },
+    "site2": {
+      "url": "https://www.spacejam.com/1996/",
+      "score": 89,
+      "issues": 4,
+      "duration": 33.974,
+      "load_seconds": 1.06,
+      "files": {
+        "status.json": {
+          "bytes": 145,
+          "sha256": "f59f62fec3c55a4e609de061089eeb00637363f7bd0031ba890a95db266d2d56"
+        },
+        "nodes.json": {
+          "bytes": 14893,
+          "sha256": "675a3802520ad293c8f891ee871c6c1dad0767a4300fd3484a2a79dc9a0765de"
+        },
+        "events.json": {
+          "bytes": 1775,
+          "sha256": "a19f0a84c76c9a8f12dda93f200ba9768596d09dd1fddaf07e49fa0b4d87b647"
+        },
+        "issues.json": {
+          "bytes": 1594,
+          "sha256": "1b633c241713dd49abab2af938f892d599501c2717c5d0e0cdc91c1abadd5757"
+        },
+        "clip.mp4": {
+          "bytes": 888153,
+          "sha256": "a0381230a07e3138f5625c691c91fee8d7b6e809b2eb48093bb616db531ef954"
+        },
+        "timeline.json": {
+          "bytes": 2615,
+          "sha256": "fa4ece3af10fb45f7b810b66b4ca65bb4733fe9ea7ffcbafeadcf8b6f3e7ed03"
+        },
+        "report.json": {
+          "bytes": 2084,
+          "sha256": "9fecc467406a0fc2222387f242facbf9ede6097320a9b9037d889473d5f6b85f"
+        }
+      }
+    }
+  }
+}
