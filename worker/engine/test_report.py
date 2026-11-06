@@ -1,0 +1,72 @@
+"""Scoring and timestamp regression tests for the approved issue #2 policy."""
+import copy
+import unittest
+
+from worker.common import SAMPLES, read_json
+from worker.engine.report import build_report, calculate_score
+
+
+class ReportTests(unittest.TestCase):
+    def test_sample_score_is_38_under_selected_issue_formula(self):
+        issues = read_json(SAMPLES / "issues.json")
+        # Three axe criticals, three serious, one moderate, plus one trap.
+        self.assertEqual(calculate_score(issues), 100 - 3 * 10 - 3 * 5 - 2 - 15)
+
+    def test_weights_are_per_occurrence_without_per_rule_cap(self):
+        issues = [{"rule": "label", "severity": "critical"} for _ in range(3)]
+        self.assertEqual(calculate_score(issues), 70)
+        self.assertEqual(calculate_score([{"rule": "other", "severity": "minor"}]), 99)
+
+    def test_trap_applies_once_whether_flagged_or_present(self):
+        trap = {"rule": "keyboard-trap", "severity": "critical"}
+        self.assertEqual(calculate_score([trap, trap], True), 85)
+        self.assertEqual(calculate_score([], True), 85)
+        self.assertEqual(calculate_score([]), 100)
+
+    def test_score_cannot_be_negative(self):
+        self.assertEqual(calculate_score([{"rule": "label", "severity": "critical"}] * 11), 0)
+
+    def test_report_uses_inputs_and_does_not_mutate_them(self):
+        nodes = read_json(SAMPLES / "nodes.json")
+        issues = read_json(SAMPLES / "issues.json")
+        timeline = read_json(SAMPLES / "timeline.json")
+        original = copy.deepcopy((nodes, issues, timeline))
+        report = build_report("custom", "https://example.com", nodes, issues, timeline)
+        self.assertEqual(report["id"], "custom")
+        self.assertEqual(report["url"], "https://example.com")
+        self.assertEqual(report["clip_url"], "/media/custom/clip.mp4")
+        self.assertEqual(report["duration"], 30)
+        self.assertEqual(report["score"], 38)
+        self.assertTrue(report["focus_trap"])
+        self.assertEqual(report["counts"], {"critical": 4, "serious": 3, "moderate": 1, "minor": 0})
+        mapped = {issue["rule"]: issue["timestamp"] for issue in report["issues"]}
+        self.assertEqual(mapped["button-name"], 8.2)
+        self.assertIsNone(mapped["html-has-lang"])
+        self.assertIsNone(mapped["color-contrast"])
+        self.assertEqual((nodes, issues, timeline), original)
+
+    def test_earliest_timestamp_zero_and_null_are_distinct(self):
+        issues = [
+            {"id": "i1", "rule": "a", "severity": "critical", "node_id": None},
+            {"id": "i2", "rule": "b", "severity": "critical", "node_id": "n1"},
+            {"id": "i3", "rule": "c", "severity": "critical", "node_id": "n2"},
+            {"id": "i4", "rule": "d", "severity": "minor", "node_id": "n1"},
+        ]
+        timeline = {"duration": 10, "entries": [
+            {"node_id": None, "start": 0}, {"node_id": "n1", "start": 5},
+            {"node_id": "n2", "start": 2}, {"node_id": "n1", "start": 0},
+        ]}
+        report = build_report("x", "url", {"title": "Custom", "focus_trap": None}, issues, timeline)
+        self.assertEqual([issue["id"] for issue in report["issues"]], ["i2", "i3", "i1", "i4"])
+        self.assertEqual([issue["timestamp"] for issue in report["issues"]], [0, 2, None, 0])
+        self.assertFalse(report["focus_trap"])
+
+    def test_empty_report_does_not_copy_sample_metrics(self):
+        report = build_report("empty", "url", {}, [], {"duration": 0, "entries": []})
+        self.assertEqual(report["score"], 100)
+        self.assertEqual(report["issues"], [])
+        self.assertEqual(sum(report["counts"].values()), 0)
+
+
+if __name__ == "__main__":
+    unittest.main()
